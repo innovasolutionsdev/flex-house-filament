@@ -17,4 +17,15 @@ class Schedule extends Model
     {
         return $this->hasMany(Workout::class);
     }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'schedule_user');
+    }
+
+    public function scheduleAssignments()
+    {
+        return $this->hasMany(ScheduleAssignment::class);
+    }
+
 }
