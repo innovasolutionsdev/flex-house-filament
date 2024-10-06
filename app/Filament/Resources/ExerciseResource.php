@@ -46,12 +46,14 @@ class ExerciseResource extends Resource
                 Tables\Columns\TextColumn::make('reps'),
                 Tables\Columns\TextColumn::make('rest_time'),
             ])
-            
+
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\ViewAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
