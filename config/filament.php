@@ -71,4 +71,13 @@ return [
 
     'livewire_loading_delay' => 'default',
 
+
+    'admin' => [
+        'path' => '/admin',
+        'middleware' => ['auth', 'role:admin'],
+    ],
+    'user' => [
+        'path' => '/user',
+        'middleware' => ['auth', 'role:user'],  // ensure this is assigned to users
+    ],
 ];
