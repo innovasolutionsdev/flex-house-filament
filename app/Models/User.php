@@ -70,7 +70,9 @@ class User extends Authenticatable
         return $this->HasMany(Order::class);
     }
 
-    public function subscriptions(): HasMany
+
+
+    public function subscriptions()
     {
         return $this->hasMany(Subscription::class);
     }
