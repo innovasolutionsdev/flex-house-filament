@@ -147,7 +147,7 @@ Route::middleware([
 ])->group(function () {
 
     Route::resource('products',\App\Http\Controllers\ProductsController::class);
-    Route::resource('user', \App\Http\Controllers\Usercontroller::class);
+//    Route::resource('user', \App\Http\Controllers\Usercontroller::class);
 
 
 
