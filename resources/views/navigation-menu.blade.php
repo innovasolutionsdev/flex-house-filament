@@ -18,7 +18,7 @@
                     <li><a href="./contact.html">Contacts</a></li>
                     <li>
                     @if (Auth::check())
-                        <a href="{{url('Dashboard')}}" >Dashboard</a>
+                        <a href="{{url('user')}}" >Dashboard</a>
 
                     @else
                              <a href="{{url('login')}}">Login</a>

@@ -50,6 +50,8 @@
                 </div>
             </div>
         </div>
+
+
     </section>
     <!-- About Section End -->
     <div class="max-w-screen-xl mx-auto py-8 px-4 lg:py-16 lg:px-6">

@@ -28,4 +28,9 @@ class Schedule extends Model
         return $this->hasMany(ScheduleAssignment::class);
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }

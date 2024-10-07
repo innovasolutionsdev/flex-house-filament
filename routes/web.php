@@ -154,10 +154,18 @@ Route::middleware([
 
 });
 
+//Route::middleware(['auth', 'admin'])->group(function () {
+//    Route::get('/admin/dashboard', [AdminDashboardController::class, 'index']);
+//    // Other admin-specific routes
+//});
 
-// get all the users from the users tabel
-Route::middleware(['role:admin'])->get('/dev', function (Request $request) {
-    $users = DB::table('users')->get();
+//Route::middleware(['role:admin'])->get('/admin', function (Request $request) {
+//
+//});
+//
+//// get all the users from the users tabel
+//Route::middleware(['role:admin'])->get('/dev', function (Request $request) {
+//    $users = DB::table('users')->get();
 
 //    $products = \App\Models\products::first();
 //
@@ -179,4 +187,4 @@ Route::middleware(['role:admin'])->get('/dev', function (Request $request) {
 //
 //    dd($products, $cart);
 //    return 'yo dev';
-});
+//});
