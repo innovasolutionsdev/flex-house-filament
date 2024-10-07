@@ -10,6 +10,9 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Filament\Forms\Components\Select;
+use Filament\Tables\Columns\TagsColumn;
+
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Components\FileUpload;
@@ -18,9 +21,9 @@ class UserResource extends Resource
 {
     protected static ?string $model = User::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-users';
 
-    protected static ?string $navigationGroup = 'Membership Management';
+    protected static ?string $navigationGroup = 'User Management';
 
     public static function form(Form $form): Form
     {
@@ -29,6 +32,11 @@ class UserResource extends Resource
                     Forms\Components\TextInput::make('name')->required(),
                     Forms\Components\TextInput::make('email')->required()->email(),
                 Forms\Components\TextInput::make('password')->required()->password(),
+            // Select::make('schedules')
+            // ->relationship('schedules', 'name')  // 'name' is the display field of the Schedule
+            // ->multiple()  // Allows selecting multiple schedules
+            // ->label('Assigned Schedules'),
+
 //                    Forms\Components\Select::make('membership_type')
 //                        ->options([
 //                            'basic' => 'Basic',
@@ -46,9 +54,16 @@ class UserResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name'),
-//                Forms\Components\TextColumn::make('name'),
-//                Forms\Components\TextColumn::make('email'),
-//                Forms\Components\TextColumn::make('membership_type'),
+                Tables\Columns\TextColumn::make('email'),
+            // TagsColumn::make('schedules.name')  // Display the names of the assigned schedules as tags
+            // ->label('Assigned Schedules'),
+                // membership_type column
+                // active column
+                // membership_expires_at column
+
+
+
+//
             ])
             ->filters([
                 //
