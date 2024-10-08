@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BookingController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\hom;
@@ -31,6 +32,9 @@ Route::get('price-calculator',priceCalculator::class);
 Route::get('Dashboard',[\App\Http\Controllers\analyticController::class,"analytics"])->name('Dashboard');
 Route::post('/store-preference', [\App\Http\Controllers\subscriptionController::class, 'storePreference'])->name('store.preference');
 Route::get("/",[homecontroller::class,"index"]);
+
+// Booking from the home page
+Route::resource('bookings', BookingController::class);
 
     /**
      * Administration routes

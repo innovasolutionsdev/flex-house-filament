@@ -560,31 +560,32 @@
                 <div class="col-lg-8">
                     <div class="register-text">
                         <div class="section-title">
-                            <h2>Register Now</h2>
+                            <h2>Booking</h2>
                             <!-- <p>The First 7 Day Trial Is Completely Free With The Teacher</p> -->
                         </div>
-                        <form action="#" class="register-form">
+                        <form action="{{ route('bookings.store') }}" method="POST" class="register-form">
+                            @csrf
                             <div class="row">
                                 <div class="col-lg-6">
                                     <label for="name">First Name</label>
-                                    <input type="text" id="name">
+                                    <input type="text" id="name" name="first_name">
                                 </div>
                                 <div class="col-lg-6">
                                     <label for="email">Your email address</label>
-                                    <input type="text" id="email">
+                                    <input type="text" id="email" name="email">
                                 </div>
                                 <div class="col-lg-6">
                                     <label for="last-name">Last Name</label>
-                                    <input type="text" id="last-name">
+                                    <input type="text" id="last-name" name="last_name">
                                 </div>
                                 <div class="col-lg-6">
                                     <label for="mobile">Mobile No*</label>
-                                    <input type="text" id="mobile">
+                                    <input type="text" id="mobile" name="mobile">
                                 </div>
                             </div>
                             <button type="submit" class="bg-red-700 register-btn">Get Started</button>
-
                         </form>
+
                     </div>
                 </div>
                 <div class="col-lg-4">
