@@ -21,6 +21,10 @@ use App\Livewire\PriceCalculator;
 */
 
 
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+
+// Override the default login route
+//Route::post('/login', [AuthenticatedSessionController::class, 'store']);
 
 
 Route::get('price-calculator',priceCalculator::class);

@@ -21,7 +21,20 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
+                // Check if the user is an admin
+                if (Auth::user()->role->value === 1) {
+                    // Redirect to the admin dashboard
+                    return redirect('/admin');
+
+                }
+                else if (Auth::user()->role->value === 2) {
+                    // Redirect to the admin dashboard
+                    return redirect('/user');
+                }
+                else {
+                    // Redirect to the user dashboard
+                    return redirect(RouteServiceProvider::HOME);
+                }
             }
         }
 
