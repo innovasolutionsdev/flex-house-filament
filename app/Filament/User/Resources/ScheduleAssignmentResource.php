@@ -24,7 +24,12 @@ class ScheduleAssignmentResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\Select::make('schedule_id')
+                    ->relationship('schedule', 'name')
+                    ->required()
+                    ->label('Schedule'),
+                    
+
             ]);
     }
 
@@ -41,6 +46,9 @@ class ScheduleAssignmentResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                // view
+                Tables\Actions\ViewAction::make(),
+
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

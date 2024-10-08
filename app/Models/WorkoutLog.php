@@ -5,25 +5,27 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ScheduleAssignment extends Model
+class WorkoutLog extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'schedule_id' , 'status'];
+    protected $fillable = ['user_id', 'workout_id', 'date'];
 
+    // Each workout log belongs to a user
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function schedule()
-    {
-        return $this->belongsTo(Schedule::class);
-    }
-
+    // Each workout log belongs to a specific workout
     public function workout()
     {
         return $this->belongsTo(Workout::class);
     }
 
+    // A workout log has many exercise logs
+    public function exerciseLogs()
+    {
+        return $this->hasMany(ExerciseLog::class);
+    }
 }
