@@ -2,9 +2,9 @@
 
 namespace App\Filament\User\Resources;
 
-use App\Filament\User\Resources\UserResource\Pages;
-use App\Filament\User\Resources\UserResource\RelationManagers;
-use App\Models\User;
+use App\Filament\User\Resources\ScheduleAssignmentResource\Pages;
+use App\Filament\User\Resources\ScheduleAssignmentResource\RelationManagers;
+use App\Models\ScheduleAssignment;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -12,10 +12,11 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Facades\Auth;
 
-class UserResource extends Resource
+class ScheduleAssignmentResource extends Resource
 {
-    protected static ?string $model = User::class;
+    protected static ?string $model = ScheduleAssignment::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -30,8 +31,10 @@ class UserResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('user.name')->label('User'),
+                Tables\Columns\TextColumn::make('schedule.name')->label('Schedule'),
             ])
             ->filters([
                 //
@@ -56,9 +59,14 @@ class UserResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListUsers::route('/'),
-            'create' => Pages\CreateUser::route('/create'),
-            'edit' => Pages\EditUser::route('/{record}/edit'),
+            'index' => Pages\ListScheduleAssignments::route('/'),
+            'create' => Pages\CreateScheduleAssignment::route('/create'),
+            'edit' => Pages\EditScheduleAssignment::route('/{record}/edit'),
         ];
+    }
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()->where('user_id', Auth::id());
     }
 }
