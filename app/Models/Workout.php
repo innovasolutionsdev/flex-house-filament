@@ -23,4 +23,9 @@ class Workout extends Model
     {
         return $this->hasMany(Exercise::class);
     }
+
+    public function scheduleAssignments()
+    {
+        return $this->hasMany(ScheduleAssignment::class);
+    }
 }

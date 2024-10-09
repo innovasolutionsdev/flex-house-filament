@@ -53,8 +53,9 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name'),
-                Tables\Columns\TextColumn::make('email'),
+                Tables\Columns\TextColumn::make('name')->searchable(),
+                Tables\Columns\TextColumn::make('email')->searchable(),
+                
             // TagsColumn::make('schedules.name')  // Display the names of the assigned schedules as tags
             // ->label('Assigned Schedules'),
                 // membership_type column

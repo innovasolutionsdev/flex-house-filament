@@ -39,7 +39,21 @@ class ScheduleAssignmentResource extends Resource
             ->label('Schedule')
             ->relationship('schedule', 'name')  // Load schedules by name
             ->required(),
+
+            Select::make('status')
+                ->label('Status')
+                ->options([
+                    'pending' => 'Pending',
+                    'active' => 'Active',
+                    'completed' => 'Completed',
+                    'cancelled' => 'Cancelled',
+                ])
+            ->required(),
+
             ]);
+
+
+
     }
 
     public static function table(Table $table): Table
@@ -49,6 +63,7 @@ class ScheduleAssignmentResource extends Resource
 
             Tables\Columns\TextColumn::make('user.name')->label('User'),
             Tables\Columns\TextColumn::make('schedule.name')->label('Schedule'),
+            Tables\Columns\TextColumn::make('status')->label('Status'),
             //assigned at column
             Tables\Columns\TextColumn::make('created_at')
                 ->dateTime()
