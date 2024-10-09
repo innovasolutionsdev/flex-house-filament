@@ -9,7 +9,7 @@ class WorkoutLogDetail extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['workout_log_id', 'exercise_id', 'set_number', 'reps', 'weight'];
+    protected $fillable = ['workout_log_id', 'exercise_id'];
 
     public function workoutLog()
     {
@@ -19,5 +19,11 @@ class WorkoutLogDetail extends Model
     public function exercise()
     {
         return $this->belongsTo(Exercise::class);
+    }
+
+    // Relationship to the ExerciseSet model
+    public function sets()
+    {
+        return $this->hasMany(ExerciseSet::class);
     }
 }

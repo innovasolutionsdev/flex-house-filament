@@ -33,19 +33,24 @@ class ScheduleAssignmentResource extends Resource
         return $table
 
             ->columns([
-                Tables\Columns\TextColumn::make('user.name')->label('User'),
+
                 Tables\Columns\TextColumn::make('schedule.name')->label('Schedule'),
+                //status
+                Tables\Columns\TextColumn::make('status')->label('Status'),
+                //assigned date
+                Tables\Columns\TextColumn::make('created_at')->label('Assigned Date'),
             ])
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+
+                Tables\Actions\ViewAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                // Tables\Actions\BulkActionGroup::make([
+                //     Tables\Actions\DeleteBulkAction::make(),
+                // ]),
             ]);
     }
 
