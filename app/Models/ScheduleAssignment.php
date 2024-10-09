@@ -9,7 +9,7 @@ class ScheduleAssignment extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'schedule_id'];
+    protected $fillable = ['user_id', 'schedule_id', 'status'];
 
     public function user()
     {
