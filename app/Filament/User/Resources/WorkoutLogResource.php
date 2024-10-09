@@ -32,6 +32,11 @@ class WorkoutLogResource extends Resource
         return $form
             ->schema([
                 // Select Workout
+                //hidden input field to store user id
+                Forms\Components\Hidden::make('user_id')
+                ->default(fn () => auth()->id()),
+
+                // Select Workout dropdown
                 Select::make('workout_id')
                 ->label('Select Workout')
                 ->options(function () {
@@ -129,6 +134,7 @@ class WorkoutLogResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\ViewAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
