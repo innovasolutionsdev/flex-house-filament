@@ -541,36 +541,19 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-blog-item">
-                        <img src="img/blog/blog-1.jpg" alt="">
-                        <div class="blog-widget">
-                            <div class="bw-date">February 17, 2019</div>
-                            <a href="#" class="tag">#Gym</a>
+                @foreach ($blogs as $blog)
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-blog-item">
+                            <img src="{{  $blog->getFirstMediaUrl('thumbnails') }}" alt="">
+                            <div class="blog-widget">
+                                <div class="bw-date">{{ $blog->publication_date}}</div>
+                                <a href="#" class="tag">#{{ implode(', #', explode(',', $blog->tags)) }}</a>
+                            </div>
+                            <h4><a href="#" class="text-white">{{ $blog->title }}</a></h4>
+                            <p>{{ $blog->meta_description }}</p> <!-- SEO Description -->
                         </div>
-                        <h4 ><a href="#" class="text-white">10 States At Risk of Rural Hospital Closures</a></h4>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-blog-item">
-                        <img src="img/blog/blog-2.jpg" alt="">
-                        <div class="blog-widget">
-                            <div class="bw-date">February 17, 2019</div>
-                            <a href="#" class="tag">#Sport</a>
-                        </div>
-                        <h4><a href="#" class="text-white">Diver who helped save Thai soccer team</a></h4>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-blog-item">
-                        <img src="img/blog/blog-3.jpg" alt="">
-                        <div class="blog-widget">
-                            <div class="bw-date">February 17, 2019</div>
-                            <a href="#" class="tag">#Body</a>
-                        </div>
-                        <h4><a href="#" class="text-white">Man gets life in prison for stabbing</a></h4>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>

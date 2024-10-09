@@ -59,16 +59,20 @@ class BlogResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('Title')->label('Title'),
-                Tables\Columns\TextColumn::make('Description')->label('Description'),
-                Tables\Columns\TextColumn::make('Tags')->label('Tags'),
-                Tables\Columns\TextColumn::make('Date of Publish')->label('Date of publish'),
+                Tables\Columns\TextColumn::make('title')->label('Title'),
+                Tables\Columns\ImageColumn::make('thumbnail')
+                    ->label('Thumbnail')
+                    ->getStateUsing(fn ($record) => $record->getFirstMediaUrl('thumbnails')),
+                Tables\Columns\TextColumn::make('description')->label('Description'),
+                Tables\Columns\TextColumn::make('tags')->label('Tags'),
+                Tables\Columns\TextColumn::make('publication_date')->label('Date of publish'),
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
