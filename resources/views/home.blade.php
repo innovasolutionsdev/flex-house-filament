@@ -392,90 +392,22 @@
                     beyond.</p>
             </div>
             <div class="flex flex-wrap -m-4">
-                <div class="lg:w-1/3 sm:w-1/2 p-4">
-                    <div class="flex relative">
-                        <img alt="gallery" class="absolute inset-0 w-full h-full object-cover object-center"
-                             src="https://dummyimage.com/600x360">
-                        <div
-                            class="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100">
-                            <h2 class="tracking-widest text-sm title-font font-medium text-indigo-500 mb-1">THE SUBTITLE
-                            </h2>
-                            <h1 class="title-font text-lg font-medium text-gray-900 mb-3">Shooting Stars</h1>
-                            <p class="leading-relaxed">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing
-                                microdosing tousled waistcoat.</p>
+                @foreach($galleryImages as $item)
+                    <div class="lg:w-1/3 sm:w-1/2 p-4">
+                        <div class="flex relative">
+                            <!-- Dynamically load the image from the database -->
+                            <img alt="{{ $item->caption }}" class="absolute inset-0 w-full h-full object-cover object-center"
+                                 src="{{ $item->getFirstMediaUrl('images') }}">
+                            <div
+                                class="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100">
+                                <!-- Display the caption dynamically -->
+                                <h2 class="tracking-widest text-sm title-font font-medium text-indigo-500 mb-1">THE SUBTITLE</h2>
+                                <h1 class="title-font text-lg font-medium text-gray-900 mb-3">{{ $item->caption }}</h1>
+                                <p class="leading-relaxed">This is a description or some text about the image.</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="lg:w-1/3 sm:w-1/2 p-4">
-                    <div class="flex relative">
-                        <img alt="gallery" class="absolute inset-0 w-full h-full object-cover object-center"
-                             src="https://dummyimage.com/601x361">
-                        <div
-                            class="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100">
-                            <h2 class="tracking-widest text-sm title-font font-medium text-indigo-500 mb-1">THE SUBTITLE
-                            </h2>
-                            <h1 class="title-font text-lg font-medium text-gray-900 mb-3">The Catalyzer</h1>
-                            <p class="leading-relaxed">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing
-                                microdosing tousled waistcoat.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="lg:w-1/3 sm:w-1/2 p-4">
-                    <div class="flex relative">
-                        <img alt="gallery" class="absolute inset-0 w-full h-full object-cover object-center"
-                             src="https://dummyimage.com/603x363">
-                        <div
-                            class="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100">
-                            <h2 class="tracking-widest text-sm title-font font-medium text-indigo-500 mb-1">THE SUBTITLE
-                            </h2>
-                            <h1 class="title-font text-lg font-medium text-gray-900 mb-3">The 400 Blows</h1>
-                            <p class="leading-relaxed">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing
-                                microdosing tousled waistcoat.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="lg:w-1/3 sm:w-1/2 p-4">
-                    <div class="flex relative">
-                        <img alt="gallery" class="absolute inset-0 w-full h-full object-cover object-center"
-                             src="https://dummyimage.com/602x362">
-                        <div
-                            class="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100">
-                            <h2 class="tracking-widest text-sm title-font font-medium text-indigo-500 mb-1">THE SUBTITLE
-                            </h2>
-                            <h1 class="title-font text-lg font-medium text-gray-900 mb-3">Neptune</h1>
-                            <p class="leading-relaxed">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing
-                                microdosing tousled waistcoat.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="lg:w-1/3 sm:w-1/2 p-4">
-                    <div class="flex relative">
-                        <img alt="gallery" class="absolute inset-0 w-full h-full object-cover object-center"
-                             src="https://dummyimage.com/605x365">
-                        <div
-                            class="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100">
-                            <h2 class="tracking-widest text-sm title-font font-medium text-indigo-500 mb-1">THE SUBTITLE
-                            </h2>
-                            <h1 class="title-font text-lg font-medium text-gray-900 mb-3">Holden Caulfield</h1>
-                            <p class="leading-relaxed">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing
-                                microdosing tousled waistcoat.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="lg:w-1/3 sm:w-1/2 p-4">
-                    <div class="flex relative">
-                        <img alt="gallery" class="absolute inset-0 w-full h-full object-cover object-center"
-                             src="https://dummyimage.com/606x366">
-                        <div
-                            class="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100">
-                            <h2 class="tracking-widest text-sm title-font font-medium text-indigo-500 mb-1">THE SUBTITLE
-                            </h2>
-                            <h1 class="title-font text-lg font-medium text-gray-900 mb-3">Alper Kamu</h1>
-                            <p class="leading-relaxed">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing
-                                microdosing tousled waistcoat.</p>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -609,36 +541,19 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-blog-item">
-                        <img src="img/blog/blog-1.jpg" alt="">
-                        <div class="blog-widget">
-                            <div class="bw-date">February 17, 2019</div>
-                            <a href="#" class="tag">#Gym</a>
+                @foreach ($blogs as $blog)
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-blog-item">
+                            <img src="{{  $blog->getFirstMediaUrl('thumbnails') }}" alt="">
+                            <div class="blog-widget">
+                                <div class="bw-date">{{ $blog->publication_date}}</div>
+                                <a href="#" class="tag">#{{ implode(', #', explode(',', $blog->tags)) }}</a>
+                            </div>
+                            <h4><a href="#" class="text-white">{{ $blog->title }}</a></h4>
+                            <p>{{ $blog->meta_description }}</p> <!-- SEO Description -->
                         </div>
-                        <h4 ><a href="#" class="text-white">10 States At Risk of Rural Hospital Closures</a></h4>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-blog-item">
-                        <img src="img/blog/blog-2.jpg" alt="">
-                        <div class="blog-widget">
-                            <div class="bw-date">February 17, 2019</div>
-                            <a href="#" class="tag">#Sport</a>
-                        </div>
-                        <h4><a href="#" class="text-white">Diver who helped save Thai soccer team</a></h4>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-blog-item">
-                        <img src="img/blog/blog-3.jpg" alt="">
-                        <div class="blog-widget">
-                            <div class="bw-date">February 17, 2019</div>
-                            <a href="#" class="tag">#Body</a>
-                        </div>
-                        <h4><a href="#" class="text-white">Man gets life in prison for stabbing</a></h4>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
