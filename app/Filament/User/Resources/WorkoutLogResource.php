@@ -2,6 +2,8 @@
 
 namespace App\Filament\User\Resources;
 
+use Filament\Infolists\Infolist;
+
 use App\Filament\User\Resources\WorkoutLogResource\Pages;
 use App\Filament\User\Resources\WorkoutLogResource\RelationManagers;
 use App\Models\WorkoutLog;
@@ -16,6 +18,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Models\ScheduleAssignment;
 use Illuminate\Support\Facades\Auth;
+use Filament\Infolists\Components\Text;
 
 class WorkoutLogResource extends Resource
 {
@@ -30,21 +33,6 @@ class WorkoutLogResource extends Resource
                 // Hidden input field for user id passing
                 Forms\Components\Hidden::make('user_id')
                 ->default(auth()->id()),
-
-            // Select Workout dropdown
-            // Forms\Components\Select::make('workout_id')
-            // ->label('Workout')
-            // ->relationship('workout', 'name')
-            // ->options(function () {
-            //     return auth()->user()->scheduleAssignments()
-            //         ->where('status', 'active')
-            //         ->first()
-            //         ->schedule
-            //         ->workouts()
-            //         ->pluck('name', 'id');
-            // })
-            //     ->required(),
-            // Select Workout dropdown
             Select::make('workout_id')
             ->label('Select Workout')
             ->options(function () {
@@ -76,12 +64,6 @@ class WorkoutLogResource extends Resource
                 ->createItemButtonLabel('Add New Exercise')
                 ->schema([
 
-                // Select Exercise for each log entry
-                // Forms\Components\Select::make('exercise_id')
-                // ->label('Exercise')
-                // ->relationship('exercise', 'name')
-                // ->required(),
-                // Select Exercise dropdown: exercises related to all workouts in the active schedule
                 Select::make('exercise_id')
                     ->label('Exercise')
                     ->options(function () {
@@ -180,6 +162,16 @@ class WorkoutLogResource extends Resource
             ]);
     }
 
+    public static function infolist(Infolist $infolist): Infolist
+    {
+        return $infolist
+            ->schema([
+                
+            ]);
+    }
+
+
+
 
     public static function getRelations(): array
     {
@@ -194,6 +186,7 @@ class WorkoutLogResource extends Resource
             'index' => Pages\ListWorkoutLogs::route('/'),
             'create' => Pages\CreateWorkoutLog::route('/create'),
             'edit' => Pages\EditWorkoutLog::route('/{record}/edit'),
+            // 'view' => Pages\ViewWorkoutLog::route('/{record}'), // Add this line
         ];
     }
 

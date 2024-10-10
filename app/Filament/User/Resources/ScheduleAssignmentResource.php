@@ -66,7 +66,7 @@ class ScheduleAssignmentResource extends Resource
         return [
             'index' => Pages\ListScheduleAssignments::route('/'),
             'create' => Pages\CreateScheduleAssignment::route('/create'),
-            'edit' => Pages\EditScheduleAssignment::route('/{record}/edit'),
+            
         ];
     }
 
