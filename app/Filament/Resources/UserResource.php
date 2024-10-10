@@ -70,11 +70,16 @@ class UserResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name'),
                 Tables\Columns\TextColumn::make('email'),
-                Tables\Columns\TextColumn::make('created_at')->label('Created At')->sortable(),
-                Tables\Columns\TextColumn::make('user.status')
+
+                Tables\Columns\BadgeColumn::make('status')
                     ->label('Status')
-                    ->formatStateUsing(fn ($state) => $state ? 'Active' : 'Inactive')
-                    ->color(fn ($state) => $state ? 'success' : 'danger'),
+                    ->getStateUsing(function ($record) {
+                        return $record->status == 1 ? 'Active' : 'Inactive';
+                    })
+                    ->colors([
+                        'success' => 'Active', // Green for active
+                        'danger' => 'Inactive',  // Red for inactive
+                    ]),
 
 
                 // TagsColumn::make('schedules.name')  // Display the names of the assigned schedules as tags
