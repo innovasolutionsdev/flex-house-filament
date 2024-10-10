@@ -32,7 +32,13 @@ class User extends Authenticatable
         'email',
         'password',
         'role',
+        'membership_start_date',
+        'membership_end_date',
+        'membership_id',
+        'status',
     ];
+
+
 
     /**
      * The attributes that should be hidden for serialization.
@@ -85,6 +91,18 @@ class User extends Authenticatable
     public function scheduleAssignments()
     {
         return $this->hasMany(ScheduleAssignment::class);
+    }
+
+    // Relationship with MembershipPlan
+    public function membershipPlan()
+    {
+        return $this->belongsTo(MembershipPlan::class, 'membership_plan_id');
+    }
+
+    // Check if the user's membership is active
+    public function isMembershipActive()
+    {
+        return $this->membership_end_date && $this->membership_end_date->isFuture();
     }
 
 }

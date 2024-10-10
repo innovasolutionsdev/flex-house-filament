@@ -4,7 +4,9 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\UserResource\Pages;
 use App\Filament\Resources\UserResource\RelationManagers;
+use App\Models\MembershipPlan;
 use App\Models\User;
+use Carbon\Carbon;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -32,20 +34,33 @@ class UserResource extends Resource
                     Forms\Components\TextInput::make('name')->required(),
                     Forms\Components\TextInput::make('email')->required()->email(),
                 Forms\Components\TextInput::make('password')->required()->password(),
-            // Select::make('schedules')
-            // ->relationship('schedules', 'name')  // 'name' is the display field of the Schedule
-            // ->multiple()  // Allows selecting multiple schedules
-            // ->label('Assigned Schedules'),
+                Forms\Components\Select::make('membership_id')
+                    ->label('Membership Plan')
+                    ->options(MembershipPlan::all()->pluck('name', 'id'))
+                    ->reactive()
+                    ->required(),
+                Forms\Components\DatePicker::make('membership_start_date')
+                    ->label('Start Date')
+                    ->default(now()->format('Y-m-d'))
+                    ->required()
+                    ->reactive()
+                    ->afterStateUpdated(function ($state, callable $get, callable $set) {
+                        $plan = MembershipPlan::find($get('membership_id')); // Get the selected membership plan
+                        if ($plan) {
+                            $duration = $plan->duration; // Fetch the plan's duration
+                            $endDate = Carbon::parse($state)->addDays($duration); // Calculate the end date
+                            $set('membership_end_date', $endDate->toDateString()); // Set the end date field
+                        }
+                    }),
+                Forms\Components\DatePicker::make('membership_end_date')
+                    ->label('End Date')
+                    ->disabled() // Make it visible but not editable
+                    ->dehydrated(),
 
-//                    Forms\Components\Select::make('membership_type')
-//                        ->options([
-//                            'basic' => 'Basic',
-//                            'premium' => 'Premium',
-//                            // Add more membership types as needed
-//                        ])
-//                        ->required(),
-//                    Forms\Components\Toggle::make('active')->label('Active Membership')->default(true),
-//                    Forms\Components\DatePicker::make('membership_expires_at')->label('Membership Expiration Date')->required(),
+                Forms\Components\Toggle::make('status')
+                    ->label('Active')
+                    ->default(false),
+
             ]);
     }
 
@@ -55,7 +70,14 @@ class UserResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name'),
                 Tables\Columns\TextColumn::make('email'),
-            // TagsColumn::make('schedules.name')  // Display the names of the assigned schedules as tags
+                Tables\Columns\TextColumn::make('created_at')->label('Created At')->sortable(),
+                Tables\Columns\TextColumn::make('user.status')
+                    ->label('Status')
+                    ->formatStateUsing(fn ($state) => $state ? 'Active' : 'Inactive')
+                    ->color(fn ($state) => $state ? 'success' : 'danger'),
+
+
+                // TagsColumn::make('schedules.name')  // Display the names of the assigned schedules as tags
             // ->label('Assigned Schedules'),
                 // membership_type column
                 // active column
