@@ -33,13 +33,13 @@ class UserResource extends Resource
             ->schema([
                     Forms\Components\TextInput::make('name')->required(),
                     Forms\Components\TextInput::make('email')->required()->email(),
-                Forms\Components\TextInput::make('password')->required()->password(),
-                Forms\Components\Select::make('membership_id')
+                    Forms\Components\TextInput::make('password')->required()->password(),
+                    Forms\Components\Select::make('membership_id')
                     ->label('Membership Plan')
                     ->options(MembershipPlan::all()->pluck('name', 'id'))
                     ->reactive()
                     ->required(),
-                Forms\Components\DatePicker::make('membership_start_date')
+                    Forms\Components\DatePicker::make('membership_start_date')
                     ->label('Start Date')
                     ->default(now()->format('Y-m-d'))
                     ->required()
@@ -68,8 +68,13 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name'),
-                Tables\Columns\TextColumn::make('email'),
+                Tables\Columns\TextColumn::make('name')->searchable(),
+                Tables\Columns\TextColumn::make('email')->searchable(),
+                Tables\Columns\TextColumn::make('created_at')
+                ->dateTime()
+                ->sortable(),
+                //created at column
+
 
                 Tables\Columns\BadgeColumn::make('status')
                     ->label('Status')
@@ -82,11 +87,7 @@ class UserResource extends Resource
                     ]),
 
 
-                // TagsColumn::make('schedules.name')  // Display the names of the assigned schedules as tags
-            // ->label('Assigned Schedules'),
-                // membership_type column
-                // active column
-                // membership_expires_at column
+
 
 
 

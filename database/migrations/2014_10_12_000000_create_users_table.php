@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('password');
             $table->date('membership_start_date')->nullable();
             $table->date('membership_end_date')->nullable();
-            $table->tinyInteger('status')->default(1);
+            // $table->tinyInteger('status')->default(1);
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();

@@ -19,6 +19,10 @@ class RevenueCategoryResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $navigationGroup = 'Financial Management';
+
+    protected static ?string $pluralLabel = 'Categories';
+
     public static function form(Form $form): Form
     {
         return $form

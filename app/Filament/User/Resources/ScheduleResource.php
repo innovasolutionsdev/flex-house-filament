@@ -106,4 +106,9 @@ class ScheduleResource extends Resource
                 $query->where('user_id', Auth::id());
             });
     }
+
+    public static function canCreate(): bool
+    {
+        return false; // Disable the creation of new membership payments
+    }
 }
