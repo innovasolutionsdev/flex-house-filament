@@ -83,10 +83,10 @@ class User extends Authenticatable
         return $this->hasMany(Subscription::class);
     }
 
-    public function schedules()
-    {
-        return $this->belongsToMany(Schedule::class, 'schedule_user');
-    }
+    // public function schedules()
+    // {
+    //     return $this->belongsToMany(Schedule::class, 'schedule_user');
+    // }
 
     public function scheduleAssignments()
     {

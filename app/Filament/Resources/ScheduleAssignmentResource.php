@@ -39,7 +39,18 @@ class ScheduleAssignmentResource extends Resource
             ->label('Schedule')
             ->relationship('schedule', 'name')  // Load schedules by name
             ->required(),
+
+            Select::make('status')
+                ->label('Status')
+                ->options([
+                    'active' => 'Active',
+                    'completed' => 'Completed',
+                    'pending' => 'Pending',
+                ])
+                ->required(),
             ]);
+
+
     }
 
     public static function table(Table $table): Table
