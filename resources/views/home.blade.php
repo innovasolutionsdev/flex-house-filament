@@ -413,7 +413,6 @@
     </section>
 
 
-
     <!-- Banner Section Begin -->
     <section class="banner-section set-bg" data-setbg="img/banner-bg.jpg">
         <div class="container">
@@ -515,7 +514,12 @@
                                     <input type="text" id="mobile" name="mobile">
                                 </div>
                             </div>
-                            <button type="submit" class="bg-red-700 register-btn">Get Started</button>
+                            @auth
+                                <button class="btn btn-primary w-100 py-3" type="submit" style="background-color: #13C5DD">Booking</button>
+                            @endauth
+                            @guest
+                                <a href="{{ route('login') }}" class="btn btn-primary w-100 py-3" style="background-color: #13C5DD">Log In</a>
+                            @endguest
                         </form>
 
                     </div>
