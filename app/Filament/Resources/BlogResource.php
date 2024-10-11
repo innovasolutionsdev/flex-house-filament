@@ -13,6 +13,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Facades\Auth;
 
 class BlogResource extends Resource
 {
@@ -95,5 +96,10 @@ class BlogResource extends Resource
             'create' => Pages\CreateBlog::route('/create'),
             'edit' => Pages\EditBlog::route('/{record}/edit'),
         ];
+    }
+
+    public static function beforeSave($record): void
+    {
+        $record->user_id = Auth::id();
     }
 }
