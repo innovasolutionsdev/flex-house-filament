@@ -28,8 +28,8 @@ class BlogResource extends Resource
                     ->required(),
                 Forms\Components\Textarea::make('description')
                     ->required(),
-                Forms\Components\TextInput::make('tags')
-                    ->nullable(),
+                Forms\Components\TagsInput::make('tags')
+                    ->nullable() ->separator(','),
                 Forms\Components\DatePicker::make('publication_date')
                     ->required(),
 
