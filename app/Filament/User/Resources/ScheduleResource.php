@@ -20,7 +20,7 @@ class ScheduleResource extends Resource
 {
     protected static ?string $model = Schedule::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-clipboard-document-list';
 
     //custome name for resource in navigation
     protected static ?string $pluralLabel = 'My Schedules';
@@ -55,7 +55,7 @@ class ScheduleResource extends Resource
 
             ->columns([
 
-                Tables\Columns\TextColumn::make('name')->label('Schedule Name'),
+                Tables\Columns\TextColumn::make('name')->label('Schedule Name')->searchable(),
                 Tables\Columns\TextColumn::make('created_at')->dateTime(),
 
 
