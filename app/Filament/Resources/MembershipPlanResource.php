@@ -6,6 +6,7 @@ use App\Filament\Resources\MembershipPlanResource\Pages;
 use App\Filament\Resources\MembershipPlanResource\RelationManagers;
 use App\Models\MembershipPlan;
 use Filament\Forms;
+use Filament\Forms\Components\Tabs\Tab;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -25,12 +26,22 @@ class MembershipPlanResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->required(),
-                Forms\Components\TextInput::make('price')
-                    ->required(),
-                Forms\Components\TextInput::make('duration')
-                    ->required(),
+            Forms\Components\TextInput::make('name')
+                ->required()
+                ->maxLength(255) // Ensures name doesn't exceed 255 characters
+                ->label('Plan Name'),
+
+            Forms\Components\TextInput::make('price')
+                ->required()
+                ->numeric() // Ensures the price is numeric
+                ->minValue(0.01) // Ensures price is greater than zero
+                ->label('Price (Rs)'), // Optional label
+
+            Forms\Components\TextInput::make('duration')
+                ->required()
+                ->integer() // Ensures it's an integer
+                ->minValue(1) // Ensures the duration is at least 1 day
+                ->label('Duration (Days)'),
             ]);
     }
 
@@ -49,6 +60,7 @@ class MembershipPlanResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\deleteAction::make(),
+                Tables\Actions\ViewAction::make(),
 
             ])
             ->bulkActions([
