@@ -2,7 +2,11 @@
 
 namespace App\Http;
 
+use App\Models\User;
+use App\Notifications\MembershipExpiredNotification;
+use Carbon\Carbon;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use Illuminate\Support\Facades\Notification;
 
 class Kernel extends HttpKernel
 {
@@ -69,4 +73,22 @@ class Kernel extends HttpKernel
         'role' => \App\Http\Middleware\RoleValidationMiddleware::class,
         'admin' => \App\Http\Middleware\AdminAccess::class,
     ];
+
+    protected function schedule(Schedule $schedule)
+    {
+        $schedule->call(function () {
+            // Find users whose membership end date is today or in the past and haven't been notified yet
+            $users = User::where('membership_end_date', '<=', Carbon::now())
+                ->whereNull('membership_notified') // Assuming you have this flag to prevent repeated notifications
+                ->get();
+
+            foreach ($users as $user) {
+                // Send notification
+                Notification::send($user, new MembershipExpiredNotification());
+
+                // Mark the user as notified to avoid sending duplicate notifications
+                $user->update(['membership_notified' => Carbon::now()]);
+            }
+        })->daily();
+    }
 }

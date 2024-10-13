@@ -105,4 +105,10 @@ class User extends Authenticatable
         return $this->membership_end_date && $this->membership_end_date->isFuture();
     }
 
+    public function membership()
+    {
+        return $this->belongsTo(MembershipPlan::class);
+    }
+
+
 }

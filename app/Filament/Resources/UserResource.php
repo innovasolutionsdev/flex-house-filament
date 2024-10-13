@@ -70,9 +70,10 @@ class UserResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')->searchable(),
                 Tables\Columns\TextColumn::make('email')->searchable(),
-                Tables\Columns\TextColumn::make('created_at')
-                ->dateTime()
-                ->sortable(),
+                Tables\Columns\TextColumn::make('membership.name')
+                    ->label('Membership Plan')
+                    ->sortable(),
+
                 //created at column
 
 
