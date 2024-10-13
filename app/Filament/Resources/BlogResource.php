@@ -27,8 +27,9 @@ class BlogResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('title')
                     ->required(),
-                Forms\Components\Textarea::make('description')
-                    ->required(),
+                Forms\Components\RichEditor::make('description')
+                    ->required()
+            ->columnSpan('full'),
                 Forms\Components\TagsInput::make('tags')
                     ->nullable() ->separator(','),
                 Forms\Components\DatePicker::make('publication_date')
@@ -37,9 +38,10 @@ class BlogResource extends Resource
                 Forms\Components\TextInput::make('meta_title')
                     ->nullable()
                     ->label('Meta Title'),
-                Forms\Components\Textarea::make('meta_description')
+                Forms\Components\RichEditor::make('meta_description')
                     ->nullable()
-                    ->label('Meta Description'),
+                    ->label('Meta Description')
+                    ->columnSpan('full'),
                 Forms\Components\TextInput::make('meta_keywords')
                     ->nullable()
                     ->label('Meta Keywords'),

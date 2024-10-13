@@ -2,7 +2,11 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Subscription;
+use App\Models\User;
+use App\Notifications\MembershipExpiredNotification;
 use Illuminate\Console\Command;
+use Filament\Notifications\Notification;
 
 class NotifyExpiredSubscriptions extends Command
 {
@@ -25,18 +29,19 @@ class NotifyExpiredSubscriptions extends Command
      */
     public function handle()
     {
-        $expiredSubscriptions = Subscription::where('end_date', '<', now())
-            ->where('active', true)
-            ->with('user')
+        $expiredSubscriptions = User::where('membership_end_date', '<=', now())
             ->get();
 
         foreach ($expiredSubscriptions as $subscription) {
             // Send notification (using Laravel's Notification system)
             // You can create a notification class and use it here
-            Notification::send($subscription->user, new MembershipExpiredNotification());
 
-            // Update subscription status
-            $subscription->update(['active' => false]);
+
+            $subscription->notify(
+                Notification::make()
+                    ->title('Membership Expired')
+                    ->toDatabase(),
+            );
         }
     }
 }

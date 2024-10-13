@@ -39,5 +39,21 @@ class DatabaseSeeder extends Seeder
             MembershipPlanSeeder::class,
         ]);
 
+        $this -> call([
+            BlogPostSeeder::class,
+        ]);
+
+        $this -> call([
+            TransactionsTableSeeder::class
+        ]);
+
+        $this -> call([
+            RevenueCategoriesTableSeeder::class
+        ]);
+
+        $this -> call([
+            PaymentsTableSeeder::class
+        ]);
+
     }
 }

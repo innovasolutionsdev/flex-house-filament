@@ -11,6 +11,7 @@ use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\BadgeColumn;
 use Filament\Tables\Table;
 use Filament\Forms\Components\Select;
 use Filament\Tables\Columns\TagsColumn;
@@ -45,7 +46,8 @@ class UserResource extends Resource
 
             Forms\Components\TextInput::make('password')
             ->required()
-                ->password() // Show the password input as a password field
+                ->password()
+                ->nullable() // Show the password input as a password field
                 ->minLength(8) // Ensure the password has at least 8 characters
                 ->dehydrateStateUsing(fn($state) => Hash::make($state)) // Use bcrypt to hash the password before saving
                 ->label('Password'),
@@ -75,9 +77,15 @@ class UserResource extends Resource
             ->disabled() // Make it visible but not editable
                 ->dehydrated(),
 
-            Forms\Components\Toggle::make('status')
-                ->label('Active')
-                ->default(false),
+            Select::make('status')
+                ->label('User Status')
+                ->options([
+                    1 => 'Expired',      // 1 corresponds to 'Expired'
+                    2 => 'Activated',    // 2 corresponds to 'Activated'
+                    3 => 'Deactivated',  // 3 corresponds to 'Deactivated'
+                ])
+                ->default(3)  // Default is Deactivated (3)
+                ->required()
         ]);
     }
 
@@ -94,22 +102,22 @@ class UserResource extends Resource
                 //created at column
 
 
-                Tables\Columns\BadgeColumn::make('status')
+                BadgeColumn::make('status')
                     ->label('Status')
                     ->getStateUsing(function ($record) {
-                        return $record->status == 1 ? 'Active' : 'Inactive';
+                        return match ($record->status) {
+                            1 => 'Expired',
+                            2 => 'Activated',
+                            3 => 'Deactivated',
+                            default => 'Unknown', // Fallback for unexpected values
+                        };
                     })
                     ->colors([
-                        'success' => 'Active', // Green for active
-                        'danger' => 'Inactive',  // Red for inactive
-                    ]),
+                        'danger' => 'Expired',     // Red for expired
+                        'success' => 'Activated',  // Green for activated
+                        'secondary' => 'Deactivated', // Gray for deactivated
+                    ])
 
-
-
-
-
-
-//
             ])
             ->filters([
                 //
@@ -140,5 +148,10 @@ class UserResource extends Resource
             'create' => Pages\CreateUser::route('/create'),
             'edit' => Pages\EditUser::route('/{record}/edit'),
         ];
+    }
+
+    protected static function getEditAction(): string
+    {
+        return 'edit'; // Change this to the action name if necessary
     }
 }

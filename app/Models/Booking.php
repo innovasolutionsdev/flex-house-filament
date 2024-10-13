@@ -9,7 +9,9 @@ use Illuminate\Support\Facades\Auth;
 class Booking extends Model
 {
     use HasFactory;
-    protected $fillable = ['first_name','user_id', 'last_name', 'email', 'mobile'];
+    protected $fillable = ['first_name','user_id', 'last_name', 'email', 'mobile','booking_date',
+    'booking_time',
+    'status'];
 
 
     public function save(array $options = [])

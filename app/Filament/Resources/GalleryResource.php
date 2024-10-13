@@ -26,9 +26,24 @@ class GalleryResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('caption')
                     ->label('Image Caption')
-                    ->required(),
+                    ->required()
+                    ->maxLength(255), // Adjust max length as necessary
 
-                // Use the SpatieMediaLibraryFileUpload component for image upload
+                Forms\Components\TextInput::make('meta_title')
+                    ->label('Meta Title')
+                    ->required()
+                    ->maxLength(60), // Typical max length for SEO titles
+
+                Forms\Components\TextInput::make('meta_description')
+                    ->label('Meta Description')
+                    ->required()
+                    ->maxLength(160), // Typical max length for SEO descriptions
+
+                Forms\Components\TextInput::make('meta_keywords')
+                    ->label('Meta Keywords')
+                    ->required()
+                    ->maxLength(255), // Adjust max length as necessary
+
                 SpatieMediaLibraryFileUpload::make('image')
                     ->collection('images')  // Use the correct media collection
                     ->preserveFilenames()

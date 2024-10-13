@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->date('membership_start_date')->nullable();
-            $table->date('membership_end_date')->nullable();
+        Schema::table('bookings', function (Blueprint $table) {
+            $table->date('booking_date')->nullable();
+            $table->date('booking_time')->nullable();
         });
     }
 
@@ -22,9 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('membership_start_date');
-            $table->dropColumn('membership_end_date');
+        Schema::table('booking', function (Blueprint $table) {
+            //
         });
     }
 };
