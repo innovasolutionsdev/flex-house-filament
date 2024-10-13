@@ -29,11 +29,12 @@ class RevenueCategoryResource extends Resource
             ->schema([
 
             Forms\Components\TextInput::make('name')
-            ->required(),
+            ->required()
+            ->maxLength(255),
             Forms\Components\Select::make('type')
             ->options([
-                'income' => 'Income',
-                'expense' => 'Expense',
+                'Income' => 'Income',
+                'Expense' => 'Expense',
             ])
                 ->required(),
             ]);
@@ -44,7 +45,7 @@ class RevenueCategoryResource extends Resource
         return $table
             ->columns([
 
-            Tables\Columns\TextColumn::make('name'),
+            Tables\Columns\TextColumn::make('name')->searchable(),
             Tables\Columns\TextColumn::make('type'),
 
             ])

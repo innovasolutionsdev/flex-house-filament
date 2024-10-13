@@ -17,7 +17,7 @@ class MembershipPaymentResource extends Resource
 {
     protected static ?string $model = MembershipPayment::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-currency-dollar';
 
     protected static ?string $navigationGroup = 'Financial Management';
 
@@ -30,7 +30,8 @@ class MembershipPaymentResource extends Resource
                     ->required(),
                 Forms\Components\TextInput::make('amount')
                     ->required()
-                    ->numeric(),
+                    ->numeric()
+                    ->maxLength(255),
                 Forms\Components\DatePicker::make('payment_date')
                     ->required(),
                 Forms\Components\Select::make('payment_method')
@@ -49,9 +50,9 @@ class MembershipPaymentResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('user.name'),
-                Tables\Columns\TextColumn::make('amount'),
-                Tables\Columns\TextColumn::make('payment_date'),
+                Tables\Columns\TextColumn::make('user.name')->searchable(),
+                Tables\Columns\TextColumn::make('amount')->searchable(),
+                Tables\Columns\TextColumn::make('payment_date')->sortable()->searchable(),
                 Tables\Columns\TextColumn::make('payment_method'),
             ])
             ->filters([
@@ -59,6 +60,8 @@ class MembershipPaymentResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\ViewAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

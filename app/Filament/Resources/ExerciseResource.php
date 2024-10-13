@@ -27,15 +27,44 @@ class ExerciseResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
-            ->schema([
-            TextInput::make('name')->required(),
+        ->schema([
+            // 'name' field: required and max length of 255 characters
+            TextInput::make('name')
+            ->required()
+                ->maxLength(255)
+                ->label('Name'),
+
+            // 'workout_id' field: required, belongs to a valid 'workout' relation
             BelongsToSelect::make('workout_id')
-            ->relationship('workout', 'name')  // Link to workout
-            ->required(),
-            TextInput::make('sets')->required(),
-            TextInput::make('reps')->required(),
-            TextInput::make('rest_time')->label('Rest Time (in seconds)')->required(),
-            ]);
+            ->relationship('workout', 'name') // Link to workout
+            ->required()
+                ->label('Workout'),
+
+            // 'sets' field: required and should be a valid integer
+            TextInput::make('sets')
+            ->required()
+                ->numeric() // Validates that the input is a number
+                ->label('Sets'),
+
+            // 'reps' field: required and should be a valid integer
+            TextInput::make('reps')
+            ->required()
+                ->maxLength(255) // Validates that the input is a number
+                ->label('Reps'),
+
+            // 'rest_time' field: required and should be a valid integer
+            TextInput::make('rest_time')
+            ->required()
+                ->numeric() // Validates that the input is a number
+                ->label('Rest Time (in seconds)'),
+
+            // 'note' field: optional, can be a string with a max length
+            TextInput::make('note')
+            ->nullable() // Make it optional
+                ->maxLength(255) // Limit the note length to 255 characters
+                ->label('Note (optional)'),
+        ]);
+
     }
 
     public static function table(Table $table): Table

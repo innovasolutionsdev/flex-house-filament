@@ -17,7 +17,7 @@ class TransactionResource extends Resource
 {
     protected static ?string $model = Transaction::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-credit-card';
 
     protected static ?string $navigationGroup = 'Financial Management';
 
@@ -26,7 +26,9 @@ class TransactionResource extends Resource
         return $form
             ->schema([
             Forms\Components\TextInput::make('amount')
-                ->required(),
+                ->required()
+                ->numeric()
+                ->maxLength(255),
             Forms\Components\Select::make('type')
                 ->options([
                     'income' => 'Income',
@@ -34,7 +36,8 @@ class TransactionResource extends Resource
                 ])
                 ->required(),
             Forms\Components\TextInput::make('description')
-                ->required(),
+                ->required()
+                ->maxLength(255),
             Forms\Components\Select::make('category_id')
                 ->relationship('revenuecategory', 'name')
                 ->nullable(),
@@ -51,7 +54,7 @@ class TransactionResource extends Resource
             Tables\Columns\TextColumn::make('amount')->sortable()->searchable(),
             Tables\Columns\TextColumn::make('type')->sortable(),
             Tables\Columns\TextColumn::make('description')->searchable(),
-            // Tables\Columns\TextColumn::make('category.name')->label('Category'),
+            Tables\Columns\TextColumn::make('revenuecategory.name')->label('Category'),
             Tables\Columns\TextColumn::make('date')->date()->sortable(),
             ])
             ->filters([
@@ -61,6 +64,12 @@ class TransactionResource extends Resource
                     'expense' => 'Expense',
                 ])
                 ->label('Transaction Type'),
+
+            Tables\Filters\SelectFilter::make('category_id')
+                ->relationship('revenuecategory', 'name')
+                ->label('Category'),
+
+
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

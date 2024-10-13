@@ -7,6 +7,7 @@ use App\Filament\Resources\BlogResource\RelationManagers;
 use App\Models\Blog;
 use App\Models\BlogPost;
 use Filament\Forms;
+use Filament\Forms\Components\Tabs\Tab;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -19,27 +20,34 @@ class BlogResource extends Resource
 {
     protected static ?string $model = BlogPost::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-document-text';
+
+    protected static ?string $navigationGroup = 'Content Management';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 Forms\Components\TextInput::make('title')
-                    ->required(),
+                    ->required()
+                    ->maxLength(255),
                 Forms\Components\Textarea::make('description')
-                    ->required(),
+                    ->required()
+                    ->maxLength(255),
                 Forms\Components\TagsInput::make('tags')
-                    ->nullable() ->separator(','),
+                    ->nullable()
+                    ->separator(','),
                 Forms\Components\DatePicker::make('publication_date')
                     ->required(),
 
                 Forms\Components\TextInput::make('meta_title')
                     ->nullable()
-                    ->label('Meta Title'),
+                    ->label('Meta Title')
+                    ->maxLength(255),
                 Forms\Components\Textarea::make('meta_description')
                     ->nullable()
-                    ->label('Meta Description'),
+                    ->label('Meta Description')
+                    ->maxLength(255),
                 Forms\Components\TextInput::make('meta_keywords')
                     ->nullable()
                     ->label('Meta Keywords'),
@@ -52,7 +60,7 @@ class BlogResource extends Resource
                     ->required(),
                 Forms\Components\SpatieMediaLibraryFileUpload::make('thumbnail')
                     ->collection('thumbnails')
-                    ->required()
+                    ->required(),
             ]);
     }
 
@@ -66,6 +74,7 @@ class BlogResource extends Resource
                     ->getStateUsing(fn ($record) => $record->getFirstMediaUrl('thumbnails')),
                 Tables\Columns\TextColumn::make('description')->label('Description'),
                 Tables\Columns\TextColumn::make('tags')->label('Tags'),
+                Tables\Columns\TextColumn::make('status')->label('Status'),
                 Tables\Columns\TextColumn::make('publication_date')->label('Date of publish'),
             ])
             ->filters([
@@ -74,6 +83,7 @@ class BlogResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
+                Tables\Actions\ViewAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
