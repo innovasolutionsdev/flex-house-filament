@@ -148,101 +148,200 @@
     <!-- Services Section End -->
 
     <!-- Membership Section Begin -->
-    <section class="membership-section spad bg-blue-900 pb-20">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title">
-                        <h2 class="text-white">MEMBERSHIP PLANS</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="membership-item">
-                        <div class="mi-title">
-                            <h4>1 Month</h4>
-                            <div class="triangle"></div>
+{{--    <section class="membership-section spad bg-blue-900 pb-20">--}}
+{{--        <div class="container">--}}
+{{--            <div class="row">--}}
+{{--                <div class="col-lg-12">--}}
+{{--                    <div class="section-title">--}}
+{{--                        <h2 class="text-white">MEMBERSHIP PLANS</h2>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="row">--}}
+{{--                <div class="col-lg-4">--}}
+{{--                    <div class="membership-item">--}}
+{{--                        <div class="mi-title">--}}
+{{--                            <h4>1 Month</h4>--}}
+{{--                            <div class="triangle"></div>--}}
+{{--                        </div>--}}
+{{--                        <h2 class="mi-price">Rs. 3000</h2>--}}
+{{--                        <ul>--}}
+
+{{--                        </ul>--}}
+{{--                        <a href="#" class="primary-btn membership-btn">Register Now</a>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-lg-4">--}}
+{{--                    <div class="membership-item">--}}
+{{--                        <div class="mi-title">--}}
+{{--                            <h4>2 Months</h4>--}}
+{{--                            <div class="triangle"></div>--}}
+{{--                        </div>--}}
+{{--                        <h2 class="mi-price">Rs. 3000</h2>--}}
+{{--                        <ul>--}}
+
+{{--                        </ul>--}}
+{{--                        <a href="#" class="primary-btn membership-btn">Register Now</a>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-lg-4">--}}
+{{--                    <div class="membership-item">--}}
+{{--                        <div class="mi-title">--}}
+{{--                            <h4>3 Months</h4>--}}
+{{--                            <div class="triangle"></div>--}}
+{{--                        </div>--}}
+{{--                        <h2 class="mi-price">Rs. 3000</h2>--}}
+{{--                        <ul>--}}
+
+{{--                        </ul>--}}
+{{--                        <a href="#" class="primary-btn membership-btn">Register Now</a>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+
+{{--            <div class="row mt-10">--}}
+{{--                <div class="col-lg-4">--}}
+{{--                    <div class="membership-item">--}}
+{{--                        <div class="mi-title">--}}
+{{--                            <h4>6 Months</h4>--}}
+{{--                            <div class="triangle"></div>--}}
+{{--                        </div>--}}
+{{--                        <h2 class="mi-price">Rs. 3000</h2>--}}
+{{--                        <ul>--}}
+
+{{--                        </ul>--}}
+{{--                        <a href="#" class="primary-btn membership-btn">Register Now</a>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-lg-4">--}}
+{{--                    <div class="membership-item">--}}
+{{--                        <div class="mi-title">--}}
+{{--                            <h4>12 Months</h4>--}}
+{{--                            <div class="triangle"></div>--}}
+{{--                        </div>--}}
+{{--                        <h2 class="mi-price">Rs. 3000</h2>--}}
+{{--                        <ul>--}}
+
+{{--                        </ul>--}}
+{{--                        <a href="#" class="primary-btn membership-btn">Register Now</a>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-lg-4">--}}
+{{--                    <div class="membership-item">--}}
+{{--                        <div class="mi-title ">--}}
+{{--                            <h4>Couple 1 Month</h4>--}}
+{{--                            <div class="triangle bg-red-600"></div>--}}
+{{--                        </div>--}}
+{{--                        <h2 class="mi-price">Rs. 3000</h2>--}}
+{{--                        <ul>--}}
+
+{{--                        </ul>--}}
+{{--                        <a href="#" class="primary-btn membership-btn">Register Now</a>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </section>--}}
+    <!-- Membership Section End -->
+
+    <div class="demo-container grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-3 gap-3">
+
+        @foreach($membership as $value)
+        <div
+            class="rounded-[30px] md:rounded-[36px] bg-[#FAFAFA] overflow-hidden border-[1px] border-gray-200 p-8 relative">
+            <div class="h-full">
+                <div class="h-full z-10 relative">
+                    <div class="flex flex-col flex-1 justify-between h-full space-y-5">
+                        <div class="flex justify-between flex-col">
+                            <div class="text-xl md:text-2xl font-bold text-gray-900 flex justify-between">
+                                <span>Starter</span>
+                            </div>
+                            <div class="pt-5 text-gray-500 font-medium text-base space-y-1">
+                                <div class="flex items-center align-bottom"><span class="pt-1.5">$</span>
+                                    <div class="ml-1 mr-2 text-2xl md:text-3xl font-bold text-gray-900"><span>10</span>
+                                    </div><span class="pt-1.5">per month</span>
+                                </div>
+                                <div class="text-base">billed
+                                    annually
+                                </div>
+                            </div>
+                            <div class="">
+                                <ul class="space-y-2 pt-8">
+                                    <li class="flex items-center font-medium space-x-2 text-black">
+                                        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4"
+                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round"></path>
+                                        </svg><span>Everything in Free</span>
+                                    </li>
+                                    <li class="flex items-center font-medium space-x-2 text-black">
+                                        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4"
+                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round"></path>
+                                        </svg><span>5,000 events / month</span>
+                                    </li>
+                                    <li class="flex items-center font-medium space-x-2 text-black">
+                                        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4"
+                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round"></path>
+                                        </svg><span>Unlimited seats</span>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                        <h2 class="mi-price">Rs. 3000</h2>
-                        <ul>
-
-                        </ul>
-                        <a href="#" class="primary-btn membership-btn">Register Now</a>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="membership-item">
-                        <div class="mi-title">
-                            <h4>2 Months</h4>
-                            <div class="triangle"></div>
+                        <div class="pt-2">
+                            <a href="/billing" type="button" target="_blank"
+                               class="appearance-none inline-flex hover:shadow-2xl transition-all duration-300 hover:scale-105 items-center group space-x-2.5 bg-black text-white py-4 px-5 rounded-2xl cursor-pointer"><span
+                                    class="w-full font-semibold text-base">Choose Starter</span>
+                                <svg class="inline-block h-6" viewBox="0 0 24 25" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3 12.4999H21L14 19.4999M14 5.5L18 9.5" stroke="currentColor"
+                                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                            </a>
                         </div>
-                        <h2 class="mi-price">Rs. 3000</h2>
-                        <ul>
-
-                        </ul>
-                        <a href="#" class="primary-btn membership-btn">Register Now</a>
                     </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="membership-item">
-                        <div class="mi-title">
-                            <h4>3 Months</h4>
-                            <div class="triangle"></div>
-                        </div>
-                        <h2 class="mi-price">Rs. 3000</h2>
-                        <ul>
-
+                    <div class="hidden">
+                        <ul class="space-y-2 pt-8">
+                            <li class="flex items-center font-medium space-x-2 text-black">
+                                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round"></path>
+                                </svg><span>Everything in Free</span>
+                            </li>
+                            <li class="flex items-center font-medium space-x-2 text-black">
+                                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round"></path>
+                                </svg><span>5,000 events / month</span>
+                            </li>
+                            <li class="flex items-center font-medium space-x-2 text-black">
+                                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round"></path>
+                                </svg><span>Unlimited seats</span>
+                            </li>
                         </ul>
-                        <a href="#" class="primary-btn membership-btn">Register Now</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row mt-10">
-                <div class="col-lg-4">
-                    <div class="membership-item">
-                        <div class="mi-title">
-                            <h4>6 Months</h4>
-                            <div class="triangle"></div>
-                        </div>
-                        <h2 class="mi-price">Rs. 3000</h2>
-                        <ul>
-
-                        </ul>
-                        <a href="#" class="primary-btn membership-btn">Register Now</a>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="membership-item">
-                        <div class="mi-title">
-                            <h4>12 Months</h4>
-                            <div class="triangle"></div>
-                        </div>
-                        <h2 class="mi-price">Rs. 3000</h2>
-                        <ul>
-
-                        </ul>
-                        <a href="#" class="primary-btn membership-btn">Register Now</a>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="membership-item">
-                        <div class="mi-title ">
-                            <h4>Couple 1 Month</h4>
-                            <div class="triangle bg-red-600"></div>
-                        </div>
-                        <h2 class="mi-price">Rs. 3000</h2>
-                        <ul>
-
-                        </ul>
-                        <a href="#" class="primary-btn membership-btn">Register Now</a>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- Membership Section End -->
+        @endforeach
+    </div>
 
     <!-- Classes Section Begin -->
     <!-- <section class="classes-section spad">

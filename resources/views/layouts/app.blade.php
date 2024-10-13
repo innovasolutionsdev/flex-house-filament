@@ -14,7 +14,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>Just Eat</title>
+        <title>Flex House</title>
+
+        <meta name="description" content="{{ $description ?? 'Your Default Description' }}">
+        <meta name="keywords" content="{{ $keywords ?? 'keyword1, keyword2' }}">
+        <meta name="robots" content="index, follow">
+
 
         <link rel="shortcut icon" href="{{ asset('img/favicon.png') }}" type="image/x-icon">
 
