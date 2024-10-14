@@ -20,6 +20,25 @@
             </div>
 
             <div class="mt-4">
+                <x-label for="start_date" value="{{ __('Start Date') }}" />
+                <x-input id="start_date" class="block mt-1 w-full" type="Date" name="start_date" required autocomplete="Membership Start Date" />
+            </div>
+
+            <div class="mt-4">
+                <label for="membership_plan" class="block font-medium text-sm text-gray-700">{{ __('Membership Plan') }}</label>
+                <select id="membership_plan" name="membership_plan" class="block mt-1 w-full">
+                    <option value="">Select a Membership Plan</option>
+                    @foreach($membershipPlans as $plan)
+                        <option value="{{ $plan->id }}">{{ $plan->name }}</option>
+                    @endforeach
+                </select>
+                @error('membership_plan')
+                <span class="text-sm text-red-600">{{ $message }}</span>
+                @enderror
+            </div>
+
+
+            <div class="mt-4">
                 <x-label for="password" value="{{ __('Password') }}" />
                 <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
             </div>
@@ -28,6 +47,8 @@
                 <x-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
                 <x-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
             </div>
+
+
 
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
                 <div class="mt-4">
