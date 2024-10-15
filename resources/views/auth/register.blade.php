@@ -25,7 +25,7 @@
             </div>
 
             <div class="mt-4">
-                <label for="membership_plan" class="block font-medium text-sm text-gray-700">{{ __('Membership Plan') }}</label>
+                <label for="membership_plan" class="block mt-1 w-full">{{ __('Membership Plan') }}</label>
                 <select id="membership_plan" name="membership_plan" class="block mt-1 w-full">
                     <option value="">Select a Membership Plan</option>
                     @foreach($membershipPlans as $plan)

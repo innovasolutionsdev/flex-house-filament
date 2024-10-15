@@ -47,8 +47,9 @@ class FortifyServiceProvider extends ServiceProvider
         });
 
         Fortify::registerView(function () {
-            return inertia('Auth/Register', [
-                'membershipPlans' => MembershipPlan::all(),
+            $membershipPlans = MembershipPlan::all();
+            return view('auth.register', [
+                'membershipPlans' => $membershipPlans,
             ]);
         });
     }
