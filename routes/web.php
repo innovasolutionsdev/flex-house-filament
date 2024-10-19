@@ -165,7 +165,7 @@ Route::middleware([
 
 // get all the users from the users tabel
 Route::middleware(['role:admin'])->get('/dev', function (Request $request) {
-    $users = DB::table('users')->get();
+    // $users = DB::table('users')->get();
 
 //    $products = \App\Models\products::first();
 //
