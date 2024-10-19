@@ -21,7 +21,12 @@
 
             <div class="mt-4">
                 <x-label for="start_date" value="{{ __('Start Date') }}" />
-                <x-input id="start_date" class="block mt-1 w-full" type="Date" name="start_date" required autocomplete="Membership Start Date" />
+                <x-input id="start_date" class="block mt-1 w-full" type="date" name="start_date" required autocomplete="Membership Start Date" />
+            </div>
+
+            <div class="mt-4">
+                <x-label for="end_date" value="{{ __('End Date') }}" />
+                <x-input id="end_date" class="block mt-1 w-full" type="date" name="end_date" required autocomplete="Membership End Date" readonly />
             </div>
 
             <div class="mt-4">
@@ -29,14 +34,15 @@
                 <select id="membership_plan" name="membership_plan" class="block mt-1 w-full">
                     <option value="">Select a Membership Plan</option>
                     @foreach($membershipPlans as $plan)
-                        <option value="{{ $plan->id }}">{{ $plan->name }}</option>
+                        <option value="{{ $plan->id }}" data-duration="{{ $plan->duration }}">
+                            {{ $plan->name }}
+                        </option>
                     @endforeach
                 </select>
                 @error('membership_plan')
                 <span class="text-sm text-red-600">{{ $message }}</span>
                 @enderror
             </div>
-
 
             <div class="mt-4">
                 <x-label for="password" value="{{ __('Password') }}" />
@@ -47,8 +53,6 @@
                 <x-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
                 <x-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
             </div>
-
-
 
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
                 <div class="mt-4">
@@ -79,3 +83,26 @@
         </form>
     </x-authentication-card>
 </x-app-layout>
+
+<script>
+    document.getElementById('membership_plan').addEventListener('change', calculateEndDate);
+    document.getElementById('start_date').addEventListener('change', calculateEndDate);
+
+    function calculateEndDate() {
+        const membershipSelect = document.getElementById('membership_plan');
+        const startDateInput = document.getElementById('start_date');
+        const endDateInput = document.getElementById('end_date');
+
+        const selectedMembership = membershipSelect.options[membershipSelect.selectedIndex];
+        const duration = selectedMembership.getAttribute('data-duration'); // Duration in days
+
+        const startDate = new Date(startDateInput.value);
+        if (startDate && duration) {
+            const endDate = new Date(startDate);
+            endDate.setDate(endDate.getDate() + parseInt(duration)); // Add the membership duration to start date
+            endDateInput.value = endDate.toISOString().split('T')[0]; // Format the date to YYYY-MM-DD
+        } else {
+            endDateInput.value = ''; // Clear the end date if inputs are invalid
+        }
+    }
+</script>
