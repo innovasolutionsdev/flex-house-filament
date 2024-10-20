@@ -65,7 +65,8 @@ class ScheduleResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
-                Tables\Actions\ViewAction::make(),
+                Tables\Actions\ViewAction::make()
+                ->url(fn(Schedule $record) => route('schedules.show', $record->id)), // Redirect to the custom Blade view,
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
