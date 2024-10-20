@@ -6,6 +6,7 @@ use App\Filament\Resources\ProductResource\Pages;
 use App\Filament\Resources\ProductResource\RelationManagers;
 use App\Models\Product;
 use Filament\Forms;
+use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TagsInput;
@@ -42,10 +43,18 @@ class ProductResource extends Resource
                 TagsInput::make('tags')
                     ->label('Tags')
                     ->nullable() ->separator(','),
-                Toggle::make('in_stock')
-                    ->label('In Stock'),
-                Toggle::make('on_sale')
-                    ->label('On Sale'),
+                Grid::make(3) // 3 columns for these 3 fields
+                ->schema([
+                    TextInput::make('stock_quantity')
+                        ->numeric()
+                        ->label('Stock Quantity'),
+
+                    Toggle::make('in_stock')
+                        ->label('In Stock'),
+
+                    Toggle::make('on_sale')
+                        ->label('On Sale'),
+                ]),
 
                 // Dropdown for Product Category
                 Select::make('category_id')
@@ -81,8 +90,7 @@ class ProductResource extends Resource
                 Tables\Columns\TextColumn::make('price')->label('Price'),
                 Tables\Columns\BooleanColumn::make('in_stock')->label('In Stock'),
                 Tables\Columns\BooleanColumn::make('on_sale')->label('On Sale'),
-                Tables\Columns\TextColumn::make('category.name')->label('Category'),
-                Tables\Columns\TextColumn::make('brand.name')->label('Brand'),
+                Tables\Columns\TextColumn::make('stock_quantity')->label('Stock Quantity'),
             ])
             ->filters([
                 //

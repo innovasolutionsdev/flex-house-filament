@@ -10,76 +10,15 @@
                         Categories
                     </h2>
                     <ul class="space-y-2">
+
+                        @foreach($categories as $value)
                         <li>
                             <a class="flex items-center text-gray-700" href="#">
                                 <i class="fas fa-caret-right mr-2">
                                 </i>
-                                Apparel and Accessories (5)
+                                {{$value->name}}
                             </a>
-                        </li>
-                        <li>
-                            <a class="flex items-center text-gray-700" href="#">
-                                <i class="fas fa-caret-right mr-2">
-                                </i>
-                                BCAAs (2)
-                            </a>
-                        </li>
-                        <li>
-                            <a class="flex items-center text-gray-700" href="#">
-                                <i class="fas fa-caret-right mr-2">
-                                </i>
-                                Creatines and Recovery (11)
-                            </a>
-                        </li>
-                        <li>
-                            <a class="flex items-center text-gray-700" href="#">
-                                <i class="fas fa-caret-right mr-2">
-                                </i>
-                                Fat burners (5)
-                            </a>
-                        </li>
-                        <li>
-                            <a class="flex items-center text-gray-700" href="#">
-                                <i class="fas fa-caret-right mr-2">
-                                </i>
-                                Giftboxes (5)
-                            </a>
-                        </li>
-                        <li>
-                            <a class="flex items-center text-gray-700" href="#">
-                                <i class="fas fa-caret-right mr-2">
-                                </i>
-                                Mass gainers (5)
-                            </a>
-                        </li>
-                        <li>
-                            <a class="flex items-center text-gray-700" href="#">
-                                <i class="fas fa-caret-right mr-2">
-                                </i>
-                                Pre Workouts (13)
-                            </a>
-                        </li>
-                        <li>
-                            <a class="flex items-center text-gray-700" href="#">
-                                <i class="fas fa-caret-right mr-2">
-                                </i>
-                                Protein (5)
-                            </a>
-                        </li>
-                        <li>
-                            <a class="flex items-center text-gray-700" href="#">
-                                <i class="fas fa-caret-right mr-2">
-                                </i>
-                                Protein Bars &amp; Energy Cans (4)
-                            </a>
-                        </li>
-                        <li>
-                            <a class="flex items-center text-gray-700" href="#">
-                                <i class="fas fa-caret-right mr-2">
-                                </i>
-                                Vitamins &amp; Fish Oils (5)
-                            </a>
-                        </li>
+                        @endforeach
                     </ul>
                 </div>
                 <div class="bg-white p-4 shadow-md mt-4 rounded-lg">
@@ -87,62 +26,16 @@
                         Brands
                     </h2>
                     <ul class="space-y-2">
+
+                        @foreach($brands as $value)
                         <li>
                             <a class="flex items-center text-gray-700" href="#">
                                 <i class="fas fa-caret-right mr-2">
                                 </i>
-                                Muscletech (10)
+                                {{$value->name}}
                             </a>
                         </li>
-                        <li>
-                            <a class="flex items-center text-gray-700" href="#">
-                                <i class="fas fa-caret-right mr-2">
-                                </i>
-                                Inner Armor (8)
-                            </a>
-                        </li>
-                        <li>
-                            <a class="flex items-center text-gray-700" href="#">
-                                <i class="fas fa-caret-right mr-2">
-                                </i>
-                                Dymatize (12)
-                            </a>
-                        </li>
-                        <li>
-                            <a class="flex items-center text-gray-700" href="#">
-                                <i class="fas fa-caret-right mr-2">
-                                </i>
-                                Optimum Nutrition (15)
-                            </a>
-                        </li>
-                        <li>
-                            <a class="flex items-center text-gray-700" href="#">
-                                <i class="fas fa-caret-right mr-2">
-                                </i>
-                                BSN (7)
-                            </a>
-                        </li>
-                        <li>
-                            <a class="flex items-center text-gray-700" href="#">
-                                <i class="fas fa-caret-right mr-2">
-                                </i>
-                                Universal Nutrition (5)
-                            </a>
-                        </li>
-                        <li>
-                            <a class="flex items-center text-gray-700" href="#">
-                                <i class="fas fa-caret-right mr-2">
-                                </i>
-                                Cellucor (6)
-                            </a>
-                        </li>
-                        <li>
-                            <a class="flex items-center text-gray-700" href="#">
-                                <i class="fas fa-caret-right mr-2">
-                                </i>
-                                Gaspari Nutrition (4)
-                            </a>
-                        </li>
+                        @endforeach
                     </ul>
                 </div>
             </div>

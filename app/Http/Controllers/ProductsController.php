@@ -6,6 +6,8 @@ use App\Models\Order;
 use App\Models\product;
 use App\Http\Requests\StoreproductsRequest;
 use App\Http\Requests\UpdateproductsRequest;
+use App\Models\ProductBrand;
+use App\Models\ProductCategory;
 use App\Models\spatie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -19,8 +21,10 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $products = Product::all()->all(); // Fetch all products with related category and brand
-        return view('pages.Products', compact('products'));
+        $products = Product::all();
+        $categories = ProductCategory::all();
+        $brands = ProductBrand::all();
+        return view('pages.Products', compact('products', 'categories', 'brands'));
 
     }
 

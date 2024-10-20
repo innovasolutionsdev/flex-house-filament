@@ -23,6 +23,7 @@ class product extends Model implements HasMedia
         'discount_price',
         'tags',
         'in_stock',
+        'stock_quantity',
         'on_sale',
         'description',
         'category_id',
