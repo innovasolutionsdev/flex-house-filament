@@ -19,11 +19,7 @@ class ProductsController extends Controller
      */
     public function index()
     {
-
-          return view('admin.products.index',[
-             'products' => product::paginate(5),
-
-         ]);
+          return view('pages.Products');
     }
 
     /**

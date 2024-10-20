@@ -34,7 +34,7 @@ Route::get('Dashboard',[\App\Http\Controllers\analyticController::class,"analyti
 Route::post('/store-preference', [\App\Http\Controllers\subscriptionController::class, 'storePreference'])->name('store.preference');
 Route::get("/",[homecontroller::class,"index"]);
 
-
+Route::get('product',[\App\Http\Controllers\ProductsController::class,"index"]);
 
 Route::get('/schedules/{schedule}', function (Schedule $schedule) {
     return view('filament.custom-schedule-view', compact('schedule'));
