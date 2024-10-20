@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\MembershipPlan;
+use App\Models\ProductCategory;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -23,17 +24,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
 
-        $this -> call([
-            MealPlanSeeder::class,
-        ]);
 
-        $this -> call([
-            CategorySeeder::class,
-        ]);
-
-        $this -> call([
-            ProductsSeeder::class,
-        ]);
 
         $this -> call([
             MembershipPlanSeeder::class,
@@ -41,6 +32,14 @@ class DatabaseSeeder extends Seeder
 
         $this -> call([
             TwoDayBeginnerScheduleSeeder::class,
+        ]);
+
+        $this -> call([
+           ProductCategorySeeder::class,
+        ]);
+
+        $this -> call([
+            ProductBrandSeeder::class,
         ]);
 
     }

@@ -19,7 +19,9 @@ class ProductsController extends Controller
      */
     public function index()
     {
-          return view('pages.Products');
+        $products = Product::all()->all(); // Fetch all products with related category and brand
+        return view('pages.Products', compact('products'));
+
     }
 
     /**

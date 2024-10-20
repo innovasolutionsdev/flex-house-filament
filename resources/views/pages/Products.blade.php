@@ -176,28 +176,38 @@
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 gap-4">
                     <!-- Product 1 -->
+                    @foreach($products as $value)
                     <div class="bg-white p-2 shadow-md rounded-lg">
                         <div class="relative">
-                            <img alt="Image of Muscletech Nitro Tech Whey Protein" class="w-full rounded-lg" height="300" src="https://storage.googleapis.com/a1aa/image/LjIP6wmo6k4DGFvXkyvFz3mni9j0VgSucB2ngIngUJcRFD6E.jpg" width="300"/>
-                            <span class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 text-xs rounded-lg">
-         Sale!
+                            <img alt="{{$value->name}}" class="w-full rounded-lg" height="300" src="{{ $value->getFirstMediaUrl('product_image') }}" width="300"/>
+                            @if($value->on_sale)
+                                <span class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 text-xs rounded-lg">
+            Sale!
         </span>
-                            <span class="absolute top-2 left-2 bg-green-500 text-white px-2 py-1 text-xs rounded-lg">
-         In Stock
+                            @endif
+
+                            @if($value->in_stock)
+                                <span class="absolute top-2 left-2 bg-green-500 text-white px-2 py-1 text-xs rounded-lg">
+            In Stock
         </span>
+                            @else
+                                <span class="absolute top-2 left-2 bg-red-500 text-white px-2 py-1 text-xs rounded-lg">
+            Out of Stock
+        </span>
+                            @endif
                         </div>
                         <p class="text-gray-500 text-xs mt-2">
-                            BEST SELLERS, PROTEIN, SPECIAL OFFERS, SUPPLEMENTS
+                            {{$value->tags}}
                         </p>
                         <h2 class="text-lg font-bold mt-2">
-                            Nitrotech 4lbs
+                            {{$value->name}}
                         </h2>
                         <div class="flex items-center mt-2">
         <span class="line-through text-gray-500 mr-2">
-         රු25,500.00
+         රු{{$value->price}}
         </span>
                             <span class="text-red-500 text-xl font-bold">
-         රු24,500.00
+         රු{{$value->discount_price}}
         </span>
                         </div>
                         <div class="flex mt-2">
@@ -210,94 +220,96 @@
                             </button>
                         </div>
                         <p class="text-gray-500 text-xs mt-2">
-                            or 3 Installments of රු8,166.67 with
+                            or 3 Installments of රු{{number_format($value->discount_price / 3, 2)}} with
                             <span class="font-bold">
          KOKO
         </span>
                         </p>
                     </div>
+                    @endforeach
+
                     <!-- Product 2 -->
-                    <div class="bg-white p-2 shadow-md rounded-lg">
-                        <div class="relative">
-                            <img alt="Image of Inner Armor Zero Isolate Whey" class="w-full rounded-lg" height="300" src="https://storage.googleapis.com/a1aa/image/m9aLTKAiLlJxO5Ej8vRX7azvbtbaF9g4ebLK9ir1jEljKG0JA.jpg" width="300"/>
-                            <span class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 text-xs rounded-lg">
-         Sale!
-        </span>
-                            <span class="absolute top-2 left-2 bg-green-500 text-white px-2 py-1 text-xs rounded-lg">
-         In Stock
-        </span>
-                        </div>
-                        <p class="text-gray-500 text-xs mt-2">
-                            BEST SELLERS, PROTEIN, SPECIAL OFFERS
-                        </p>
-                        <h2 class="text-lg font-bold mt-2">
-                            Inner Armor Zero Isolate Whey 71 Servings
-                        </h2>
-                        <div class="flex items-center mt-2">
-        <span class="line-through text-gray-500 mr-2">
-         රු27,000.00
-        </span>
-                            <span class="text-red-500 text-xl font-bold">
-         රු25,000.00
-        </span>
-                        </div>
-                        <div class="flex mt-2">
-                            <button class="bg-yellow-500 text-white w-full py-2 mr-2 rounded-lg hover:bg-yellow-600">
-                                Quick Buy
-                            </button>
-                            <button class="bg-gray-200 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-300">
-                                <i class="fas fa-cart-plus">
-                                </i>
-                            </button>
-                        </div>
-                        <p class="text-gray-500 text-xs mt-2">
-                            or 3 Installments of රු8,333.33 with
-                            <span class="font-bold">
-         KOKO
-        </span>
-                        </p>
-                    </div>
-                    <!-- Product 3 -->
-                    <div class="bg-white p-2 shadow-md rounded-lg">
-                        <div class="relative">
-                            <img alt="Image of Dymatize ISO 100" class="w-full rounded-lg" height="300" src="https://storage.googleapis.com/a1aa/image/iDDsxGqfu2Uej01wGu2GtsmcTdCJrffINV1qmdzyiylRUxgOB.jpg" width="300"/>
-                            <span class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 text-xs rounded-lg">
-         Sale!
-        </span>
-                            <span class="absolute top-2 left-2 bg-green-500 text-white px-2 py-1 text-xs rounded-lg">
-         In Stock
-        </span>
-                        </div>
-                        <p class="text-gray-500 text-xs mt-2">
-                            BEST SELLERS, PROTEIN, SPECIAL OFFERS, SUPPLEMENTS
-                        </p>
-                        <h2 class="text-lg font-bold mt-2">
-                            Dymatize ISO 100 5lbs
-                        </h2>
-                        <div class="flex items-center mt-2">
-        <span class="line-through text-gray-500 mr-2">
-         රු38,000.00
-        </span>
-                            <span class="text-red-500 text-xl font-bold">
-         රු36,500.00
-        </span>
-                        </div>
-                        <div class="flex mt-2">
-                            <button class="bg-yellow-500 text-white w-full py-2 mr-2 rounded-lg hover:bg-yellow-600">
-                                Quick Buy
-                            </button>
-                            <button class="bg-gray-200 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-300">
-                                <i class="fas fa-cart-plus">
-                                </i>
-                            </button>
-                        </div>
-                        <p class="text-gray-500 text-xs mt-2">
-                            or 3 Installments of රු12,166.67 with
-                            <span class="font-bold">
-         KOKO
-        </span>
-                        </p>
-                    </div>
+{{--                    <div class="bg-white p-2 shadow-md rounded-lg">--}}
+{{--                        <div class="relative">--}}
+{{--                            <img alt="Image of Inner Armor Zero Isolate Whey" class="w-full rounded-lg" height="300" src="https://storage.googleapis.com/a1aa/image/m9aLTKAiLlJxO5Ej8vRX7azvbtbaF9g4ebLK9ir1jEljKG0JA.jpg" width="300"/>--}}
+{{--                            <span class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 text-xs rounded-lg">--}}
+{{--         Sale!--}}
+{{--        </span>--}}
+{{--                            <span class="absolute top-2 left-2 bg-green-500 text-white px-2 py-1 text-xs rounded-lg">--}}
+{{--         In Stock--}}
+{{--        </span>--}}
+{{--                        </div>--}}
+{{--                        <p class="text-gray-500 text-xs mt-2">--}}
+{{--                            BEST SELLERS, PROTEIN, SPECIAL OFFERS--}}
+{{--                        </p>--}}
+{{--                        <h2 class="text-lg font-bold mt-2">--}}
+{{--                            Inner Armor Zero Isolate Whey 71 Servings--}}
+{{--                        </h2>--}}
+{{--                        <div class="flex items-center mt-2">--}}
+{{--        <span class="line-through text-gray-500 mr-2">--}}
+{{--         රු27,000.00--}}
+{{--        </span>--}}
+{{--                            <span class="text-red-500 text-xl font-bold">--}}
+{{--         රු25,000.00--}}
+{{--        </span>--}}
+{{--                        </div>--}}
+{{--                        <div class="flex mt-2">--}}
+{{--                            <button class="bg-yellow-500 text-white w-full py-2 mr-2 rounded-lg hover:bg-yellow-600">--}}
+{{--                                Quick Buy--}}
+{{--                            </button>--}}
+{{--                            <button class="bg-gray-200 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-300">--}}
+{{--                                <i class="fas fa-cart-plus">--}}
+{{--                                </i>--}}
+{{--                            </button>--}}
+{{--                        </div>--}}
+{{--                        <p class="text-gray-500 text-xs mt-2">--}}
+{{--                            or 3 Installments of රු8,333.33 with--}}
+{{--                            <span class="font-bold">--}}
+{{--         KOKO--}}
+{{--        </span>--}}
+{{--                        </p>--}}
+{{--                    </div>--}}
+{{--                    <!-- Product 3 -->--}}
+{{--                    <div class="bg-white p-2 shadow-md rounded-lg">--}}
+{{--                        <div class="relative">--}}
+{{--                            <img alt="Image of Dymatize ISO 100" class="w-full rounded-lg" height="300" src="https://storage.googleapis.com/a1aa/image/iDDsxGqfu2Uej01wGu2GtsmcTdCJrffINV1qmdzyiylRUxgOB.jpg" width="300"/>--}}
+{{--                            <span class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 text-xs rounded-lg">--}}
+{{--         Sale!--}}
+{{--        </span>--}}
+{{--                            <span class="absolute top-2 left-2 bg-green-500 text-white px-2 py-1 text-xs rounded-lg">--}}
+{{--         In Stock--}}
+{{--        </span>--}}
+{{--                        </div>--}}
+{{--                        <p class="text-gray-500 text-xs mt-2">--}}
+{{--                            BEST SELLERS, PROTEIN, SPECIAL OFFERS, SUPPLEMENTS--}}
+{{--                        </p>--}}
+{{--                        <h2 class="text-lg font-bold mt-2">--}}
+{{--                            Dymatize ISO 100 5lbs--}}
+{{--                        </h2>--}}
+{{--                        <div class="flex items-center mt-2">--}}
+{{--        <span class="line-through text-gray-500 mr-2">--}}
+{{--         රු38,000.00--}}
+{{--        </span>--}}
+{{--                            <span class="text-red-500 text-xl font-bold">--}}
+{{--         රු36,500.00--}}
+{{--        </span>--}}
+{{--                        </div>--}}
+{{--                        <div class="flex mt-2">--}}
+{{--                            <button class="bg-yellow-500 text-white w-full py-2 mr-2 rounded-lg hover:bg-yellow-600">--}}
+{{--                                Quick Buy--}}
+{{--                            </button>--}}
+{{--                            <button class="bg-gray-200 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-300">--}}
+{{--                                <i class="fas fa-cart-plus">--}}
+{{--                                </i>--}}
+{{--                            </button>--}}
+{{--                        </div>--}}
+{{--                        <p class="text-gray-500 text-xs mt-2">--}}
+{{--                            or 3 Installments of රු12,166.67 with--}}
+{{--                            <span class="font-bold">--}}
+{{--         KOKO--}}
+{{--        </span>--}}
+{{--                        </p>--}}
+{{--                    </div>--}}
                 </div>
             </div>
         </div>

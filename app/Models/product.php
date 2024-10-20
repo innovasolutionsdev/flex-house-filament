@@ -11,54 +11,40 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 
 class product extends Model implements HasMedia
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, InteractsWithMedia;
 
     use InteractsWithMedia;
 
     protected $table = 'products';
+
     protected $fillable = [
         'name',
-        'slug',
         'price',
+        'discount_price',
+        'tags',
+        'in_stock',
+        'on_sale',
         'description',
-        'image_file',
-        'status',
-        'meta_title',
-        'meta_description',
-        'meta_keywords',
+        'category_id',
+        'brand_id',
     ];
 
-    public function imageget() {
-        if (!empty($this->image_file) && file_exists('upload/productimg/' . $this->image_file)) {
-            return asset('upload/productimg/' . $this->image_file); // Use asset() for proper URL
-        } else {
-            return "";
-        }
-    }
-
-    static public function getsingle($preference){
-        return self::select('products.*')
-            ->where('products.category', '=', $preference)
-            ->get();
-    }
-
-    public function category() : BelongsTo
+    public function category()
     {
-        return $this->belongsTo(category::class);
+        return $this->belongsTo(ProductCategory::class, 'category_id');
     }
 
-    public function mealpreference()
+    public function brand()
     {
-        return $this->belongsToMany(mealpreference::class);
+        return $this->belongsTo(ProductBrand::class, 'brand_id');
     }
 
-    public function mealKits()
+    public function registerMediaCollections(): void
     {
-        return $this->belongsToMany(meal_kit::class)->using(meal_kit_product::class)->withPivot('quantity');
+        $this->addMediaCollection('product_image')->singleFile();
+        $this->addMediaCollection('nutrition_label')->singleFile();
     }
 
-    public function orders()
-    {
-        return $this->belongsToMany(Order::class)->using(order_product::class)->withPivot('quantity');
-    }
+
+
 }
