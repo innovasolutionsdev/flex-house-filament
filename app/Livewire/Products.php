@@ -32,10 +32,11 @@ class Products extends Component
         Cart::add(
             $product->id,
             $product->name, 1,
-            $product->price
+            $product->price,
+            [ 'image' => $product->getFirstMediaUrl('product_image')]
         );
 
-        $this->emit('cart_updated');
+
 
     }
 }

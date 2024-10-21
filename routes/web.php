@@ -36,6 +36,8 @@ Route::get("/",[homecontroller::class,"index"]);
 
 Route::get('product',[\App\Http\Controllers\ProductsController::class,"index"]);
 
+Route::get('order/user-info',[\App\Http\Controllers\OrderController::class,"user_info"]);
+
 Route::get('/schedules/{schedule}', function (Schedule $schedule) {
     return view('filament.custom-schedule-view', compact('schedule'));
 })->name('filament.resources.schedules.view');

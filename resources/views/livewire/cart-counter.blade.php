@@ -1,4 +1,4 @@
-<a href="{{route('cart')}}" class="text-gray-600 hover:text-gray-800">
+<a href="{{route('cart')}}" class="relative text-gray-600 hover:text-gray-800">
     <svg width="35px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g clip-path="url(#clip0_15_35)">
             <rect width="24" height="24" fill="white"/>
@@ -14,5 +14,8 @@
         </defs>
     </svg>
 
-    <span>{{ $cart_counter}}</span>
+    <!-- Notification badge for cart counter -->
+    <span class="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 bg-red-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+    {{ $cart_counter }}
+  </span>
 </a>

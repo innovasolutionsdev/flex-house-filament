@@ -4,10 +4,6 @@
     </h1>
     <div class="flex flex-col lg:flex-row gap-6">
         <div class="flex-1">
-            @php $total = 0 @endphp
-            @if(session('cart'))
-                @foreach(session('cart') as $id => $details)
-                    @php $total += $details['price'] * $details['quantity'] @endphp
             <div class="bg-white p-6 rounded-lg shadow-md mb-6">
                 <div class="flex items-center">
                     <img alt="Sienna Basic Tee" class="w-24 h-24 rounded-md" height="100" src="{{$details['image'] }}" width="100"/>
@@ -49,8 +45,7 @@
                     </div>
                 </div>
             </div>
-            @endforeach
-            @endif
+
         <div class="w-full lg:w-1/3">
             <div class="bg-white p-6 rounded-lg shadow-md">
                 <h2 class="text-lg font-semibold mb-4">
