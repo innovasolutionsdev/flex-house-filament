@@ -152,7 +152,8 @@ Route::get('order_checkout',[\App\Http\Controllers\OrderController::class,"order
 Route::get('/checkout', [\App\Http\Controllers\Stripecontroller::class, "checkout"])->name('checkout');
 Route::post('order_checkout', [\App\Http\Controllers\OrderController::class, "create_order"])->name('create_order');
 
-
+// New Cart
+Route::post('/',[\App\Http\Controllers\Cartcontroller::class, 'store'])->name('cart.store');
 
 
 
