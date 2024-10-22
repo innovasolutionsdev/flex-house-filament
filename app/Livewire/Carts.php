@@ -12,6 +12,8 @@ class Carts extends Component
     public function mount()
     {
         $this->cartItems = Cart::content()->map(function($item) {
+
+
             return [
                 'rowId' => $item->rowId,
                 'id' => $item->id,
@@ -19,12 +21,21 @@ class Carts extends Component
                 'qty' => $item->qty,
                 'price' => $item->price,
                 'image' => $item->options->image,
-                'total' => $item->price * $item->qty
+                'total' => $item->price * $item->qty,
+                'stock' => $item->options->stock
             ];
+
         })->toArray();
     }
 
-    protected $listeners = ['cart_updated' => 'render'];
+    protected $listeners = ['cart_updated' => 'updateCart'];
+
+    public function updateCart()
+    {
+        $this->mount();
+        $this->render();
+    }
+
     public function render()
     {
 

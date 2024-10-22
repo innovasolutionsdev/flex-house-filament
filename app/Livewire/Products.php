@@ -34,8 +34,10 @@ class Products extends Component
         Cart::add(
             $product->id,
             $product->name, 1,
-            $product->price,
-            [ 'image' => $product->getFirstMediaUrl('product_image')]
+            $product->discount_price,
+            [ 'image' => $product->getFirstMediaUrl('product_image')],
+            ['stock' => $product->stock_quantity]
+
         );
 
         $this->dispatch('cart_counter_updated');

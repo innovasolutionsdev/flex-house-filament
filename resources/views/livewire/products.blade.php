@@ -106,6 +106,7 @@
                                     Quick Buy
                                 </button>
 
+
                                 <form wire:submit.prevent="addToCart({{$value->id}})" action="{{route('cart.store')}}" method="POST">
                                     @csrf
 

@@ -12,20 +12,23 @@
             <!-- Left column for product items -->
             <div class="lg:w-2/3">
                 @foreach($cartItems as $item)
-                    <div class="border-b border-gray-200 pb-4 mb-4">
+
+                    <div class="border-b border-gray-200 pb-4 mb-4" wire:key="cart-item-{{ $item['rowId'] }}">
                         <div class="flex items-center">
                             <img alt="Sienna Basic Tee" class="w-24 h-24 object-cover rounded-md" height="100" src="{{$item['image']}}" width="100"/>
                             <div class="ml-4 flex-1">
                                 <h2 class="text-lg font-medium">{{$item['name']}}</h2>
                                 <p class="text-lg font-medium mt-2">{{$item['total']}}</p>
                             </div>
-                            <div class="flex items-center">
-                                <input type="number" class="border border-gray-300 rounded-md p-2 text-center w-16"
-                                       min="1" value="{{$item['qty']}}">
-                            </div>
-                            <livewire:remove-from-cart :rowId="$item['rowId']" />
+
+                            <!-- Ensure each instance of update-cart-quantity has a unique key -->
+                            <livewire:update-cart-quantity :rowId="$item['rowId']" :quantity="$item['qty']" :stock="$item['stock']" wire:key="update-quantity-{{ $item['rowId'] }}" />
+
+                            <!-- Also ensure a unique key for the remove button -->
+                            <livewire:remove-from-cart :rowId="$item['rowId']" wire:key="remove-cart-item-{{ $item['rowId'] }}" />
                         </div>
                     </div>
+
                 @endforeach
             </div>
 
@@ -42,14 +45,9 @@
                     </span>
                     <span class="font-medium">රු399</span>
                 </div>
-                <div class="flex justify-between mb-2">
-                    <span class="text-gray-500">Tax estimate
-                      <i class="fas fa-question-circle text-gray-400 ml-1"></i>
-                    </span>
-                    <span class="font-medium">$8.32</span>
-                </div>
                 <div class="flex justify-between mt-4 pt-4 border-t border-gray-200">
                     <span class="text-lg font-medium">Order total</span>
+
                     <span class="text-lg font-medium">රු.{{ Cart::total() + 399 }}</span>
                 </div>
 
@@ -62,3 +60,4 @@
         </div>
     @endif
 </div>
+
