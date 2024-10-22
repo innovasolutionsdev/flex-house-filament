@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class CartCounter extends Component
 {
-    protected $listeners = ['cart_updated' => 'render'];
+    protected $listeners = ['cart_counter_updated' => 'render'];
 
 
     public function render()

@@ -17,6 +17,8 @@ class Products extends Component
         $this->products = Product::all();
     }
 
+    protected $listeners = ['cart_updated' => 'render'];
+
     public function render()
     {
 
@@ -36,7 +38,7 @@ class Products extends Component
             [ 'image' => $product->getFirstMediaUrl('product_image')]
         );
 
-
+        $this->dispatch('cart_counter_updated');
 
     }
 }

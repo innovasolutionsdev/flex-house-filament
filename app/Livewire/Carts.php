@@ -24,11 +24,14 @@ class Carts extends Component
         })->toArray();
     }
 
+    protected $listeners = ['cart_updated' => 'render'];
     public function render()
     {
 
         return view('livewire.carts', [
             'cartItems' => $this->cartItems
-        ]);;
+        ]);
+
+
     }
 }

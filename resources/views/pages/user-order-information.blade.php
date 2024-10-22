@@ -88,36 +88,7 @@
             <h2 class="text-xl font-semibold mb-4">
                 Delivery method
             </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div class="border border-blue-500 rounded-md p-4">
-                    <label class="flex items-center">
-                        <input checked="" class="form-radio text-blue-500" name="delivery" type="radio"/>
-                        <span class="ml-2">
-         Standard
-        </span>
-                    </label>
-                    <p class="text-sm text-gray-500">
-                        4-10 business days
-                    </p>
-                    <p class="text-sm text-gray-500">
-                        $5.00
-                    </p>
-                </div>
-                <div class="border border-gray-300 rounded-md p-4">
-                    <label class="flex items-center">
-                        <input class="form-radio text-blue-500" name="delivery" type="radio"/>
-                        <span class="ml-2">
-         Express
-        </span>
-                    </label>
-                    <p class="text-sm text-gray-500">
-                        2-5 business days
-                    </p>
-                    <p class="text-sm text-gray-500">
-                        $16.00
-                    </p>
-                </div>
-            </div>
+
             <h2 class="text-xl font-semibold mb-4">
                 Payment
             </h2>
