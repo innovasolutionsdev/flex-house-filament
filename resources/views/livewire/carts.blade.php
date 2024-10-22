@@ -13,6 +13,22 @@
             <div class="lg:w-2/3">
                 @foreach($cartItems as $item)
 
+{{--                    <div class="border-b border-gray-200 pb-4 mb-4" wire:key="cart-item-{{ $item['rowId'] }}">--}}
+{{--                        <div class="flex items-center">--}}
+{{--                            <img alt="Sienna Basic Tee" class="w-24 h-24 object-cover rounded-md" height="100" src="{{$item['image']}}" width="100"/>--}}
+{{--                            <div class="ml-4 flex-1">--}}
+{{--                                <h2 class="text-lg font-medium">{{$item['name']}}</h2>--}}
+{{--                                <p class="text-lg font-medium mt-2">{{$item['total']}}</p>--}}
+{{--                            </div>--}}
+
+{{--                            <!-- Ensure each instance of update-cart-quantity has a unique key -->--}}
+{{--                            <livewire:update-cart-quantity :rowId="$item['rowId']" :quantity="$item['qty']" :stock="$item['stock']" wire:key="update-quantity-{{ $item['rowId'] }}" />--}}
+
+{{--                            <!-- Also ensure a unique key for the remove button -->--}}
+{{--                            <livewire:remove-from-cart :rowId="$item['rowId']" wire:key="remove-cart-item-{{ $item['rowId'] }}" />--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+
                     <div class="border-b border-gray-200 pb-4 mb-4" wire:key="cart-item-{{ $item['rowId'] }}">
                         <div class="flex items-center">
                             <img alt="Sienna Basic Tee" class="w-24 h-24 object-cover rounded-md" height="100" src="{{$item['image']}}" width="100"/>
@@ -29,6 +45,7 @@
                         </div>
                     </div>
 
+
                 @endforeach
             </div>
 
@@ -37,7 +54,7 @@
                 <h2 class="text-lg font-medium mb-4">Order summary</h2>
                 <div class="flex justify-between mb-2">
                     <span class="text-gray-500">Subtotal</span>
-                    <span class="font-medium">රු.{{ Cart::total() }}</span>
+                    <span class="font-medium">රු.{{ Cart::subtotal() }}</span>
                 </div>
                 <div class="flex justify-between mb-2">
                     <span class="text-gray-500">Shipping estimate
@@ -48,7 +65,7 @@
                 <div class="flex justify-between mt-4 pt-4 border-t border-gray-200">
                     <span class="text-lg font-medium">Order total</span>
 
-                    <span class="text-lg font-medium">රු.{{ Cart::total() + 399 }}</span>
+                    <span class="text-lg font-medium">රු.{{ Cart::subtotal() + 399.00 }}</span>
                 </div>
 
                 <a href="order/user-info">

@@ -35,8 +35,8 @@ class Products extends Component
             $product->id,
             $product->name, 1,
             $product->discount_price,
-            [ 'image' => $product->getFirstMediaUrl('product_image')],
-            ['stock' => $product->stock_quantity]
+            ['stock' => $product->stock_quantity, 'image'  => $product->getFirstMediaUrl('product_image')]
+
 
         );
 
