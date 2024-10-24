@@ -686,17 +686,17 @@ ul, ol {
 -----------------------*/
 
 .membership-section {
-	padding-bottom: 0;
+	padding-bottom: 40px;
 }
 .membership-section .section-title {
-	margin-bottom: 55px;
+	margin-bottom: 45px;
 }
 .membership-item {
 	text-align: center;
 	background: #ffffff;
 	-webkit-box-shadow: 0px 15px 49px rgba(0, 0, 0, 0.15);
 	box-shadow: 0px 15px 49px rgba(0, 0, 0, 0.15);
-	padding-bottom: 50px;
+	padding-bottom: 35px;
 }
 /* .membership-item .mi-title {
 	background: -webkit-gradient(linear, left top, right top, from(#eb3c5a), to(#f67831));
@@ -715,17 +715,17 @@ ul, ol {
 	margin-bottom: 38px;
 } */
   .membership-item .mi-title {
-	background: -webkit-gradient(linear, left top, right top, from(#131111), to(#333333));
-	background: -o-linear-gradient(left, #131111, #333333);
-	background: linear-gradient(to right, #131111, #333333);
-	padding: 25px 0;
+	background: -webkit-gradient(linear, left top, right top, from(#1D2229), to(#1D2229));
+	background: -o-linear-gradient(left, #1D2229, #1D2229);
+	background: linear-gradient(to right, #1D2229, #1D2229);
+	padding: 20px 0;
 	position: relative;
-	margin-bottom: 38px;
+	margin-bottom: 30px;
 }
 .membership-item .mi-title h4 {
 	color: #ffffff;
 	font-weight: 600;
-	text-transform: uppercase;
+	/* text-transform: uppercase; */
 }
 /* .membership-item .mi-title:after {
 	position: absolute;
@@ -754,16 +754,16 @@ ul, ol {
 	transform: translateX(-15px);
 	-webkit-clip-path: polygon(0% 0%, 50% 100%, 50% 100%, 100% 0%);
 	clip-path: polygon(0% 0%, 50% 100%, 50% 100%, 100% 0%);
-	background: -webkit-gradient(linear, left top, right top, from(#131111), to(#333333));
-	background: -o-linear-gradient(left, #131111, #333333);
-	background: linear-gradient(to right, #131111, #333333);
+	background: -webkit-gradient(linear, left top, right top, from(#1D2229), to(#1D2229));
+	background: -o-linear-gradient(left, #1D2229, #1D2229);
+	background: linear-gradient(to right, #1D2229, #1D2229);
 	content: "";
 }
 .membership-item .mi-price {
 	font-size: 40px;
 	color: #f84444;
 	font-weight: 600;
-	margin-bottom: 24px;
+	margin-bottom: 10px;
 }
 .membership-item .mi-price span {
 	font-size: 16px;

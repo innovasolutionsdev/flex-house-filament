@@ -6,6 +6,8 @@ use App\Models\Order;
 use App\Models\product;
 use App\Http\Requests\StoreproductsRequest;
 use App\Http\Requests\UpdateproductsRequest;
+use App\Models\ProductBrand;
+use App\Models\ProductCategory;
 use App\Models\spatie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -20,10 +22,8 @@ class ProductsController extends Controller
     public function index()
     {
 
-          return view('admin.products.index',[
-             'products' => product::paginate(5),
+        return view('pages.Products');
 
-         ]);
     }
 
     /**

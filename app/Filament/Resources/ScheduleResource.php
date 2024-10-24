@@ -65,7 +65,9 @@ class ScheduleResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
-                Tables\Actions\ViewAction::make(),
+                Tables\Actions\ViewAction::make()
+                    ->url(fn (Schedule $record): string => route('filament.resources.schedules.view', $record)),
+
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

@@ -13,17 +13,7 @@ return new class extends Migration
     {
         Schema::create('product_category', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
-            $table->string('slug')->unique();
-
-            $table
-                ->foreignId('parent_id')
-                ->nullable()
-                ->constrained('product_category', 'id')
-                ->nullOnDelete();
-
-            $table->boolean('status')->default(true);
-
+            $table->string('name');
             $table->timestamps();
         });
     }

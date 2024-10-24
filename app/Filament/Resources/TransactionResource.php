@@ -51,7 +51,7 @@ class TransactionResource extends Resource
             Tables\Columns\TextColumn::make('amount')->sortable()->searchable(),
             Tables\Columns\TextColumn::make('type')->sortable(),
             Tables\Columns\TextColumn::make('description')->searchable(),
-            // Tables\Columns\TextColumn::make('category.name')->label('Category'),
+            Tables\Columns\TextColumn::make('revenuecategory.name')->label('Category'),
             Tables\Columns\TextColumn::make('date')->date()->sortable(),
             ])
             ->filters([

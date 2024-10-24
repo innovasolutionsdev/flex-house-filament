@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BookingController;
+use App\Models\Schedule;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\hom;
@@ -32,6 +33,15 @@ Route::get('price-calculator',priceCalculator::class);
 Route::get('Dashboard',[\App\Http\Controllers\analyticController::class,"analytics"])->name('Dashboard');
 Route::post('/store-preference', [\App\Http\Controllers\subscriptionController::class, 'storePreference'])->name('store.preference');
 Route::get("/",[homecontroller::class,"index"]);
+
+Route::get('product',[\App\Http\Controllers\ProductsController::class,"index"]);
+
+Route::get('order/user-info',[\App\Http\Controllers\OrderController::class,"user_info"]);
+
+Route::get('/schedules/{schedule}', function (Schedule $schedule) {
+    return view('filament.custom-schedule-view', compact('schedule'));
+})->name('filament.resources.schedules.view');
+
 
 // Booking from the home page
 Route::resource('bookings', BookingController::class);
@@ -144,7 +154,8 @@ Route::get('order_checkout',[\App\Http\Controllers\OrderController::class,"order
 Route::get('/checkout', [\App\Http\Controllers\Stripecontroller::class, "checkout"])->name('checkout');
 Route::post('order_checkout', [\App\Http\Controllers\OrderController::class, "create_order"])->name('create_order');
 
-
+// New Cart
+Route::post('/',[\App\Http\Controllers\Cartcontroller::class, 'store'])->name('cart.store');
 
 
 
