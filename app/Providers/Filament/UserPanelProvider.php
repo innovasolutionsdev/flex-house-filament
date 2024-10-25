@@ -39,7 +39,7 @@ class UserPanelProvider extends PanelProvider
             ->widgets([
                 Widgets\AccountWidget::class,
                 Widgets\FilamentInfoWidget::class,
-                WeeklyExerciseProgressWidget::class,
+               
             ])
             ->middleware([
                 EncryptCookies::class,
