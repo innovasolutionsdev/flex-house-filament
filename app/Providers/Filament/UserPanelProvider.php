@@ -2,7 +2,7 @@
 
 namespace App\Providers\Filament;
 
-use App\Filament\User\Widgets\WeeklyExerciseProgressWidget;
+
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
@@ -39,7 +39,7 @@ class UserPanelProvider extends PanelProvider
             ->widgets([
                 Widgets\AccountWidget::class,
                 Widgets\FilamentInfoWidget::class,
-               
+
             ])
             ->middleware([
                 EncryptCookies::class,

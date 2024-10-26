@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\OrderController;
 use App\Models\Schedule;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -35,6 +36,8 @@ Route::post('/store-preference', [\App\Http\Controllers\subscriptionController::
 Route::get("/",[homecontroller::class,"index"]);
 
 Route::get('product',[\App\Http\Controllers\ProductsController::class,"index"]);
+
+Route::post('/checkout/process', [OrderController::class, 'processOrder'])->name('checkout.process');
 
 Route::get('order/user-info',[\App\Http\Controllers\OrderController::class,"user_info"]);
 
@@ -130,7 +133,7 @@ Route::group(['prefix' => 'user'], function () {
         Route::get("summery", function () {return view('pages.summery');})->name('/summery');
         Route::post("summery", function () {return view('pages.summery');});
         Route::get("select-menu/{preference}", [\App\Http\Controllers\ProductsController::class, "show_dish"]);
-        Route::get("order-complete", [\App\Http\Controllers\ProductsController::class, 'order_complete'])->name('/order_complete');;
+        Route::get("order-complete", [\App\Http\Controllers\OrderController::class, 'order_complete'])->name('order_complete');;
 
     });
 

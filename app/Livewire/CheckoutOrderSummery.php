@@ -35,6 +35,8 @@ class CheckoutOrderSummery extends Component
     }
     public function render()
     {
-        return view('livewire.checkout-order-summery');
+        return view('livewire.checkout-order-summery', [
+            'cartItems' => $this->cartItems
+        ]);
     }
 }
