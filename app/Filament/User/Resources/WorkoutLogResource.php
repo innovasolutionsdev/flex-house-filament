@@ -139,26 +139,98 @@ class WorkoutLogResource extends Resource
     //                 ->required(),
     //         ]);
     // }
+    // public static function form(Form $form): Form
+    // {
+    //     return $form
+    //         ->schema([
+
+    //             Forms\Components\Hidden::make('user_id')
+    //             ->default(auth()->id()),
+    //             DatePicker::make('workout_date')->required(),
+    //             HasManyRepeater::make('exerciseLogs')->relationship('exerciseLogs')
+    //             ->schema([
+    //                 TextInput::make('exercise_name')->required(),
+    //                 HasManyRepeater::make('setLogs')->relationship('setLogs')
+    //                 ->schema([
+    //                     TextInput::make('reps')->numeric()->required(),
+    //                     TextInput::make('weight')->numeric()->required(),
+    //                 ])
+    //                     ->columns(2),
+    //             ])
+    //                 ->columns(2),
+    //         ]);
+    // }
     public static function form(Form $form): Form
     {
         return $form
-            ->schema([
+        ->schema([
+            Forms\Components\Hidden::make('user_id')
+            ->default(auth()->id()),
+            DatePicker::make('workout_date')
+            ->default(now())
+            ->required(),
 
-                Forms\Components\Hidden::make('user_id')
-                ->default(auth()->id()),
-                DatePicker::make('workout_date')->required(),
-                HasManyRepeater::make('exerciseLogs')->relationship('exerciseLogs')
-                ->schema([
-                    TextInput::make('exercise_name')->required(),
-                    HasManyRepeater::make('setLogs')->relationship('setLogs')
+            // Select component for choosing a workout
+            Select::make('workout_name') // Change here
+                ->label('Select Workout')
+                ->options(function () {
+                    $user = auth()->user();
+
+                    // Get all active schedule assignments for the logged-in user
+                    $scheduleAssignments = ScheduleAssignment::where('user_id', $user->id)
+                    ->where('status', 'active')
+                    ->with('schedule.workouts') // Eager load the workouts for the schedules
+                    ->get();
+
+                    $workouts = collect();
+
+                    // Loop through schedule assignments to gather the associated workouts
+                    foreach ($scheduleAssignments as $assignment) {
+                        $workouts = $workouts->merge($assignment->schedule->workouts);
+                    }
+
+                    return $workouts->pluck('name', 'name');  // Return workouts as id => name pairs
+                })
+                ->required(), // Make it required if necessary
+
+            HasManyRepeater::make('exerciseLogs')->relationship('exerciseLogs')
+            ->schema([
+                Select::make('exercise_name') // Change here
+                    ->label('Exercise')
+                    ->options(function () {
+                        $user = auth()->user();
+
+                        // Get all active schedule assignments for the logged-in user
+                        $scheduleAssignments = ScheduleAssignment::where('user_id', $user->id)
+                            ->where('status', 'active')
+                            ->with('schedule.workouts.exercises') // Eager load exercises for the workouts
+                            ->get();
+
+                        $exercises = collect();
+
+                        // Loop through the schedule assignments and collect all exercises
+                        foreach ($scheduleAssignments as $assignment) {
+                            foreach ($assignment->schedule->workouts as $workout) {
+                                $exercises = $exercises->merge($workout->exercises);
+                            }
+                        }
+
+                        // Return exercises as id => name pairs
+                        return $exercises->pluck('name', 'name');
+                    })
+                    ->required(), // Make it required if necessary
+
+                HasManyRepeater::make('setLogs')->relationship('setLogs')
                     ->schema([
                         TextInput::make('reps')->numeric()->required(),
                         TextInput::make('weight')->numeric()->required(),
                     ])
-                        ->columns(2),
-                ])
+                    ->createItemButtonLabel('Add New Set') // Custom button name
                     ->columns(2),
-            ]);
+            ])
+            ->createItemButtonLabel('Add New Exercise') // Custom button name
+            ->columns(2),
+        ]);
     }
 
 
@@ -168,8 +240,8 @@ class WorkoutLogResource extends Resource
         return $table
             // ->query(fn(Builder $query) => $query->where('user_id', auth()->id())) // Filter by logged-in user
             ->columns([
-                Tables\Columns\TextColumn::make('id')->label('Workout id'),
-                Tables\Columns\TextColumn::make('created_at')->label('Date')->date(),
+                Tables\Columns\TextColumn::make('workout_name')->label('Workout Name'),
+                Tables\Columns\TextColumn::make('created_at')->label('Date')->date()->searchable()->sortable(),
 
             ])
             ->filters([

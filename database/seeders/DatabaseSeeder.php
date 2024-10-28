@@ -39,5 +39,9 @@ class DatabaseSeeder extends Seeder
             MembershipPlanSeeder::class,
         ]);
 
+        $this -> call([
+            SheduleDataSeeder::class,
+        ]);
+
     }
 }
