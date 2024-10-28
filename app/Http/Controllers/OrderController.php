@@ -17,9 +17,12 @@ class OrderController extends Controller
     }
 
     public function processOrder(Request $request){
+
+      
         $order = new Order();
         $order->total = Cart::subtotal();
         $order->user_id = auth()->id();
+        $order->payment_method = $request->delivery;
         $order->item_count = 0;
         $order->email = $request->email;
         $order->first_name = $request->first_name;
@@ -34,6 +37,7 @@ class OrderController extends Controller
 
 
 
+
         $admin = User::where('role', 1)->first();  // Or get the admin(s) another way
         $admin->notify(new OrderPlacedNotification($order));
 
@@ -44,8 +48,13 @@ class OrderController extends Controller
 
         session(['order_id' => $order->id]);
         Cart::destroy();
-        return redirect()->route('order_complete');
 
+        if ($request->delivery == 'bank_transfer') {
+            return redirect()->route('order_complete');
+        }
+        else {
+            return redirect()->route('thank.you');
+        }
     }
 
     public function order_complete(){

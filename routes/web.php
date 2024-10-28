@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\OrderController;
 use App\Models\Schedule;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;

@@ -82,26 +82,74 @@
                 </div>
 
 
+            <p class="mt-8 text-lg font-medium">Payment Method</p>
+            <div class="w-full mx-auto">
+                <!-- First Card -->
+                <label class="flex items-center justify-between p-4 bg-white border border-gray-200 rounded-lg mb-4 cursor-pointer radio-label">
+                    <div class="flex items-center">
+                        <img alt="FedEx logo" class="w-12 h-12 mr-4" height="50" src="{{ asset('img/cod.png') }}" width="50">
+                        <div>
+                            <h2 class="text-lg font-semibold">Cash on delivery</h2>
+                            <p class="text-gray-500">Hand over the money to our delivery driver</p>
+                        </div>
+                    </div>
+                    <input type="radio" value="cod" name="delivery" class="form-radio text-gray-300">
+                </label>
+                <!-- Second Card -->
+                <label class="flex items-center justify-between p-4 bg-white border border-gray-200 rounded-lg mb-4 cursor-pointer radio-label">
+                    <div class="flex items-center">
+                        <img alt="DHL logo" class="w-12 h-12 mr-4" height="50" src="{{ asset('img/koko.png') }}" width="50">
+                        <div>
+                            <h2 class="text-lg font-semibold">Koko</h2>
+                            <p class="text-gray-500">Pay in 3 easy instalments</p>
+                        </div>
+                    </div>
+                    <input type="radio" value="koko" name="delivery" class="form-radio text-gray-300">
+                </label>
 
+                <!-- Second Card -->
+                <label class="flex items-center justify-between p-4 bg-white border border-gray-200 rounded-lg mb-4 cursor-pointer radio-label">
+                    <div class="flex items-center">
+                        <img alt="DHL logo" class="w-12 h-12 mr-4" height="50" src="{{ asset('img/bank_transfer.png') }}" width="50">
+                        <div>
+                            <h2 class="text-lg font-semibold">Direct Bank transfer</h2>
+                            <p class="text-gray-500">Transfer the total and upload the slip in the next page</p>
+                        </div>
+                    </div>
+                    <input type="radio" value="bank_transfer" name="delivery" class="form-radio text-gray-300">
+                </label>
 
-        <div class="bg-gray-100 p-4 rounded-md mt-6">
-            <h3 class="text-lg font-semibold mb-2">Bank Transfer Details</h3>
-            <p>Please transfer the total amount to the bank details below:</p>
-            <ul class="list-disc ml-5 mt-2">
-                <li>Bank Name: Your Bank Name</li>
-                <li>Account Number: 1234567890</li>
-                <li>Account Holder: Your Account Name</li>
-                <li>IFSC Code: ABCD1234</li>
-            </ul>
-            <p class="mt-2">Once the transfer is complete, please email us at support@example.com with your order number as the reference to confirm your payment.</p>
-        </div>
-        <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-md mt-6 hover:bg-blue-700">
-            Checkout
-        </button>
-        </form>
+                <label class="flex items-center justify-between p-4 bg-white border border-gray-200 rounded-lg mb-4 cursor-pointer radio-label">
+                    <div class="flex items-center">
+                        <img alt="DHL logo" class="w-12 h-12 mr-4" height="50" src="{{ asset('img/card.webp') }}" width="50">
+                        <div>
+                            <h2 class="text-lg font-semibold">Credit/Debit card</h2>
+                            <p class="text-gray-500">Transfer the total and upload the slip in the next page</p>
+                        </div>
+                    </div>
+                    <input type="radio" value="card" name="delivery" class="form-radio text-gray-300">
+                </label>
+            </div>
+                <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-md mt-6 hover:bg-blue-700">
+                    Checkout
+                </button>
+            </form>
 
     </div>
         @livewire('checkout-order-summery')
 </div>
-
+    <script>
+        document.querySelectorAll('input[type="radio"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                document.querySelectorAll('.radio-label').forEach(label => {
+                    label.classList.remove('border-2', 'border-gray-800');
+                    label.classList.add('border', 'border-gray-200');
+                });
+                if (this.checked) {
+                    this.parentElement.classList.remove('border', 'border-gray-200');
+                    this.parentElement.classList.add('border-2', 'border-gray-800');
+                }
+            });
+        });
+    </script>
 </x-app-layout>

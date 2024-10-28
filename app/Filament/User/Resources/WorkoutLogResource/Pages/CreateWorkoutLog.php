@@ -15,5 +15,5 @@ class CreateWorkoutLog extends CreateRecord
 
 
 
- 
+
 }
