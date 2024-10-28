@@ -10,6 +10,7 @@ use App\Http\Controllers\homecontroller;
 use App\Http\Controllers\Usercontroller;
 use App\Models\meal_plan;
 use App\Livewire\PriceCalculator;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,7 @@ use App\Livewire\PriceCalculator;
 
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Models\WorkoutLog;
 
 // Override the default login route
 //Route::post('/login', [AuthenticatedSessionController::class, 'store']);
@@ -215,3 +217,17 @@ Route::get('/schedules/{schedule}', function (Schedule $schedule) {
     // Return the Blade view with the schedule data
     return view('schedules.show', ['schedule' => $schedule]);
 })->name('schedules.show');
+
+// Route::get('/workoutlogs/{workoutlog}', function (WorkoutLog $workoutlog) {
+//     // Load related data like workouts and exercises if needed
+//     $workoutlog->load('workout_logs.exercise_logs');
+
+//     // Return the Blade view with the workoutl data
+//     return view('workoutlog.show', ['workoutlog' => $workoutlog]);
+// })->name('workoutlog.show');
+
+Route::get('/workout-log/{id}', function ($id) {
+    $workoutLog = WorkoutLog::with(['exerciseLogs.setLogs'])->findOrFail($id);
+
+    return view('workoutlog.show', ['workoutLog' => $workoutLog]);
+})->name('workout-log.show');
