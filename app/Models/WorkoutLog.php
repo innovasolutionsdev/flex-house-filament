@@ -9,20 +9,28 @@ class WorkoutLog extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'workout_id'];
+    // protected $fillable = ['user_id', 'workout_id'];
+    protected $fillable = ['user_id', 'workout_date','workout_name'];
+
+
 
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function workout()
+    public function exerciseLogs()
     {
-        return $this->belongsTo(Workout::class);
+        return $this->hasMany(ExerciseLog::class);
     }
 
-    public function workoutLogDetails()
-    {
-        return $this->hasMany(WorkoutLogDetail::class);
-    }
+    // public function workout()
+    // {
+    //     return $this->belongsTo(Workout::class);
+    // }
+
+    // public function workoutLogDetails()
+    // {
+    //     return $this->hasMany(WorkoutLogDetail::class);
+    // }
 }
