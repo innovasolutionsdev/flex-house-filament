@@ -35,6 +35,12 @@ Route::get('Dashboard',[\App\Http\Controllers\analyticController::class,"analyti
 Route::post('/store-preference', [\App\Http\Controllers\subscriptionController::class, 'storePreference'])->name('store.preference');
 Route::get("/",[homecontroller::class,"index"]);
 
+Route::post('upload-slip', [OrderController::class, 'uploadSlip'])->name('upload.slip');
+
+Route::get('/thank-you', function () {
+    return view('pages.thank-you-page'); // Replace 'thank-you' with the actual view name of the thank you page
+})->name('thank.you');
+
 Route::get('product',[\App\Http\Controllers\ProductsController::class,"index"]);
 
 Route::post('/checkout/process', [OrderController::class, 'processOrder'])->name('checkout.process');

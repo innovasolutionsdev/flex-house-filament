@@ -1,35 +1,86 @@
-
-
 <x-app-layout>
-    <div class="max-w-3xl mx-auto p-6 text-center">
-        <div class="bg-white p-6 rounded-lg shadow-md">
-            <h1 class="text-2xl font-semibold text-blue-600 mb-4">Thank You for Your Order!</h1>
-            <p class="text-lg text-gray-700 mb-4">Your order has been placed successfully.</p>
+    <div class="max-w-2xl mx-auto p-8">
+        <div class="bg-white p-8 rounded-lg shadow-lg">
+            <h1 class="text-3xl font-bold text-gray-800 text-center mb-6">Bank Transfer Details</h1>
+            <p class="text-lg text-gray-700 text-center mb-8">
+                To confirm your order, please complete your bank transfer and upload the transfer slip below.
+            </p>
 
-            <div class="mt-4 text-left">
-                <h2 class="text-xl font-semibold text-gray-800 mb-2">Next Steps</h2>
-                <p class="text-gray-600 mb-4">To confirm your order, please complete the bank transfer using the following details:</p>
+            <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 mb-8">
+                <h2 class="text-xl font-semibold text-gray-700 mb-4">Bank Information</h2>
+                <ul class="text-gray-600 list-inside space-y-2">
+                    <li><strong>Bank Name:</strong> Your Bank Name</li>
+                    <li><strong>Account Number:</strong> 1234567890</li>
+                    <li><strong>Account Holder:</strong> Your Account Name</li>
+                    <li><strong>IFSC Code:</strong> ABCD1234</li>
+                </ul>
+            </div>
 
-                <div class="bg-gray-100 p-4 rounded-md mb-4">
-                    <ul class="list-disc ml-5">
-                        <li><strong>Bank Name:</strong> Your Bank Name</li>
-                        <li><strong>Account Number:</strong> 1234567890</li>
-                        <li><strong>Account Holder:</strong> Your Account Name</li>
-                        <li><strong>IFSC Code:</strong> ABCD1234</li>
-                    </ul>
+            <form method="POST" action="{{ route('upload.slip') }}" enctype="multipart/form-data">
+                @csrf
+                <label class="block text-lg font-medium text-gray-800 mb-4 text-left">
+                    Upload Bank Transfer Slip
+                </label>
+
+                <div class="w-full relative border-2 border-gray-300 border-dashed rounded-lg p-8" id="dropzone">
+                    <input type="file" id="file-upload" name="file" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" />
+
+                    <div class="text-center">
+                        <img class="mx-auto h-16 w-16 mb-4" src="https://www.svgrepo.com/show/357902/image-upload.svg" alt="Upload Icon">
+
+                        <h3 class="text-lg font-medium text-gray-800 mb-2">
+                            Drag and drop your file here, or <span class="text-blue-500">browse</span>
+                        </h3>
+                        <p class="text-gray-500 text-sm">
+                            PNG, JPG, or GIF files up to 10MB
+                        </p>
+                    </div>
+
+                    <img src="" class="mt-6 mx-auto max-h-40 hidden" id="preview">
                 </div>
 
-                <p class="text-gray-600 mb-4">
-                    Once you've made the transfer, please upload the bank transfer slip. This is required for us to confirm your order.
-                </p>
-                <p class="text-gray-600">
-                    If you have any questions or need assistance, feel free to contact us at <strong>support@example.com</strong>.
-                </p>
-
-                <a href="" class="inline-block mt-6 bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700">
+                <button type="submit" class="mt-8 w-full bg-green-600 text-white py-3 rounded-lg font-medium hover:bg-green-700 transition duration-200">
                     Upload Bank Slip
-                </a>
-            </div>
+                </button>
+            </form>
         </div>
     </div>
+
+    <script>
+        var dropzone = document.getElementById('dropzone');
+
+        dropzone.addEventListener('dragover', e => {
+            e.preventDefault();
+            dropzone.classList.add('border-blue-500');
+        });
+
+        dropzone.addEventListener('dragleave', e => {
+            e.preventDefault();
+            dropzone.classList.remove('border-blue-500');
+        });
+
+        dropzone.addEventListener('drop', e => {
+            e.preventDefault();
+            dropzone.classList.remove('border-blue-500');
+            var file = e.dataTransfer.files[0];
+            displayPreview(file);
+        });
+
+        var input = document.getElementById('file-upload');
+
+        input.addEventListener('change', e => {
+            var file = e.target.files[0];
+            displayPreview(file);
+        });
+
+        function displayPreview(file) {
+            var reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => {
+                var preview = document.getElementById('preview');
+                preview.src = reader.result;
+                preview.classList.remove('hidden');
+            };
+        }
+    </script>
 </x-app-layout>

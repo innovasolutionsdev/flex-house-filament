@@ -5,26 +5,27 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Order extends Model
+class Order extends Model implements HasMedia
 {
-
+    use InteractsWithMedia;
 
     protected $fillable = [
+        'id',
         'user_id',
-        'cart_id',
-        'billing_first_name',
-        'billing_last_name',
-        'billing_post_code',
-        'billing_address',
-        'billing_city',
-        'billing_mobile',
-        'cost',
-        'shipping_status',
-        'payment_status',
+        'first_name',
+        'last_name',
+        'zip_code',
+        'address',
+        'city',
+        'mobile',
         'total',
+        'status',
+        'Order_status',
         'email',
-        'payment_method',
+
     ];
 
     // GET THE USER WHO MADE THE ORDER
@@ -41,5 +42,10 @@ class Order extends Model
     public function products()
     {
         return $this->belongsToMany(product::class)->using(order_product::class)->withPivot('quantity');
+    }
+
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('bank_slips')->singleFile();
     }
 }

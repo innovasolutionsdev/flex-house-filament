@@ -32,11 +32,14 @@ class BookingController extends Controller
     {
         // Validate and create the booking
         $booking = Booking::create([
+            'user_id' => auth()->id(),
             'first_name' => $request->input('first_name'),
             'last_name' => $request->input('last_name'),
             'email' => $request->input('email'),
-            'mobile' => $request->input('mobile'),
-            // Add other relevant fields
+            'mobile' => $request->input('phone'),
+            'date' => $request->input('date'),
+            'time' => $request->input('time'),
+            'note' => $request->input('note'),
         ]);
 
         // Notify admin(s) once booking is successfully created

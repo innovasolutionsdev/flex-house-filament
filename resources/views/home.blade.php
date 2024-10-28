@@ -950,37 +950,39 @@
                 opportunities? Our
                 experienced team is ready to engage with you.</p>
 
-            <form>
+            <form method="post" action="{{ route('bookings.store') }}" >
+                @csrf
                 <div class="space-y-4 mt-8">
 
                     <div class="grid grid-cols-2 gap-6">
                         <input type="text" placeholder="First Name"
-                               class="px-2 py-3 bg-white w-full text-gray-800 text-sm border border-gray-300 focus:border-red-600 outline-none rounded-2xl"/>
+                               class="px-2 py-3 bg-white w-full text-gray-800 text-sm border border-gray-300 focus:border-red-600 outline-none rounded-2xl" name="first_name"/>
 
                         <input type="text" placeholder="Last Name"
-                               class="px-2 py-3 bg-white w-full text-gray-800 text-sm border border-gray-300 focus:border-red-600 outline-none rounded-2xl"/>
+                               class="px-2 py-3 bg-white w-full text-gray-800 text-sm border border-gray-300 focus:border-red-600 outline-none rounded-2xl" name="last_name"/>
                     </div>
                     <div class="grid grid-cols-2 gap-6">
                         <input type="number" placeholder="Phone No."
-                               class="px-2 py-3 bg-white w-full text-gray-800 text-sm border border-gray-300 focus:border-red-600 outline-none rounded-2xl"/>
+                               class="px-2 py-3 bg-white w-full text-gray-800 text-sm border border-gray-300 focus:border-red-600 outline-none rounded-2xl" name="phone"/>
 
                         <input type="email" placeholder="Email"
-                               class="px-2 py-3 bg-white w-full text-gray-800 text-sm border border-gray-300 focus:border-red-600 outline-none rounded-2xl"/>
+                               class="px-2 py-3 bg-white w-full text-gray-800 text-sm border border-gray-300 focus:border-red-600 outline-none rounded-2xl" name="email"/>
                     </div>
 
                     <div class="grid grid-cols-2 gap-6">
                         <input type="date" placeholder="Date"
-                               class="px-2 py-3 bg-white w-full text-gray-800 text-sm border border-gray-300 focus:border-red-600 outline-none rounded-2xl"/>
+                               class="px-2 py-3 bg-white w-full text-gray-800 text-sm border border-gray-300 focus:border-red-600 outline-none rounded-2xl" name="date"/>
 
                         <input type="time" placeholder="Time"
-                               class="px-2 py-3 bg-white w-full text-gray-800 text-sm border border-gray-300 focus:border-red-600 outline-none rounded-2xl"/>
+                               class="px-2 py-3 bg-white w-full text-gray-800 text-sm border border-gray-300 focus:border-red-600 outline-none rounded-2xl" name="time"
+                        />
                     </div>
 
                     <textarea placeholder="Write Message"
-                              class="px-2 pt-3 bg-white w-full text-gray-800 text-sm border border-gray-300 focus:border-red-600 outline-none rounded-2xl"></textarea>
+                              class="px-2 pt-3 bg-white w-full text-gray-800 text-sm border border-gray-300 focus:border-red-600 outline-none rounded-2xl" name="note"></textarea>
                 </div>
 
-                <button type="button"
+                <button type="submit"
                         class="mt-8 flex items-center justify-center text-sm w-full rounded-xl px-6 py-3 bg-black hover:bg-red-600 text-white">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" fill='#fff' class="mr-2"
                          viewBox="0 0 548.244 548.244">
