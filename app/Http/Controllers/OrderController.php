@@ -18,7 +18,7 @@ class OrderController extends Controller
 
     public function processOrder(Request $request){
 
-      
+
         $order = new Order();
         $order->total = Cart::subtotal();
         $order->user_id = auth()->id();
