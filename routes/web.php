@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\BookingController;
-use App\Http\Controllers\OrderController;
 use App\Models\Schedule;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -184,27 +183,35 @@ Route::middleware([
 
 
 // get all the users from the users tabel
-Route::middleware(['role:admin'])->get('/dev', function (Request $request) {
-    $users = DB::table('users')->get();
+// Route::middleware(['role:admin'])->get('/dev', function (Request $request) {
+//     $users = DB::table('users')->get();
 
-//    $products = \App\Models\products::first();
-//
-//    //create a cart
-//    $cart = \App\Models\cart::create([
-//        'user_id' => 1,
-//        'item_count' => 1,
-//        'total' => 0,
-//        'tax' => 0,
-//        'is_paid' => 1,
-//    ]);
-//    //add product to cart
-//    $cart->products()->attach($products,
-//        ['quantity' => 1,
-//            'price' => $products->price,
-//            'tax' => 0,
-//        ]);
+// //    $products = \App\Models\products::first();
+// //
+// //    //create a cart
+// //    $cart = \App\Models\cart::create([
+// //        'user_id' => 1,
+// //        'item_count' => 1,
+// //        'total' => 0,
+// //        'tax' => 0,
+// //        'is_paid' => 1,
+// //    ]);
+// //    //add product to cart
+// //    $cart->products()->attach($products,
+// //        ['quantity' => 1,
+// //            'price' => $products->price,
+// //            'tax' => 0,
+// //        ]);
 
-//
-//    dd($products, $cart);
-//    return 'yo dev';
-});
+// //
+// //    dd($products, $cart);
+// //    return 'yo dev';
+// });
+
+Route::get('/schedules/{schedule}', function (Schedule $schedule) {
+    // Load related data like workouts and exercises if needed
+    $schedule->load('workouts.exercises');
+
+    // Return the Blade view with the schedule data
+    return view('schedules.show', ['schedule' => $schedule]);
+})->name('schedules.show');
