@@ -43,6 +43,10 @@ Route::get('/thank-you', function () {
     return view('pages.thank-you-page'); // Replace 'thank-you' with the actual view name of the thank you page
 })->name('thank.you');
 
+Route::get('/thank-you-cod', function () {
+    return view('pages.thank-you-cod-page'); // Replace 'thank-you' with the actual view name of the thank you page
+})->name('thank.you.cod');
+
 Route::get('product',[\App\Http\Controllers\ProductsController::class,"index"]);
 
 Route::post('/checkout/process', [OrderController::class, 'processOrder'])->name('checkout.process');

@@ -53,7 +53,7 @@ class OrderController extends Controller
             return redirect()->route('order_complete');
         }
         else {
-            return redirect()->route('thank.you');
+            return redirect()->route('thank.you.cod');
         }
     }
 
