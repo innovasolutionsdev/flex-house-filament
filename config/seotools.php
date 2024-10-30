@@ -11,9 +11,9 @@ return [
         'defaults'       => [
             'title' => 'FlexHouse',
             'titleBefore'  => false, // Put defaults.title before page title, like 'It's Over 9000! - Dashboard'
-            'description' => 'Achieve your fitness goals with top-quality training programs and equipment at flexhouse.',
+            'description' => 'Looking for the best gym in Piliyandala? flexhouse offers top facilities, experienced trainers, and personalized programs.',
             'separator'    => ' - ',
-            'keywords' => ['gym', 'fitness', 'online membership', 'supplements'],
+            'keywords' => ['gym', 'fitness', 'online membership', 'supplements', 'personal training'],
             'canonical'    => false, // Set to null or 'full' to use Url::full(), set to 'current' to use Url::current(), set false to total remove
             'robots'       => false, // Set to 'all', 'none' or any combination of index/noindex and follow/nofollow
         ],
