@@ -54,6 +54,11 @@ Route::get('/sitemap', function () {
     return response()->file(public_path('sitemap.xml'));
 });
 
+
+use App\Http\Controllers\NotificationController;
+
+Route::post('/send-notification', [NotificationController::class, 'sendNotification']);
+
 Route::get('price-calculator',priceCalculator::class);
 Route::get('Dashboard',[\App\Http\Controllers\analyticController::class,"analytics"])->name('Dashboard');
 Route::post('/store-preference', [\App\Http\Controllers\subscriptionController::class, 'storePreference'])->name('store.preference');

@@ -122,7 +122,7 @@
         var tsfilter = $(this).data('tsfilter');
         $('.nav-controls ul li').removeClass('active');
         $(this).addClass('active');
-        
+
         if(tsfilter == 'all') {
             $('.schedule-table').removeClass('filtering');
             $('.ts-item').removeClass('show');
@@ -138,3 +138,4 @@
     });
 
 })(jQuery);
+
