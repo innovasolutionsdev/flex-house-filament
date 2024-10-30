@@ -56,10 +56,15 @@
             console.error("Service workers are not supported.");
         }
     </script>
+
+    //
     {{-- pwa script end --}}
 
     @stack('modals')
     @livewireScripts
+
+    //Push notifications
+    <script type="module" src="{{ asset('js/firebase-messaging.js') }}"></script>
 
 </body>
 
