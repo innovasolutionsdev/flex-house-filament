@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\OrderController;
 use App\Models\Schedule;
 use Illuminate\Support\Facades\Route;
@@ -98,6 +99,10 @@ Route::get('/sitemap', function () {
 
     return response()->file(public_path('sitemap.xml'));
 });
+
+// FCM ROUTES
+Route::post('/save-fcm-token', [NotificationController::class, 'saveToken']);
+
 
 Route::middleware([
     'auth:sanctum',
