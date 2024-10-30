@@ -42,13 +42,13 @@ class BookingController extends Controller
             'note' => $request->input('note'),
         ]);
 
-        // Notify admin(s) once booking is successfully created
-        if ($booking) {
-            $admin = User::where('role', 1)->first(); // Assuming role 1 is for admin
-            if ($admin) {
-                $admin->notify(new BookingSubmitted($booking));
-            }
-        }
+//        // Notify admin(s) once booking is successfully created
+//        if ($booking) {
+//            $admin = User::where('role', 1)->first(); // Assuming role 1 is for admin
+//            if ($admin) {
+//                $admin->notify(new BookingSubmitted($booking));
+//            }
+//        }
 
         return redirect()->back()->with('success', 'Booking submitted successfully');
     }

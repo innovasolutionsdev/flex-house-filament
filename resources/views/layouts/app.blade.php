@@ -64,8 +64,20 @@
     @livewireScripts
 
     //Push notifications
-    <script type="module" src="{{ asset('js/firebase-messaging.js') }}"></script>
+    <script type="module" src="{{ asset('/firebase-messaging-sw.js') }}">
+    </script>
 
+<script>
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/firebase-messaging-sw.js')
+            .then((registration) => {
+                console.log('Service Worker registered with scope:', registration.scope);
+            })
+            .catch((err) => {
+                console.error('Service Worker registration failed:', err);
+            });
+    }
+</script>
 </body>
 
 </html>

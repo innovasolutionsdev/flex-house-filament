@@ -9,6 +9,9 @@
 
 'use strict';
 
+import { getMessaging, getToken } from "firebase/messaging";
+
+
 (function ($) {
 
     /*------------------
@@ -122,7 +125,7 @@
         var tsfilter = $(this).data('tsfilter');
         $('.nav-controls ul li').removeClass('active');
         $(this).addClass('active');
-        
+
         if(tsfilter == 'all') {
             $('.schedule-table').removeClass('filtering');
             $('.ts-item').removeClass('show');
@@ -138,3 +141,37 @@
     });
 
 })(jQuery);
+
+
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/firebase-messaging-sw.js')
+        .then((registration) => {
+            console.log('Service Worker registered with scope:', registration.scope);
+        })
+        .catch((err) => {
+            console.error('Service Worker registration failed:', err);
+        });
+}
+
+
+
+const messaging = getMessaging();
+
+async function requestPermission() {
+    try {
+        const permission = await Notification.requestPermission();
+        if (permission === 'granted') {
+            console.log('Notification permission granted.');
+            const token = await getToken(messaging, { vapidKey: 'YOUR_PUBLIC_VAPID_KEY' });
+            console.log('FCM Token:', token);
+            // Save the token to your server/database
+            // Example: saveToken(token);
+        } else {
+            console.error('Unable to get permission to notify.');
+        }
+    } catch (error) {
+        console.error('An error occurred while requesting notification permission:', error);
+    }
+}
+
+requestPermission();
