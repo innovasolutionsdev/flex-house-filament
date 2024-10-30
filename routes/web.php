@@ -42,7 +42,7 @@ Route::get('/sitemap', function () {
     $sitemap->add(Url::create('/gallery'));
 
     // Add product URLs dynamically
-    $products = App\Models\Product::all();
+    $products = App\Models\product::all();
     foreach ($products as $product) {
         $sitemap->add(Url::create("/product/{$product->name}")
             ->setLastModificationDate($product->updated_at)
