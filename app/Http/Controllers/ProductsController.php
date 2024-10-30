@@ -13,6 +13,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use function Laravel\Prompts\select;
 use App\Models\meal_kit;
+use Artesaos\SEOTools\Facades\SEOMeta;
+use Artesaos\SEOTools\Facades\OpenGraph;
+
+
 
 class ProductsController extends Controller
 {
@@ -21,6 +25,14 @@ class ProductsController extends Controller
      */
     public function index()
     {
+
+        SEOMeta::setTitle('Our Gym Products | FlexHouse');
+        SEOMeta::setDescription('Browse our range of products designed to enhance your fitness journey. From supplements to workout equipment, find what you need.');
+        SEOMeta::setCanonical(route('products.index'));
+
+        OpenGraph::setTitle('Our Gym Products');
+        OpenGraph::setDescription('Explore our fitness products, curated for your health and wellness journey.');
+        OpenGraph::setUrl(route('products.index'));
 
         return view('pages.Products');
 

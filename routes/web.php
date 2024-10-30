@@ -11,6 +11,7 @@ use App\Http\Controllers\homecontroller;
 use App\Http\Controllers\Usercontroller;
 use App\Models\meal_plan;
 use App\Livewire\PriceCalculator;
+use Spatie\Sitemap\Tags\Url;
 
 
 /*
@@ -27,10 +28,31 @@ use App\Livewire\PriceCalculator;
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Models\WorkoutLog;
+use Spatie\Sitemap\Sitemap;
 
 // Override the default login route
 //Route::post('/login', [AuthenticatedSessionController::class, 'store']);
 
+Route::get('/sitemap', function () {
+    $sitemap = Sitemap::create();
+
+    // Add static URLs
+    $sitemap->add(Url::create('/'));
+    $sitemap->add(Url::create('/products'));
+    $sitemap->add(Url::create('/gallery'));
+
+    // Add product URLs dynamically
+    $products = App\Models\Product::all();
+    foreach ($products as $product) {
+        $sitemap->add(Url::create("/product/{$product->name}")
+            ->setLastModificationDate($product->updated_at)
+            ->setPriority(0.9));
+    }
+
+    $sitemap->writeToFile(public_path('sitemap.xml'));
+
+    return response()->file(public_path('sitemap.xml'));
+});
 
 Route::get('price-calculator',priceCalculator::class);
 Route::get('Dashboard',[\App\Http\Controllers\analyticController::class,"analytics"])->name('Dashboard');
