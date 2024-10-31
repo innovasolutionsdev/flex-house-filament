@@ -17,15 +17,9 @@
         {{ $slot }}
     </main>
 
-    {{--
-        @include('layouts.footer') --}}
-    <script>
-        if (window.matchMedia('(display-mode: standalone)').matches) {
 
-        } else {
-            document.write(`@include('layouts.footer')`);
-        }
-    </script>
+    @include('layouts.footer')
+
 
 
     @include('layouts.bottom-nav ')
