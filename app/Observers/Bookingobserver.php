@@ -5,7 +5,7 @@ namespace App\Observers;
 use App\Models\Booking;
 use App\Models\User;
 use App\Notifications\BookingSubmitted;
-use NotificationChannels\OneSignal\OneSignalChannel;
+
 
 
 use Filament\Notifications\Notification;
@@ -24,9 +24,7 @@ class Bookingobserver
                 ->toDatabase(),
 
         );
-        OneSignalMessage::create()
-            ->subject("New Booking!")
-            ->body("A new booking has been made.");
+
 
 
         // Send a notification to the admin

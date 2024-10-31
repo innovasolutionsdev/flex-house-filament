@@ -7,6 +7,8 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Messages\DatabaseMessage;
+use NotificationChannels\OneSignal\OneSignalChannel;
+use NotificationChannels\OneSignal\OneSignalMessage;
 
 class BookingSubmitted extends Notification
 {
@@ -40,5 +42,11 @@ class BookingSubmitted extends Notification
             'user' => $this->booking->first_name,
             'message' => 'New booking submitted by ' . $this->booking->first_name,
         ];
+    }
+    public function toOneSignal($notifiable)
+    {
+        return OneSignalMessage::create()
+            ->subject("New Booking!")
+            ->body("A new booking has been made.");
     }
 }

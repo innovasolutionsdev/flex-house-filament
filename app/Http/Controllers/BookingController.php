@@ -6,6 +6,9 @@ use App\Models\Booking;
 use App\Models\User;
 use App\Notifications\BookingSubmitted;
 use Illuminate\Http\Request;
+use Illuminate\Notifications\Notification;
+use NotificationChannels\OneSignal\OneSignalChannel;
+use NotificationChannels\OneSignal\OneSignalMessage;
 
 class BookingController extends Controller
 {
@@ -42,6 +45,8 @@ class BookingController extends Controller
             'note' => $request->input('note'),
         ]);
 
+
+
         // Notify admin(s) once booking is successfully created
         if ($booking) {
             $admin = User::where('role', 1)->first(); // Assuming role 1 is for admin
@@ -50,7 +55,10 @@ class BookingController extends Controller
             }
         }
 
-        return redirect()->back()->with('success', 'Booking submitted successfully');
+        $admin = User::where('role', 1)->first();
+        $admin->notify(new BookingSubmitted($booking));
+
+        return redirect()->back();
     }
 
     /**

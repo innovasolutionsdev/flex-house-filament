@@ -58,24 +58,8 @@
     </script>
     {{-- pwa script end --}}
 
-    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
-    <script>
-        window.OneSignal = window.OneSignal || [];
-        OneSignal.push(function() {
-            OneSignal.init({
-                appId: "3ecafc59-059d-4b17-8d27-81ee9cc83f6d",
-                safari_web_id: "web.onesignal.auto.YOUR_SAFARI_WEB_ID", // Only for Safari if needed
-                notifyButton: {
-                    enable: true,  // Set to false to disable the default bell icon
-                },
-            });
-        });
-    </script>
-    <script>
-        OneSignal.push(function() {
-            OneSignal.showNativePrompt();
-        });
-    </script>
+
+
 
     @stack('modals')
     @livewireScripts
