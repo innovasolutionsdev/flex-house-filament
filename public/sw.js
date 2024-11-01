@@ -57,3 +57,18 @@ self.addEventListener("fetch", function (event) {
         event.waitUntil(addToCache(event.request));
     }
 });
+
+
+self.addEventListener('push', function(event) {
+    const data = event.data.json();
+    const options = {
+        body: data.body,
+        icon: data.icon,
+        badge: data.badge,
+        data: data.data,
+    };
+    event.waitUntil(
+        self.registration.showNotification(data.title, options)
+    );
+});
+

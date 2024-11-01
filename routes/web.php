@@ -1,15 +1,17 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\OrderController;
 use App\Models\Schedule;
-use Illuminate\Support\Facades\Route;
+
 use Illuminate\Http\Request;
-use App\Http\Controllers\hom;
+
 use App\Http\Controllers\BaseController;
 use App\Http\Controllers\homecontroller;
 use App\Http\Controllers\Usercontroller;
-use App\Models\meal_plan;
+
 use App\Livewire\PriceCalculator;
 use Spatie\Sitemap\Tags\Url;
 
@@ -30,8 +32,48 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Models\WorkoutLog;
 use Spatie\Sitemap\Sitemap;
 
+
 // Override the default login route
 //Route::post('/login', [AuthenticatedSessionController::class, 'store']);
+
+Route::post('/subscribe', [\App\Http\Controllers\PushNotificationController::class, 'subscribe'])->name('subscribe');
+
+//Route::post('/save-subscription', function (Request $request) {
+//    $request->user()->updatePushSubscription(
+//        $request->endpoint,
+//        $request->keys['p256dh'],
+//        $request->keys['auth']
+//    );
+//
+//    return response()->json(['success' => true]);
+//});
+
+
+Route::post('/save-subscription', function (Request $request) {
+    $user = $request->user();
+
+    if (!$user) {
+        return response()->json(['error' => 'User not authenticated'], 401);
+    }
+
+    \Log::info('Saving subscription for user', ['user_id' => $user->id, 'payload' => $request->all()]);
+
+    try {
+        $user->updatePushSubscription(
+            $request->endpoint,
+            $request->keys['p256dh'],
+            $request->keys['auth']
+        );
+
+        \Log::info('Subscription saved successfully');
+        return response()->json(['success' => true]);
+    } catch (\Exception $e) {
+        \Log::error('Failed to save subscription: ' . $e->getMessage());
+        return response()->json(['error' => 'Failed to save subscription'],);
+        }
+});
+
+
 
 Route::get('/sitemap', function () {
     $sitemap = Sitemap::create();

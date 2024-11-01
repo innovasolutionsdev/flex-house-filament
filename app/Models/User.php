@@ -105,4 +105,19 @@ class User extends Authenticatable
         return $this->membership_end_date && $this->membership_end_date->isFuture();
     }
 
+    public function updatePushSubscription($endpoint, $p256dh, $auth)
+    {
+        $this->pushSubscriptions()->updateOrCreate(
+            ['endpoint' => $endpoint, 'user_id' => $this->id],
+            [
+                'p256dh' => $p256dh,
+                'auth' => $auth,
+                ]);
+}
+
+    // Define the relationship if you haven't done so.
+    public function pushSubscriptions()
+    {
+        return $this->hasMany(PushSubscription::class,'user_id');
+}
 }

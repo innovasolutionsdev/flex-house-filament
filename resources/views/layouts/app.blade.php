@@ -61,6 +61,38 @@
     @stack('modals')
     @livewireScripts
 
+<script>
+
+        if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js').then(function(registration) {
+            console.log('Service Worker registered with scope:', registration.scope);
+        });
+    }
+
+        function subscribeUser() {
+        navigator.serviceWorker.ready.then(function(registration) {
+            registration.pushManager.subscribe({
+                userVisibleOnly: true,
+                applicationServerKey: '{{ config('webpush.vapid.public_key') }}'
+            }).then(function(subscription) {
+                // Send subscription to the server to save it
+                fetch('/save-subscription', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    body: JSON.stringify(subscription)
+                });
+            });
+        });
+    }
+
+        subscribeUser(); // Call this function to subscribe the user
+</script>
+
+
+
 </body>
 
 </html>
