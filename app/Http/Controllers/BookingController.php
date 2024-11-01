@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Booking;
 use App\Models\User;
 use App\Notifications\BookingSubmitted;
+use App\Services\Notificationservice;
 use Illuminate\Http\Request;
 
 class BookingController extends Controller
@@ -23,6 +24,13 @@ class BookingController extends Controller
     public function create()
     {
         //
+    }
+
+    protected $notificationService;
+
+    public function __construct(Notificationservice $notificationService)
+    {
+        $this->notificationService = $notificationService;
     }
 
     /**
@@ -49,6 +57,13 @@ class BookingController extends Controller
                 $admin->notify(new BookingSubmitted($booking));
             }
         }
+
+        $this->notificationService->sendNotification(
+            'New Booking Received',
+            'A new booking has been made. Check the admin dashboard for details.',
+            '/path/to/icon.png',
+            '/admin/bookings'
+        );
 
         return redirect()->back()->with('success', 'Booking submitted successfully');
     }

@@ -78,6 +78,8 @@ Route::get('/schedules/{schedule}', function (Schedule $schedule) {
 
 // Creating a sitemap
 
+Route::post('save-push-notification-sub', [\App\Http\Controllers\PushNotificationController::class, 'saveSubscription']);
+
 Route::get('/sitemap', function () {
     $sitemap = Sitemap::create();
 
