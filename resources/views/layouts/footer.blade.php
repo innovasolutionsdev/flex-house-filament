@@ -1,5 +1,5 @@
-<footer class="w-full bg-gray-900">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<footer id="view-footer" class="w-full bg-[#141414]" style="display: none;">
+    <div class=" mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <!--Grid-->
         <div
             class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-3 gap-y-8 md:gap-8 py-10 max-w-sm mx-auto sm:max-w-3xl lg:max-w-full">
@@ -10,7 +10,7 @@
                 {{-- <p class="py-8 text-sm text-gray-300 lg:max-w-xs">
                     Trusted in more than 100 countries &amp; 5 million customers. Have any query?
                 </p> --}}
-                <a class="py-2.5 px-5 h-9 block w-fit bg-indigo-600 rounded-full shadow-sm text-xs text-white mx-auto transition-all duration-500 hover:bg-indigo-700 lg:mx-0"
+                <a class="py-2.5 px-4 h-10 block w-fit bg-[#F41E1E] rounded-full shadow-sm text-md font-bold uppercase text-white mx-auto transition-all duration-500 hover:bg-black lg:mx-0"
                     href="javascript:;">
                     Contact us
                 </a>
@@ -20,7 +20,7 @@
                 <h4 class="text-lg text-white font-extrabold mb-7">
                     Pagedone
                 </h4>
-                <ul class="text-sm transition-all duration-500">
+                <ul class="text-md transition-all duration-500">
                     <li class="mb-6">
                         <a class="text-gray-400 hover:text-white" href="javascript:;">
                             Home
@@ -86,22 +86,22 @@
             </div>
             <!--End Col-->
             <div class="lg:mx-auto text-left">
-                <h4 class="text-lg text-white font-medium mb-7">
+                <h4 class="text-lg text-white font-extrabold mb-7">
                     Subscribe
                 </h4>
                 <p class="text-md text-gray-400 leading-6 mb-7">
                     Subscribe to get the latest news from us
                 </p>
-                <a class="flex items-center justify-center gap-2 border border-indigo-600 rounded-full py-3 px-6 w-fit lg:mx-0 text-lg  text-indigo-600 font-extrabold transition-all duration-500 hover:bg-indigo-50"
+                <a class="flex items-center justify-center gap-2 border border-[#F41E1E] rounded-full py-3 px-6 w-fit lg:mx-0 text-lg  text-[#F41E1E] font-extrabold transition-all duration-500 hover:bg-indigo-50"
                     href="javascript:;">
                     Subscribe
-                    <svg fill="none" height="12" viewbox="0 0 15 12" width="15"
+                    {{-- <svg fill="none" height="12" viewbox="0 0 15 12" width="15"
                         xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M1.25 6L13.25 6M9.5 10.5L13.4697 6.53033C13.7197 6.28033 13.8447 6.15533 13.8447 6C13.8447 5.84467 13.7197 5.71967 13.4697 5.46967L9.5 1.5"
                             stroke="#4F46E5" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8">
                         </path>
-                    </svg>
+                    </svg> --}}
                 </a>
             </div>
         </div>
@@ -147,3 +147,11 @@
         </div>
     </div>
 </footer>
+
+<script>
+    // Check if not in standalone mode
+    if (!window.matchMedia('(display-mode: standalone)').matches) {
+        // Show the footer
+        document.getElementById('view-footer').style.display = 'flex'; // or 'block' based on your layout
+    }
+</script>

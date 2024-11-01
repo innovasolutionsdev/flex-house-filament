@@ -1,243 +1,134 @@
 <x-app-layout>
 
     <!-- Hero Section Begin -->
-    <section class="hero-section set-bg relative bg-cover bg-center" data-setbg="img/hero-bg2.jpg">
-        <div class="absolute inset-0 bg-black opacity-40"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="hero-text">
-                        <span style="color: #F41E1E">TRANSFORM YOUR BODY Now</span>
-                        <h1>ACHIEVE YOUR FITNESS GOALS</h1>
-                        <p>Your fitness journey starts here! Discover tailored workout plans,<br /> expert coaching, and
-                            state-of-the-art equipment to help you succeed.</p>
-                        <!-- <a href="#" class="primary-btn">Get Started</a> -->
-                        <button type="button" style="background-color: #F41E1E" ;
-                            class="text-white  hover:bg-black focus:ring-4 focus:ring-blue-300 font-medium  text-md px-5 py-2.5 me-2 mb-2  focus:outline-none ">
-                            Register
-                            Now
-                        </button>
 
-                    </div>
+    <div
+        class="mt-14 container px-4 relative py-12 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+        <div class="flex flex-col items-center justify-between lg:flex-row">
+            <div class="mb-10 lg:max-w-lg lg:pr-5 lg:mb-0">
+                <div class="max-w-xl mb-6">
+
+                    <h2
+                        class="max-w-lg mb-6 font-sans text-4xl font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-none">
+                        Achieve Your Fitness Goals<br class="hidden md:block" />
+                        with Our Expert Trainers
+
+                    </h2>
+                    <p class="text-base text-gray-700 md:text-lg">
+                        Join us to transform your body and mind. Our personalized workout plans, expert coaching, and
+                        top-notch facilities are designed to help you succeed in your fitness journey.
+                    </p>
                 </div>
-            </div>
-        </div>
-    </section>
+                <div class="flex flex-col items-center md:flex-row">
 
-    <!-- Hero Section End -->
-
-    <!-- About Section Begin -->
-    {{-- <section class="about-section spad bg-blue-900">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="about-pic">
-                        <img src="img/about.png" alt="">
-                        <!-- <a href="https://www.youtube.com/watch?v=SlPhMPnQ58k" class="play-btn video-popup">
-                            <img src="img/play.png" alt="">
-                        </a> -->
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="about-text">
-                        <h2 class="text-white">Our Journey to Fitness Excellence</h2>
-                        <p class="first-para text-black">At Flex House, we are more than just a gym — we are a community committed to helping you reach
-                            your full potential. Founded with a passion for fitness and well-being, our goal is to empower individuals to
-                            transform their lives through health and exercise.</p>
-                        <p class="second-para text-white">With state-of-the-art equipment, experienced trainers, and customized workout plans, we cater
-                            to all fitness levels. Whether you're just starting or a seasoned athlete, we are here to support you every step
-                            of the way in your fitness journey.</p>
-                        <a href="#" class="primary-btn">Learn More</a>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </section> --}}
-
-    <section class="py-24 relative xl:mr-0 lg:mr-5 mr-0">
-        <div class="w-full max-w-7xl px-4 md:px-5 lg:px-5 mx-auto">
-            <div class="w-full justify-start items-center xl:gap-12 gap-10 grid lg:grid-cols-2 grid-cols-1">
-                <div class="w-full flex-col justify-center lg:items-start items-center gap-10 inline-flex">
-                    <div class="w-full flex-col justify-center items-start gap-8 flex">
-                        <div class="flex-col justify-start lg:items-start items-center gap-4 flex">
-                            <h4 class="  font-bold leading-relaxed" style="color: #F41E1E">About Us</h6>
-                                <div class="w-full flex-col justify-start lg:items-start items-center gap-3 flex">
-                                    <h2 style="color: #1D2229"
-                                        class=" text-4xl font-extrabold font-manrope leading-normal lg:text-start text-center">
-                                        The Tale of Our Achievement Story</h2>
-                                    <p
-                                        class="text-gray-500 text-base font-normal leading-relaxed lg:text-start text-center">
-                                        Our achievement story is a testament to teamwork and perseverance. Together,
-                                        we've
-                                        overcome challenges, celebrated victories, and created a narrative of progress
-                                        and
-                                        success.</p>
-                                </div>
-                        </div>
-                        <div class="w-full flex-col justify-center items-start gap-6 flex">
-                            <div class="w-full justify-start items-center gap-8 grid md:grid-cols-2 grid-cols-1">
-                                <div
-                                    class="w-full h-full p-3.5 rounded-xl border border-gray-200 hover:border-gray-400 transition-all duration-700 ease-in-out flex-col justify-start items-start gap-2.5 inline-flex hover:bg-gray-200 hover:shadow-lg bg-gray-100">
-                                    <h4 class="text-gray-900 text-2xl font-extrabold font-manrope leading-9">33+
-                                        Years</h4>
-                                    <p class="text-gray-500 text-base font-normal leading-relaxed">Influencing Digital
-                                        Landscapes Together</p>
-                                </div>
-                                <div
-                                    class="w-full h-full p-3.5 rounded-xl border border-gray-200 hover:border-gray-400 transition-all duration-700 ease-in-out flex-col justify-start items-start gap-2.5 inline-flex hover:bg-gray-200 hover:shadow-lg bg-gray-100">
-                                    <h4 class="text-gray-900 text-2xl font-extrabold font-manrope leading-9">125+
-                                        Projects
-                                    </h4>
-                                    <p class="text-gray-500 text-base font-normal leading-relaxed">Excellence Achieved
-                                        Through Success</p>
-                                </div>
-                            </div>
-                            <div class="w-full h-full justify-start items-center gap-8 grid md:grid-cols-2 grid-cols-1">
-                                <div
-                                    class="w-full p-3.5 rounded-xl border border-gray-200 hover:border-gray-400 transition-all duration-700 ease-in-out flex-col justify-start items-start gap-2.5 inline-flex hover:bg-gray-200 hover:shadow-lg bg-gray-100">
-                                    <h4 class="text-gray-900 text-2xl font-extrabold font-manrope leading-9">26+
-                                        Awards</h4>
-                                    <p class="text-gray-500 text-base font-normal leading-relaxed">Our Dedication to
-                                        Innovation Wins Understanding</p>
-                                </div>
-                                <div
-                                    class="w-full h-full p-3.5 rounded-xl border border-gray-200 hover:border-gray-400 transition-all duration-700 ease-in-out flex-col justify-start items-start gap-2.5 inline-flex hover:bg-gray-200 hover:shadow-lg bg-gray-100">
-                                    <h4 class="text-gray-900 text-2xl font-extrabold font-manrope leading-9">99% Happy
-                                        Clients</h4>
-                                    <p class="text-gray-500 text-base font-normal leading-relaxed">Mirrors our Focus on
-                                        Client Satisfaction.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <button type="button" style="background-color: #141414" ;
-                        onmouseover="this.style.backgroundColor='#141414';"
-                        onmouseout="this.style.backgroundColor='#F41E1E';"
-                        class="text-white   focus:ring-4 focus:ring-blue-300 font-medium  text-md px-5 py-2.5 me-2 mb-2  focus:outline-none rounded-sm ">
-                        Learn More
+                    <button
+                        class="mt-6 bg-[#F41E1E] text-white uppercase text-lg py-2 px-6 font-bold rounded-sm shadow-md hover:bg-[#141414] transition duration-300">
+                        Register Now
                     </button>
-                    {{-- <svg class="group-hover:translate-x-0.5 transition-all duration-700 ease-in-out"
-                        xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-                        <path d="M6.75265 4.49658L11.2528 8.99677L6.75 13.4996" stroke="#4F46E5" stroke-width="1.6"
-                            stroke-linecap="round" stroke-linejoin="round" />
-                    </svg> --}}
+                    <button
+                        class="mt-6 ml-8 text-black py-2 text-lg uppercase px-6 font-bold rounded-sm hover:bg-[#F41E1E] transition duration-300 border border-red-500">
+                        View Pricing
                     </button>
                 </div>
-                <div class="w-full lg:justify-start justify-center items-start flex">
-                    <div
-                        class="sm:w-[564px] w-full sm:h-[646px] h-full sm:bg-black rounded-3xl sm:border border-gray-200 relative">
-                        <img class="sm:mt-5 sm:ml-5 w-full h-full rounded-3xl object-cover" src="img/about.png"
-                            alt="about Us image" />
-                    </div>
-                </div>
             </div>
-        </div>
-    </section>
+            <div class="relative lg:w-1/2">
+                <img class="object-cover w-full h-56 rounded shadow-lg sm:h-96"
+                    src="https://images.pexels.com/photos/927022/pexels-photo-927022.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=3&amp;h=750&amp;w=1260"
+                    alt="" />
 
-    <div class="container mx-auto px-4 py-8 flex flex-col md:flex-row items-center">
-        <div class="w-full md:w-1/2 mb-8 md:mb-0">
-            <h2 class="text-gray-800 text-2xl font-bold mb-2 flex items-center">
-                About Us
-                <span class="ml-2 bg-red-500 h-2 w-8 inline-block"></span>
-            </h2>
-            <h1 class="text-5xl font-bold text-black mb-4">
-                THE BEST THING<br>IN TRAINING
-            </h1>
-            <p class="text-gray-600 mb-6">
-                Porttitor pharetra sollicitudin at tempus phasellus consequat ultrices class sed, quisque non hac diam
-                porta himenaeos fringilla scelerisque, nibh tellus sociosqu molestie conubia sodale. It is a long
-                established fact that a reader will be distracted by the readable content of a page when looking at its
-                layout. The point of using Lorem Ipsum.
-            </p>
-            <ul class="mb-6">
-                <li class="flex items-center text-gray-800 mb-2">
-                    <i class="fas fa-check-circle text-red-500 mr-2"></i>
-                    Lorem ipsum dolor sit amet
-                </li>
-                <li class="flex items-center text-gray-800 mb-2">
-                    <i class="fas fa-check-circle text-red-500 mr-2"></i>
-                    Senectus praesent urna quis
-                </li>
-                <li class="flex items-center text-gray-800 mb-2">
-                    <i class="fas fa-check-circle text-red-500 mr-2"></i>
-                    Pretium class vivamus tellus
-                </li>
-            </ul>
-            <button class="bg-red-500 text-white px-6 py-2 font-bold rounded hover:bg-black">Read More</button>
-        </div>
-        <div class="w-full md:w-1/2 relative flex justify-center">
-            <div class="relative inline-block">
-                <img alt="A woman in a gym stretching her leg" class="rounded-lg shadow-lg" height="300"
-                    src="https://storage.googleapis.com/a1aa/image/RaWiynkqyY7oMJ1QR02Vj7EK0TQQRMVgvQywScrRcr2HYf0JA.jpg"
-                    width="450">
-                <div class="absolute right-0 bottom-0 bg-red-500 h-full w-full rounded-lg"
-                    style="z-index: -1; transform: translate(10px, 10px);"></div>
             </div>
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    const images = [
+                        'https://images.pexels.com/photos/927022/pexels-photo-927022.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=3&amp;h=750&amp;w=1260',
+                        'https://images.pexels.com/photos/1231231/pexels-photo-1231231.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=3&amp;h=750&amp;w=1260',
+                        // 'https://images.pexels.com/photos/4564564/pexels-photo-4564564.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=3&amp;h=750&amp;w=1260',
+                        'https://images.pexels.com/photos/7897897/pexels-photo-7897897.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=3&amp;h=750&amp;w=1260'
+                    ];
+                    let currentIndex = 0;
+                    const imageElement = document.querySelector('.relative.lg\\:w-1\\/2 img');
+
+                    setInterval(() => {
+                        currentIndex = (currentIndex + 1) % images.length;
+                        imageElement.src = images[currentIndex];
+                    }, 3000); // Change image every 5 seconds
+                });
+            </script>
         </div>
     </div>
 
-    {{-- Our services --}}
+    <!-- Hero Section End -->
+
+
+    {{-- About us --}}
     <section class="py-24 relative xl:mr-0 lg:mr-5 mr-0" style="background-color: #141414">
+        <h2 class="text-[#F41E1E] text-lg font-bold uppercase mb-2 flex items-center justify-center">
+            <span class="inline-block w-12 h-0.5 bg-[#F41E1E] mx-2">
+            </span>
+            Work Process
+            <span class="inline-block w-12 h-0.5 bg-[#F41E1E] mx-2">
+            </span>
+        </h2>
+        <h1 class="text-4xl text-center font-extrabold mb-10 text-gray-200">
+            Easy Step To Achieve Your Goals.
+        </h1>
         <div class="w-full max-w-7xl px-4 md:px-5 lg:px-5 mx-auto">
             <div
                 class="w-full justify-start items-center xl:gap-12 gap-10 grid lg:grid-cols-2 grid-cols-1 lg:grid-flow-col-dense">
                 <!-- Image section moved up -->
                 <div class="w-full lg:justify-start justify-center items-start flex">
-                    <div class="sm:w-[564px] w-full sm:h-[646px] h-full sm:bg-red-500 rounded-3xl relative">
-                        <img class="sm:mt-5 sm:ml-5 w-full h-full rounded-3xl object-cover" src="img/about.png"
+                    <div class="sm:w-[564px] w-full sm:h-[646px] h-[646px]   relative">
+                        <img class="sm:mt-5 sm:ml-5 w-full  rounded-sm object-cover" src="img/about.png"
                             alt="about Us image" />
                     </div>
                 </div>
                 <!-- Text section moved down -->
                 <div class="w-full flex-col justify-center lg:items-start items-center gap-10 inline-flex">
+
                     <div class="w-full flex-col justify-center items-start gap-8 flex">
-                        <div class="flex-col justify-start lg:items-start items-center gap-4 flex">
-                            <h4 class="font-bold leading-relaxed" style="color: #F41E1E">About Us</h6>
-                                <div class="w-full flex-col justify-start lg:items-start items-center gap-3 flex">
-                                    <h2 style="color: white"
-                                        class="text-4xl font-extrabold font-manrope leading-normal lg:text-start text-center">
-                                        The Tale of Our Achievement Story</h2>
-                                    <p
-                                        class="text-gray-300 text-base font-normal leading-relaxed lg:text-start text-center">
-                                        Our achievement story is a testament to teamwork and perseverance. Together,
-                                        we've
-                                        overcome challenges, celebrated victories, and created a narrative of progress
-                                        and
-                                        success.</p>
-                                </div>
+                        <div class="">
+                            {{-- <h4 class="font-bold leading-relaxed" style="color: #F41E1E">About Us</h6> --}}
+                            <div class="">
+
+                                <p class="text-gray-300 text-lg text-center">
+                                    Our achievement story is a testament to teamwork and perseverance. Together,
+                                    we've
+                                    overcome challenges, celebrated victories, and created a narrative of progress
+                                    and
+                                    success.</p>
+                            </div>
                         </div>
                         <div class="w-full flex-col justify-center items-start gap-6 flex">
                             <div class="w-full justify-start items-center gap-8 grid md:grid-cols-2 grid-cols-1">
                                 <div
-                                    class="w-full h-full p-3.5 rounded-xl border border-gray-200 hover:border-gray-400 transition-all duration-700 ease-in-out flex-col justify-start items-start gap-2.5 inline-flex hover:bg-gray-200 hover:shadow-lg bg-gray-100">
+                                    class="w-full h-full p-3.5 rounded-md border border-gray-200 hover:border-gray-400 transition-all duration-700 ease-in-out flex-col justify-start items-start gap-2.5 inline-flex hover:bg-gray-200 hover:shadow-lg bg-gray-100">
                                     <h4 class="text-gray-900 text-2xl font-extrabold font-manrope leading-9">33+
                                         Years</h4>
-                                    <p class="text-gray-500 text-base font-normal leading-relaxed">Influencing Digital
+                                    <p class="text-gray-500 text-large leading-relaxed">Influencing Digital
                                         Landscapes Together</p>
                                 </div>
                                 <div
-                                    class="w-full h-full p-3.5 rounded-xl border border-gray-200 hover:border-gray-400 transition-all duration-700 ease-in-out flex-col justify-start items-start gap-2.5 inline-flex hover:bg-gray-200 hover:shadow-lg bg-gray-100">
+                                    class="w-full h-full p-3.5 rounded-md border border-gray-200 hover:border-gray-400 transition-all duration-700 ease-in-out flex-col justify-start items-start gap-2.5 inline-flex hover:bg-gray-200 hover:shadow-lg bg-gray-100">
                                     <h4 class="text-gray-900 text-2xl font-extrabold font-manrope leading-9">125+
                                         Projects
                                     </h4>
-                                    <p class="text-gray-500 text-base font-normal leading-relaxed">Excellence Achieved
+                                    <p class="text-gray-500 text-large leading-relaxed">Excellence Achieved
                                         Through Success</p>
                                 </div>
                             </div>
                             <div class="w-full h-full justify-start items-center gap-8 grid md:grid-cols-2 grid-cols-1">
                                 <div
-                                    class="w-full p-3.5 rounded-xl border border-gray-200 hover:border-gray-400 transition-all duration-700 ease-in-out flex-col justify-start items-start gap-2.5 inline-flex hover:bg-gray-200 hover:shadow-lg bg-gray-100">
+                                    class="w-full p-3.5 rounded-md border border-gray-200 hover:border-gray-400 transition-all duration-700 ease-in-out flex-col justify-start items-start gap-2.5 inline-flex hover:bg-gray-200 hover:shadow-lg bg-gray-100">
                                     <h4 class="text-gray-900 text-2xl font-extrabold font-manrope leading-9">26+
                                         Awards</h4>
-                                    <p class="text-gray-500 text-base font-normal leading-relaxed">Our Dedication to
+                                    <p class="text-gray-500 text-large leading-relaxed">Our Dedication to
                                         Innovation Wins Understanding</p>
                                 </div>
                                 <div
-                                    class="w-full h-full p-3.5 rounded-xl border border-gray-200 hover:border-gray-400 transition-all duration-700 ease-in-out flex-col justify-start items-start gap-2.5 inline-flex hover:bg-gray-200 hover:shadow-lg bg-gray-100">
+                                    class="w-full h-full p-3.5 rounded-md border border-gray-200 hover:border-gray-400 transition-all duration-700 ease-in-out flex-col justify-start items-start gap-2.5 inline-flex hover:bg-gray-200 hover:shadow-lg bg-gray-100">
                                     <h4 class="text-gray-900 text-2xl font-extrabold font-manrope leading-9">99% Happy
                                         Clients</h4>
-                                    <p class="text-gray-500 text-base font-normal leading-relaxed">Mirrors our Focus on
+                                    <p class="text-gray-500 text-large leading-relaxed">Mirrors our Focus on
                                         Client Satisfaction.</p>
                                 </div>
                             </div>
@@ -253,6 +144,88 @@
             </div>
         </div>
     </section>
+    {{-- About us end --}}
+    {{-- Our servces --}}
+    <div class="container mx-auto py-12 px-4">
+        <div class="text-center mb-8">
+            <h2 class="text-[#F41E1E] text-lg font-bold uppercase mb-2 flex items-center justify-center">
+                <span class="inline-block w-12 h-0.5 bg-[#F41E1E] mx-2">
+                </span>
+                Work Process
+                <span class="inline-block w-12 h-0.5 bg-[#F41E1E] mx-2">
+                </span>
+            </h2>
+            <h1 class="text-4xl text-center font-extrabold mb-20 text-gray-900">
+                Easy Step To Achieve Your Goals.
+            </h1>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                <img alt="Personal Training - Trainer assisting a client with weights" class="w-full h-48 object-cover"
+                    height="400"
+                    src="https://storage.googleapis.com/a1aa/image/5YXzH8QB0O5KO1uJ5vNIagHIkS1ZDEs8dheiPmnfSSC3tfYnA.jpg"
+                    width="600" />
+                <div class="p-6 text-center">
+                    <h3 class="text-xl font-bold text-white bg-[#F41E1E] inline-block px-3 py-1 rounded-md mb-4">
+                        Personal Training
+                    </h3>
+                    <p class="text-gray-600 mb-4">
+                        Our personal trainers will work with you one-on-one to create a customized workout plan that
+                        fits your goals and fitness level.
+                    </p>
+                    <a class="text-[#F41E1E] hover:text-black hover:underline flex items-center font-bold justify-center"
+                        href="#">
+                        Read More
+                        {{-- <i class="fas fa-arrow-right ml-2">
+                        </i> --}}
+                    </a>
+                </div>
+            </div>
+            <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                <img alt="Group Classes - People participating in a group fitness class"
+                    class="w-full h-48 object-cover" height="400"
+                    src="https://storage.googleapis.com/a1aa/image/kXljhtp7znLrKpLbSrQ5QYyxhxp4yNSyE1aiXfnxTDE72P2JA.jpg"
+                    width="600" />
+                <div class="p-6 text-center">
+                    <h3 class="text-xl font-bold text-white bg-[#F41E1E] inline-block px-3 py-1 rounded-md mb-4">
+                        Group Classes
+                    </h3>
+                    <p class="text-gray-600 mb-4">
+                        Join our group classes to stay motivated and have fun while working out. We offer a variety of
+                        classes including yoga, pilates, and HIIT.
+                    </p>
+                    <a class="text-[#F41E1E] hover:text-black hover:underline flex items-center font-bold justify-center"
+                        href="#">
+                        Read More
+                        {{-- <i class="fas fa-arrow-right ml-2">
+                        </i> --}}
+                    </a>
+                </div>
+            </div>
+            <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                <img alt="Nutrition Counseling - Nutritionist consulting with a client"
+                    class="w-full h-48 object-cover" height="400"
+                    src="https://storage.googleapis.com/a1aa/image/GezjOexcYuqBJknmTMT5mxBnWvkoract4uqoH8IGQrr5tfYnA.jpg"
+                    width="600" />
+                <div class="p-6 text-center">
+                    <h3 class="text-xl font-bold text-white bg-[#F41E1E] inline-block px-3 py-1 rounded-md mb-4">
+                        Nutrition Counseling
+                    </h3>
+                    <p class="text-gray-600 mb-4">
+                        Our nutrition counseling services will help you create a balanced diet plan that complements
+                        your fitness routine and helps you achieve your health goals.
+                    </p>
+                    <a class="text-[#F41E1E] hover:text-black hover:underline flex font-bold items-center justify-center"
+                        href="#">
+                        Read More
+                        {{-- <i class="fas fa-arrow-right ml-2">
+                        </i> --}}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{-- Our servces end --}}
 
     {{-- proccess steps start --}}
     <div class="container mx-auto text-center py-10 mt-20">
@@ -389,273 +362,7 @@
     </div>
     {{-- proccess steps end --}}
 
-    <!-- About Section End -->
-    {{-- <div class="w-full pl-5 pr-5 py-20 px-10 lg:py-16 lg:px-6" style="background-color: #141414">
-        <div class="text-center mb-10">
-            <h2 class="text-4xl tracking-tight font-extrabold text-white">Our Services</h2>
-        </div>
 
-        <div class="flex flex-col md:flex-row">
-            <!-- can help image -->
-            <div class="md:mr-20 md:mb-0">
-        <img class="w-full md:w-full h-full mx-auto mb-4 rounded-2xl shadow-lg " src="img/about.png" alt="can_help_banner" style="width:500px;">
-    </div>
-
-            <!-- end can help image -->
-
-            <div class="flex-1 flex flex-col sm:flex-row flex-wrap -mb-4 -mx-2 ">
-        <div class="w-full sm:w-1/2 mb-4 px-2 ">
-            <div class="h-full py-4 px-6  transition-all  ease-in-out hover:shadow-lg border-2 rounded-xl bg-gray-100 hover:bg-gray-100" >
-                <h3 class="text-2xl font-bold text-black text-md mb-6 hover:text-black">Dynamic Personalization</h3>
-                <p class="text-md ">Our platform leverages user data and behavior to provide a highly personalized experience, with dynamic content and product recommendations that change in real-time.</p>
-
-            </div>
-        </div>
-        <div class="w-full sm:w-1/2 mb-4 px-2">
-            <div class="h-full py-4 px-6  transition-all  ease-in-out  hover:shadow-lg border-2 rounded-xl bg-gray-100 hover:bg-gray-100" >
-                <h3 class="text-2xl font-bold text-md mb-6 text-black">Mobile-Optimized Interface</h3>
-                <p class="text-md ">Our website is designed with a mobile-first approach, offering a seamless browsing experience across all devices, including smartphones and tablets.</p>
-
-            </div>
-        </div>
-
-        <div class="w-full sm:w-1/2 mb-4 px-2">
-            <div class="h-full py-4 px-6  transition-all  ease-in-out  hover:shadow-lg border-2 rounded-xl bg-gray-100 hover:bg-gray-100" >
-                <h3 class="text-2xl font-bold text-md mb-6 text-black">24/7 Customer Support</h3>
-                <p class="text-md ">Our U.S.-based customer support team is available around the clock to answer any questions, resolve any issues, and provide helpful solutions. Whether it's through email, phone, or live chat, we're always here to support you.</p>
-
-            </div>
-        </div>
-
-        <div class="w-full sm:w-1/2 mb-4 px-2">
-            <div class="h-full py-4 px-6  transition-all  ease-in-out  hover:shadow-lg border-2 rounded-xl bg-gray-100 hover:bg-gray-100" >
-                <h3 class="text-2xl font-bold text-md mb-6 text-black">Secure Payment Processing</h3>
-                <p class="text-md ">We use cutting-edge security measures to protect our customers' sensitive information and ensure the safety of all transactions made on our site.</p>
-
-            </div>
-        </div>
-    </div>
-
-        </div>
-    </div> --}}
-    <!-- Services Section Begin -->
-    {{-- <section class="services-section">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-6 " style="padding-right: 40px; padding-left:40;">
-                    <div class="services-pic">
-                        <img src="img/services/hany.png" alt=""  >
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="service-items">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="services-item bg-gray">
-                                    <img src="img/services/service-icon-1.png" alt="">
-                                    <h4>Body Building</h4>
-                                    <p>Build muscle and improve your physique with tailored programs.</p>
-                                </div>
-                                <div class="services-item bg-gray pd-b">
-                                    <img src="img/services/service-icon-3.png" alt="">
-                                    <h4>Strength Training</h4>
-                                    <p>Increase strength and endurance with expert-led sessions.</p>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="services-item">
-                                    <img src="img/services/service-icon-2.png" alt="">
-                                    <h4>Cardio Workouts</h4>
-                                    <p>Boost stamina and burn calories with intense cardio routines.</p>
-                                </div>
-                                <div class="services-item pd-b">
-                                    <img src="img/services/service-icon-4.png" alt="">
-                                    <h4>HIIT</h4>
-                                    <p>Burn fat quickly with high-intensity interval training.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                </div>
-            </div>
-        </div>
-    </section> --}}
-
-
-    <!-- Services Section End -->
-
-    <!-- Membership Section Begin -->
-    {{-- <section class="membership-section spad  ">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title">
-                        <h2 style="color: #1D2229" class="font-extrabold">Membership Plans</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4">
-                    <div
-                        class="membership-item rounded-2xl shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl">
-                        <div class="mi-title rounded-t-2xl" style="background-color: #1D2229">
-                            <h4>1 Month</h4>
-                            <div class="triangle"></div>
-                        </div>
-                        <h2 class="mi-price" style="color: #F41E1E">Rs. 3000</h2>
-
-                        <!-- Added a description section -->
-                        <p class="text-gray-600 text-md px-4 py-2">
-                            Enjoy 1 month of full access to all our gym facilities, personal trainers, and classes.
-                            Ideal for short-term fitness goals!
-                        </p>
-
-                        <ul>
-                            <!-- List items can be added here -->
-                        </ul>
-                        <button type="button" style="background-color: #141414" ;
-                            onmouseover="this.style.backgroundColor='#F41E1E';"
-                            onmouseout="this.style.backgroundColor='#141414';"
-                            class="text-white bg-black hover:bg-red-600 focus:ring-4 focus:ring-blue-300 font-medium  text-md px-5 py-2.5 me-2 mb-2  focus:outline-none ">
-                            Register
-                            Now
-                        </button>
-                    </div>
-                </div>
-
-                <div class="col-lg-4">
-                    <div
-                        class="membership-item rounded-2xl shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl">
-                        <div class="mi-title rounded-t-2xl">
-                            <h4>1 Month</h4>
-                            <div class="triangle"></div>
-                        </div>
-                        <h2 class="mi-price" style="color: #F41E1E">Rs. 3000</h2>
-
-                        <!-- Added a description section -->
-                        <p class="text-gray-600 text-md px-4 py-2">
-                            Enjoy 1 month of full access to all our gym facilities, personal trainers, and classes.
-                            Ideal for short-term fitness goals!
-                        </p>
-
-                        <ul>
-                            <!-- List items can be added here -->
-                        </ul>
-                        <button type="button" style="background-color: #F41E1E" ;
-                            class="text-white  hover:bg-black focus:ring-4 focus:ring-blue-300 font-medium  text-md px-5 py-2.5 me-2 mb-2  focus:outline-none ">
-                            Register
-                            Now
-                        </button>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div
-                        class="membership-item rounded-2xl shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl">
-                        <div class="mi-title rounded-t-2xl">
-                            <h4>1 Month</h4>
-                            <div class="triangle"></div>
-                        </div>
-                        <h2 class="mi-price" style="color: #F41E1E">Rs. 3000</h2>
-
-                        <!-- Added a description section -->
-                        <p class="text-gray-600 text-md px-4 py-2">
-                            Enjoy 1 month of full access to all our gym facilities, personal trainers, and classes.
-                            Ideal for short-term fitness goals!
-                        </p>
-
-                        <ul>
-                            <!-- List items can be added here -->
-                        </ul>
-                        <button type="button" style="background-color: #F41E1E" ;
-                            class="text-white  hover:bg-black focus:ring-4 focus:ring-blue-300 font-medium  text-md px-5 py-2.5 me-2 mb-2  focus:outline-none ">
-                            Register
-                            Now
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row mt-10">
-                <div class="col-lg-4">
-                    <div
-                        class="membership-item rounded-2xl shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl">
-                        <div class="mi-title rounded-t-2xl">
-                            <h4>1 Month</h4>
-                            <div class="triangle"></div>
-                        </div>
-                        <h2 class="mi-price" style="color: #F41E1E">Rs. 3000</h2>
-
-                        <!-- Added a description section -->
-                        <p class="text-gray-600 text-md px-4 py-2">
-                            Enjoy 1 month of full access to all our gym facilities, personal trainers, and classes.
-                            Ideal for short-term fitness goals!
-                        </p>
-
-                        <ul>
-                            <!-- List items can be added here -->
-                        </ul>
-                        <button type="button" style="background-color: #F41E1E" ;
-                            class="text-white  hover:bg-black focus:ring-4 focus:ring-blue-300 font-medium  text-md px-5 py-2.5 me-2 mb-2  focus:outline-none ">
-                            Register
-                            Now
-                        </button>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div
-                        class="membership-item rounded-2xl shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl">
-                        <div class="mi-title rounded-t-2xl">
-                            <h4>1 Month</h4>
-                            <div class="triangle"></div>
-                        </div>
-                        <h2 class="mi-price" style="color: #F41E1E">Rs. 3000</h2>
-
-                        <!-- Added a description section -->
-                        <p class="text-gray-600 text-md px-4 py-2">
-                            Enjoy 1 month of full access to all our gym facilities, personal trainers, and classes.
-                            Ideal for short-term fitness goals!
-                        </p>
-
-                        <ul>
-                            <!-- List items can be added here -->
-                        </ul>
-                        <button type="button" style="background-color: #F41E1E" ;
-                            class="text-white  hover:bg-black focus:ring-4 focus:ring-blue-300 font-medium  text-md px-5 py-2.5 me-2 mb-2  focus:outline-none ">
-                            Register
-                            Now
-                        </button>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div
-                        class="membership-item rounded-2xl shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl">
-                        <div class="mi-title rounded-t-2xl">
-                            <h4>1 Month</h4>
-                            <div class="triangle"></div>
-                        </div>
-                        <h2 class="mi-price" style="color: #F41E1E">Rs. 3000</h2>
-
-                        <!-- Added a description section -->
-                        <p class="text-gray-600 text-md px-4 py-2">
-                            Enjoy 1 month of full access to all our gym facilities, personal trainers, and classes.
-                            Ideal for short-term fitness goals!
-                        </p>
-
-                        <ul>
-                            <!-- List items can be added here -->
-                        </ul>
-                        <button type="button" style="background-color: #F41E1E" ;
-                            class="text-white  hover:bg-black focus:ring-4 focus:ring-blue-300 font-medium  text-md px-5 py-2.5 me-2 mb-2  focus:outline-none ">
-                            Register
-                            Now
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> --}}
 
     <div class="text-center mt-20">
         <h2 class="text-[#F41E1E] text-lg font-bold uppercase mb-2 flex items-center justify-center">
@@ -987,7 +694,7 @@
         </div>
     </div>
     {{-- Team section end  --}}
- 
+
     <div class="max-w-6xl mx-auto py-10 text-center mt-20">
         <h2 class="text-[#F41E1E] text-lg font-bold uppercase mb-2 flex items-center justify-center">
             <span class="inline-block w-12 h-0.5 bg-[#F41E1E] mx-2">
@@ -1084,35 +791,6 @@
         </div>
     </section>
 
-
-    {{-- <section class="banner-section set-bg" data-setbg="img/banner-bg.jpg">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="banner-text">
-                        <h2 class="text-4xl font-extrabold font-manrope leading-normal lg:text-start">Start Your
-                            Fitness
-                            Journey Today</h2>
-                        <p>Unlock your full potential with personalized training programs designed to help you reach
-                            your goals. Let’s make
-                            progress, together.</p>
-                        <button type="button" style="background-color: #F41E1E; "
-                            onmouseover="this.style.backgroundColor='white'; this.style.color='black';"
-                            onmouseout="this.style.backgroundColor='#F41E1E'; this.style.color='white';"
-                            class=" focus:ring-4 focus:ring-blue-300 font-medium text-md px-5 py-2.5 me-2 mb-2 focus:outline-none">
-                            Register Now
-                        </button>
-
-
-                    </div>
-                </div>
-                <div class="col-lg-5">
-                    <img src="img/banner-person.png" alt="">
-                </div>
-            </div>
-        </div>
-    </section> --}}
-    <!-- Banner Section End -->
 
     {{--    <!-- Testimonial Section Begin --> --}}
     {{--    <section class="testimonial-section spad bg-blue-900"> --}}
@@ -1316,16 +994,16 @@
 
     <div class="container mx-auto p-8 mt-20">
         <div class="text-center">
-<h2 class="text-[#F41E1E] text-lg font-bold uppercase mb-2 flex items-center justify-center">
-            <span class="inline-block w-12 h-0.5 bg-[#F41E1E] mx-2">
-            </span>
-            Blog
-            <span class="inline-block w-12 h-0.5 bg-[#F41E1E] mx-2">
-            </span>
-        </h2>
-        <h1 class="text-4xl font-extrabold mb-20 text-gray-900">
-            Easy Step To Achieve Your Goals.
-        </h1>
+            <h2 class="text-[#F41E1E] text-lg font-bold uppercase mb-2 flex items-center justify-center">
+                <span class="inline-block w-12 h-0.5 bg-[#F41E1E] mx-2">
+                </span>
+                Blog
+                <span class="inline-block w-12 h-0.5 bg-[#F41E1E] mx-2">
+                </span>
+            </h2>
+            <h1 class="text-4xl font-extrabold mb-20 text-gray-900">
+                Easy Step To Achieve Your Goals.
+            </h1>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">

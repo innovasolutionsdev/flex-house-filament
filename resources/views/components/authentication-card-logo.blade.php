@@ -1,3 +1,3 @@
 <a href="/">
-    <img width="200" src="img/just-eat-high-resolution-logo-transparent.png" id="logo" >
+    <img width="100" src="logo.png" id="logo" >
 </a>

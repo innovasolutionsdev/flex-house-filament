@@ -6,6 +6,9 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-9JTP7M54BJ"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
 
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+
     {{-- PWA Codes start --}}
     <meta name="apple-mobile-web-app-status-bar" content="#01d679" >
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -27,7 +30,7 @@
     <link rel="icon" type="image/png" sizes="384x384" href="{{ asset('/pwa/assets/icons/icon-384x384.png') }}">
     <link rel="icon" type="image/png" sizes="512x512" href="{{ asset('/pwa/assets/icons/icon-512x512.png') }}">
 
-    <meta name="theme-color" content="#6777ef" />
+    <meta name="theme-color" content="transparent" />
     <link rel="manifest" href="{{ asset('/manifest.json') }}">
     {{-- PWA Codes end --}}
 
@@ -38,7 +41,7 @@
     <title>Innova Solutions</title>
 
     <link rel="shortcut icon" href="{{ asset('img/favicon.png') }}" type="image/x-icon">
-
+ 
     <!-- Fonts -->
 
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -52,7 +55,7 @@
     <!-- Styles -->
 
     @livewireStyles
-    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    {{-- <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet"> --}}
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 

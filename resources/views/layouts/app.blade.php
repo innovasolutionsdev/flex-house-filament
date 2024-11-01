@@ -2,15 +2,8 @@
 
 <body class="font-sans antialiased">
 
-    <script>
-        if (window.matchMedia('(display-mode: standalone)').matches) {
-
-        } else {
-            document.write(`@livewire('navigation-menu')`);
-        }
-    </script>
     {{-- @livewire('navigation-menu') --}}
-
+    @include('layouts.navbar')
 
     <!-- Page Content -->
     <main>

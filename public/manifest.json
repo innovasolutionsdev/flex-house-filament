@@ -5,8 +5,8 @@
 
     "description": "Innova Solutions Global is a software development company that provides software solutions to businesses and individuals.",
     "display": "standalone",
-    "background_color": "#ffffff",
-    "theme_color": "#ffffff",
+    "background_color": "transparent",
+    "theme_color": "transparent",
     "orientation": "portrait-primary",
     "lang": "en-US",
 
