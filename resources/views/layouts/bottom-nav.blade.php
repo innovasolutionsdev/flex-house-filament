@@ -1,16 +1,16 @@
-{{-- <div id="bottom-nav" class="flex items-center justify-center pt-20" style="display: none;"> --}}
-<div id="bottom-nav" class="flex items-center justify-center pt-20" >
+<div id="bottom-nav" class="flex items-center justify-center pt-20" style="display: none;">
+{{-- <div id="bottom-nav" class="flex items-center justify-center pt-20" > --}}
     <div class="fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-900 p-2 flex justify-around border-t border-gray-400 dark:border-gray-700">
-        <a href="#" class="nav-item flex items-center justify-center w-12 h-12 rounded-full cursor-pointer active" onclick="activateNavItem(this)" style="transition: background-color 0.2s; background-color: #F41E1E;">
+        <a  href="/admin" class="nav-item flex items-center justify-center w-12 h-12 rounded-full cursor-pointer active" onclick="activateNavItem(this)" style="transition: background-color 0.2s; background-color: #F41E1E;">
             <i class="fas fa-th-large text-black dark:text-white text-xl"></i> <!-- Dashboard Icon (Four Squares Block) -->
         </a>
-        <a href="#" class="nav-item flex items-center justify-center w-12 h-12 rounded-full cursor-pointer" onclick="activateNavItem(this)" style="transition: background-color 0.2s;">
+        <a href="{{ url('/cart') }}" class="nav-item flex items-center justify-center w-12 h-12 rounded-full cursor-pointer" onclick="activateNavItem(this)" style="transition: background-color 0.2s;">
             <i class="fas fa-shopping-cart text-black dark:text-white text-xl"></i> <!-- Shop Icon -->
         </a>
-        <a href="#" class="nav-item flex items-center justify-center w-12 h-12 rounded-full cursor-pointer" onclick="activateNavItem(this)" style="transition: background-color 0.2s;">
+        <a href="{{ url('/products') }}" class="nav-item flex items-center justify-center w-12 h-12 rounded-full cursor-pointer" onclick="activateNavItem(this)" style="transition: background-color 0.2s;">
             <i class="fas fa-store text-black dark:text-white text-xl"></i> <!-- Store Icon -->
         </a>
-        <a href="#" class="nav-item flex items-center justify-center w-12 h-12 rounded-full cursor-pointer" onclick="activateNavItem(this)" style="transition: background-color 0.2s;">
+        <a href="/user/profile" class="nav-item flex items-center justify-center w-12 h-12 rounded-full cursor-pointer" onclick="activateNavItem(this)" style="transition: background-color 0.2s;">
             <i class="fas fa-user text-black dark:text-white text-xl"></i> <!-- Profile Icon -->
         </a>
     </div>
