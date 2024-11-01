@@ -33,6 +33,8 @@ use Spatie\Sitemap\Sitemap;
 // Override the default login route
 //Route::post('/login', [AuthenticatedSessionController::class, 'store']);
 
+Route::post('save-push-notification-sub', [\App\Http\Controllers\PushNotificationController::class, 'saveSubscription']);
+
 Route::get('/sitemap', function () {
     $sitemap = Sitemap::create();
 

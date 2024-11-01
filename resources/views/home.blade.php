@@ -1387,33 +1387,33 @@
                 <div class="space-y-4 mt-8">
 
                     <div class="grid grid-cols-2 gap-6">
-                        <input type="text" placeholder="First Name"
+                        <input type="text" placeholder="First Name" name="first_name"
                             class="px-2 py-3 bg-white w-full text-gray-800 text-sm border border-gray-300 focus:border-red-600 outline-none rounded-2xl" />
 
-                        <input type="text" placeholder="Last Name"
+                        <input type="text" placeholder="Last Name" name="last_name"
                             class="px-2 py-3 bg-white w-full text-gray-800 text-sm border border-gray-300 focus:border-red-600 outline-none rounded-2xl" />
                     </div>
                     <div class="grid grid-cols-2 gap-6">
-                        <input type="number" placeholder="Phone No."
+                        <input type="number" placeholder="Phone No." name="phone"
                             class="px-2 py-3 bg-white w-full text-gray-800 text-sm border border-gray-300 focus:border-red-600 outline-none rounded-2xl" />
 
-                        <input type="email" placeholder="Email"
+                        <input type="email" placeholder="Email" name="email"
                             class="px-2 py-3 bg-white w-full text-gray-800 text-sm border border-gray-300 focus:border-red-600 outline-none rounded-2xl" />
                     </div>
 
                     <div class="grid grid-cols-2 gap-6">
-                        <input type="date" placeholder="Date"
+                        <input type="date" placeholder="Date" name="date"
                             class="px-2 py-3 bg-white w-full text-gray-800 text-sm border border-gray-300 focus:border-red-600 outline-none rounded-2xl" />
 
-                        <input type="time" placeholder="Time"
+                        <input type="time" placeholder="Time" name="time"
                             class="px-2 py-3 bg-white w-full text-gray-800 text-sm border border-gray-300 focus:border-red-600 outline-none rounded-2xl" />
                     </div>
 
-                    <textarea placeholder="Write Message"
+                    <textarea placeholder="Write Message" name="note"
                         class="px-2 pt-3 bg-white w-full text-gray-800 text-sm border border-gray-300 focus:border-red-600 outline-none rounded-2xl"></textarea>
                 </div>
 
-                <button type="button"
+                <button type="submit"
                     class="mt-8 flex items-center justify-center text-sm w-full rounded-xl px-6 py-3 bg-black hover:bg-red-600 text-white">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" fill='#fff'
                         class="mr-2" viewBox="0 0 548.244 548.244">

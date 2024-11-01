@@ -61,7 +61,45 @@
     @stack('modals')
     @livewireScripts
 
+<script>
+    navigator.serviceWorker.register("{{URL::asset('service-worker.js')}}");
+
+
+        Notification.requestPermission().then((permission) => {
+            if (permission === 'granted') {
+                navigator.serviceWorker.ready.then((sw) => {
+                    sw.pushManager.subscribe({
+                        userVisibleOnly: true,
+                        applicationServerKey: "BFT0mbmT0C7jz1wieAxMEN19NUVJPNaZrbEj20qm2VF7hlOHhIzQqAuMBfFIrkCRNpUd8lNO3_smXhI9cpxuzBk"
+                    }).then((subscription) => {
+                        console.log(subscription);
+                        saveSub(JSON.stringify(subscription));
+                    });
+                });
+            }
+        });
+function saveSub(sub){
+    $.ajax({
+        type: 'post',
+        url: '{{URL('save-push-notification-sub')}}',
+        data: {
+            '_token': "{{csrf_token()}}",
+            'sub': sub
+        },
+        success: function (data) {
+            console.log(data);
+        }
+    })
+}
+
+</script>
+
 </body>
 
 </html>
 
+{{--Public Key:--}}
+{{--BFT0mbmT0C7jz1wieAxMEN19NUVJPNaZrbEj20qm2VF7hlOHhIzQqAuMBfFIrkCRNpUd8lNO3_smXhI9cpxuzBk--}}
+
+{{--Private Key:--}}
+{{--bTTs2WSJ823qZYpumH4fJzWgkcN9fy8EfBVSdwoBZT0--}}
