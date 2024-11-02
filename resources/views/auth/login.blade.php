@@ -1,5 +1,7 @@
 <x-app-layout>
+
     <x-authentication-card>
+
         <x-slot name="logo">
             <x-authentication-card-logo />
         </x-slot>
@@ -44,5 +46,9 @@
                 </x-button>
             </div>
         </form>
+
     </x-authentication-card>
+
+
+
 </x-app-layout>
