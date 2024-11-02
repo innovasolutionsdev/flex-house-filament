@@ -6,7 +6,9 @@ use App\Models\Booking;
 use App\Models\User;
 use App\Notifications\BookingSubmitted;
 use App\Services\Notificationservice;
+use Exception;
 use Illuminate\Http\Request;
+use Twilio\Rest\Client;
 
 class BookingController extends Controller
 {
@@ -58,14 +60,43 @@ class BookingController extends Controller
             }
         }
 
-        $this->notificationService->sendNotification(
-            'New Booking Received',
-            'A new booking has been made. Check the admin dashboard for details.',
-            '/path/to/icon.png',
-            '/admin/bookings'
-        );
+        {
 
-        return redirect()->back()->with('success', 'Booking submitted successfully');
+            $twilioSid = env('TWILIO_SID');
+            $twilioAuthToken = env('TWILIO_AUTH_TOKEN');
+            $twilioWhatsappNumber = 'whatsapp:'.env('TWILIO_WHATSAPP_NUMBER');
+            // Get the recipient's WhatsApp number and message content from the request
+            $to = 'whatsapp:+94'.$request->input('phone');
+
+            // Create a new Twilio client using the SID and Auth Token
+            $client = new Client($twilioSid, $twilioAuthToken);
+            try {
+                // Send the WhatsApp message using Twilio's API
+                $message = $client->messages->create(
+                    $to,
+                    array(
+                        'from' => $twilioWhatsappNumber,
+                        'body' => "Hello {$request->input('first_name')}! 🏋️‍♂️
+
+Your private session is successfully booked! at Flexhouse Here are the details:
+
+Date:{$request->input('date')}
+Time: {$request->input('time')}
+
+Please arrive a few minutes early and come prepared. If you need to reschedule, feel free to reply to this message or contact us at [Gym Contact Number].
+
+Looking forward to helping you achieve your fitness goals! 💪"
+                    )
+                );
+                // Return success message with the message SID for reference
+
+            } catch (Exception $e) {
+                // Catch any errors and return the error message
+                return "Error sending message: " . $e->getMessage();
+            }
+        }
+
+       return redirect()->back()->with('success', 'Booking submitted successfully');
     }
 
     /**

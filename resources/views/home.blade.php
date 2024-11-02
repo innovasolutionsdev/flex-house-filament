@@ -925,6 +925,8 @@
                             <input type="number" placeholder="Phone No." name="phone"
                                    class="px-2 py-3 bg-white w-full text-gray-800 text-sm border border-gray-300 focus:border-red-600 outline-none rounded-2xl" />
 
+
+
                             <input type="email" placeholder="Email" name="email"
                                    class="px-2 py-3 bg-white w-full text-gray-800 text-sm border border-gray-300 focus:border-red-600 outline-none rounded-2xl" />
                         </div>

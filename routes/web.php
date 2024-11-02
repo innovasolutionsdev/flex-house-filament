@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\WhatsappController;
 use App\Models\Schedule;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -53,7 +54,10 @@ Route::get('/thank-you-cod', function () {
     return view('pages.thank-you-cod-page');
 })->name('thank.you.cod');
 
+//Whatsapp routes
 
+//Route::get('/', [WhatsAppController::class, 'index']);
+//Route::post('whatsapp', [WhatsAppController::class, 'store']);
 
 //Dashboard routes
 
