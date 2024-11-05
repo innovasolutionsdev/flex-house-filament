@@ -107,3 +107,7 @@ Route::middleware([
     'verified',
 ])->group(function () {
 });
+//route for D:\Innova Solutions\flex-house-filament\resources\views\pages\blog-details.blade.php
+Route::get('/blog-details', function () {
+    return view('pages.blog-details');
+})->name('blog.details');
