@@ -86,11 +86,6 @@ class UserResource extends Resource
                         'danger' => 'Inactive',  // Red for inactive
                     ]),
 
-
-
-
-
-
 //
             ])
             ->filters([
