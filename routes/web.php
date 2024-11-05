@@ -15,6 +15,7 @@ use Spatie\Sitemap\Tags\Url;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Models\WorkoutLog;
 use Spatie\Sitemap\Sitemap;
+use App\Models\MembershipPayment;
 
 /*
 |--------------------------------------------------------------------------
@@ -117,3 +118,12 @@ Route::middleware([
 Route::get('/blog-details', function () {
     return view('pages.blog-details');
 })->name('blog.details');
+//D:\Innova Solutions\flex-house-filament\resources\views\membership\show.blade.php route
+// Route::get('/membership', function () {
+//     return view('membership.show');
+// })->name('membership.show');
+
+Route::get('/membership-payments/{id}', function ($id) {
+    $payment = MembershipPayment::with('user')->findOrFail($id);
+    return view('membership.show', compact('payment'));
+})->name('membership.show');
