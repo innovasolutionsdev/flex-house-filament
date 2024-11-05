@@ -43,5 +43,9 @@ class DatabaseSeeder extends Seeder
             SheduleDataSeeder::class,
         ]);
 
+        $this -> call([
+            TransactionSeeder::class,
+        ]);
+
     }
 }
