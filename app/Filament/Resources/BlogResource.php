@@ -7,6 +7,7 @@ use App\Filament\Resources\BlogResource\RelationManagers;
 use App\Models\Blog;
 use App\Models\BlogPost;
 use Filament\Forms;
+use Filament\Forms\Components\Tabs\Tab;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -81,13 +82,21 @@ class BlogResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('title')->label('Title'),
+                Tables\Columns\TextColumn::make('title')->label('Title')->searchable(),
                 Tables\Columns\ImageColumn::make('thumbnail')
                     ->label('Thumbnail')
                     ->getStateUsing(fn($record) => $record->getFirstMediaUrl('thumbnails')),
-                Tables\Columns\TextColumn::make('description')->label('Description'),
-                Tables\Columns\TextColumn::make('tags')->label('Tags'),
-                Tables\Columns\TextColumn::make('publication_date')->label('Date of publish'),
+
+                Tables\Columns\BadgeColumn::make('status')
+                    ->label('Status')
+                    ->getStateUsing(function ($record) {
+                        return $record->status === 'draft' ? 'Draft' : 'Published';
+                    })
+                    ->colors([
+                        'gray' => 'Draft', // Green for active
+                        'success' => 'Published',  // Red for inactive
+                    ]),
+                Tables\Columns\TextColumn::make('publication_date')->label('Date of publish')->sortable(),
             ])
             ->filters([
                 //
@@ -95,6 +104,7 @@ class BlogResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
+                Tables\Actions\ViewAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
