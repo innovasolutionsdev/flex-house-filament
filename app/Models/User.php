@@ -83,10 +83,7 @@ class User extends Authenticatable
         return $this->hasMany(Subscription::class);
     }
 
-    // public function schedules()
-    // {
-    //     return $this->belongsToMany(Schedule::class, 'schedule_user');
-    // }
+
 
     public function scheduleAssignments()
     {
@@ -104,5 +101,12 @@ class User extends Authenticatable
     {
         return $this->membership_end_date && $this->membership_end_date->isFuture();
     }
+
+    // Assuming you have this relationship in your model:
+    public function membership()
+    {
+        return $this->belongsTo(MembershipPlan::class, 'membership_id');
+    }
+
 
 }

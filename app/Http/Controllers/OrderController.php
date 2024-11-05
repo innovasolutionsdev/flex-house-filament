@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Models\order_product;
 use App\Models\Subscription;
+use App\Models\Transaction;
 use App\Models\User;
 use App\Notifications\OrderPlacedNotification;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -37,6 +38,13 @@ class OrderController extends Controller
 
 
 
+        $transaction = new Transaction();
+        $transaction->amount = Cart::subtotal();
+        $transaction->type = 'income';
+        $transaction->description = 'Order Payment';
+        $transaction->date = now();
+        $transaction->category_id = 1;
+        $transaction->save();
 
         $admin = User::where('role', 1)->first();  // Or get the admin(s) another way
         $admin->notify(new OrderPlacedNotification($order));

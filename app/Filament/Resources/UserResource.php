@@ -93,7 +93,10 @@ class UserResource extends Resource
                         'success' => 'Active', // Green for active
                         'danger' => 'Inactive',  // Red for inactive
                     ]),
-                Tables\Columns\TextColumn::make('membership_id')
+                Tables\Columns\TextColumn::make('membership.name')->label('Membership Plan')
+
+
+
 //
             ])
             ->filters([
