@@ -29,22 +29,22 @@ class ScheduleResource extends Resource
     {
         return $form
             ->schema([
-            TextInput::make('name')
-            ->required(),
-            HasManyRepeater::make('workouts')
-            ->relationship('workouts')  // Link to workouts
-            ->schema([
                 TextInput::make('name')
-                    ->label('Workout Name'),
-                HasManyRepeater::make('exercises')
-                    ->relationship('exercises')  // Link to exercises
+                    ->required(),
+                HasManyRepeater::make('workouts')
+                    ->relationship('workouts')  // Link to workouts
                     ->schema([
-                        TextInput::make('name')->label('Exercise Name'),
-                        TextInput::make('sets')->label('Sets'),
-                        TextInput::make('reps')->label('Reps'),
-                        TextInput::make('rest_time')->label('Rest Time (in seconds)'),
+                        TextInput::make('name')
+                            ->label('Workout Name'),
+                        HasManyRepeater::make('exercises')
+                            ->relationship('exercises')  // Link to exercises
+                            ->schema([
+                                TextInput::make('name')->label('Exercise Name'),
+                                TextInput::make('sets')->label('Sets'),
+                                TextInput::make('reps')->label('Reps'),
+                                TextInput::make('rest_time')->label('Rest Time (in seconds)'),
+                            ]),
                     ]),
-            ]),
             ]);
     }
 
@@ -65,21 +65,15 @@ class ScheduleResource extends Resource
             ->filters([
                 //
             ])
-            ->actions([Tables\Actions\ViewAction::make(), // Add a view action to view schedule details
+            ->actions([
+                // Tables\Actions\ViewAction::make(), // Add a view action to view schedule details
+                Tables\Actions\ViewAction::make()
+                    ->url(fn(Schedule $record) => route('schedules.show', $record->id)), // Redirect to the custom Blade view,
             ])
-            ->bulkActions([
-                // Tables\Actions\BulkActionGroup::make([
-                //     Tables\Actions\DeleteBulkAction::make(),
-                // ]),
-            ])
+            ->bulkActions([])
 
-            // ->query(function (Builder $query) {
-            //     // Fetch schedules assigned to the authenticated user
-            //     return $query->whereHas('scheduleAssignments', function ($q) {
-            //         $q->where('user_id', auth()->id());
-            //     });
-            // })
-            ;
+
+        ;
     }
 
     public static function getRelations(): array

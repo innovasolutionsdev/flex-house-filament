@@ -3,6 +3,7 @@
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\OrderController;
 use App\Models\Schedule;
+use App\Models\Workout;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
@@ -63,9 +64,9 @@ Route::get('/workout-log/{id}', function ($id) {
     return view('workoutlog.show', ['workoutLog' => $workoutLog]);
 })->name('workout-log.show');
 
-Route::get('/schedules/{schedule}', function (Schedule $schedule) {
-    return view('filament.custom-schedule-view', compact('schedule'));
-})->name('filament.resources.schedules.view');
+// Route::get('/schedules/{schedule}', function (Schedule $schedule) {
+//     return view('filament.custom-schedule-view', compact('schedule'));
+// })->name('filament.resources.schedules.view');
 
 Route::get('/schedules/{schedule}', function (Schedule $schedule) {
     // Load related data like workouts and exercises if needed
@@ -75,6 +76,11 @@ Route::get('/schedules/{schedule}', function (Schedule $schedule) {
     return view('schedules.show', ['schedule' => $schedule]);
 })->name('schedules.show');
 
+
+Route::get('/workouts/{id}', function ($id) {
+    $workout = Workout::with('exercises')->findOrFail($id);
+    return view('workout.show', compact('workout'));
+})->name('workout.show');
 
 // Creating a sitemap
 
