@@ -1,4 +1,4 @@
-
+<div>
     <div class="container mx-auto p-4">
         <div class="flex flex-col lg:flex-row">
             <!-- Sidebar -->
@@ -131,152 +131,152 @@
         </div>
     </div>
     <!-- Mobile Sidebar -->
-{{--    <div class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden" id="mobileSidebar">--}}
-{{--        <div class="fixed inset-y-0 left-0 bg-white w-3/4 p-4 overflow-y-auto">--}}
-{{--            <button class="text-gray-700 mb-4" onclick="toggleSidebar()">--}}
-{{--                <i class="fas fa-times">--}}
-{{--                </i>--}}
-{{--            </button>--}}
-{{--            <div class="bg-white p-4 shadow-md rounded-lg">--}}
-{{--                <h2 class="text-xl font-bold border-b-2 border-yellow-500 pb-2 mb-4">--}}
-{{--                    Categories--}}
-{{--                </h2>--}}
-{{--                <ul class="space-y-2">--}}
-{{--                    <li>--}}
-{{--                        <a class="flex items-center text-gray-700" href="#">--}}
-{{--                            <i class="fas fa-caret-right mr-2">--}}
-{{--                            </i>--}}
-{{--                            Apparel and Accessories (5)--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
-{{--                    <li>--}}
-{{--                        <a class="flex items-center text-gray-700" href="#">--}}
-{{--                            <i class="fas fa-caret-right mr-2">--}}
-{{--                            </i>--}}
-{{--                            BCAAs (2)--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
-{{--                    <li>--}}
-{{--                        <a class="flex items-center text-gray-700" href="#">--}}
-{{--                            <i class="fas fa-caret-right mr-2">--}}
-{{--                            </i>--}}
-{{--                            Creatines and Recovery (11)--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
-{{--                    <li>--}}
-{{--                        <a class="flex items-center text-gray-700" href="#">--}}
-{{--                            <i class="fas fa-caret-right mr-2">--}}
-{{--                            </i>--}}
-{{--                            Fat burners (5)--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
-{{--                    <li>--}}
-{{--                        <a class="flex items-center text-gray-700" href="#">--}}
-{{--                            <i class="fas fa-caret-right mr-2">--}}
-{{--                            </i>--}}
-{{--                            Giftboxes (5)--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
-{{--                    <li>--}}
-{{--                        <a class="flex items-center text-gray-700" href="#">--}}
-{{--                            <i class="fas fa-caret-right mr-2">--}}
-{{--                            </i>--}}
-{{--                            Mass gainers (5)--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
-{{--                    <li>--}}
-{{--                        <a class="flex items-center text-gray-700" href="#">--}}
-{{--                            <i class="fas fa-caret-right mr-2">--}}
-{{--                            </i>--}}
-{{--                            Pre Workouts (13)--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
-{{--                    <li>--}}
-{{--                        <a class="flex items-center text-gray-700" href="#">--}}
-{{--                            <i class="fas fa-caret-right mr-2">--}}
-{{--                            </i>--}}
-{{--                            Protein (5)--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
-{{--                    <li>--}}
-{{--                        <a class="flex items-center text-gray-700" href="#">--}}
-{{--                            <i class="fas fa-caret-right mr-2">--}}
-{{--                            </i>--}}
-{{--                            Protein Bars &amp; Energy Cans (4)--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
-{{--                    <li>--}}
-{{--                        <a class="flex items-center text-gray-700" href="#">--}}
-{{--                            <i class="fas fa-caret-right mr-2">--}}
-{{--                            </i>--}}
-{{--                            Vitamins &amp; Fish Oils (5)--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
-{{--                </ul>--}}
-{{--            </div>--}}
-{{--            <div class="bg-white p-4 shadow-md mt-4 rounded-lg">--}}
-{{--                <h2 class="text-xl font-bold border-b-2 border-yellow-500 pb-2 mb-4">--}}
-{{--                    Brands--}}
-{{--                </h2>--}}
-{{--                <ul class="space-y-2">--}}
-{{--                    <li>--}}
-{{--                        <a class="flex items-center text-gray-700" href="#">--}}
-{{--                            <i class="fas fa-caret-right mr-2">--}}
-{{--                            </i>--}}
-{{--                            Muscletech (10)--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
-{{--                    <li>--}}
-{{--                        <a class="flex items-center text-gray-700" href="#">--}}
-{{--                            <i class="fas fa-caret-right mr-2">--}}
-{{--                            </i>--}}
-{{--                            Inner Armor (8)--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
-{{--                    <li>--}}
-{{--                        <a class="flex items-center text-gray-700" href="#">--}}
-{{--                            <i class="fas fa-caret-right mr-2">--}}
-{{--                            </i>--}}
-{{--                            Dymatize (12)--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
-{{--                    <li>--}}
-{{--                        <a class="flex items-center text-gray-700" href="#">--}}
-{{--                            <i class="fas fa-caret-right mr-2">--}}
-{{--                            </i>--}}
-{{--                            Optimum Nutrition (15)--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
-{{--                    <li>--}}
-{{--                        <a class="flex items-center text-gray-700" href="#">--}}
-{{--                            <i class="fas fa-caret-right mr-2">--}}
-{{--                            </i>--}}
-{{--                            BSN (7)--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
-{{--                    <li>--}}
-{{--                        <a class="flex items-center text-gray-700" href="#">--}}
-{{--                            <i class="fas fa-caret-right mr-2">--}}
-{{--                            </i>--}}
-{{--                            Universal Nutrition (5)--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
-{{--                    <li>--}}
-{{--                        <a class="flex items-center text-gray-700" href="#">--}}
-{{--                            <i class="fas fa-caret-right mr-2">--}}
-{{--                            </i>--}}
-{{--                            Cellucor (6)--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
-{{--                    <li>--}}
-{{--                        <a class="flex items-center text-gray-700" href="#">--}}
-{{--                            <i class="fas fa-caret-right mr-2">--}}
-{{--                            </i>--}}
-{{--                            Gaspari Nutrition (4)--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
-{{--                </ul>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
-
+    <div class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden" id="mobileSidebar">
+        <div class="fixed inset-y-0 left-0 bg-white w-3/4 p-4 overflow-y-auto">
+            <button class="text-gray-700 mb-4" onclick="toggleSidebar()">
+                <i class="fas fa-times">
+                </i>
+            </button>
+            <div class="bg-white p-4 shadow-md rounded-lg">
+                <h2 class="text-xl font-bold border-b-2 border-yellow-500 pb-2 mb-4">
+                    Categories
+                </h2>
+                <ul class="space-y-2">
+                    <li>
+                        <a class="flex items-center text-gray-700" href="#">
+                            <i class="fas fa-caret-right mr-2">
+                            </i>
+                            Apparel and Accessories (5)
+                        </a>
+                    </li>
+                    <li>
+                        <a class="flex items-center text-gray-700" href="#">
+                            <i class="fas fa-caret-right mr-2">
+                            </i>
+                            BCAAs (2)
+                        </a>
+                    </li>
+                    <li>
+                        <a class="flex items-center text-gray-700" href="#">
+                            <i class="fas fa-caret-right mr-2">
+                            </i>
+                            Creatines and Recovery (11)
+                        </a>
+                    </li>
+                    <li>
+                        <a class="flex items-center text-gray-700" href="#">
+                            <i class="fas fa-caret-right mr-2">
+                            </i>
+                            Fat burners (5)
+                        </a>
+                    </li>
+                    <li>
+                        <a class="flex items-center text-gray-700" href="#">
+                            <i class="fas fa-caret-right mr-2">
+                            </i>
+                            Giftboxes (5)
+                        </a>
+                    </li>
+                    <li>
+                        <a class="flex items-center text-gray-700" href="#">
+                            <i class="fas fa-caret-right mr-2">
+                            </i>
+                            Mass gainers (5)
+                        </a>
+                    </li>
+                    <li>
+                        <a class="flex items-center text-gray-700" href="#">
+                            <i class="fas fa-caret-right mr-2">
+                            </i>
+                            Pre Workouts (13)
+                        </a>
+                    </li>
+                    <li>
+                        <a class="flex items-center text-gray-700" href="#">
+                            <i class="fas fa-caret-right mr-2">
+                            </i>
+                            Protein (5)
+                        </a>
+                    </li>
+                    <li>
+                        <a class="flex items-center text-gray-700" href="#">
+                            <i class="fas fa-caret-right mr-2">
+                            </i>
+                            Protein Bars &amp; Energy Cans (4)
+                        </a>
+                    </li>
+                    <li>
+                        <a class="flex items-center text-gray-700" href="#">
+                            <i class="fas fa-caret-right mr-2">
+                            </i>
+                            Vitamins &amp; Fish Oils (5)
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="bg-white p-4 shadow-md mt-4 rounded-lg">
+                <h2 class="text-xl font-bold border-b-2 border-yellow-500 pb-2 mb-4">
+                    Brands
+                </h2>
+                <ul class="space-y-2">
+                    <li>
+                        <a class="flex items-center text-gray-700" href="#">
+                            <i class="fas fa-caret-right mr-2">
+                            </i>
+                            Muscletech (10)
+                        </a>
+                    </li>
+                    <li>
+                        <a class="flex items-center text-gray-700" href="#">
+                            <i class="fas fa-caret-right mr-2">
+                            </i>
+                            Inner Armor (8)
+                        </a>
+                    </li>
+                    <li>
+                        <a class="flex items-center text-gray-700" href="#">
+                            <i class="fas fa-caret-right mr-2">
+                            </i>
+                            Dymatize (12)
+                        </a>
+                    </li>
+                    <li>
+                        <a class="flex items-center text-gray-700" href="#">
+                            <i class="fas fa-caret-right mr-2">
+                            </i>
+                            Optimum Nutrition (15)
+                        </a>
+                    </li>
+                    <li>
+                        <a class="flex items-center text-gray-700" href="#">
+                            <i class="fas fa-caret-right mr-2">
+                            </i>
+                            BSN (7)
+                        </a>
+                    </li>
+                    <li>
+                        <a class="flex items-center text-gray-700" href="#">
+                            <i class="fas fa-caret-right mr-2">
+                            </i>
+                            Universal Nutrition (5)
+                        </a>
+                    </li>
+                    <li>
+                        <a class="flex items-center text-gray-700" href="#">
+                            <i class="fas fa-caret-right mr-2">
+                            </i>
+                            Cellucor (6)
+                        </a>
+                    </li>
+                    <li>
+                        <a class="flex items-center text-gray-700" href="#">
+                            <i class="fas fa-caret-right mr-2">
+                            </i>
+                            Gaspari Nutrition (4)
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
