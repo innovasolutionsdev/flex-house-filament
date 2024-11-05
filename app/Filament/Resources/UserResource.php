@@ -8,6 +8,7 @@ use App\Models\MembershipPlan;
 use App\Models\User;
 use Carbon\Carbon;
 use Filament\Forms;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -33,7 +34,14 @@ class UserResource extends Resource
             ->schema([
                     Forms\Components\TextInput::make('name')->required(),
                     Forms\Components\TextInput::make('email')->required()->email(),
-                    Forms\Components\TextInput::make('password')->required()->password(),
+                TextInput::make('password')
+                    ->password()
+                    ->label('Password')
+                    ->required(fn($livewire) => $livewire instanceof Pages\CreateUser) // Required only on create
+                    ->dehydrateStateUsing(fn($state) => $state ? bcrypt($state) : null) // Hash only if password is entered
+                    ->nullable()
+                    ->dehydrated(fn($state) => filled($state)) // Only save if field is filled
+                    ->label('New Password'),
                     Forms\Components\Select::make('membership_id')
                     ->label('Membership Plan')
                     ->options(MembershipPlan::all()->pluck('name', 'id'))
@@ -85,12 +93,7 @@ class UserResource extends Resource
                         'success' => 'Active', // Green for active
                         'danger' => 'Inactive',  // Red for inactive
                     ]),
-
-
-
-
-
-
+                Tables\Columns\TextColumn::make('membership_id')
 //
             ])
             ->filters([

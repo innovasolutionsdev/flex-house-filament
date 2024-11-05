@@ -12,20 +12,39 @@ class Products extends Component
 {
     public $products;
     public array $quantity = [];
+    public $selectedCategory = null;
 
-    public function mount(){
-        $this->products = Product::all();
+    public function mount()
+    {
+        $this->loadProducts();
     }
 
     protected $listeners = ['cart_updated' => 'render'];
 
     public function render()
     {
-
         $categories = ProductCategory::all();
         $brands = ProductBrand::all();
 
-        return view('livewire.products', compact( 'categories', 'brands'));
+        return view('livewire.products', [
+            'categories' => $categories,
+            'brands' => $brands,
+            'products' => $this->products // Pass the products to the view
+        ]);
+    }
+
+    public function loadProducts()
+    {
+        // If a category is selected, filter products by category; otherwise, fetch all products
+        $this->products = $this->selectedCategory
+            ? Product::where('category_id', $this->selectedCategory)->get()
+            : Product::all();
+    }
+
+    public function filterByCategory($categoryId)
+    {
+        $this->selectedCategory = $categoryId;
+        $this->loadProducts();
     }
 
 

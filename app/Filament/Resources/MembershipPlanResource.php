@@ -31,6 +31,17 @@ class MembershipPlanResource extends Resource
                     ->required(),
                 Forms\Components\TextInput::make('duration')
                     ->required(),
+
+                Forms\Components\Toggle::make('discount')
+                    ->label('Discount')
+                    ->default(false),
+
+                //descption
+                Forms\Components\RichEditor::make('description')
+                    ->columnSpan('full')
+                    ->required(),
+
+
             ]);
     }
 
@@ -41,6 +52,7 @@ class MembershipPlanResource extends Resource
                 Tables\Columns\TextColumn::make('name')->sortable()->searchable(),
                 Tables\Columns\TextColumn::make('price')->sortable(),
                 Tables\Columns\TextColumn::make('duration')->sortable(),
+                Tables\Columns\BooleanColumn::make('discount')->label('Discount')->sortable(),
 
             ])
             ->filters([
