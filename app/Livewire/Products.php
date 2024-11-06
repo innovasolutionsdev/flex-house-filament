@@ -13,6 +13,7 @@ class Products extends Component
     public $products;
     public array $quantity = [];
     public $selectedCategory = null;
+    public $categoryName = 'All Products';
 
     public function mount()
     {
@@ -29,13 +30,14 @@ class Products extends Component
         return view('livewire.products', [
             'categories' => $categories,
             'brands' => $brands,
-            'products' => $this->products // Pass the products to the view
+            'products' => $this->products,
+            'categoryName' => $this->categoryName
         ]);
     }
 
     public function loadProducts()
     {
-        // If a category is selected, filter products by category; otherwise, fetch all products
+        // Filter products based on selected category
         $this->products = $this->selectedCategory
             ? Product::where('category_id', $this->selectedCategory)->get()
             : Product::all();
@@ -43,7 +45,16 @@ class Products extends Component
 
     public function filterByCategory($categoryId)
     {
-        $this->selectedCategory = $categoryId;
+        $category = ProductCategory::find($categoryId);
+
+        if ($category) {
+            $this->selectedCategory = $categoryId;
+            $this->categoryName = $category->name; // Update the category name for the heading
+        } else {
+            $this->selectedCategory = null;
+            $this->categoryName = 'All Products'; // Reset to default if no category is selected
+        }
+
         $this->loadProducts();
     }
 

@@ -47,8 +47,9 @@
             <div class="w-full lg:w-3/4 lg:ml-9">
                 <div class="flex flex-col lg:flex-row justify-between items-center mb-4">
                     <h1 class="text-3xl font-bold mb-4 lg:mb-0">
-                        Proteins
+                        {{ $categoryName }}
                     </h1>
+
                     <div class="relative w-2/3 lg:w-auto">
                         <input class="border border-gray-300 p-2 rounded-lg w-full lg:w-64" placeholder="Search..." type="text"/>
                         <button class="absolute right-2 top-2 text-gray-500 hover:text-gray-700">
