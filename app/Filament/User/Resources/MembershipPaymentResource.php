@@ -52,16 +52,17 @@ class MembershipPaymentResource extends Resource
         return $table
             ->columns([
             // Tables\Columns\TextColumn::make('user.name'),
+            Tables\Columns\TextColumn::make('user.membership_id')->label('Membership')->searchable(),
             Tables\Columns\TextColumn::make('amount')->searchable(),
             Tables\Columns\TextColumn::make('payment_date')->sortable()->searchable(),
             Tables\Columns\TextColumn::make('payment_method'),
+
             ])
             ->filters([
                 //
             ])
-            ->actions([
-
-                Tables\Actions\ViewAction::make(),
+            ->actions([Tables\Actions\ViewAction::make()
+                ->url(fn(MembershipPayment $record) => route('membership.show', $record->id)), // Redirect to the custom Blade view,
             ])
             ->bulkActions([
                 // Tables\Actions\BulkActionGroup::make([

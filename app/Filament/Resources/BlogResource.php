@@ -7,6 +7,7 @@ use App\Filament\Resources\BlogResource\RelationManagers;
 use App\Models\Blog;
 use App\Models\BlogPost;
 use Filament\Forms;
+use Filament\Forms\Components\Tabs\Tab;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -26,23 +27,9 @@ class BlogResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('title')
-                    ->required(),
-                Forms\Components\Textarea::make('description')
-                    ->required(),
-                Forms\Components\TagsInput::make('tags')
-                    ->nullable() ->separator(','),
-                Forms\Components\DatePicker::make('publication_date')
+                    ->rules(['string', 'max:255'])
                     ->required(),
 
-                Forms\Components\TextInput::make('meta_title')
-                    ->nullable()
-                    ->label('Meta Title'),
-                Forms\Components\Textarea::make('meta_description')
-                    ->nullable()
-                    ->label('Meta Description'),
-                Forms\Components\TextInput::make('meta_keywords')
-                    ->nullable()
-                    ->label('Meta Keywords'),
                 Forms\Components\Select::make('status')
                     ->options([
                         'draft' => 'Draft',
@@ -50,8 +37,43 @@ class BlogResource extends Resource
                     ])
                     ->default('draft')
                     ->required(),
+
+                Forms\Components\RichEditor::make('description')
+                    ->label('Description')
+                    ->placeholder('Enter the description here...')
+                    ->columnSpan('full') // Makes the RichEditor take the full width
+                    ->required()
+                    ->rules(['string', 'min:10']), // Requires the description to be at least 10 characters
+
+                Forms\Components\TagsInput::make('tags')
+                    ->nullable()
+                    ->separator(',')
+                    ->rules(['array', 'max:10']), // Limits to 10 tags at maximum
+
+                Forms\Components\DatePicker::make('publication_date')
+                    ->default(now())
+                    ->required()
+                    ->rules(['date', 'after_or_equal:today']), // Ensures publication date is today or in the future
+
+                Forms\Components\TextInput::make('meta_title')
+                    ->nullable()
+                    ->label('Meta Title')
+                    ->rules(['string', 'max:60']),
+
+                Forms\Components\TextInput::make('meta_keywords')
+                    ->nullable()
+                    ->label('Meta Keywords')
+                    ->rules(['string', 'max:160']),
+
+                Forms\Components\Textarea::make('meta_description')
+                    ->nullable()
+                    ->label('Meta Description')
+                    ->rules(['string', 'max:160']),
+
                 Forms\Components\SpatieMediaLibraryFileUpload::make('thumbnail')
                     ->collection('thumbnails')
+                    // ->rules('image|max:2048')// Ensure the uploaded file is an image and limit the size to 2MB
+                    ->rules(['image', 'mimes:jpg,jpeg,png', 'max:1024']) // Only accepts jpg, jpeg, png formats, with max size 1MB
                     ->required()
             ]);
     }
@@ -60,13 +82,21 @@ class BlogResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('title')->label('Title'),
+                Tables\Columns\TextColumn::make('title')->label('Title')->searchable(),
                 Tables\Columns\ImageColumn::make('thumbnail')
                     ->label('Thumbnail')
-                    ->getStateUsing(fn ($record) => $record->getFirstMediaUrl('thumbnails')),
-                Tables\Columns\TextColumn::make('description')->label('Description'),
-                Tables\Columns\TextColumn::make('tags')->label('Tags'),
-                Tables\Columns\TextColumn::make('publication_date')->label('Date of publish'),
+                    ->getStateUsing(fn($record) => $record->getFirstMediaUrl('thumbnails')),
+
+                Tables\Columns\BadgeColumn::make('status')
+                    ->label('Status')
+                    ->getStateUsing(function ($record) {
+                        return $record->status === 'draft' ? 'Draft' : 'Published';
+                    })
+                    ->colors([
+                        'gray' => 'Draft', // Green for active
+                        'success' => 'Published',  // Red for inactive
+                    ]),
+                Tables\Columns\TextColumn::make('publication_date')->label('Date of publish')->sortable(),
             ])
             ->filters([
                 //
@@ -74,6 +104,7 @@ class BlogResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
+                Tables\Actions\ViewAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

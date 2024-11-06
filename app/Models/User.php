@@ -93,7 +93,7 @@ class User extends Authenticatable
     // Relationship with MembershipPlan
     public function membershipPlan()
     {
-        return $this->belongsTo(MembershipPlan::class, 'membership_plan_id');
+        return $this->belongsTo(MembershipPlan::class, 'membership_id');
     }
 
     // Check if the user's membership is active
@@ -101,12 +101,5 @@ class User extends Authenticatable
     {
         return $this->membership_end_date && $this->membership_end_date->isFuture();
     }
-
-    // Assuming you have this relationship in your model:
-    public function membership()
-    {
-        return $this->belongsTo(MembershipPlan::class, 'membership_id');
-    }
-
 
 }

@@ -3,6 +3,7 @@
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\OrderController;
 use App\Models\Schedule;
+use App\Models\Workout;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
@@ -14,6 +15,7 @@ use Spatie\Sitemap\Tags\Url;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Models\WorkoutLog;
 use Spatie\Sitemap\Sitemap;
+use App\Models\MembershipPayment;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,9 +65,9 @@ Route::get('/workout-log/{id}', function ($id) {
     return view('workoutlog.show', ['workoutLog' => $workoutLog]);
 })->name('workout-log.show');
 
-Route::get('/schedules/{schedule}', function (Schedule $schedule) {
-    return view('filament.custom-schedule-view', compact('schedule'));
-})->name('filament.resources.schedules.view');
+// Route::get('/schedules/{schedule}', function (Schedule $schedule) {
+//     return view('filament.custom-schedule-view', compact('schedule'));
+// })->name('filament.resources.schedules.view');
 
 Route::get('/schedules/{schedule}', function (Schedule $schedule) {
     // Load related data like workouts and exercises if needed
@@ -75,6 +77,11 @@ Route::get('/schedules/{schedule}', function (Schedule $schedule) {
     return view('schedules.show', ['schedule' => $schedule]);
 })->name('schedules.show');
 
+
+Route::get('/workouts/{id}', function ($id) {
+    $workout = Workout::with('exercises')->findOrFail($id);
+    return view('workout.show', compact('workout'));
+})->name('workout.show');
 
 // Creating a sitemap
 
@@ -107,3 +114,13 @@ Route::middleware([
     'verified',
 ])->group(function () {
 });
+//route for D:\Innova Solutions\flex-house-filament\resources\views\pages\blog-details.blade.php
+Route::get('/blog-details', function () {
+    return view('pages.blog-details');
+})->name('blog.details');
+
+
+Route::get('/membership-payments/{id}', function ($id) {
+    $payment = MembershipPayment::with('user')->findOrFail($id);
+    return view('membership.show', compact('payment'));
+})->name('membership.show');

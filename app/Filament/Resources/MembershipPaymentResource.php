@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\MembershipPaymentResource\Pages;
 use App\Filament\Resources\MembershipPaymentResource\RelationManagers;
+use App\Models\Membership;
 use App\Models\MembershipPayment;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -32,6 +33,7 @@ class MembershipPaymentResource extends Resource
                     ->required()
                     ->numeric(),
                 Forms\Components\DatePicker::make('payment_date')
+                    ->default(now())
                     ->required(),
                 Forms\Components\Select::make('payment_method')
                     ->options([
@@ -50,6 +52,7 @@ class MembershipPaymentResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('user.name'),
+                Tables\Columns\TextColumn::make('user.membership_id'),
                 Tables\Columns\TextColumn::make('amount'),
                 Tables\Columns\TextColumn::make('payment_date'),
                 Tables\Columns\TextColumn::make('payment_method'),
@@ -59,6 +62,9 @@ class MembershipPaymentResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\ViewAction::make()
+                ->url(fn(MembershipPayment $record) => route('membership.show', $record->id)), // Redirect to the custom Blade view,
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

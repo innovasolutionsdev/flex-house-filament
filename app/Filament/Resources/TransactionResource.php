@@ -21,35 +21,82 @@ class TransactionResource extends Resource
 
     protected static ?string $navigationGroup = 'Financial Management';
 
+    // public static function form(Form $form): Form
+    // {
+    //     return $form
+    //         ->schema([
+    //         Forms\Components\TextInput::make('amount')
+    //             ->required(),
+    //         Forms\Components\Select::make('type')
+    //             ->options([
+    //                 'income' => 'Income',
+    //                 'expense' => 'Expense',
+    //             ])
+    //             ->required(),
+    //         Forms\Components\TextInput::make('description')
+    //             ->required(),
+    //         Forms\Components\Select::make('category_id')
+    //             ->relationship('revenuecategory', 'name')
+    //             ->nullable(),
+    //         Forms\Components\DatePicker::make('date')
+    //             ->required(),
+
+    //         ]);
+    // }
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-            Forms\Components\TextInput::make('amount')
-                ->required(),
-            Forms\Components\Select::make('type')
+                Forms\Components\TextInput::make('amount')
+                ->required()
+                    ->numeric(), // Ensure the amount is numeric
+
+                Forms\Components\Select::make('type')
                 ->options([
                     'income' => 'Income',
                     'expense' => 'Expense',
                 ])
-                ->required(),
-            Forms\Components\TextInput::make('description')
-                ->required(),
-            Forms\Components\Select::make('category_id')
-                ->relationship('revenuecategory', 'name')
-                ->nullable(),
-            Forms\Components\DatePicker::make('date')
-                ->required(),
+                    ->required()
+                    ->reactive() // Makes the field listen for changes
+                    ->afterStateUpdated(fn(callable $set) => $set('category_id', null)), // Reset category_id when type changes
 
+                Forms\Components\TextInput::make('description')
+                ->required()
+                    ->maxLength(255), // Limit description length
+
+                Forms\Components\Select::make('category_id')
+                ->label('Category')
+                ->relationship(
+                    'revenuecategory',
+                    'name',
+                    fn($query, $get) =>
+                    $query->where('type', $get('type'))
+                ) // Filters categories based on the selected type
+                    ->nullable()
+                    ->requiredWith('type'), // Require category if type is set
+
+                Forms\Components\DatePicker::make('date')
+                ->required()
+                    ->default(now()), // Default to today's date
             ]);
     }
+
 
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
             Tables\Columns\TextColumn::make('amount')->sortable()->searchable(),
-            Tables\Columns\TextColumn::make('type')->sortable(),
+            // Tables\Columns\TextColumn::make('type')->sortable(),
+            Tables\Columns\BadgeColumn::make('type')
+                ->label('Type')
+                ->getStateUsing(function ($record) {
+                    return $record->type == 'income' ? 'Income' : 'Expense';
+                })
+                ->colors([
+                    'success' => 'Income', // Green for income
+                    'danger' => 'Expense',  // Red for expense
+                ]),
             Tables\Columns\TextColumn::make('description')->searchable(),
             Tables\Columns\TextColumn::make('revenuecategory.name')->label('Category'),
             Tables\Columns\TextColumn::make('date')->date()->sortable(),
