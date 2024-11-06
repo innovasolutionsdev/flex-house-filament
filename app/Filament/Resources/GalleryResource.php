@@ -7,6 +7,7 @@ use App\Filament\Resources\GalleryResource\RelationManagers;
 use App\Models\Gallery;
 use Filament\Forms;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
+use Filament\Forms\Components\Tabs\Tab;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -28,6 +29,10 @@ class GalleryResource extends Resource
                     ->label('Image Caption')
                     ->required(),
 
+                //date
+                Forms\Components\DatePicker::make('date')
+                    ->required(),
+
                 // Use the SpatieMediaLibraryFileUpload component for image upload
                 SpatieMediaLibraryFileUpload::make('image')
                     ->collection('images')  // Use the correct media collection
@@ -43,6 +48,7 @@ class GalleryResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('caption')->label('Caption'),
+                Tables\Columns\TextColumn::make('date')->label('Date'),
 
                 // Use an image column for displaying the media
                 Tables\Columns\ImageColumn::make('image')
@@ -55,6 +61,7 @@ class GalleryResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
+                Tables\Actions\ViewAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),

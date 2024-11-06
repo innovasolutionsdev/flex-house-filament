@@ -9,7 +9,7 @@ class Gallery extends Model implements HasMedia
 {
     use InteractsWithMedia;
 
-    protected $fillable = ['caption'];
+    protected $fillable = ['caption','date'];
 
     public function registerMediaCollections(): void
     {
