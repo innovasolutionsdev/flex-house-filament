@@ -3,7 +3,7 @@
     <!-- Hero Section Begin -->
 
     <div
-        class="mt-14 container px-4 relative py-12 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+        class="container px-4 relative py-12 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
         <div class="flex flex-col items-center justify-between lg:flex-row">
             <div class="mb-10 lg:max-w-lg lg:pr-5 lg:mb-0">
                 <div class="max-w-xl mb-6">
@@ -203,8 +203,8 @@
                 </div>
             </div>
             <div class="bg-white shadow-lg rounded-lg overflow-hidden">
-                <img alt="Nutrition Counseling - Nutritionist consulting with a client"
-                    class="w-full h-48 object-cover" height="400"
+                <img alt="Nutrition Counseling - Nutritionist consulting with a client" class="w-full h-48 object-cover"
+                    height="400"
                     src="https://storage.googleapis.com/a1aa/image/GezjOexcYuqBJknmTMT5mxBnWvkoract4uqoH8IGQrr5tfYnA.jpg"
                     width="600" />
                 <div class="p-6 text-center">
@@ -402,7 +402,7 @@
                         for short-term fitness goals!
                     </p>
                     <button
-                        class="mt-6 bg-[#141414] text-white py-2 px-6 font-bold rounded-md shadow-md hover:bg-[#F41E1E] transition duration-300">
+                        class="mt-6 mb-6 bg-[#141414] text-white py-2 px-6 font-bold rounded-md shadow-md hover:bg-[#F41E1E] transition duration-300">
                         Register Now
                     </button>
                 </div>
@@ -433,7 +433,7 @@
                         for short-term fitness goals!
                     </p>
                     <button
-                        class="mt-6 bg-[#141414] text-white font-bold py-2 px-6 rounded-md shadow-md hover:bg-[#F41E1E] transition duration-300">
+                        class="mt-6 mb-6 bg-[#141414] text-white font-bold py-2 px-6 rounded-md shadow-md hover:bg-[#F41E1E] transition duration-300">
                         Register Now
                     </button>
                 </div>
@@ -471,6 +471,218 @@
             </div>
         </div>
     </div>
+
+    <div class="text-center mt-20">
+        <h2 class="text-[#F41E1E] text-lg font-bold uppercase mb-2 flex items-center justify-center">
+            <span class="inline-block w-12 h-0.5 bg-[#F41E1E] mx-2">
+            </span>
+            Work Process
+            <span class="inline-block w-12 h-0.5 bg-[#F41E1E] mx-2">
+            </span>
+        </h2>
+        <h1 class="text-4xl font-extrabold mb-12 text-gray-900">
+            Membership Plans
+        </h1>
+        <div class="flex overflow-x-auto space-x-4 px-4 ml-14 sm:ml-0 scrollbar-hide">
+            <!-- Card 1 -->
+            <div
+                class="bg-white rounded-lg shadow-lg transform transition duration-500 hover:scale-105 w-72 relative m-4 flex-shrink-0">
+                <img alt="Gym facilities image" class="rounded-t-lg" height="160"
+                    src="https://storage.googleapis.com/a1aa/image/dcebelfUdGDHEJkrKUYi6KbzlnveYmBmKKEJoAI6uqh2tQzOB.jpg"
+                    width="288" />
+                <div class="absolute top-0 right-0 bg-[#F41E1E] text-white text-xs font-bold py-1 px-2 rounded-bl-lg">
+                    Valid till only
+                </div>
+                <div class="bg-gray-800 text-white text-center py-4">
+                    <h2 class="text-xl font-bold">
+                        1 Month
+                    </h2>
+                </div>
+                <div class="text-center mt-4 px-6">
+                    <p class="text-gray-600 text-2xl line-through">
+                        Rs. 4000
+                    </p>
+                    <p class="text-[#F41E1E] text-4xl font-extrabold">
+                        Rs. 3000
+                    </p>
+                    <p class="mt-4 text-gray-600">
+                        Enjoy 1 month of full access to all our gym facilities, personal trainers, and classes. Ideal
+                        for short-term fitness goals!
+                    </p>
+                    <button
+                        class="mt-6 mb-2 bg-[#141414] text-white py-2 px-6 font-bold rounded-md shadow-md hover:bg-[#F41E1E] transition duration-300">
+                        Register Now
+                    </button>
+                </div>
+            </div>
+            <!-- Card 2 -->
+            <div
+                class="bg-white rounded-lg shadow-lg transform transition duration-500 hover:scale-105 w-72 relative m-4 flex-shrink-0">
+                <img alt="Gym facilities image" class="rounded-t-lg" height="160"
+                    src="https://storage.googleapis.com/a1aa/image/dcebelfUdGDHEJkrKUYi6KbzlnveYmBmKKEJoAI6uqh2tQzOB.jpg"
+                    width="288" />
+                <div class="absolute top-0 right-0 bg-[#F41E1E] text-white text-xs font-bold py-1 px-2 rounded-bl-lg">
+                    Valid till only
+                </div>
+                <div class="bg-gray-800 text-white text-center py-4">
+                    <h2 class="text-xl font-bold">
+                        3 Months
+                    </h2>
+                </div>
+                <div class="text-center mt-4 px-6">
+                    <p class="text-gray-600 text-2xl line-through">
+                        Rs. 10000
+                    </p>
+                    <p class="text-[#F41E1E] text-4xl font-extrabold">
+                        Rs. 8000
+                    </p>
+                    <p class="mt-4 text-gray-600">
+                        Enjoy 3 months of full access to all our gym facilities, personal trainers, and classes. Ideal
+                        for medium-term fitness goals!
+                    </p>
+                    <button
+                        class="mt-6 mb-2 bg-[#141414] text-white py-2 px-6 font-bold rounded-md shadow-md hover:bg-[#F41E1E] transition duration-300">
+                        Register Now
+                    </button>
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div
+                class="bg-white rounded-lg shadow-lg transform transition duration-500 hover:scale-105 w-72 relative m-4 flex-shrink-0">
+                <img alt="Gym facilities image" class="rounded-t-lg" height="160"
+                    src="https://storage.googleapis.com/a1aa/image/dcebelfUdGDHEJkrKUYi6KbzlnveYmBmKKEJoAI6uqh2tQzOB.jpg"
+                    width="288" />
+                <div class="absolute top-0 right-0 bg-[#F41E1E] text-white text-xs font-bold py-1 px-2 rounded-bl-lg">
+                    Valid till only
+                </div>
+                <div class="bg-gray-800 text-white text-center py-4">
+                    <h2 class="text-xl font-bold">
+                        6 Months
+                    </h2>
+                </div>
+                <div class="text-center mt-4 px-6">
+                    <p class="text-gray-600 text-2xl line-through">
+                        Rs. 18000
+                    </p>
+                    <p class="text-[#F41E1E] text-4xl font-extrabold">
+                        Rs. 15000
+                    </p>
+                    <p class="mt-4 text-gray-600">
+                        Enjoy 6 months of full access to all our gym facilities, personal trainers, and classes. Ideal
+                        for long-term fitness goals!
+                    </p>
+                    <button
+                        class="mt-6 mb-2 bg-[#141414] text-white py-2 px-6 font-bold rounded-md shadow-md hover:bg-[#F41E1E] transition duration-300">
+                        Register Now
+                    </button>
+                </div>
+            </div>
+            <!-- Card 4 -->
+            <div
+                class="bg-white rounded-lg shadow-lg transform transition duration-500 hover:scale-105 w-72 relative m-4 flex-shrink-0">
+                <img alt="Gym facilities image" class="rounded-t-lg" height="160"
+                    src="https://storage.googleapis.com/a1aa/image/dcebelfUdGDHEJkrKUYi6KbzlnveYmBmKKEJoAI6uqh2tQzOB.jpg"
+                    width="288" />
+                <div class="absolute top-0 right-0 bg-[#F41E1E] text-white text-xs font-bold py-1 px-2 rounded-bl-lg">
+                    Valid till only
+                </div>
+                <div class="bg-gray-800 text-white text-center py-4">
+                    <h2 class="text-xl font-bold">
+                        1 Year
+                    </h2>
+                </div>
+                <div class="text-center mt-4 px-6">
+                    <p class="text-gray-600 text-2xl line-through">
+                        Rs. 32000
+                    </p>
+                    <p class="text-[#F41E1E] text-4xl font-extrabold">
+                        Rs. 25000
+                    </p>
+                    <p class="mt-4 text-gray-600">
+                        Enjoy 1 year of full access to all our gym facilities, personal trainers, and classes. Ideal for
+                        long-term fitness goals!
+                    </p>
+                    <button
+                        class="mt-6 mb-2 bg-[#141414] text-white py-2 px-6 font-bold rounded-md shadow-md hover:bg-[#F41E1E] transition duration-300">
+                        Register Now
+                    </button>
+                </div>
+            </div>
+            <!-- Card 5 -->
+            <div
+                class="bg-white rounded-lg shadow-lg transform transition duration-500 hover:scale-105 w-72 relative m-4 flex-shrink-0">
+                <img alt="Gym facilities image" class="rounded-t-lg" height="160"
+                    src="https://storage.googleapis.com/a1aa/image/dcebelfUdGDHEJkrKUYi6KbzlnveYmBmKKEJoAI6uqh2tQzOB.jpg"
+                    width="288" />
+                <div class="absolute top-0 right-0 bg-[#F41E1E] text-white text-xs font-bold py-1 px-2 rounded-bl-lg">
+                    Valid till only
+                </div>
+                <div class="bg-gray-800 text-white text-center py-4">
+                    <h2 class="text-xl font-bold">
+                        2 Years
+                    </h2>
+                </div>
+                <div class="text-center mt-4 px-6">
+                    <p class="text-gray-600 text-2xl line-through">
+                        Rs. 60000
+                    </p>
+                    <p class="text-[#F41E1E] text-4xl font-extrabold">
+                        Rs. 45000
+                    </p>
+                    <p class="mt-4 text-gray-600">
+                        Enjoy 2 years of full access to all our gym facilities, personal trainers, and classes. Ideal
+                        for long-term fitness goals!
+                    </p>
+                    <button
+                        class="mt-6 mb-4 bg-[#141414] text-white py-2 px-6 font-bold rounded-md shadow-md hover:bg-[#F41E1E] transition duration-300">
+                        Register Now
+                    </button>
+                </div>
+            </div>
+            <!-- Card 6 -->
+            <div
+                class="bg-white rounded-lg shadow-lg transform transition duration-500 hover:scale-105 w-72 relative m-4 flex-shrink-0">
+                <img alt="Gym facilities image" class="rounded-t-lg" height="160"
+                    src="https://storage.googleapis.com/a1aa/image/dcebelfUdGDHEJkrKUYi6KbzlnveYmBmKKEJoAI6uqh2tQzOB.jpg"
+                    width="288" />
+                <div class="absolute top-0 right-0 bg-[#F41E1E] text-white text-xs font-bold py-1 px-2 rounded-bl-lg">
+                    Valid till only
+                </div>
+                <div class="bg-gray-800 text-white text-center py-4">
+                    <h2 class="text-xl font-bold">
+                        Lifetime
+                    </h2>
+                </div>
+                <div class="text-center mt-4 px-6">
+                    <p class="text-gray-600 text-2xl line-through">
+                        Rs. 100000
+                    </p>
+                    <p class="text-[#F41E1E] text-4xl font-extrabold">
+                        Rs. 75000
+                    </p>
+                    <p class="mt-4 text-gray-600">
+                        Enjoy lifetime access to all our gym facilities, personal trainers, and classes. Ideal for
+                        lifelong fitness enthusiasts!
+                    </p>
+                    <button
+                        class="mt-6 mb-2 bg-[#141414] text-white py-2 px-6 font-bold rounded-md shadow-md hover:bg-[#F41E1E] transition duration-300">
+                        Register Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+    /* Hide scrollbar */
+    .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+    }
+    .scrollbar-hide {
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+    }
+</style>
     <!-- Membership Section End -->
     {{-- bmi start --}}
     <div class="container mx-auto p-8 text-center mt-20">
