@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Models\order_product;
+use App\Models\product;
 use App\Models\Subscription;
 use App\Models\Transaction;
 use App\Models\User;
@@ -37,6 +38,12 @@ class OrderController extends Controller
         $order->save();
 
 
+        foreach (Cart::content() as $item){
+            $product = new product();
+            $product = product::find($item->id);
+            $product->stock_quantity = $product->stock_quantity - $item->qty;
+            $product->save();
+        }
 
         $transaction = new Transaction();
         $transaction->amount = Cart::subtotal();

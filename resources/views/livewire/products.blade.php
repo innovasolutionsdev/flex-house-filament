@@ -47,9 +47,8 @@
             <div class="w-full lg:w-3/4 lg:ml-9">
                 <div class="flex flex-col lg:flex-row justify-between items-center mb-4">
                     <h1 class="text-3xl font-bold mb-4 lg:mb-0">
-                        {{ $categoryName }}
+                        Proteins
                     </h1>
-
                     <div class="relative w-2/3 lg:w-auto">
                         <input class="border border-gray-300 p-2 rounded-lg w-full lg:w-64" placeholder="Search..." type="text"/>
                         <button class="absolute right-2 top-2 text-gray-500 hover:text-gray-700">
@@ -84,7 +83,7 @@
         </span>
                                 @endif
 
-                                @if($value->in_stock)
+                                @if($value->in_stock && $value->quantity > 0)
                                     <span class="absolute top-2 left-2 bg-green-500 text-white px-2 py-1 text-xs rounded-lg">
             In Stock
         </span>
@@ -109,20 +108,26 @@
         </span>
                             </div>
                             <div class="flex mt-2">
-                                <button class="bg-yellow-500 text-white w-full py-2 mr-2 rounded-lg hover:bg-yellow-600">
+                                <!-- Quick Buy Button -->
+                                <button
+                                    class="w-full py-2 mr-2 rounded-lg
+               {{ $value->stock_quantity > 0 ? 'bg-yellow-500 text-white hover:bg-yellow-600' : 'bg-gray-400 text-gray-200 cursor-not-allowed' }}"
+                                    {{ $value->stock_quantity <= 0 && $value->in_stock ? 'disabled' : '' }}>
                                     Quick Buy
                                 </button>
 
-
-                                <form wire:submit.prevent="addToCart({{$value->id}})" action="{{route('cart.store')}}" method="POST">
+                                <!-- Add to Cart Button -->
+                                <form wire:submit.prevent="addToCart({{ $value->id }})" action="{{ route('cart.store') }}" method="POST">
                                     @csrf
-
-                                    <button type="submit" class="bg-gray-200 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-300">
-                                        <i class="fas fa-cart-plus">
-                                        </i>
+                                    <button type="submit"
+                                            class="py-2 px-4 rounded-lg
+                {{ $value->stock_quantity > 0 ? (isset($cartAdded[$value->id]) && $cartAdded[$value->id] ? 'bg-green-500 text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300') : 'bg-gray-400 text-gray-200 cursor-not-allowed' }}"
+                                        {{ $value->stock_quantity <= 0 && $value->in_stock ? 'disabled' : '' }}>
+                                        <i class="fas fa-cart-plus"></i>
                                     </button>
                                 </form>
                             </div>
+
                             <p class="text-gray-500 text-xs mt-2">
                                 or 3 Installments of රු{{number_format($value->discount_price / 3, 2)}} with
                                 <span class="font-bold">
