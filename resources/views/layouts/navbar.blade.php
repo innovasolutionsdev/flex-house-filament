@@ -13,9 +13,22 @@
                     data-dropdown-placement="bottom" data-dropdown-toggle="user-dropdown" id="user-menu-button"
                     type="button">
                     <span class="sr-only">Open user menu</span>
-                    <img alt="User profile picture" class="w-10 h-10 rounded-full" height="40"
-                        src="https://storage.googleapis.com/a1aa/image/6UQuRY3Z2iLAG5HVhyvyDh24Z4P6trAjO66KQXywyz8XCI7E.jpg"
-                        width="40" />
+                    @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
+                    <img class="h-8 w-8 rounded-full object-cover"
+                      src="{{ Auth::user()->profile_photo_url }}"
+                         alt="{{ Auth::user()->name }}" />
+
+                    @else
+                        {{ Auth::user()->name }}
+
+                        <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                  clip-rule="evenodd" />
+                        </svg>
+                    @endif
+
                 </button>
                 <button aria-controls="navbar-user" aria-expanded="false"
                     class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
