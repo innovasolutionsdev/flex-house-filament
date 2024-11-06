@@ -6,6 +6,7 @@ use App\Filament\Resources\BookingResource\Pages;
 use App\Filament\Resources\BookingResource\RelationManagers;
 use App\Models\Booking;
 use Filament\Forms;
+use Filament\Forms\Components\Tabs\Tab;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -24,6 +25,31 @@ class BookingResource extends Resource
         return $form
             ->schema([
                 //
+            Forms\Components\TextInput::make('first_name')
+                ->label('First Name')
+                ->required()
+                ->maxLength(50),
+            Forms\Components\TextInput::make('last_name')
+                ->label('Last Name')
+                ->required()
+                ->maxLength(50),
+            Forms\Components\TextInput::make('email')
+                ->label('Email')
+                ->email()
+                ->required()
+                ->maxLength(255),
+            Forms\Components\TextInput::make('mobile')
+                ->label('Mobile')
+                ->tel()
+                ->required()
+                ->maxLength(15),
+            //booking message
+            Forms\Components\Textarea::make('message')
+                ->label('Message')
+                ->required()
+                ->maxLength(300),
+
+
             ]);
     }
 
@@ -31,16 +57,20 @@ class BookingResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('first_name')->label('First Name'),
-                Tables\Columns\TextColumn::make('last_name')->label('Last Name'),
-                Tables\Columns\TextColumn::make('email')->label('Email'),
-                Tables\Columns\TextColumn::make('mobile')->label('Mobile'),
+                Tables\Columns\TextColumn::make('first_name')->label('First Name')->searchable(),
+                Tables\Columns\TextColumn::make('last_name')->label('Last Name')->searchable(),
+                Tables\Columns\TextColumn::make('email')->label('Email')->searchable(),
+                Tables\Columns\TextColumn::make('mobile')->label('Mobile')->searchable(),
+                //created at
+                Tables\Columns\TextColumn::make('created_at')->label('Created At')->searchable(),
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\ViewAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
