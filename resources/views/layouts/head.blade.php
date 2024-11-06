@@ -17,6 +17,17 @@
     {{-- splash screen icons --}}
 
     <link rel="apple-touch-startup-image" href="{{ asset('logo.png') }}">
+    {{-- Splash screen  --}}
+    <link rel="apple-touch-startup-image" href="{{ asset('/pwa/assets/icons/icon-36x36.png') }}" media="(device-width: 320px)">
+    <link rel="apple-touch-startup-image" href="{{ asset('/pwa/assets/icons/icon-48x48.png') }}" media="(device-width: 375px)">
+    <link rel="apple-touch-startup-image" href="{{ asset('/pwa/assets/icons/icon-72x72.png') }}" media="(device-width: 414px)">
+    <link rel="apple-touch-startup-image" href="{{ asset('/pwa/assets/icons/icon-96x96.png') }}" media="(device-width: 768px)">
+    <link rel="apple-touch-startup-image" href="{{ asset('/pwa/assets/icons/icon-128x128.png') }}" media="(device-width: 1024px)">
+    <link rel="apple-touch-startup-image" href="{{ asset('/pwa/assets/icons/icon-144x144.png') }}" media="(device-width: 1366px)">
+    <link rel="apple-touch-startup-image" href="{{ asset('/pwa/assets/icons/icon-152x152.png') }}" media="(device-width: 1440px)">
+    <link rel="apple-touch-startup-image" href="{{ asset('/pwa/assets/icons/icon-192x192.png') }}" media="(device-width: 1920px)">
+    <link rel="apple-touch-startup-image" href="{{ asset('/pwa/assets/icons/icon-384x384.png') }}" media="(device-width: 2560px)">
+    <link rel="apple-touch-startup-image" href="{{ asset('/pwa/assets/icons/icon-512x512.png') }}" media="(device-width: 3840px)">
 
     {{-- icons  --}}
     <link rel="icon" type="image/png" sizes="36x36" href="{{ asset('/pwa/assets/icons/icon-36x36.png') }}">
@@ -41,7 +52,7 @@
     <title>Innova Solutions</title>
 
     <link rel="shortcut icon" href="{{ asset('img/favicon.png') }}" type="image/x-icon">
- 
+
     <!-- Fonts -->
 
     <link rel="preconnect" href="https://fonts.bunny.net">
