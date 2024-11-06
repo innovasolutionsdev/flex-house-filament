@@ -31,15 +31,15 @@ class UserResource extends Resource
     {
         return $form
             ->schema([
-                    Forms\Components\TextInput::make('name')->required(),
-                    Forms\Components\TextInput::make('email')->required()->email(),
-                    Forms\Components\TextInput::make('password')->required()->password(),
-                    Forms\Components\Select::make('membership_id')
+                Forms\Components\TextInput::make('name')->required(),
+                Forms\Components\TextInput::make('email')->required()->email(),
+                Forms\Components\TextInput::make('password')->required()->password(),
+                Forms\Components\Select::make('membership_id')
                     ->label('Membership Plan')
                     ->options(MembershipPlan::all()->pluck('name', 'id'))
                     ->reactive()
                     ->required(),
-                    Forms\Components\DatePicker::make('membership_start_date')
+                Forms\Components\DatePicker::make('membership_start_date')
                     ->label('Start Date')
                     ->default(now()->format('Y-m-d'))
                     ->required()
@@ -69,10 +69,17 @@ class UserResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')->searchable(),
-                Tables\Columns\TextColumn::make('email')->searchable(),
+                //membership plan
+                // Membership plan name
+                Tables\Columns\TextColumn::make('user.membershipPlan.name')
+                    ->label('Membership Plan')
+                    ->getStateUsing(fn($record) => $record->membershipPlan->name ?? 'N/A')
+                    ->sortable()
+                    ->searchable(),
+                // Tables\Columns\TextColumn::make('email')->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
-                ->dateTime()
-                ->sortable(),
+                    ->dateTime()
+                    ->sortable(),
                 //created at column
 
 
@@ -86,7 +93,7 @@ class UserResource extends Resource
                         'danger' => 'Inactive',  // Red for inactive
                     ]),
 
-//
+                //
             ])
             ->filters([
                 //

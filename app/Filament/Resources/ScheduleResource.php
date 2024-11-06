@@ -28,18 +28,22 @@ class ScheduleResource extends Resource
         return $form
             ->schema([
             TextInput::make('name')
+                ->placeholder('Beginner 1 day plan')
                 ->required(),
             HasManyRepeater::make('workouts')
                 ->relationship('workouts')  // Link to workouts
                 ->schema([
                     TextInput::make('name')
+                ->placeholder('Day 1 Upper Body')
                         ->label('Workout Name'),
                     HasManyRepeater::make('exercises')
                         ->relationship('exercises')  // Link to exercises
                         ->schema([
                             TextInput::make('name')->label('Exercise Name'),
                             TextInput::make('sets')->label('Sets'),
-                            TextInput::make('reps')->label('Reps'),
+                            TextInput::make('reps')
+                                ->label('Reps')
+                                ->placeholder('12,10,8,6'),
                             TextInput::make('rest_time')->label('Rest Time (in seconds)'),
                         ]),
                 ]),
