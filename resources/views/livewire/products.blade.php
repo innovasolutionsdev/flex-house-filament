@@ -105,16 +105,57 @@
                                 </span>
                             @endif
 
-                            @if ($value->in_stock)
-                                <span
-                                    class="absolute top-2 left-2 bg-green-500 text-white px-2 py-1 text-xs rounded-lg">
-                                    In Stock
-                                </span>
-                            @else
-                                <span class="absolute top-2 left-2 bg-red-500 text-white px-2 py-1 text-xs rounded-lg">
-                                    Out of Stock
-                                </span>
-                            @endif
+                                @if($value->in_stock && $value->quantity > 0)
+                                    <span class="absolute top-2 left-2 bg-green-500 text-white px-2 py-1 text-xs rounded-lg">
+            In Stock
+        </span>
+                                @else
+                                    <span class="absolute top-2 left-2 bg-red-500 text-white px-2 py-1 text-xs rounded-lg">
+            Out of Stock
+        </span>
+                                @endif
+                            </div>
+                            <p class="text-gray-500 text-xs mt-2">
+                                {{$value->tags}}
+                            </p>
+                            <h2 class="text-lg font-bold mt-2">
+                                {{$value->name}}
+                            </h2>
+                            <div class="flex items-center mt-2">
+        <span class="line-through text-gray-500 mr-2">
+         රු{{$value->price}}
+        </span>
+                                <span class="text-red-500 text-xl font-bold">
+         රු{{$value->discount_price}}
+        </span>
+                            </div>
+                            <div class="flex mt-2">
+                                <!-- Quick Buy Button -->
+                                <button
+                                    class="w-full py-2 mr-2 rounded-lg
+               {{ $value->stock_quantity > 0 ? 'bg-yellow-500 text-white hover:bg-yellow-600' : 'bg-gray-400 text-gray-200 cursor-not-allowed' }}"
+                                    {{ $value->stock_quantity <= 0 && $value->in_stock ? 'disabled' : '' }}>
+                                    Quick Buy
+                                </button>
+
+                                <!-- Add to Cart Button -->
+                                <form wire:submit.prevent="addToCart({{ $value->id }})" action="{{ route('cart.store') }}" method="POST">
+                                    @csrf
+                                    <button type="submit"
+                                            class="py-2 px-4 rounded-lg
+                {{ $value->stock_quantity > 0 ? (isset($cartAdded[$value->id]) && $cartAdded[$value->id] ? 'bg-green-500 text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300') : 'bg-gray-400 text-gray-200 cursor-not-allowed' }}"
+                                        {{ $value->stock_quantity <= 0 && $value->in_stock ? 'disabled' : '' }}>
+                                        <i class="fas fa-cart-plus"></i>
+                                    </button>
+                                </form>
+                            </div>
+
+                            <p class="text-gray-500 text-xs mt-2">
+                                or 3 Installments of රු{{number_format($value->discount_price / 3, 2)}} with
+                                <span class="font-bold">
+         KOKO
+        </span>
+                            </p>
                         </div>
                         <p class="text-gray-500 text-xs mt-2">
                             {{ $value->tags }}

@@ -13,6 +13,8 @@ class Products extends Component
     public $products;
     public array $quantity = [];
     public $selectedCategory = null;
+    public array $cartAdded = [];
+
 
     public function mount()
     {
@@ -32,6 +34,7 @@ class Products extends Component
             'products' => $this->products // Pass the products to the view
         ]);
     }
+
 
     public function loadProducts()
     {
@@ -61,5 +64,6 @@ class Products extends Component
 
         $this->dispatch('cart_counter_updated');
 
+        $this->cartAdded[$product_id] = true;
     }
 }
