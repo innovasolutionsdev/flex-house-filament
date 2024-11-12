@@ -102,4 +102,10 @@ class User extends Authenticatable
         return $this->membership_end_date && $this->membership_end_date->isFuture();
     }
 
+    // Relationship with MembershipPayment
+    public function membershipPayments()
+    {
+        return $this->hasMany(MembershipPayment::class);
+    }
+
 }
