@@ -1,4 +1,4 @@
-<footer id="view-footer" class="w-full bg-[#141414]" style="display: none;">
+<footer id="view-footer" class="w-full bg-[#141414] dark:bg-[#171717]" style="display: none;">
     <div class=" mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <!--Grid-->
         <div

@@ -29,13 +29,13 @@ const checkResponse = function (request) {
     });
 };
 
-const addToCache = function (request) {
-    return caches.open("offline").then(function (cache) {
-        return fetch(request).then(function (response) {
-            return cache.put(request, response);
-        });
-    });
-};
+// const addToCache = function (request) {
+//     return caches.open("offline").then(function (cache) {
+//         return fetch(request).then(function (response) {
+//             return cache.put(request, response);
+//         });
+//     });
+// };
 
 const returnFromCache = function (request) {
     return caches.open("offline").then(function (cache) {
