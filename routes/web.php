@@ -124,3 +124,8 @@ Route::get('/membership-payments/{id}', function ($id) {
     $payment = MembershipPayment::with('user')->findOrFail($id);
     return view('membership.show', compact('payment'));
 })->name('membership.show');
+
+//route for resources\views\pages\product-details.blade.php
+Route::get('/product-details', function () {
+    return view('pages.product-details');
+})->name('product.details');
