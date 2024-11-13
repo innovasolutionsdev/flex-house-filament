@@ -5,12 +5,12 @@
             class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-3 gap-y-8 md:gap-8 py-10 max-w-sm mx-auto sm:max-w-3xl lg:max-w-full">
             <div class="col-span-full mb-10 lg:col-span-2 lg:mb-0 text-center lg:text-left">
                 <img alt="Company logo with a simple design" class="mx-auto lg:mx-0 mb-4" height="50"
-                    src="https://storage.googleapis.com/a1aa/image/cbpimKcr4jqyER2JeIrjUbIcx8svmCH4Y05x9xOSajrPxF2JA.jpg"
+                    src="/logo.png"
                     width="100" />
                 {{-- <p class="py-8 text-sm text-gray-300 lg:max-w-xs">
                     Trusted in more than 100 countries &amp; 5 million customers. Have any query?
                 </p> --}}
-                <a class="py-2.5 px-4 h-10 block w-fit bg-[#F41E1E] rounded-full shadow-sm text-md font-bold uppercase text-white mx-auto transition-all duration-500 hover:bg-black lg:mx-0"
+                <a class="py-2.5 px-4 h-10 block w-fit bg-[#F41E1E] rounded-md shadow-sm text-md font-bold uppercase text-white mx-auto transition-all duration-500 hover:bg-black lg:mx-0"
                     href="javascript:;">
                     Contact us
                 </a>
@@ -92,7 +92,7 @@
                 <p class="text-md text-gray-400 leading-6 mb-7">
                     Subscribe to get the latest news from us
                 </p>
-                <a class="flex items-center justify-center gap-2 border border-[#F41E1E] rounded-full py-3 px-6 w-fit lg:mx-0 text-lg  text-[#F41E1E] font-extrabold transition-all duration-500 hover:bg-indigo-50"
+                <a class="flex items-center justify-center gap-2 border border-[#F41E1E] rounded-md py-3 px-6 w-fit lg:mx-0 text-lg  text-[#F41E1E] font-extrabold transition-all duration-500 hover:text-white"
                     href="javascript:;">
                     Subscribe
                     {{-- <svg fill="none" height="12" viewbox="0 0 15 12" width="15"

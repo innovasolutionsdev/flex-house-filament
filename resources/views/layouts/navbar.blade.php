@@ -1,5 +1,5 @@
-{{-- <header id="view-navbar" style="display: none;"> --}}
-<header>
+<header id="view-navbar" style="display: none;">
+{{-- <header> --}}
     <nav class="bg-[#141414] border-gray-200 top-0 left-0 w-full z-50">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 md:h-20">
             <a class="flex items-center space-x-3 rtl:space-x-reverse" href="https://flowbite.com/">
@@ -158,6 +158,13 @@
                 mobileMenu.classList.toggle('hidden');
             });
         });
+
+
+        //nav bar
+        if (!window.matchMedia('(display-mode: standalone)').matches) {
+        // Show the footer
+        document.getElementById('view-navbar').style.display = 'flex'; // or 'block' based on your layout
+    }
     </script>
 </header>
 {{-- <script>
