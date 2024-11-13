@@ -9,6 +9,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
 
+    <script src="https://kit.fontawesome.com/5df66a38fb.js" crossorigin="anonymous"></script>
+
     {{-- PWA Codes start --}}
     <meta name="apple-mobile-web-app-status-bar" content="#01d679" >
     <meta name="apple-mobile-web-app-capable" content="yes">
