@@ -23,24 +23,24 @@
                         @endforeach
                     </ul>
                 </div>
-                <div class="bg-white p-4 shadow-md mt-4 rounded-lg">
-                    <h2 class="text-xl font-bold border-b-2 border-yellow-500 pb-2 mb-4">
-                        Brands
-                    </h2>
-                    <ul class="space-y-2">
+{{--                <div class="bg-white p-4 shadow-md mt-4 rounded-lg">--}}
+{{--                    <h2 class="text-xl font-bold border-b-2 border-yellow-500 pb-2 mb-4">--}}
+{{--                        Brands--}}
+{{--                    </h2>--}}
+{{--                    <ul class="space-y-2">--}}
 
-                        @foreach ($brands as $value)
-                            <li>
-                                <a class="flex items-center text-gray-700" href="#">
-                                    <i class="fas fa-caret-right mr-2">
-                                    </i>
-                                    {{ $value->name }}
-                                </a>
-                            </li>
-                        @endforeach
-                    </ul>
-                </div>
-            </div>
+{{--                        @foreach ($brands as $value)--}}
+{{--                            <li>--}}
+{{--                                <a class="flex items-center text-gray-700" href="#">--}}
+{{--                                    <i class="fas fa-caret-right mr-2">--}}
+{{--                                    </i>--}}
+{{--                                    {{ $value->name }}--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
+{{--                        @endforeach--}}
+{{--                    </ul>--}}
+{{--                </div>--}}
+
             <div class="bg-white p-4 shadow-md mt-4 rounded-lg">
                 <h2 class="text-xl font-bold border-b-4 border-[#F41E1E] pb-2 mb-4">
                     Brands
@@ -59,6 +59,7 @@
                 </ul>
             </div>
         </div>
+       
         <!-- Main Content -->
         <div class="w-full lg:w-3/4 lg:ml-9">
             <div class="flex flex-col lg:flex-row justify-between items-center mb-4">
