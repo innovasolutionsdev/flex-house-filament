@@ -31,7 +31,7 @@
                     @endif
                 @else
                         <img class="h-8 w-8 rounded-full object-cover"
-                        src="{{ asset('images/avatar.webp') }}"
+                             src="{{asset('img/avatar.webp')}}">
                 @endauth
                 </button>
 
