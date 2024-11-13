@@ -91,4 +91,11 @@ class OrderController extends Controller
             return response()->json(['success' => false, 'message' => 'Order not found.']);
         }
     }
+
+    public function Order_details($id){
+
+        $order = product::find($id);
+
+        return view('pages.product-details', compact('order'));
+    }
 }

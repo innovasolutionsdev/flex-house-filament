@@ -23,23 +23,7 @@
                         @endforeach
                     </ul>
                 </div>
-{{--                <div class="bg-white p-4 shadow-md mt-4 rounded-lg">--}}
-{{--                    <h2 class="text-xl font-bold border-b-2 border-yellow-500 pb-2 mb-4">--}}
-{{--                        Brands--}}
-{{--                    </h2>--}}
-{{--                    <ul class="space-y-2">--}}
 
-{{--                        @foreach ($brands as $value)--}}
-{{--                            <li>--}}
-{{--                                <a class="flex items-center text-gray-700" href="#">--}}
-{{--                                    <i class="fas fa-caret-right mr-2">--}}
-{{--                                    </i>--}}
-{{--                                    {{ $value->name }}--}}
-{{--                                </a>--}}
-{{--                            </li>--}}
-{{--                        @endforeach--}}
-{{--                    </ul>--}}
-{{--                </div>--}}
 
             <div class="bg-white p-4 shadow-md mt-4 rounded-lg">
                 <h2 class="text-xl font-bold border-b-4 border-[#F41E1E] pb-2 mb-4">
@@ -59,7 +43,7 @@
                 </ul>
             </div>
         </div>
-       
+
         <!-- Main Content -->
         <div class="w-full lg:w-3/4 lg:ml-9">
             <div class="flex flex-col lg:flex-row justify-between items-center mb-4">
@@ -94,10 +78,14 @@
             <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4">
                 <!-- Product 1 -->
                 @foreach ($products as $value)
+
                     <div class="bg-white p-2 shadow-md rounded-lg">
                         <div class="relative">
+
+                            <a href="{{ url('product-details/' . $value->id) }}">
                             <img alt="{{ $value->name }}" class="w-full rounded-lg" height="300"
                                 src="{{ $value->getFirstMediaUrl('product_image') }}" width="300" />
+                            </a>
                             @if ($value->on_sale)
                                 <span class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 text-xs rounded-lg">
                                     Sale!
@@ -130,7 +118,7 @@
                             </div>
                             <div class="flex mt-2">
                                 <!-- Quick Buy Button -->
-                                <button
+                                <button wire:click.prevent="quickbuy({{ $value->id }})"
                                     class="w-full py-2 mr-2 rounded-lg
                {{ $value->stock_quantity > 0 ? 'bg-yellow-500 text-white hover:bg-yellow-600' : 'bg-gray-400 text-gray-200 cursor-not-allowed' }}"
                                     {{ $value->stock_quantity <= 0 && $value->in_stock ? 'disabled' : '' }}>
@@ -156,51 +144,17 @@
         </span>
                             </p>
                         </div>
-                        <p class="text-gray-500 text-xs mt-2">
-                            {{ $value->tags }}
-                        </p>
-                        <h2 class="text-lg font-bold mt-2">
-                            {{ $value->name }}
-                        </h2>
-                        <div class="flex flex-col md:flex-row  mt-2">
-                            <span class="line-through text-gray-500 md:mr-2">
-                                රු{{ $value->price }}
-                            </span>
-                            <span class="text-red-500 text-xl font-bold">
-                                රු{{ $value->discount_price }}
-                            </span>
+
                         </div>
 
-                        <div class="flex mt-2">
-                            <button class="bg-[#F41E1E] text-white w-full py-2 mr-2 rounded-lg hover:bg-gray-900">
-                                Quick Buy
-                            </button>
-
-
-                            <form wire:submit.prevent="addToCart({{ $value->id }})"
-                                action="{{ route('cart.store') }}" method="POST">
-                                @csrf
-
-                                <button type="submit"
-                                    class="bg-gray-200 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-300">
-                                    <i class="fas fa-cart-plus">
-                                    </i>
-                                </button>
-                            </form>
-                        </div>
-                        <p class="text-gray-500 text-xs mt-2">
-                            or 3 Installments of රු{{ number_format($value->discount_price / 3, 2) }} with
-                            <span class="font-bold">
-                                KOKO
-                            </span>
-                        </p>
                     </div>
-                @endforeach
 
+                @endforeach
+        </div>
 
             </div>
         </div>
-    </div>
+
     <!-- Mobile Sidebar -->
     <div class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden" id="mobileSidebar">
         <div class="fixed inset-y-0 left-0 bg-white w-3/4 p-4 overflow-y-auto">

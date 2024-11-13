@@ -126,6 +126,4 @@ Route::get('/membership-payments/{id}', function ($id) {
 })->name('membership.show');
 
 //route for resources\views\pages\product-details.blade.php
-Route::get('/product-details', function () {
-    return view('pages.product-details');
-})->name('product.details');
+Route::get('/product-details/{id}',[OrderController::class, 'Order_details'] );

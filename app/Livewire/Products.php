@@ -66,4 +66,16 @@ class Products extends Component
 
         $this->cartAdded[$product_id] = true;
     }
+
+    public function quickbuy($product_id){
+        $product = product::findorfail($product_id);
+        Cart::add(
+            $product->id,
+            $product->name, 1,
+            $product->discount_price,
+            ['stock' => $product->stock_quantity, 'image'  => $product->getFirstMediaUrl('product_image')]
+
+        );
+        $this->redirect(url('/cart'));
+    }
 }
