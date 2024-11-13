@@ -9,19 +9,16 @@
                     </h2>
                     <ul class="space-y-2">
 
-                        @foreach($categories as $category)
+                        @foreach ($categories as $category)
                             <li>
-                                <a href="#"
-                                   class="flex items-center text-gray-700 hover:text-blue-500"
-                                   wire:click.prevent="filterByCategory({{ $category->id }})"
-                                   style="color: inherit;"
-                                   :class="{ 'text-blue-500': selectedCategoryId === {{ $category->id }} }"
-                                   onclick="this.style.color = '';">
+                                <a href="#" class="flex items-center text-gray-700 hover:text-blue-500"
+                                    wire:click.prevent="filterByCategory({{ $category->id }})" style="color: inherit;"
+                                    :class="{ 'text-blue-500': selectedCategoryId === {{ $category->id }} }"
+                                    onclick="this.style.color = '';">
                                     <i class="fas fa-caret-right mr-2"></i>
                                     {{ $category->name }}
                                 </a>
                             </li>
-
                         @endforeach
                     </ul>
                 </div>
@@ -31,12 +28,12 @@
                     </h2>
                     <ul class="space-y-2">
 
-                        @foreach($brands as $value)
+                        @foreach ($brands as $value)
                             <li>
                                 <a class="flex items-center text-gray-700" href="#">
                                     <i class="fas fa-caret-right mr-2">
                                     </i>
-                                    {{$value->name}}
+                                    {{ $value->name }}
                                 </a>
                             </li>
                         @endforeach
@@ -163,14 +160,15 @@
                         <h2 class="text-lg font-bold mt-2">
                             {{ $value->name }}
                         </h2>
-                        <div class="flex items-center mt-2">
-                            <span class="line-through text-gray-500 mr-2">
+                        <div class="flex flex-col md:flex-row  mt-2">
+                            <span class="line-through text-gray-500 md:mr-2">
                                 රු{{ $value->price }}
                             </span>
                             <span class="text-red-500 text-xl font-bold">
                                 රු{{ $value->discount_price }}
                             </span>
                         </div>
+
                         <div class="flex mt-2">
                             <button class="bg-[#F41E1E] text-white w-full py-2 mr-2 rounded-lg hover:bg-gray-900">
                                 Quick Buy
@@ -213,19 +211,16 @@
                     Categories
                 </h2>
                 <ul class="space-y-2">
-                    @foreach($categories as $category)
+                    @foreach ($categories as $category)
                         <li>
-                            <a href="#"
-                               class="flex items-center text-gray-700 hover:text-blue-500"
-                               wire:click.prevent="filterByCategory({{ $category->id }})"
-                               style="color: inherit;"
-                               :class="{ 'text-blue-500': selectedCategoryId === {{ $category->id }} }"
-                               onclick="this.style.color = '';">
+                            <a href="#" class="flex items-center text-gray-700 hover:text-blue-500"
+                                wire:click.prevent="filterByCategory({{ $category->id }})" style="color: inherit;"
+                                :class="{ 'text-blue-500': selectedCategoryId === {{ $category->id }} }"
+                                onclick="this.style.color = '';">
                                 <i class="fas fa-caret-right mr-2"></i>
                                 {{ $category->name }}
                             </a>
                         </li>
-
                     @endforeach
                 </ul>
             </div>
@@ -234,12 +229,12 @@
                     Brands
                 </h2>
                 <ul class="space-y-2">
-                    @foreach($brands as $value)
+                    @foreach ($brands as $value)
                         <li>
                             <a class="flex items-center text-gray-700" href="#">
                                 <i class="fas fa-caret-right mr-2">
                                 </i>
-                                {{$value->name}}
+                                {{ $value->name }}
                             </a>
                         </li>
                     @endforeach

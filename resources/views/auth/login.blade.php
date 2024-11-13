@@ -1,112 +1,71 @@
-{{-- <x-app-layout>
-
-    <x-authentication-card>
-
-        <x-slot name="logo">
-            <x-authentication-card-logo />
-        </x-slot>
-
-        <x-validation-errors class="mb-4" />
-
-        @if (session('status'))
-            <div class="mb-4 font-medium text-sm text-green-600">
-                {{ session('status') }}
-            </div>
-        @endif
-
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
-
-            <div>
-                <x-label for="email" value="{{ __('Email') }}" />
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            </div>
-
-            <div class="mt-4">
-                <x-label for="password" value="{{ __('Password') }}" />
-                <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
-            </div>
-
-            <div class="block mt-4">
-                <label for="remember_me" class="flex items-center">
-                    <x-checkbox id="remember_me" name="remember" />
-                    <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                </label>
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </a>
-                @endif
-
-                <x-button class="ms-4">
-                    {{ __('Log in') }}
-                </x-button>
-            </div>
-        </form>
-
-    </x-authentication-card>
-
-
-
-</x-app-layout> --}}
 <x-app-layout>
-    <div class="font-[sans-serif]">
+    <div class="font-[sans-serif] dark:bg-[#171717]">
         <div class="min-h-screen flex flex-col items-center justify-center">
             <div
-                class="grid md:grid-cols-2 items-center gap-4 max-md:gap-8 max-w-6xl max-md:max-w-lg w-full p-4 m-4 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] rounded-md">
+                class="grid md:grid-cols-2 items-center gap-4 max-md:gap-8 max-w-6xl max-md:max-w-lg w-full p-4 m-4  rounded-md">
                 <div class="md:max-w-md w-full px-4 py-4">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
                         <div class="mb-12 text-center">
-                            <h3 class="text-gray-800 text-3xl font-extrabold">Sign in</h3>
-                            <p class="text-sm mt-4 text-gray-800">Don't have an account?
+                            <h3 class="text-black dark:text-white text-3xl font-extrabold">Sign in</h3>
+                            <p class="text-sm mt-4 text-gray-800 dark:text-gray-400">Don't have an account?
                                 <a href="{{ route('register') }}"
-                                    class="text-blue-600 font-semibold hover:underline ml-1 whitespace-nowrap">Register
+                                    class="text-[#F41E1E] font-semibold hover:underline ml-1 whitespace-nowrap">Register
                                     here</a>
                             </p>
                         </div>
 
                         <div>
-                            <label class="text-gray-800 text-xs block mb-2">Email</label>
+                            {{-- <label class="text-gray-800 text-xs block mb-2">Email</label> --}}
                             <div class="relative flex items-center">
                                 <input name="email" type="email" required
-                                    class="w-full text-gray-800 text-sm border-b border-gray-300 focus:border-blue-600 px-2 py-3 outline-none"
-                                    placeholder="Enter email" />
+                                    class="w-full rounded-lg text-gray-800 text-sm border-b border-gray-300 focus:border-[#F41E1E] px-2 py-3 outline-none"
+                                    placeholder="Email" />
                                 <!-- Icon here if needed -->
                             </div>
                         </div>
 
+                        
                         <div class="mt-8">
-                            <label class="text-gray-800 text-xs block mb-2">Password</label>
                             <div class="relative flex items-center">
-                                <input name="password" type="password" required
-                                    class="w-full text-gray-800 text-sm border-b border-gray-300 focus:border-blue-600 px-2 py-3 outline-none"
-                                    placeholder="Enter password" />
-                                <!-- Icon here if needed -->
+                                <input id="password" name="password" type="password" required
+                                    class="w-full rounded-lg text-gray-800 text-sm border-b border-gray-300 focus:border-[#F41E1E] px-2 py-3 outline-none"
+                                    placeholder="Password" />
+
+                                <!-- Eye Icon Button -->
+                                <button type="button" id="togglePassword"
+                                    class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-600">
+                                    <!-- You can replace this SVG with any icon library like FontAwesome -->
+                                    <svg id="eyeIcon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                                        <path
+                                            d="M2.458 12C3.732 7.943 7.522 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.478 0-8.268-2.943-9.542-7z" />
+                                    </svg>
+                                </button>
                             </div>
                         </div>
+
 
                         <div class="flex flex-wrap items-center justify-between gap-4 mt-6">
                             <div class="flex items-center">
                                 <input id="remember-me" name="remember" type="checkbox"
-                                    class="h-4 w-4 shrink-0 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" />
-                                <label for="remember-me" class="ml-3 block text-sm text-gray-800">Remember me</label>
+                                    class="h-4 w-4 shrink-0 text-[#F41E1E] focus:ring-[#F41E1E] border-gray-300 rounded" />
+                                <label for="remember-me"
+                                    class="ml-3 block text-sm text-gray-800 dark:text-gray-400">Remember me</label>
                             </div>
                             <div>
                                 <a href="{{ route('password.request') }}"
-                                    class="text-blue-600 font-semibold text-sm hover:underline">
+                                    class="text-black dark:text-white font-semibold text-sm hover:underline">
                                     Forgot Password?
                                 </a>
                             </div>
                         </div>
-
+                        <x-validation-errors class="mb-4" />
                         <div class="mt-12">
                             <button type="submit"
-                                class="w-full shadow-xl py-2.5 px-4 text-sm tracking-wide rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none">
+                                class="w-full shadow-xl py-2.5 px-4 text-lg  font-bold uppercase tracking-wide rounded-md text-white dark:hover:text-black bg-[#F41E1E] dark:hover:bg-white dark:bg-[#F41E1E] hover:bg-[#F41E1E] focus:outline-none">
                                 Sign in
                             </button>
                         </div>
@@ -155,11 +114,25 @@
                         </div>
                     </form>
                 </div>
-                <div class="md:h-full bg-[#000842] rounded-xl lg:p-12 p-8">
-                    <img src="https://readymadeui.com/signin-image.webp" class="w-full h-full object-contain"
-                        alt="login-image" />
+                <div class="lg:h-[400px] md:h-[300px] max-md:mt-8 hidden md:block ">
+                    <img src="/img/login.jpg" class="w-full h-full object-contain rounded-md" alt="Sign up image" />
                 </div>
             </div>
         </div>
     </div>
+
+    <script>
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('password');
+
+        togglePassword.addEventListener('click', () => {
+            // Toggle the type attribute
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+
+            // Toggle the eye icon (if you want to change it to an eye-slash icon when the password is visible)
+            togglePassword.classList.toggle('text-blue-600'); // Add a style change if needed
+        });
+    </script>
+
 </x-app-layout>
