@@ -13,6 +13,7 @@
                     data-dropdown-placement="bottom" data-dropdown-toggle="user-dropdown" id="user-menu-button"
                     type="button">
                     <span class="sr-only">Open user menu</span>
+                    @auth
                     @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
                     <img class="h-8 w-8 rounded-full object-cover"
                       src="{{ Auth::user()->profile_photo_url }}"
@@ -28,8 +29,12 @@
                                   clip-rule="evenodd" />
                         </svg>
                     @endif
-
+                @else
+                        <img class="h-8 w-8 rounded-full object-cover"
+                        src="{{ asset('images/avatar.webp') }}"
+                @endauth
                 </button>
+
                 <button aria-controls="navbar-user" aria-expanded="false"
                     class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                     data-collapse-toggle="navbar-user" type="button">

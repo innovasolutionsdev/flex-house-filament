@@ -6,7 +6,9 @@ use App\Models\Booking;
 use App\Models\User;
 use App\Notifications\BookingSubmitted;
 use App\Services\Notificationservice;
+use Exception;
 use Illuminate\Http\Request;
+use NotifyLk\Api\SmsApi;
 
 class BookingController extends Controller
 {
@@ -58,15 +60,40 @@ class BookingController extends Controller
             }
         }
 
-        $this->notificationService->sendNotification(
-            'New Booking Received',
-            'A new booking has been made. Check the admin dashboard for details.',
-            '/path/to/icon.png',
-            '/admin/bookings'
-        );
+//        $this->notificationService->sendNotification(
+//            'New Booking Received',
+//            'A new booking has been made. Check the admin dashboard for details.',
+//            '/path/to/icon.png',
+//            '/admin/bookings'
+//        );
+
+        $this->sendSmsNotification($booking);
+
 
         return redirect()->back()->with('success', 'Booking submitted successfully');
     }
+        private function sendSmsNotification($booking)
+    {
+        $api_instance = new SmsApi();
+        $user_id = "28419"; // Replace with your actual user ID
+        $api_key = "VShXDwJNmYzmVCMiGBGL"; // Replace with your actual API key
+        $message = "Your booking is confirmed!";
+        $to = "94722701880"; // Replace with the user's phone number
+
+        try {
+            $result = $api_instance->sendSMS($user_id, $api_key, $message, $to, "NotifyDEMO");
+            if ($result) {
+                // Log success message
+                \Log::info("SMS sent successfully: " . print_r($result, true));
+                echo "<script>console.log('SMS sent successfully');</script>";
+            }
+        } catch (Exception $e) {
+            // Log error message
+            \Log::error('Error sending SMS: ' . $e->getMessage());
+            echo "<script>console.log('Error sending SMS: " . $e->getMessage() . "');</script>";
+        }
+    }
+
 
     /**
      * Display the specified resource.
