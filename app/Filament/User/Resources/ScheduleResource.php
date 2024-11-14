@@ -67,8 +67,8 @@ class ScheduleResource extends Resource
             ])
             ->actions([
                 // Tables\Actions\ViewAction::make(), // Add a view action to view schedule details
-                Tables\Actions\ViewAction::make()
-                    ->url(fn(Schedule $record) => route('schedules.show', $record->id)), // Redirect to the custom Blade view,
+                Tables\Actions\ViewAction::make(),
+                    // ->url(fn(Schedule $record) => route('schedules.show', $record->id)), // Redirect to the custom Blade view,
             ])
             ->bulkActions([])
 
@@ -89,6 +89,7 @@ class ScheduleResource extends Resource
             'index' => Pages\ListSchedules::route('/'),
             'create' => Pages\CreateSchedule::route('/create'),
             'edit' => Pages\EditSchedule::route('/{record}/edit'),
+            'view' => Pages\CustomSchedulePage::route('/{record}'),
         ];
     }
 

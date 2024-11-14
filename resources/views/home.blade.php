@@ -1,4 +1,65 @@
 <x-app-layout>
+<!-- Preloader -->
+<!-- Preloader -->
+<div id="preloader" style="" class="fixed inset-0 z-50 flex items-center justify-center bg-white dark:bg-[#141414]">
+    <img id="preloader-logo" src="{{ asset('logo.png') }}" alt="Logo" class="animate-bounce w-45 h-60">
+</div>
+
+<style>
+/* Preloader Styles */
+#preloader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    /* background-color: #222020; */
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+/* Dark mode support */
+/* .dark #preloader {
+    background-color: #1f2937; /* Dark theme background color */
+/* } */
+
+#preloader-logo {
+    width: 100px; /* Adjust the size as needed */
+    height: 100px;
+    animation: fadeInOut 8s infinite; /* Fade-in, fade-out animation */
+}
+
+/* Custom animation */
+@keyframes fadeInOut {
+    0%, 100% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+</style>
+<script>
+    // Wait for the entire page to load
+    window.addEventListener('load', function() {
+        const preloader = document.getElementById('preloader');
+        preloader.style.opacity = '0';
+        setTimeout(() => {
+            preloader.style.display = 'none';
+        }, 500); // Adjust time if needed
+    });
+
+    // Check if in standalone mode
+    if (window.matchMedia('(display-mode: standalone)').matches) {
+        // Show the bottom navigation
+        document.getElementById('preloader').style.display = 'flex'; // or 'block' based on your layout
+    }
+</script>
 
     <!-- Hero Section Begin -->
     <div class="w-full dark:bg-[#171717] py-12 text-center px-4 pt-2">
