@@ -61,8 +61,8 @@ class MembershipPaymentResource extends Resource
             ->filters([
                 //
             ])
-            ->actions([Tables\Actions\ViewAction::make()
-                ->url(fn(MembershipPayment $record) => route('membership.show', $record->id)), // Redirect to the custom Blade view,
+            ->actions([Tables\Actions\ViewAction::make(),
+                // ->url(fn(MembershipPayment $record) => route('membership.show', $record->id)), // Redirect to the custom Blade view,
             ])
             ->bulkActions([
                 // Tables\Actions\BulkActionGroup::make([
@@ -82,6 +82,7 @@ class MembershipPaymentResource extends Resource
     {
         return [
             'index' => Pages\ListMembershipPayments::route('/'),
+            'view' => Pages\CustomPaymentPage::route('/{record}'), // Add this line
             // 'create' => Pages\CreateMembershipPayment::route('/create'),
             // 'edit' => Pages\EditMembershipPayment::route('/{record}/edit'),
         ];
