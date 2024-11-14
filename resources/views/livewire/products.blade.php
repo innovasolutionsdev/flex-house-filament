@@ -61,13 +61,13 @@
                         <div class="bg-white p-2 shadow-md rounded-lg">
                             <div class="relative">
                                 <a href="{{ url('product-details/' . $value->id) }}">
-                                    <img alt="{{ $value->name }}" class="w-full rounded-lg" height="300" src="{{ $value->getFirstMediaUrl('product_image') }}" width="300" />
+                                    <img alt="{{ $value->name }}" class="rounded-lg h-72 object-cover" src="{{ $value->getFirstMediaUrl('product_image') }}" />
                                 </a>
                                 @if ($value->on_sale)
                                     <span class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 text-xs rounded-lg">Sale!</span>
                                 @endif
 
-                                @if($value->in_stock && $value->quantity > 0)
+                                @if($value->stock_quantity > 0)
                                     <span class="absolute top-2 left-2 bg-green-500 text-white px-2 py-1 text-xs rounded-lg">In Stock</span>
                                 @else
                                     <span class="absolute top-2 left-2 bg-red-500 text-white px-2 py-1 text-xs rounded-lg">Out of Stock</span>
@@ -76,8 +76,10 @@
                             <p class="text-gray-500 text-xs mt-2">{{ $value->tags }}</p>
                             <h2 class="text-lg font-bold mt-2">{{ $value->name }}</h2>
                             <div class="flex items-center mt-2">
-                                <span class="line-through text-gray-500 mr-2">රු{{ $value->price }}</span>
-                                <span class="text-red-500 text-xl font-bold">රු{{ $value->discount_price }}</span>
+                                @if ($value->on_sale)
+                                <span class="line-through text-gray-500 mr-2">රු{{ $value->discount_price }}</span>
+                                @endif
+                                <span class="text-red-500 text-xl font-bold">රු{{ $value->price }}</span>
                             </div>
                             <div class="flex mt-2">
                                 <!-- Quick Buy Button -->
