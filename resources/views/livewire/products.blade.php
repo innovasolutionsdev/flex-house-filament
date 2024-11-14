@@ -4,7 +4,7 @@
             <!-- Sidebar -->
             <div class="hidden lg:block w-2/3 lg:w-1/4 mb-4 lg:mb-0">
                 <div class="bg-white p-4 shadow-md rounded-lg">
-                    <h2 class="text-xl font-bold border-b-2 border-yellow-500 pb-2 mb-4">Categories</h2>
+                    <h2  class="text-xl font-bold border-b-4 border-[#F41E1E] pb-2 mb-4">Categories</h2>
                     <ul class="space-y-2">
                         @foreach ($categories as $category)
                             <li>
@@ -21,12 +21,16 @@
                     </ul>
                 </div>
 
+                <!-- resources/views/livewire/products.blade.php -->
+
                 <div class="bg-white p-4 shadow-md mt-4 rounded-lg">
                     <h2 class="text-xl font-bold border-b-4 border-[#F41E1E] pb-2 mb-4">Brands</h2>
                     <ul class="space-y-2">
                         @foreach ($brands as $value)
                             <li>
-                                <a class="flex items-center text-gray-700 hover:text-[#F41E1E]" href="#">
+                                <a class="flex items-center text-gray-700 hover:text-[#F41E1E]" href="#"
+                                   wire:click.prevent="filterByBrand({{ $value->id }})"
+                                   :class="{ 'text-[#F41E1E]': selectedBrand === {{ $value->id }} }">
                                     <i class="fas fa-caret-right mr-2"></i>
                                     {{ $value->name }}
                                 </a>
@@ -50,13 +54,7 @@
                 <p class="mb-4">
                     Shop the best Protein Supplements in Sri Lanka to suit your Fitness goal! Variety of Proteins available from Pure isolates, Blends &amp; Vegan Proteins.
                 </p>
-                <div class="flex justify-between items-center mb-4">
-                    <select class="border border-gray-300 p-2 rounded-lg hover:border-gray-400">
-                        <option>Sort by popularity</option>
-                        <!-- Add other sorting options here -->
-                    </select>
-                    <button class="lg:hidden bg-[#F41E1E] text-white p-2 rounded-lg hover:bg-gray-900" onclick="toggleSidebar()">Filter Options</button>
-                </div>
+
                 <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4">
                     <!-- Products -->
                     @foreach ($products as $value)

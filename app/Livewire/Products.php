@@ -13,6 +13,7 @@ class Products extends Component
     public $products;
     public array $quantity = [];
     public $selectedCategory = null;
+    public $selectedBrand = null;
     public array $cartAdded = [];
 
 
@@ -38,15 +39,28 @@ class Products extends Component
 
     public function loadProducts()
     {
-        // If a category is selected, filter products by category; otherwise, fetch all products
-        $this->products = $this->selectedCategory
-            ? Product::where('category_id', $this->selectedCategory)->get()
-            : Product::all();
+        $query = Product::query();
+
+        if ($this->selectedCategory) {
+            $query->where('category_id', $this->selectedCategory);
+        }
+
+        if ($this->selectedBrand) {
+            $query->where('brand_id', $this->selectedBrand);
+        }
+
+        $this->products = $query->get();
     }
 
     public function filterByCategory($categoryId)
     {
         $this->selectedCategory = $categoryId;
+        $this->loadProducts();
+    }
+
+    public function filterByBrand($brandId)
+    {
+        $this->selectedBrand = $brandId;
         $this->loadProducts();
     }
 
