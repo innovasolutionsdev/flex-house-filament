@@ -14,6 +14,7 @@ class Products extends Component
     public array $quantity = [];
     public $selectedCategory = null;
     public $selectedBrand = null;
+    public $searchTerm = '';
     public array $cartAdded = [];
 
 
@@ -49,6 +50,10 @@ class Products extends Component
             $query->where('brand_id', $this->selectedBrand);
         }
 
+        if ($this->searchTerm) {
+            $query->where('name', 'like', '%' . $this->searchTerm . '%');
+        }
+
         $this->products = $query->get();
     }
 
@@ -64,6 +69,17 @@ class Products extends Component
         $this->loadProducts();
     }
 
+    public function searchProducts()
+    {
+        $this->loadProducts();
+    }
+
+    public function updated($propertyName)
+    {
+        if ($propertyName === 'searchTerm') {
+            $this->loadProducts();
+        }
+    }
 
     public function addToCart($product_id){
         $product = product::findorfail($product_id);
