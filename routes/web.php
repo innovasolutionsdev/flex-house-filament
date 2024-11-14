@@ -55,6 +55,7 @@ Route::get('/thank-you-cod', function () {
     return view('pages.thank-you-cod-page');
 })->name('thank.you.cod');
 
+Route::get("order-complete", [\App\Http\Controllers\OrderController::class, 'order_complete'])->name('order_complete');
 
 
 //Dashboard routes

@@ -30,140 +30,98 @@
             </a>
             /
             <span class="text-gray-800">
-
+                {{$order->name}}
             </span>
         </nav>
         <div class="flex flex-col md:flex-row">
             <div class="w-full md:w-1/2">
-                <img alt="{{$order->name}}"  height="400"
+                <img alt="{{$order->name}}" height="400"
                      src="{{$order->getFirstMediaUrl('product_image')}}"
                      width="500" />
             </div>
             <div class="w-full md:w-1/2 md:pl-8 mt-4 md:mt-0">
                 @if ($order->on_sale)
-                <span class="text-green-500 font-semibold">
+                    <span class="text-green-500 uppercase font-semibold">
                     Sale!
                 </span>
                 @endif
-                <h1 class="text-3xl font-bold text-gray-800">
+                <h1 class="text-3xl font-bold mt-2 text-gray-800">
                     {{$order->name}}
                 </h1>
-                <p class="text-red-500 text-xl font-semibold">
+                <p class="text-red-500 text-xl mt-2 font-semibold">
                     Rs.{{$order->discount_price}}
                 </p>
                 <p class="text-gray-500 text-sm">
-                    or 3 Installments of රු{{number_format($order->discount_price / 3, 2)}} with
+                    or 3 installments of රු{{number_format($order->discount_price / 3, 2)}} with
                     <span class="font-semibold">
                         mintpay
                     </span>
                 </p>
-                {{-- <div class="mt-4">
-                    <p class="text-gray-700 font-medium">
-                        SIZE:
-                        <span class="text-gray-500">
-                            No selection
-                        </span>
-                    </p>
-                    <div class="flex space-x-2 mt-2">
-                        <button class="border border-gray-300 px-4 py-2">
-                            4Lbs
+
+                <div class="mt-4 flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-2">
+                    <div class="flex items-center space-x-2">
+                        <button class="bg-gray-200 text-gray-700 px-2 py-1 rounded-sm font-bold" onclick="decreaseQuantity()">
+                            -
                         </button>
-                        <button class="border border-gray-300 px-4 py-2">
-                            10Lbs
-                        </button>
-                        <button class="border border-gray-300 px-4 py-2">
-                            2Lbs
+                        <input wire:model.lazy="quantity" class="border border-gray-200 w-12 h-8 text-center" id="quantity" type="number"
+                               value="1" min="1" max="{{$order->stock_quantity}}" oninput="validateQuantity()" />
+                        <button class="bg-gray-200 text-gray-700 px-2 py-1 rounded-sm font-bold" onclick="increaseQuantity()">
+                            +
                         </button>
                     </div>
-                </div> --}}
-                {{-- <div class="mt-4">
-                    <p class="text-gray-700 font-medium">
-                        FLAVOR:
-                        <span class="text-gray-500">
-                            No selection
-                        </span>
-                    </p>
-                    <div class="flex space-x-2 mt-2">
-                        <button class="border border-gray-300 px-4 py-2">
-                            Cookies &amp; Cream
-                        </button>
-                        <button class="border border-gray-300 px-4 py-2">
-                            Milk Chocolate
-                        </button>
-                        <button class="border border-gray-300 px-4 py-2">
-                            Strawberry
-                        </button>
-                        <button class="border border-gray-300 px-4 py-2">
-                            Vanilla
+
+                    <div class="pt-4 md:pt-0 flex flex-col w-full md:flex-row md:w-auto space-y-2 md:space-y-0 md:pl-4 md:space-x-2">
+                        <form wire:submit.prevent="addToCart({{ $order->id }})" action="{{ route('cart.store') }}" method="POST">
+                            @csrf
+                            <button type="submit" class="bg-[#141414] dark:bg-[#F41E1E] text-white py-2 px-2 font-bold rounded-md shadow-md hover:bg-[#141414] transition duration-300 w-full md:w-auto">
+                                Add To Cart
+                                <i class="fas fa-shopping-cart ml-2"></i>
+                            </button>
+                        </form>
+                        <button wire:click.prevent="quickbuy({{ $order->id }})"
+                                class="bg-[#141414] dark:bg-[#F41E1E] text-white py-2 px-2 font-bold rounded-md shadow-md hover:bg-[#141414] transition duration-300 w-full md:w-auto">
+                            Quick Buy
+                            <i class="fa-solid fa-truck-fast ml-2"></i>
                         </button>
                     </div>
-                </div> --}}
-                <div class="mt-4 flex items-center space-x-2">
-                    <button class="bg-gray-200 text-gray-700 px-2 py-2" onclick="decreaseQuantity()">
-                        <i class="fas fa-minus"></i>
-                    </button>
-                    <input wire:model.lazy="quantity" class="border border-gray-200 w-12 text-center" id="quantity" type="number"
-                           value="1" min="1" max="{{$order->stock_quantity}}" oninput="validateQuantity()" />
-                    <button class="bg-gray-200 text-gray-700 px-2 py-2" onclick="increaseQuantity()">
-                        <i class="fas fa-plus"></i>
-                    </button>
-
-                    <form wire:submit.prevent="addToCart({{ $order->id }})" action="{{ route('cart.store') }}" method="POST">
-                        @csrf
-                        <button type="submit"
-                                class="bg-pink-200 text-pink-700 px-6 py-2 flex items-center"
-                        {{ $order->stock_quantity > 0 ? (isset($cartAdded[$order->id]) && $cartAdded[$order->id] ? 'bg-green-500 text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300') : 'bg-gray-400 text-gray-200 cursor-not-allowed' }}"
-                        {{ $order->stock_quantity <= 0 && $order->in_stock ? 'disabled' : '' }}>
-                        <i class="fas fa-shopping-cart mr-2"></i>
-                        </button>
-                    </form>
-
-
-
-                    <button wire:click.prevent="quickbuy({{ $order->id }})" class="bg-blue-200 text-blue-700 px-6 py-2">
-                        Quick Buy
-                    </button>
-
                 </div>
+
                 <div class="mt-4 text-gray-700">
                     <p class="flex items-center">
-                        <i class="fas fa-check-circle mr-2">
-                        </i>
+                        <i class="fas fa-check-circle mr-2 text-green-500"></i>
                         Island-Wide Delivery
                     </p>
                     <p class="flex items-center">
-                        <i class="fas fa-check-circle mr-2">
-                        </i>
+                        <i class="fas fa-check-circle mr-2 text-green-500"></i>
                         Buy Now &amp; Pay Later
                     </p>
                     <p class="flex items-center">
-                        <i class="fas fa-check-circle mr-2">
-                        </i>
+                        <i class="fas fa-check-circle mr-2 text-green-500"></i>
                         Pay Securely Online with a Cr/Dr Card.
                     </p>
                 </div>
-                <div class="mt-8 border border-gray-300 bg-gray-50 p-4">
-                    <h2 class="text-2xl font-bold text-gray-800 cursor-pointer flex justify-between items-center"
+
+                <div class="mt-8 bg-gray-200 p-2 rounded-md">
+                    <h2 class="text-lg font-semibold text-gray-800 cursor-pointer flex justify-between items-center"
                         onclick="toggleDescription()">
                         Product Description
-                        <i class="fas fa-chevron-down">
-                        </i>
+                        <i class="fas fa-chevron-down"></i>
                     </h2>
-                    <p class="text-gray-700 mt-2 hidden1" id="description">
-                        {{$order->description}}
+                    <p class="text-gray-700 mt-2 hidden" id="description">
+                        <!-- Add your product description here -->
                     </p>
                 </div>
-                <div class="mt-4 border border-gray-300 bg-gray-50 p-4">
-                    <h2 class="text-2xl font-bold text-gray-800 cursor-pointer flex justify-between items-center"
+
+                <div class="mt-4 bg-gray-200 p-2 rounded-md">
+                    <h2 class="text-lg font-semibold text-gray-800 cursor-pointer flex justify-between items-center"
                         onclick="toggleNutritionDetails()">
                         Nutrition Details
-                        <i class="fas fa-chevron-down">
-                        </i>
+                        <i class="fas fa-chevron-down"></i>
                     </h2>
-                    <div class="hidden1 mt-2" id="nutrition-details">
-                        <img alt="Nutrition details of the product"  height="200"
-                             src="{{$order->getFirstMediaUrl('nutrition_label')}}"
-                             width="400" />
+                    <div class="hidden mt-2" id="nutrition-details">
+                        <img alt="Nutrition details of the product" class="w-full" height="400"
+                             src="{{$order->getFirstMediaUrl('nutrition_details_image')}}"
+                             width="600" />
                     </div>
                 </div>
             </div>
