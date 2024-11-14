@@ -120,8 +120,9 @@ class WorkoutLogResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
-                Tables\Actions\ViewAction::make()
-                ->url(fn(WorkoutLog $record) => route('workout-log.show', $record->id)), // Redirect to the custom Blade view,
+                Tables\Actions\ViewAction::make(),
+            // ->url(fn($record) => route('custom-relation-page', $record->id)), // Redirect to the custom Blade view,
+                // ->url(fn(WorkoutLog $record) => route('workout-log.show', $record->id)), // Redirect to the custom Blade view,
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -154,6 +155,7 @@ class WorkoutLogResource extends Resource
             'index' => Pages\ListWorkoutLogs::route('/'),
             'create' => Pages\CreateWorkoutLog::route('/create'),
             'edit' => Pages\EditWorkoutLog::route('/{record}/edit'),
+            'view' => Pages\CustomWorkoutLogPage::route('/{record}'), // Add this line
             // 'view' => Pages\ViewWorkoutLog::route('/{record}'), // Add this line
         ];
     }
