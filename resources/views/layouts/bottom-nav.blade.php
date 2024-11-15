@@ -1,7 +1,7 @@
-<div id="bottom-nav" class="flex items-center justify-center pt-20" style="display: none;">
+<div id="bottom-nav" class="flex items-center justify-center" style="display:none;" >
     {{-- <div id="bottom-nav" class="flex items-center justify-center pt-20" > --}}
     <div
-        class="fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-900 p-2 flex justify-around border-t border-gray-400 dark:border-gray-700">
+        class="fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-900 pb-4 p-2 flex justify-around border-t border-gray-400 dark:border-gray-700">
         @auth
             @if (auth()->user()->role->value === 1)
                 <a href="/admin" class="nav-item flex items-center justify-center w-12 h-12 rounded-full cursor-pointer active"
