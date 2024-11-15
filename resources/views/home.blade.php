@@ -1,7 +1,7 @@
 <x-app-layout>
 <!-- Preloader -->
 <!-- Preloader -->
-<div id="preloader" style="" class="fixed inset-0 z-50 flex items-center justify-center bg-white dark:bg-[#141414]">
+<div id="preloader" style="display:none;" class="fixed inset-0 z-50 flex items-center justify-center bg-white dark:bg-[#141414]">
     <img id="preloader-logo" src="{{ asset('logo.png') }}" alt="Logo" class="animate-bounce w-45 h-60">
 </div>
 
