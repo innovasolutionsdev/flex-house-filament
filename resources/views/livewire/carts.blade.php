@@ -1,5 +1,5 @@
 <div class="max-w-7xl mx-auto p-6">
-    <h1 class="text-3xl font-bold mb-6">Shopping Cart</h1>
+    <h1 class="text-3xl font-bold mb-6">Cart</h1>
 
     @if(empty($cartItems))
         <!-- Message if the cart is empty -->
@@ -69,8 +69,9 @@
                 </div>
 
                 <a href="order/user-info">
-                    <button class="w-full bg-blue-600 text-white py-2 rounded-md mt-6 hover:bg-blue-700">
+                    <button class="w-full bg-[#141414] dark:bg-[#F41E1E] text-white py-2 px-2 font-bold mt-3 rounded-md shadow-md hover:bg-[#141414] transition duration-300">
                         Checkout
+                        <i class="fa-solid fa-truck-fast ml-2"></i>
                     </button>
                 </a>
             </div>

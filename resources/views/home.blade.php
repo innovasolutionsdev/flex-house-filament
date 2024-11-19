@@ -554,6 +554,8 @@
                 Best Plans For You
             </h1>
             <div class="flex overflow-x-auto space-x-4 px-4 pl-16 sm:ml-2 scrollbar-hide">
+
+                @foreach($plans as $plan)
                 <!-- Card 1 -->
                 <div
                     class="bg-white dark:bg-[#171717] rounded-lg shadow-lg transform transition duration-500 hover:scale-105 w-72 relative m-4 flex-shrink-0">
@@ -566,7 +568,7 @@
                     </div>
                     <div class="bg-gray-800 text-white text-center py-4">
                         <h2 class="text-xl font-bold">
-                            1 Month
+                            {{$plan->name}}
                         </h2>
                     </div>
                     <div class="text-center mt-4 px-6">
@@ -574,12 +576,10 @@
                             Rs. 4000
                         </p>
                         <p class="text-[#F41E1E] text-4xl font-extrabold">
-                            Rs. 3000
+                            Rs.{{$plan->price}}
                         </p>
                         <p class="mt-4 text-gray-600 dark:text-gray-400">
-                            Enjoy 1 month of full access to all our gym facilities, personal trainers, and classes.
-                            Ideal
-                            for short-term fitness goals!
+                            {{$plan->description}}
                         </p>
                         <button
                             class="mt-6 mb-2 bg-[#141414] dark:bg-[#F41E1E] text-white py-2 px-6 font-bold rounded-md shadow-md hover:bg-[#F41E1E] transition duration-300">
@@ -587,170 +587,7 @@
                         </button>
                     </div>
                 </div>
-                <!-- Card 2 -->
-                <div
-                    class="bg-white dark:bg-[#171717] rounded-lg shadow-lg transform transition duration-500 hover:scale-105 w-72 relative m-4 flex-shrink-0">
-                    <img alt="Gym facilities image" class="rounded-t-lg" height="160"
-                        src="https://storage.googleapis.com/a1aa/image/dcebelfUdGDHEJkrKUYi6KbzlnveYmBmKKEJoAI6uqh2tQzOB.jpg"
-                        width="288" />
-                    <div
-                        class="absolute top-0 right-0 bg-[#F41E1E] text-white text-xs font-bold py-1 px-2 rounded-bl-lg">
-                        Valid till only
-                    </div>
-                    <div class="bg-gray-800 text-white text-center py-4">
-                        <h2 class="text-xl font-bold">
-                            3 Months
-                        </h2>
-                    </div>
-                    <div class="text-center mt-4 px-6">
-                        <p class="text-gray-600 dark:text-gray-300 text-2xl line-through">
-                            Rs. 10000
-                        </p>
-                        <p class="text-[#F41E1E] text-4xl font-extrabold">
-                            Rs. 8000
-                        </p>
-                        <p class="mt-4 text-gray-600 dark:text-gray-400">
-                            Enjoy 3 months of full access to all our gym facilities, personal trainers, and classes.
-                            Ideal
-                            for medium-term fitness goals!
-                        </p>
-                        <button
-                            class="mt-6 mb-2 bg-[#141414] dark:bg-[#F41E1E] text-white py-2 px-6 font-bold rounded-md shadow-md hover:bg-[#F41E1E] transition duration-300">
-                            Register Now
-                        </button>
-                    </div>
-                </div>
-                <!-- Card 3 -->
-                <div
-                    class="bg-white dark:bg-[#171717] rounded-lg shadow-lg transform transition duration-500 hover:scale-105 w-72 relative m-4 flex-shrink-0">
-                    <img alt="Gym facilities image" class="rounded-t-lg" height="160"
-                        src="https://storage.googleapis.com/a1aa/image/dcebelfUdGDHEJkrKUYi6KbzlnveYmBmKKEJoAI6uqh2tQzOB.jpg"
-                        width="288" />
-                    <div
-                        class="absolute top-0 right-0 bg-[#F41E1E] text-white text-xs font-bold py-1 px-2 rounded-bl-lg">
-                        Valid till only
-                    </div>
-                    <div class="bg-gray-800 text-white text-center py-4">
-                        <h2 class="text-xl font-bold">
-                            6 Months
-                        </h2>
-                    </div>
-                    <div class="text-center mt-4 px-6">
-                        <p class="text-gray-600 dark:text-gray-300 text-2xl line-through">
-                            Rs. 18000
-                        </p>
-                        <p class="text-[#F41E1E] text-4xl font-extrabold">
-                            Rs. 15000
-                        </p>
-                        <p class="mt-4 text-gray-600 dark:text-gray-400">
-                            Enjoy 6 months of full access to all our gym facilities, personal trainers, and classes.
-                            Ideal
-                            for long-term fitness goals!
-                        </p>
-                        <button
-                            class="mt-6 mb-2 bg-[#141414] dark:bg-[#F41E1E] text-white py-2 px-6 font-bold rounded-md shadow-md hover:bg-[#F41E1E] transition duration-300">
-                            Register Now
-                        </button>
-                    </div>
-                </div>
-                <!-- Card 4 -->
-                <div
-                    class="bg-white dark:bg-[#171717] rounded-lg shadow-lg transform transition duration-500 hover:scale-105 w-72 relative m-4 flex-shrink-0">
-                    <img alt="Gym facilities image" class="rounded-t-lg" height="160"
-                        src="https://storage.googleapis.com/a1aa/image/dcebelfUdGDHEJkrKUYi6KbzlnveYmBmKKEJoAI6uqh2tQzOB.jpg"
-                        width="288" />
-                    <div
-                        class="absolute top-0 right-0 bg-[#F41E1E] text-white text-xs font-bold py-1 px-2 rounded-bl-lg">
-                        Valid till only
-                    </div>
-                    <div class="bg-gray-800 text-white text-center py-4">
-                        <h2 class="text-xl font-bold">
-                            1 Year
-                        </h2>
-                    </div>
-                    <div class="text-center mt-4 px-6">
-                        <p class="text-gray-600 dark:text-gray-300 text-2xl line-through">
-                            Rs. 32000
-                        </p>
-                        <p class="text-[#F41E1E] text-4xl font-extrabold">
-                            Rs. 25000
-                        </p>
-                        <p class="mt-4 text-gray-600 dark:text-gray-400">
-                            Enjoy 1 year of full access to all our gym facilities, personal trainers, and classes. Ideal
-                            for
-                            long-term fitness goals!
-                        </p>
-                        <button
-                            class="mt-6 mb-2 bg-[#141414] dark:bg-[#F41E1E] text-white py-2 px-6 font-bold rounded-md shadow-md hover:bg-[#F41E1E] transition duration-300">
-                            Register Now
-                        </button>
-                    </div>
-                </div>
-                <!-- Card 5 -->
-                <div
-                    class="bg-white dark:bg-[#171717] rounded-lg shadow-lg transform transition duration-500 hover:scale-105 w-72 relative m-4 flex-shrink-0">
-                    <img alt="Gym facilities image" class="rounded-t-lg" height="160"
-                        src="https://storage.googleapis.com/a1aa/image/dcebelfUdGDHEJkrKUYi6KbzlnveYmBmKKEJoAI6uqh2tQzOB.jpg"
-                        width="288" />
-                    <div
-                        class="absolute top-0 right-0 bg-[#F41E1E] text-white text-xs font-bold py-1 px-2 rounded-bl-lg">
-                        Valid till only
-                    </div>
-                    <div class="bg-gray-800 text-white text-center py-4">
-                        <h2 class="text-xl font-bold">
-                            2 Years
-                        </h2>
-                    </div>
-                    <div class="text-center mt-4 px-6">
-                        <p class="text-gray-600 dark:text-gray-300 text-2xl line-through">
-                            Rs. 60000
-                        </p>
-                        <p class="text-[#F41E1E] text-4xl font-extrabold">
-                            Rs. 45000
-                        </p>
-                        <p class="mt-4 text-gray-600 dark:text-gray-400">
-                            Enjoy 2 years of full access to all our gym facilities, personal trainers, and classes.
-                            Ideal
-                            for long-term fitness goals!
-                        </p>
-                        <button
-                            class="mt-6 mb-4 bg-[#141414] dark:bg-[#F41E1E] text-white py-2 px-6 font-bold rounded-md shadow-md hover:bg-[#F41E1E] transition duration-300">
-                            Register Now
-                        </button>
-                    </div>
-                </div>
-                <!-- Card 6 -->
-                <div
-                    class="bg-white dark:bg-[#171717] rounded-lg shadow-lg transform transition duration-500 hover:scale-105 w-72 relative m-4 flex-shrink-0">
-                    <img alt="Gym facilities image" class="rounded-t-lg" height="160"
-                        src="https://storage.googleapis.com/a1aa/image/dcebelfUdGDHEJkrKUYi6KbzlnveYmBmKKEJoAI6uqh2tQzOB.jpg"
-                        width="288" />
-                    <div
-                        class="absolute top-0 right-0 bg-[#F41E1E] text-white text-xs font-bold py-1 px-2 rounded-bl-lg">
-                        Valid till only
-                    </div>
-                    <div class="bg-gray-800 text-white text-center py-4">
-                        <h2 class="text-xl font-bold">
-                            Lifetime
-                        </h2>
-                    </div>
-                    <div class="text-center mt-4 px-6">
-                        <p class="text-gray-600 dark:text-gray-300 text-2xl line-through">
-                            Rs. 100000
-                        </p>
-                        <p class="text-[#F41E1E] text-4xl font-extrabold">
-                            Rs. 75000
-                        </p>
-                        <p class="mt-4 text-gray-600 dark:text-gray-400">
-                            Enjoy lifetime access to all our gym facilities, personal trainers, and classes. Ideal for
-                            lifelong fitness enthusiasts!
-                        </p>
-                        <button
-                            class="mt-6 mb-2 bg-[#141414] dark:bg-[#F41E1E] text-white py-2 px-6 font-bold rounded-md shadow-md hover:bg-[#F41E1E] transition duration-300">
-                            Register Now
-                        </button>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
@@ -1033,56 +870,17 @@
                 Capturing Moments of Our Journey
             </h1>
             <div class="grid grid-cols-2 sm:px-2 lg:px-0 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="relative">
-                    <img alt="Skydivers in the sky" class="w-full h-auto rounded-lg" height="400"
-                        src="https://storage.googleapis.com/a1aa/image/AAN0AAnlsTbzOh1OGheK2c7f14wcl983T5kgaejiSlJqW6XnA.jpg"
-                        width="600" />
-                    <div class="absolute bottom-2 left-2 text-white text-lg font-bold">
-                        2016
+                @foreach($gallery as $value)
+                    <div class="relative">
+                        <img alt="Skydivers in the sky" class="w-full h-64 object-cover rounded-lg"
+                             src="{{ $value->getFirstMediaUrl('images') }}" />
+                        <div class="absolute bottom-2 left-2 text-yellow-500 text-lg font-bold">
+                            {{ \Carbon\Carbon::parse($value->date)->format('Y') }}
+                        </div>
                     </div>
-                </div>
-                <div class="relative">
-                    <img alt="Person taking a photo in a palm tree lined street" class="w-full h-auto rounded-lg"
-                        height="400"
-                        src="https://storage.googleapis.com/a1aa/image/6YXKG2O22yKUJxA2Zr81DL4GBNvfOekf7QgF6sbDFpKlW6XnA.jpg"
-                        width="600" />
-                    <div class="absolute bottom-2 left-2 text-white text-lg font-bold">
-                        2017
-                    </div>
-                </div>
-                <div class="relative">
-                    <img alt="Scuba diver underwater" class="w-full h-auto rounded-lg" height="400"
-                        src="https://storage.googleapis.com/a1aa/image/n3584SeID6QFU68KW6EDyEbxp3qJ2lCvQgV0WIZmRe0YL9rTA.jpg"
-                        width="600" />
-                    <div class="absolute bottom-2 left-2 text-white text-lg font-bold">
-                        2018
-                    </div>
-                </div>
-                <div class="relative">
-                    <img alt="Yellow van driving through a desert landscape" class="w-full h-auto rounded-lg"
-                        height="400"
-                        src="https://storage.googleapis.com/a1aa/image/feTu0flNXMNf6SI2KEk05GUWQk4tGzmsdkeej5seOZbOolerTA.jpg"
-                        width="600" />
-                    <div class="absolute bottom-2 left-2 text-white text-lg font-bold">
-                        2019
-                    </div>
-                </div>
-                <div class="relative">
-                    <img alt="Person wakeboarding on a lake" class="w-full h-auto rounded-lg" height="400"
-                        src="https://storage.googleapis.com/a1aa/image/oTdY8n93O57qDdKmXebBJsR9QGy2DqME7Uf4M4mWsZFWL9rTA.jpg"
-                        width="600" />
-                    <div class="absolute bottom-2 left-2 text-white text-lg font-bold">
-                        2020
-                    </div>
-                </div>
-                <div class="relative">
-                    <img alt="People dancing at a party" class="w-full h-auto rounded-lg" height="400"
-                        src="https://storage.googleapis.com/a1aa/image/ah7fQApwQ5xJbyxxOufzT0cAUlvDfCfsn5YzMkueL6HyZpf6E.jpg"
-                        width="600" />
-                    <div class="absolute bottom-2 left-2 text-white text-lg font-bold">
-                        2021
-                    </div>
-                </div>
+                @endforeach
+            </div>
+
 
             </div>
         </div>
@@ -1339,10 +1137,11 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                @foreach($blogs as $blog)
                 <div
                     class="bg-white dark:bg-[#171717] text-gray-900 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 duration-500">
                     <img alt="Person lifting weights in a gym" class="w-full h-48 object-cover" height="400"
-                        src="https://storage.googleapis.com/a1aa/image/84ibsd5bCAZ3PdfkjCdZEGwxYhlStvFZzl0CDQKmiur3XF2JA.jpg"
+                        src="{{ $blog->getFirstMediaUrl('thumbnails') }}"
                         width="600" />
                     <div class="p-4">
                         <div class="flex items-center mb-4">
@@ -1352,80 +1151,31 @@
                             <div>
                                 <p class="text-gray-500  dark:text-gray-400 text-sm">
                                     February 17, 2019
-                                    <span class="bg-red-500 text-white text-xs font-bold ml-2 px-2 py-1 rounded-full">
-                                        Gym
-                                    </span>
+
                                 </p>
+                                @php
+                                    $tags = explode(',', $blog->tags);
+                                @endphp
+                                @foreach($tags as $tag)
+                                    <span class="bg-red-500 text-white text-xs font-bold ml-2 px-2 py-1 rounded-full">
+                                         {{ trim($tag) }}
+                                        </span>
+                                @endforeach
                             </div>
                         </div>
                         <h2 class="font-bold text-lg mt-2 dark:text-white">
-                            10 States At Risk of Rural Hospital Closures
+                            {{$blog->title}}
                         </h2>
+                        
+
                         <p class="text-gray-700 dark:text-gray-300 mt-2">
-                            Many rural hospitals are at risk of closure due to financial strain. This article discusses
-                            the
-                            state...
+                            {{ Illuminate\Support\Str::limit(strip_tags($blog->description), 100) }}
                         </p>
+
+
                     </div>
                 </div>
-                <div
-                    class="bg-white dark:bg-[#171717] text-gray-900 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 duration-500">
-                    <img alt="Person lifting weights in a gym" class="w-full h-48 object-cover" height="400"
-                        src="https://storage.googleapis.com/a1aa/image/84ibsd5bCAZ3PdfkjCdZEGwxYhlStvFZzl0CDQKmiur3XF2JA.jpg"
-                        width="600" />
-                    <div class="p-4">
-                        <div class="flex items-center mb-4">
-                            <img alt="Author profile image" class="w-10 h-10 rounded-full mr-4" height="40"
-                                src="https://storage.googleapis.com/a1aa/image/zogkwSebVw0PPyNhep90JVDFAtwXpnlFwEtkwan3uCIuxKsTA.jpg"
-                                width="40" />
-                            <div>
-                                <p class="text-gray-500 text-sm dark:text-gray-400">
-                                    February 17, 2019
-                                    <span class="bg-red-500 text-white text-xs font-bold ml-2 px-2 py-1 rounded-full">
-                                        Gym
-                                    </span>
-                                </p>
-                            </div>
-                        </div>
-                        <h2 class="font-bold text-lg mt-2 dark:text-white">
-                            10 States At Risk of Rural Hospital Closures
-                        </h2>
-                        <p class="text-gray-700 mt-2 dark:text-gray-300">
-                            Many rural hospitals are at risk of closure due to financial strain. This article discusses
-                            the
-                            state...
-                        </p>
-                    </div>
-                </div>
-                <div
-                    class="bg-white dark:bg-[#171717] text-gray-900 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 duration-500">
-                    <img alt="Person lifting weights in a gym" class="w-full h-48 object-cover" height="400"
-                        src="https://storage.googleapis.com/a1aa/image/84ibsd5bCAZ3PdfkjCdZEGwxYhlStvFZzl0CDQKmiur3XF2JA.jpg"
-                        width="600" />
-                    <div class="p-4">
-                        <div class="flex items-center mb-4">
-                            <img alt="Author profile image" class="w-10 h-10 rounded-full mr-4" height="40"
-                                src="https://storage.googleapis.com/a1aa/image/zogkwSebVw0PPyNhep90JVDFAtwXpnlFwEtkwan3uCIuxKsTA.jpg"
-                                width="40" />
-                            <div>
-                                <p class="text-gray-500 text-sm dark:text-gray-400">
-                                    February 17, 2019
-                                    <span class="bg-red-500 text-white text-xs font-bold ml-2 px-2 py-1 rounded-full">
-                                        Gym
-                                    </span>
-                                </p>
-                            </div>
-                        </div>
-                        <h2 class="font-bold text-lg mt-2 dark:text-white">
-                            10 States At Risk of Rural Hospital Closures
-                        </h2>
-                        <p class="text-gray-700 mt-2 dark:text-gray-300">
-                            Many rural hospitals are at risk of closure due to financial strain. This article discusses
-                            the
-                            state...
-                        </p>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
 
