@@ -9,4 +9,8 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateWorkout extends CreateRecord
 {
     protected static string $resource = WorkoutResource::class;
+    protected function getRedirectUrl(): string
+    {
+        return static::getResource()::getUrl('index');
+    }
 }
