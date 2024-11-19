@@ -1,10 +1,10 @@
-<div>
-    <div class="container mt-20 mx-auto p-4">
+<div class="dark:bg-[#171717]">
+    <div class="container pt-20 mx-auto p-4">
         <div class="flex flex-col lg:flex-row">
             <!-- Sidebar -->
             <div class="hidden lg:block w-2/3 lg:w-1/4 mb-4 lg:mb-0">
-                <div class="bg-white p-4 shadow-md rounded-lg">
-                    <h2  class="text-xl font-bold border-b-4 border-[#F41E1E] pb-2 mb-4">Categories</h2>
+                <div class="bg-white dark:bg-[#141414] dark:text-white p-4 shadow-md rounded-lg">
+                    <h2  class="text-xl font-bold border-b-4 border-[#F41E1E] pb-2 mb-4 dark:text-white">Categories</h2>
                     <ul class="space-y-2">
                         @foreach ($categories as $category)
                             <li>
@@ -23,8 +23,8 @@
 
                 <!-- resources/views/livewire/products.blade.php -->
 
-                <div class="bg-white p-4 shadow-md mt-4 rounded-lg">
-                    <h2 class="text-xl font-bold border-b-4 border-[#F41E1E] pb-2 mb-4">Brands</h2>
+                <div class="bg-white dark:bg-[#141414] dark:text-white p-4 shadow-md mt-4 rounded-lg">
+                    <h2 class="text-xl font-bold border-b-4 border-[#F41E1E] pb-2 mb-4 dark:text-white">Brands</h2>
                     <ul class="space-y-2">
                         @foreach ($brands as $value)
                             <li>
@@ -43,22 +43,22 @@
             <!-- Main Content -->
             <div class="w-full lg:w-3/4 lg:ml-9">
                 <div class="flex flex-col lg:flex-row justify-between items-center mb-4">
-                    <h1 class="text-3xl font-bold mb-4 lg:mb-0">Proteins</h1>
+                    <h1 class="text-3xl font-bold mb-4 lg:mb-0 dark:text-white">Proteins</h1>
                     <div class="relative w-2/3 lg:w-auto flex">
-                        <input id="searchInput" wire:model="searchTerm" class="border border-gray-300 p-2 rounded-lg w-full lg:w-64" placeholder="Search..." type="text" />
+                        <input id="searchInput" wire:model="searchTerm" class="border border-gray-200 dark:bg-gray-100 p-2 rounded-lg w-full lg:w-64" placeholder="Search..." type="text" />
                         <button id="searchButton" wire:click="searchProducts" class="hidden ml-2 bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600">
                             Search
                         </button>
                     </div>
                 </div>
-                <p class="mb-4">
+                <p class="mb-4 dark:text-gray-300">
                     Shop the best Protein Supplements in Sri Lanka to suit your Fitness goal! Variety of Proteins available from Pure isolates, Blends &amp; Vegan Proteins.
                 </p>
 
-                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4">
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4 ">
                     <!-- Products -->
                     @foreach ($products as $value)
-                        <div class="bg-white p-2 shadow-md rounded-lg">
+                        <div class="bg-white p-2 shadow-md rounded-lg dark:bg-[#141414] dark:text-white">
                             <div class="relative">
                                 <a href="{{ url('product-details/' . $value->id) }}">
                                     <img alt="{{ $value->name }}" class="rounded-lg h-72 object-cover" src="{{ $value->getFirstMediaUrl('product_image') }}" />
@@ -74,7 +74,7 @@
                                 @endif
                             </div>
                             <p class="text-gray-500 text-xs mt-2">{{ $value->tags }}</p>
-                            <h2 class="text-lg font-bold mt-2">{{ $value->name }}</h2>
+                            <h2 class="text-lg font-bold mt-2 dark:text-white">{{ $value->name }}</h2>
                             <div class="flex items-center mt-2">
                                 @if ($value->on_sale)
                                 <span class="line-through text-gray-500 mr-2">රු{{ $value->discount_price }}</span>
@@ -84,7 +84,7 @@
                             <div class="flex mt-2">
                                 <!-- Quick Buy Button -->
                                 <button wire:click.prevent="quickbuy({{ $value->id }})"
-                                        class="w-full py-2 mr-2 rounded-lg {{ $value->stock_quantity > 0 ? 'bg-yellow-500 text-white hover:bg-yellow-600' : 'bg-gray-400 text-gray-200 cursor-not-allowed' }}"
+                                        class="w-full py-2 mr-2 rounded-lg {{ $value->stock_quantity > 0 ? 'bg-[#F41E1E] text-white hover:bg-yellow-600' : 'bg-gray-400 text-gray-200 cursor-not-allowed' }}"
                                     {{ $value->stock_quantity <= 0 && $value->in_stock ? 'disabled' : '' }}>
                                     Quick Buy
                                 </button>
@@ -99,7 +99,7 @@
                                     </button>
                                 </form>
                             </div>
-                            <p class="text-gray-500 text-xs mt-2">or 3 Installments of රු{{ number_format($value->discount_price / 3, 2) }} with <span class="font-bold">KOKO</span></p>
+                            <p class="text-gray-500 dark:text-gray-300 text-xs mt-2">or 3 Installments of රු{{ number_format($value->discount_price / 3, 2) }} with <span class="font-bold">KOKO</span></p>
                         </div>
                     @endforeach
                 </div>
