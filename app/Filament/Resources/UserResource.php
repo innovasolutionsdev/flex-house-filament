@@ -82,8 +82,7 @@ class UserResource extends Resource
                 // Membership plan name
                 Tables\Columns\TextColumn::make('user.membershipPlan.name')
                     ->label('Membership Plan')
-                    ->getStateUsing(fn($record) => $record->membershipPlan->name ?? 'N/A')
-                    ->sortable()
+                    ->getStateUsing(fn($record) => $record->membershipPlan->name ?? 'Not Assigned')
                     ->searchable(),
                 // Tables\Columns\TextColumn::make('email')->searchable(),
                 Tables\Columns\TextColumn::make('membership_end_date')
