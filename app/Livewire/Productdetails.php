@@ -27,7 +27,7 @@ class Productdetails extends Component
         $product = product::findorfail($product_id);
         Cart::add(
             $product->id,
-            $product->name, 1,
+            $product->name, $this->quantity,
             $product->discount_price,
             ['stock' => $product->stock_quantity, 'image'  => $product->getFirstMediaUrl('product_image')]
 
