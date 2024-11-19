@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-         \App\Models\User::factory(10)->create();
+
 
         \App\Models\User::factory()->create([
             'name' => 'admin',
@@ -23,12 +23,15 @@ class DatabaseSeeder extends Seeder
             'role' => 1,
         ]);
 
-
-
-
         $this -> call([
             MembershipPlanSeeder::class,
         ]);
+
+        $this->call([
+            UserSeeder::class,
+        ]);
+
+
 
         $this -> call([
             TwoDayBeginnerScheduleSeeder::class,
@@ -46,6 +49,11 @@ class DatabaseSeeder extends Seeder
         $this -> call([
             TransactionSeeder::class,
         ]);
+
+        $this->call([
+            scheduleAssignmentSeeder::class,
+        ]);
+
 
     }
 }
