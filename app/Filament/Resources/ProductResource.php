@@ -24,7 +24,8 @@ class ProductResource extends Resource
 {
     protected static ?string $model = product::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-building-storefront';
+    protected static ?string $navigationGroup = 'Store Management';
 
     public static function form(Form $form): Form
     {
@@ -86,14 +87,21 @@ class ProductResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')->label('Product Name'),
+                Tables\Columns\TextColumn::make('name')->label('Product Name')->searchable(),
                 Tables\Columns\TextColumn::make('price')->label('Price'),
                 Tables\Columns\BooleanColumn::make('in_stock')->label('In Stock'),
                 Tables\Columns\BooleanColumn::make('on_sale')->label('On Sale'),
-                Tables\Columns\TextColumn::make('stock_quantity')->label('Stock Quantity'),
+                Tables\Columns\TextColumn::make('stock_quantity')->label('Stock Quantity')->sortable(),
             ])
             ->filters([
                 //
+            Tables\Filters\Filter::make('in_stock')
+                ->label('In Stock')
+                ->query(fn (Builder $query): Builder => $query->where('in_stock', true)),
+
+            Tables\Filters\Filter::make('on_sale')
+                ->label('On Sale')
+                ->query(fn (Builder $query): Builder => $query->where('on_sale', true)),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

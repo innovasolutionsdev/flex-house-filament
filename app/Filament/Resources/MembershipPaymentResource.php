@@ -13,12 +13,13 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use PhpParser\Node\Stmt\Label;
 
 class MembershipPaymentResource extends Resource
 {
     protected static ?string $model = MembershipPayment::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-credit-card';
 
     protected static ?string $navigationGroup = 'Financial Management';
 
@@ -51,10 +52,12 @@ class MembershipPaymentResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('user.name'),
-                Tables\Columns\TextColumn::make('user.membership_id'),
+                Tables\Columns\TextColumn::make('user.name')->searchable(),
+                Tables\Columns\TextColumn::make('user.membershipPlan.name')
+                    ->label('Membership Plan')
+                    ->getStateUsing(fn($record) => $record->membershipPlan->name ?? 'Not Assigned'),
                 Tables\Columns\TextColumn::make('amount'),
-                Tables\Columns\TextColumn::make('payment_date'),
+                Tables\Columns\TextColumn::make('payment_date')->sortable(),
                 Tables\Columns\TextColumn::make('payment_method'),
             ])
             ->filters([

@@ -58,7 +58,7 @@ class ScheduleAssignmentResource extends Resource
         return $table
             ->columns([
 
-            Tables\Columns\TextColumn::make('user.name')->label('User'),
+            Tables\Columns\TextColumn::make('user.name')->label('User')->searchable(),
             Tables\Columns\TextColumn::make('schedule.name')->label('Schedule'),
             //assigned at column
             Tables\Columns\TextColumn::make('created_at')
