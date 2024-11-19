@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\BlogPost;
 use App\Models\Gallery;
+use App\Models\MembershipPlan;
 use Illuminate\Http\Request;
 
 class homecontroller extends Controller
@@ -11,7 +12,9 @@ class homecontroller extends Controller
     public function index(){
 
         $blogs = BlogPost::latest()->get();
+        $gallery = Gallery::all();
+        $plans = MembershipPlan::all();
         $galleryImages = Gallery::all(); // Fetch all gallery images from the database
-        return view('home', compact('galleryImages', 'blogs'));
+        return view('home', compact('galleryImages', 'blogs', 'plans', 'gallery'));
     }
 }
