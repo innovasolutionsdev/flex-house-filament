@@ -95,17 +95,18 @@ class UserResource extends Resource
                 Tables\Columns\BadgeColumn::make('status')
                     ->label('Status')
                     ->getStateUsing(function ($record) {
-                        return $record->status == 1 ? 'Active' : 'Inactive';
+                        return $record->status == 1 ? 'Active' : 'Expired';
                     })
                     ->colors([
                         'success' => 'Active', // Green for active
-                        'danger' => 'Inactive',  // Red for inactive
+                        'danger' => 'Expired',  // Red for inactive
                     ]),
 
                 //
             ])
             ->filters([
-                //
+                Tables\Filters\Filter::make('Expired')
+                    ->query(fn (Builder $query): Builder => $query->where('status', 0)),
             ])
             ->actions([
                 Tables\Actions\DeleteAction::make(),
