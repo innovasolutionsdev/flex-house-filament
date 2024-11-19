@@ -87,6 +87,7 @@ class UserResource extends Resource
                     ->searchable(),
                 // Tables\Columns\TextColumn::make('email')->searchable(),
                 Tables\Columns\TextColumn::make('membership_end_date')
+            ->label('Membership End Date')
                     ->date()
                     ->sortable(),
                 //created at column
@@ -95,11 +96,11 @@ class UserResource extends Resource
                 Tables\Columns\BadgeColumn::make('status')
                     ->label('Status')
                     ->getStateUsing(function ($record) {
-                        return $record->status == 1 ? 'Active' : 'Inactive';
+                        return $record->status == 1 ? 'Active' : 'Expired';
                     })
                     ->colors([
                         'success' => 'Active', // Green for active
-                        'danger' => 'Inactive',  // Red for inactive
+                        'danger' => 'Expired',  // Red for inactive
                     ]),
 
                 //
@@ -109,8 +110,10 @@ class UserResource extends Resource
             ])
             ->actions([
                 Tables\Actions\DeleteAction::make(),
-                Tables\Actions\EditAction::make(),
+            // Tables\Actions\EditAction::make()->successRedirectUrl(route('users.list')),
+            Tables\Actions\EditAction::make(),
                 Tables\Actions\ViewAction::make(),
+
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
