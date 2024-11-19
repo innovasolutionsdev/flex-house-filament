@@ -9,4 +9,9 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateScheduleAssignment extends CreateRecord
 {
     protected static string $resource = ScheduleAssignmentResource::class;
+
+    protected function getRedirectUrl(): string
+    {
+        return static::getResource()::getUrl('index');
+    }
 }
