@@ -87,6 +87,7 @@ class UserResource extends Resource
                     ->searchable(),
                 // Tables\Columns\TextColumn::make('email')->searchable(),
                 Tables\Columns\TextColumn::make('membership_end_date')
+            ->label('Membership End Date')
                     ->date()
                     ->sortable(),
                 //created at column
@@ -110,8 +111,10 @@ class UserResource extends Resource
             ])
             ->actions([
                 Tables\Actions\DeleteAction::make(),
-                Tables\Actions\EditAction::make(),
+            // Tables\Actions\EditAction::make()->successRedirectUrl(route('users.list')),
+            Tables\Actions\EditAction::make(),
                 Tables\Actions\ViewAction::make(),
+
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
