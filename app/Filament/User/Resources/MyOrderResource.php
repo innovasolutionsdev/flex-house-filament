@@ -21,7 +21,10 @@ class MyOrderResource extends Resource
 {
     protected static ?string $model = Order::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-shopping-cart';
+
+    //custome name for resource in navigation
+    protected static ?string $pluralLabel = 'My Orders';
 
     public static function form(Form $form): Form
     {

@@ -19,7 +19,7 @@ class MybookingsResource extends Resource
 {
     protected static ?string $model = booking::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-calendar-days';
 
     protected static ?string $pluralLabel = 'My Bookings';
 
