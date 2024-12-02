@@ -39,7 +39,7 @@ class MyOrderResource extends Resource
                 TextColumn::make('first_name')->label('First Name')->sortable(),
                 TextColumn::make('phone')->label('Phone'),
 
-                BadgeColumn::make('order_status')
+                BadgeColumn::make('Order_status')
                     ->label('Order Status')
                     ->formatStateUsing(fn ($state) => match($state) {
                         0 => 'Pending',

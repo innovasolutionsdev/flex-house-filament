@@ -45,6 +45,14 @@ class OrderController extends Controller
             $product->save();
         }
 
+        foreach (Cart::content() as $cartItem) {
+
+            $order->products()->attach($cartItem->id, [
+                'quantity' => $cartItem->qty, // Accessing quantity
+                'price' => $cartItem->price,    // Accessing price
+            ]);
+        }
+
         $transaction = new Transaction();
         $transaction->amount = Cart::subtotal();
         $transaction->type = 'income';

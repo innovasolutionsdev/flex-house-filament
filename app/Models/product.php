@@ -46,6 +46,13 @@ class product extends Model implements HasMedia
         $this->addMediaCollection('nutrition_label')->singleFile();
     }
 
+    public function orders()
+    {
+        return $this->belongsToMany(Order::class, 'order_product')
+            ->withPivot('quantity', 'price')
+            ->withTimestamps();
+    }
+
 
 
 }

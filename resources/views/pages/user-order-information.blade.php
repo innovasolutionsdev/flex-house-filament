@@ -10,49 +10,48 @@
             <form method="post" action="{{ route('checkout.process') }}">
                 @csrf
             <div class="mb-6">
-                <input class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:border-gray-400 dark:bg-[#171717] text-gray-200 text-sm dark:border-gray-600" placeholder="Email address" type="email" name="email"/>
+                <input class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:border-gray-400 dark:bg-[#171717] dark:text-gray-200 text-gray-800 text-sm dark:border-gray-600" placeholder="Email address" type="email" name="email"/>
             </div>
             <h2 class="text-xl font-semibold mb-4 dark:text-white">
                 Shipping information
             </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div>
-                    <input class="mt-1 block w-full  rounded-md shadow-sm p-2 focus:border-gray-400 dark:bg-[#171717] text-gray-200 text-sm border border-gray-300 dark:border-gray-600" placeholder="First name" type="text" name="first_name"/>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <input class="mt-1 block w-full rounded-md shadow-sm p-2 focus:border-gray-400 dark:bg-[#171717] dark:text-gray-200 text-gray-800 text-sm border border-gray-300 dark:border-gray-600" placeholder="First name" type="text" name="first_name"/>
+                    </div>
+                    <div>
+                        <input class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:border-gray-400 dark:bg-[#171717] dark:text-gray-200 text-gray-800 text-sm dark:border-gray-600" placeholder="Last name" type="text" name="last_name"/>
+                    </div>
                 </div>
-                <div>
-                    <input class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:border-gray-400 dark:bg-[#171717] text-gray-200 text-sm dark:border-gray-600" placeholder="Last name" type="text" name="last_name"/>
-                </div>
-            </div>
-
-            <div class="mb-6">
-                <input class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:border-gray-400 dark:bg-[#171717] text-gray-200 text-sm dark:border-gray-600" placeholder="Address" type="text" name="address"/>
-            </div>
-            <div class="mb-6">
-                <input class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:border-gray-400 dark:bg-[#171717] text-gray-200 text-sm dark:border-gray-600" placeholder="Apartment, suite, etc." type="text" name="apartment"/>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div>
-                    <input class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:border-gray-400 dark:bg-[#171717] text-gray-200 text-sm dark:border-gray-600" placeholder="City" type="text" name="city"/>
-                </div>
-                <div>
-                    <input class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:border-gray-400 dark:bg-[#171717] text-gray-200 text-sm dark:border-gray-600" placeholder="Phone" type="text" name="phone"/>
-                </div>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div>
-                    <input class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:border-gray-400 dark:bg-[#171717] text-gray-200 text-sm dark:border-gray-600" placeholder="State / Province" type="text" name="state"/>
-                </div>
-                <div>
-                    <input class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:border-gray-400 dark:bg-[#171717] text-gray-200 text-sm dark:border-gray-600" placeholder="Zip code" type="text" name="zip"/>
-                </div>
-            </div>
 
                 <div class="mb-6">
-                    <textarea class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:border-gray-400 dark:bg-[#171717] text-gray-200 text-sm dark:border-gray-600" placeholder="Note" name="note" rows="4"></textarea>
+                    <input class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:border-gray-400 dark:bg-[#171717] dark:text-gray-200 text-gray-800 text-sm dark:border-gray-600" placeholder="Address" type="text" name="address"/>
+                </div>
+                <div class="mb-6">
+                    <input class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:border-gray-400 dark:bg-[#171717] dark:text-gray-200 text-gray-800 text-sm dark:border-gray-600" placeholder="Apartment, suite, etc." type="text" name="apartment"/>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <input class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:border-gray-400 dark:bg-[#171717] dark:text-gray-200 text-gray-800 text-sm dark:border-gray-600" placeholder="City" type="text" name="city"/>
+                    </div>
+                    <div>
+                        <input class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:border-gray-400 dark:bg-[#171717] dark:text-gray-200 text-gray-800 text-sm dark:border-gray-600" placeholder="Phone" type="text" name="phone"/>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <input class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:border-gray-400 dark:bg-[#171717] dark:text-gray-200 text-gray-800 text-sm dark:border-gray-600" placeholder="State / Province" type="text" name="state"/>
+                    </div>
+                    <div>
+                        <input class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:border-gray-400 dark:bg-[#171717] dark:text-gray-200 text-gray-800 text-sm dark:border-gray-600" placeholder="Zip code" type="text" name="zip"/>
+                    </div>
                 </div>
 
+                <div class="mb-6">
+                    <textarea class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:border-gray-400 dark:bg-[#171717] dark:text-gray-200 text-gray-800 text-sm dark:border-gray-600" placeholder="Note" name="note" rows="4"></textarea>
+                </div>
 
-            <p class="mt-8 mb-4 text-lg font-medium dark:text-white">Payment Method</p>
+                <p class="mt-8 mb-4 text-lg font-medium dark:text-white">Payment Method</p>
             <div class="w-full mx-auto ">
                 <!-- First Card -->
                 <label class="flex items-center justify-between p-4 bg-white border border-gray-200 dark:border-gray-400 rounded-lg mb-4 cursor-pointer radio-label dark:bg-[#141414]">
@@ -63,7 +62,7 @@
                             <p class="text-gray-500 dark:text-gray-300">Hand over the money to our delivery driver</p>
                         </div>
                     </div>
-                    <input type="radio" value="cod" name="delivery" class="form-radio text-gray-300">
+                    <input type="radio" value="COD" name="delivery" class="form-radio text-gray-300">
                 </label>
                 <!-- Second Card -->
                 <label class="flex items-center justify-between p-4 bg-white border border-gray-200 dark:border-gray-400 rounded-lg mb-4 cursor-pointer radio-label dark:bg-[#141414]">
@@ -74,7 +73,7 @@
                             <p class="text-gray-500 dark:text-gray-300">Pay in 3 easy instalments</p>
                         </div>
                     </div>
-                    <input type="radio" value="koko" name="delivery" class="form-radio text-gray-300">
+                    <input type="radio" value="KOKO" name="delivery" class="form-radio text-gray-300">
                 </label>
 
                 <!-- Third Card -->
@@ -86,7 +85,7 @@
                             <p class="text-gray-500 dark:text-gray-300">Transfer the total and upload the slip in the next page</p>
                         </div>
                     </div>
-                    <input type="radio" value="bank_transfer" name="delivery" class="form-radio text-gray-300">
+                    <input type="radio" value="Bank Transfer" name="delivery" class="form-radio text-gray-300">
                 </label>
 
                 <!-- Fourth Card -->
@@ -98,7 +97,7 @@
                             <p class="text-gray-500 dark:text-gray-300">Transfer the total and upload the slip in the next page</p>
                         </div>
                     </div>
-                    <input type="radio" value="card" name="delivery" class="form-radio text-gray-300">
+                    <input type="radio" value="Card" name="delivery" class="form-radio text-gray-300">
                 </label>
             </div>
                 <button type="submit" class="w-full bg-[#F41E1E] hover:bg-black text-white py-2  font-bold rounded-md mt-6 transition-all duration-500 ">

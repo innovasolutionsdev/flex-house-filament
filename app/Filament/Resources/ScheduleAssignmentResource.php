@@ -9,6 +9,7 @@ use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\BadgeColumn;
 use Filament\Tables\Table;
 use Filament\Forms\Components\Select;
 
@@ -62,9 +63,20 @@ class ScheduleAssignmentResource extends Resource
             Tables\Columns\TextColumn::make('schedule.name')->label('Schedule'),
             //assigned at column
             Tables\Columns\TextColumn::make('created_at')
-                ->dateTime()
+                ->date()
                 ->sortable()->label('Assigned At'),
 
+                BadgeColumn::make('status')
+                    ->label('Schedule status')
+                    ->formatStateUsing(fn ($state) => match($state) {
+                        'active' => 'Active',
+                        'completed' => 'Completed',
+
+                    })
+                    ->color(fn ($state) => match($state) {
+                        'active' => 'primary',
+                        'completed' => 'success',
+                    }),
             ])
             ->filters([
                 //

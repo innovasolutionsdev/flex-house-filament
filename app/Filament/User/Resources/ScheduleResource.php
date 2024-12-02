@@ -9,6 +9,7 @@ use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\BadgeColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -23,28 +24,13 @@ class ScheduleResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     //custome name for resource in navigation
-    protected static ?string $pluralLabel = 'My Schedules';
+    protected static ?string $pluralLabel = 'My fgbSchedules';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                TextInput::make('name')
-                    ->required(),
-                HasManyRepeater::make('workouts')
-                    ->relationship('workouts')  // Link to workouts
-                    ->schema([
-                        TextInput::make('name')
-                            ->label('Workout Name'),
-                        HasManyRepeater::make('exercises')
-                            ->relationship('exercises')  // Link to exercises
-                            ->schema([
-                                TextInput::make('name')->label('Exercise Name'),
-                                TextInput::make('sets')->label('Sets'),
-                                TextInput::make('reps')->label('Reps'),
-                                TextInput::make('rest_time')->label('Rest Time (in seconds)'),
-                            ]),
-                    ]),
+
             ]);
     }
 
@@ -56,7 +42,18 @@ class ScheduleResource extends Resource
             ->columns([
 
                 Tables\Columns\TextColumn::make('name')->label('Schedule Name'),
-                Tables\Columns\TextColumn::make('created_at')->dateTime(),
+                Tables\Columns\TextColumn::make('created_at')->label('Assigned at')->date(),
+                BadgeColumn::make('status')
+                    ->label('Schedule status')
+                    ->formatStateUsing(fn ($state) => match($state) {
+                        'active' => 'Active',
+                        'completed' => 'Completed',
+                    })
+
+                    ->color(fn ($state) => match($state) {
+                        'active' => 'primary',
+                        'completed' => 'success',
+                    }),
 
 
 

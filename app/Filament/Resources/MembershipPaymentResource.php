@@ -53,9 +53,9 @@ class MembershipPaymentResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('user.name')->searchable(),
-                Tables\Columns\TextColumn::make('user.membershipPlan.name')
+                Tables\Columns\TextColumn::make('user.membership_id')
                     ->label('Membership Plan')
-                    ->getStateUsing(fn($record) => $record->membershipPlan->name ?? 'Not Assigned'),
+                    ->getStateUsing(fn($record) => $record->membership_plans->name ?? 'Not Assigned'),
                 Tables\Columns\TextColumn::make('amount'),
                 Tables\Columns\TextColumn::make('payment_date')->sortable(),
                 Tables\Columns\TextColumn::make('payment_method'),

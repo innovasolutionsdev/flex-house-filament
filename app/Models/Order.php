@@ -39,13 +39,19 @@ class Order extends Model implements HasMedia
     {
         return $this->belongsTo(cart::class);
     }
+
     public function products()
     {
-        return $this->belongsToMany(product::class)->using(order_product::class)->withPivot('quantity');
+        return $this->belongsToMany(Product::class, 'order_product')
+            ->withPivot('quantity', 'price')
+            ->withTimestamps();
     }
+
 
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('bank_slips')->singleFile();
     }
+
+
 }

@@ -11,6 +11,7 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Actions\Action;
 use Filament\Tables\Columns\BadgeColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
@@ -74,6 +75,7 @@ class OrderResource extends Resource
             ->columns([
 
                 TextColumn::make('created_at')
+                    ->date()
                     ->label('Order Date')
                     ->sortable(),
                 TextColumn::make('first_name')->label('First Name')->sortable()->searchable(),
@@ -112,6 +114,13 @@ class OrderResource extends Resource
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
                 Tables\Actions\ViewAction::make(),
+                Action::make('receipt')
+                    ->label('Receipt')
+//                    ->icon('heroicon-o-receipt-tax')
+                    ->action(function ($record, $livewire) {
+                        // Open a modal or redirect to a receipt view
+                        $livewire->dispatch('openReceiptModal', $record->id);
+                    }),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

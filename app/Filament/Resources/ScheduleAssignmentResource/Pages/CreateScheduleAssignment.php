@@ -14,4 +14,9 @@ class CreateScheduleAssignment extends CreateRecord
     {
         return static::getResource()::getUrl('index');
     }
+
+    public function getTitle(): string
+    {
+        return 'New Schedule Assignment';
+    }
 }
