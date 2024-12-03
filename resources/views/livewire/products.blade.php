@@ -1,3 +1,8 @@
+@if (session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
 <div class="dark:bg-[#171717]">
     <div class="container pt-20 mx-auto p-4">
         <div class="flex flex-col lg:flex-row">
