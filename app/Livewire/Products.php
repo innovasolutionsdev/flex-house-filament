@@ -7,6 +7,7 @@ use App\Models\ProductBrand;
 use App\Models\ProductCategory;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Livewire\Component;
+use Notify;
 
 class Products extends Component
 {
@@ -90,7 +91,7 @@ class Products extends Component
 
         // Check if adding this quantity exceeds available stock
         if (!$product || ($product->stock_quantity - $cartQuantity) < 1) {
-            session()->flash('error', 'Not enough stock available.');
+            Notify::error('Not enough stock available.');
             return;
         }
 

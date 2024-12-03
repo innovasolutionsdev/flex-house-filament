@@ -1,5 +1,6 @@
 @include('layouts.head')
 
+
 <body class="font-sans antialiased">
 
     {{-- @livewire('navigation-menu') --}}
