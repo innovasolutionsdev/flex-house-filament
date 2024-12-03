@@ -560,7 +560,7 @@
                 <div
                     class="bg-white dark:bg-[#171717] rounded-lg shadow-lg transform transition duration-500 hover:scale-105 w-72 relative m-4 flex-shrink-0">
                     <img alt="Gym facilities image" class="rounded-t-lg" height="160"
-                        src="https://storage.googleapis.com/a1aa/image/dcebelfUdGDHEJkrKUYi6KbzlnveYmBmKKEJoAI6uqh2tQzOB.jpg"
+                        src="{{$plan->getFirstMediaUrl('membership_thumbnail') }}"
                         width="288" />
                     <div
                         class="absolute top-0 right-0 bg-[#F41E1E] text-white text-xs font-bold py-1 px-2 rounded-bl-lg">
@@ -572,9 +572,11 @@
                         </h2>
                     </div>
                     <div class="text-center mt-4 px-6">
+                        @if($plan->discount == 1)
                         <p class="text-gray-600 dark:text-gray-300 text-2xl line-through">
-                            Rs. 4000
+                            {{$plan->discount_price}}
                         </p>
+                        @endif
                         <p class="text-[#F41E1E] text-4xl font-extrabold">
                             Rs.{{$plan->price}}
                         </p>
@@ -1166,7 +1168,7 @@
                         <h2 class="font-bold text-lg mt-2 dark:text-white">
                             {{$blog->title}}
                         </h2>
-                        
+
 
                         <p class="text-gray-700 dark:text-gray-300 mt-2">
                             {{ Illuminate\Support\Str::limit(strip_tags($blog->description), 100) }}

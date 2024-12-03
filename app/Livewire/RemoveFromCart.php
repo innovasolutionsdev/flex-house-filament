@@ -17,15 +17,6 @@ class RemoveFromCart extends Component
 
         $cartItem = Cart::get($this->rowId);
 
-        if ($cartItem) {
-            // Get the product based on the cart item id
-            $product = Product::find($cartItem->id);
-
-            if ($product) {
-                // Increment the stock quantity of the product
-                $product->increment('stock_quantity', $cartItem->qty);
-            }
-
             // Remove the item from the cart
             Cart::remove($this->rowId);
 
@@ -33,7 +24,7 @@ class RemoveFromCart extends Component
 
             $this->dispatch('cart_updated',);
             $this->dispatch('cart_counter_updated');
-        }
+
 
     }
 

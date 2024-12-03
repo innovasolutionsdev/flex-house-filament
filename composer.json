@@ -22,6 +22,7 @@
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
         "livewire/livewire": "^3.5",
+        "mckenziearts/laravel-notify": "^2.5",
         "mindscms/laravelshoppingcart": "^2.1",
         "minishlink/web-push": "^9.0",
         "morilog/jalali": "^3.4",

@@ -7,7 +7,7 @@ use App\Models\ProductBrand;
 use App\Models\ProductCategory;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Livewire\Component;
-use Notify;
+
 
 class Products extends Component
 {
@@ -91,7 +91,7 @@ class Products extends Component
 
         // Check if adding this quantity exceeds available stock
         if (!$product || ($product->stock_quantity - $cartQuantity) < 1) {
-            Notify::error('Not enough stock available.');
+            notify()->error('Not enough stock available.');
             return;
         }
 
@@ -110,6 +110,10 @@ class Products extends Component
     }
 
     public function quickbuy($product_id){
+
+
+        Cart::destroy();
+
         $product = product::findorfail($product_id);
 
         // Get the total quantity of this product already in the cart

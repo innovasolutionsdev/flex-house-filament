@@ -71,11 +71,20 @@
                         <a class="block py-2 px-3 text-lg text-gray-300 rounded hover:bg-gray-700 md:hover:bg-transparent md:hover:text-[#F41E1E] md:p-0 dark:text-white md:dark:hover:text-[#F41E1E] dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                             href="#">Contact</a>
                     </li>
+
+
                 </ul>
             </div>
 
         </div>
     </nav>
+
+    <div class="flex items-center md:order-2 space-x-3 rtl:space-x-reverse">
+        <div>
+            @livewire('cart-counter')
+        </div>
+
+        <div>
     @auth
         <div class="relative">
             <div class="z-50 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600 hidden absolute right-4 mt-4"
@@ -131,29 +140,11 @@
                 </ul>
             </div>
         </div>
-
+        </div>
     @endauth
+     </div>
 
 
-    {{-- <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            let lastScrollTop = 0;
-            const navbar = document.querySelector('nav');
-
-            window.addEventListener('scroll', function() {
-                let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                if (scrollTop > lastScrollTop) {
-                    // Scrolling down
-                    navbar.classList.add('hidden');
-                } else {
-                    // Scrolling up
-                    navbar.classList.remove('hidden');
-                    navbar.classList.add('fixed');
-                }
-                lastScrollTop = scrollTop;
-            });
-        });
-    </script> --}}
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
