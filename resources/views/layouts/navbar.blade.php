@@ -77,10 +77,11 @@
             </div>
 
         </div>
-    </nav>
 
-    <div class="flex items-center md:order-2 space-x-3 rtl:space-x-reverse">
-        <div>
+    </nav>
+    <div class=" bg-[#141414] flex items-center md:order-2 space-x-3 rtl:space-x">
+
+        <div class="mr-5">
             @livewire('cart-counter')
         </div>
 
@@ -140,10 +141,11 @@
                 </ul>
             </div>
         </div>
-        </div>
-    @endauth
-     </div>
 
+    @endauth
+        </div>
+
+     </div>
 
 
     <script>
