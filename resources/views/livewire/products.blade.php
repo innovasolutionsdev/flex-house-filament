@@ -8,9 +8,9 @@
                     <ul class="space-y-2">
                         @foreach ($categories as $category)
                             <li>
-                                <a href="#" class="flex items-center text-gray-700 hover:text-blue-500"
+                                <a href="#" class="flex items-center hover:text-[#F41E1E]"
                                    wire:click.prevent="filterByCategory({{ $category->id }})" style="color: inherit;"
-                                   :class="{ 'text-blue-500': selectedCategoryId === {{ $category->id }} }"
+                                   :class="{ 'text-[#F41E1E]': selectedCategoryId === {{ $category->id }} }"
                                    onclick="this.style.color = '';"
                                 >
                                     <i class="fas fa-caret-right mr-2"></i>
@@ -28,7 +28,7 @@
                     <ul class="space-y-2">
                         @foreach ($brands as $value)
                             <li>
-                                <a class="flex items-center text-gray-700 hover:text-[#F41E1E]" href="#"
+                                <a class="flex items-center  hover:text-[#F41E1E]" href="#"
                                    wire:click.prevent="filterByBrand({{ $value->id }})"
                                    :class="{ 'text-[#F41E1E]': selectedBrand === {{ $value->id }} }">
                                     <i class="fas fa-caret-right mr-2"></i>
@@ -43,9 +43,9 @@
             <!-- Main Content -->
             <div class="w-full lg:w-3/4 lg:ml-9">
                 <div class="flex flex-col lg:flex-row justify-between items-center mb-4">
-                    <h1 class="text-3xl font-bold mb-4 lg:mb-0 dark:text-white">Proteins</h1>
+                    <h1 class="text-3xl font-bold mb-4 lg:mb-0 dark:text-white">Supplements</h1>
                     <div class="relative w-2/3 lg:w-auto flex">
-                        <input id="searchInput" wire:model="searchTerm" class="border border-gray-200 dark:bg-gray-100 p-2 rounded-lg w-full lg:w-64" placeholder="Search..." type="text" />
+                        <input id="searchInput" wire:model="searchTerm" class="border border-gray-400 dark:bg-[#141414] p-2 rounded-lg w-full lg:w-64" placeholder="Search..." type="text" />
                         <button id="searchButton" wire:click="searchProducts" class="hidden ml-2 bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600">
                             Search
                         </button>
@@ -84,7 +84,7 @@
                             <div class="flex mt-2">
                                 <!-- Quick Buy Button -->
                                 <button wire:click.prevent="quickbuy({{ $value->id }})"
-                                        class="w-full py-2 mr-2 rounded-lg {{ $value->stock_quantity > 0 ? 'bg-[#F41E1E] text-white hover:bg-yellow-600' : 'bg-gray-400 text-gray-200 cursor-not-allowed' }}"
+                                        class="w-full py-2 mr-2 rounded-lg {{ $value->stock_quantity > 0 ? 'bg-[#F41E1E] text-white hover:bg-[#db4747]' : 'bg-gray-400 text-gray-200 cursor-not-allowed' }}"
                                     {{ $value->stock_quantity <= 0 && $value->in_stock ? 'disabled' : '' }}>
                                     Quick Buy
                                 </button>
