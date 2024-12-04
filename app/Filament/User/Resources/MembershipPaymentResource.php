@@ -18,7 +18,7 @@ class MembershipPaymentResource extends Resource
 {
     protected static ?string $model = MembershipPayment::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-credit-card';
 
     //custome name for resource in navigation
     protected static ?string $pluralLabel = 'My Payments';
