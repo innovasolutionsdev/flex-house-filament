@@ -1,3 +1,5 @@
+
+
 <div class="dark:bg-[#171717]">
     <div class="container pt-20 mx-auto p-4">
         <div class="flex flex-col lg:flex-row">
@@ -63,6 +65,8 @@
                                 <a href="{{ url('product-details/' . $value->id) }}">
                                     <img alt="{{ $value->name }}" class="rounded-lg h-72 object-cover" src="{{ $value->getFirstMediaUrl('product_image') }}" />
                                 </a>
+
+
                                 @if ($value->on_sale)
                                     <span class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 text-xs rounded-lg">Sale!</span>
                                 @endif
@@ -81,6 +85,8 @@
                                 @endif
                                 <span class="text-red-500 text-xl font-bold">රු{{ $value->price }}</span>
                             </div>
+
+
                             <div class="flex mt-2">
                                 <!-- Quick Buy Button -->
                                 <button wire:click.prevent="quickbuy({{ $value->id }})"

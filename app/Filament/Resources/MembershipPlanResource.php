@@ -6,6 +6,7 @@ use App\Filament\Resources\MembershipPlanResource\Pages;
 use App\Filament\Resources\MembershipPlanResource\RelationManagers;
 use App\Models\MembershipPlan;
 use Filament\Forms;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -29,15 +30,24 @@ class MembershipPlanResource extends Resource
                     ->required(),
                 Forms\Components\TextInput::make('price')
                     ->required(),
-                Forms\Components\TextInput::make('duration')
-                    ->required(),
 
+                Forms\Components\TextInput::make('discount_price')
+                    ->label('Discounted Price')
+                    ->required(),
                 Forms\Components\Toggle::make('discount')
                     ->label('Discount')
                     ->default(false),
 
+                Forms\Components\TextInput::make('duration')
+                    ->required(),
+
+                SpatieMediaLibraryFileUpload::make('Thumbnail')
+                    ->collection('membership_thumbnail')
+                    ->label('Thumbnail')
+                    ->enableDownload()
+                    ->enableOpen(),
                 //descption
-                Forms\Components\RichEditor::make('description')
+                Forms\Components\Textarea::make('description')
                     ->columnSpan('full')
                     ->required(),
 

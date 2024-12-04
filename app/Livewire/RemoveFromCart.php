@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\product;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Livewire\Component;
 
@@ -14,12 +15,15 @@ class RemoveFromCart extends Component
     {
         // Remove the item from the cart using the rowId
 
-        Cart::remove($this->rowId);
+        $cartItem = Cart::get($this->rowId);
 
-        // Emit an event or refresh the cart if necessary
+            // Remove the item from the cart
+            Cart::remove($this->rowId);
 
-        $this->dispatch('cart_updated',);
-        $this->dispatch('cart_counter_updated');
+            // Emit an event or refresh the cart if necessary
+
+            $this->dispatch('cart_updated',);
+            $this->dispatch('cart_counter_updated');
 
 
     }

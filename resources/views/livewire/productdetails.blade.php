@@ -73,13 +73,15 @@
                     <div class="pt-4 md:pt-0 flex flex-col w-full md:flex-row md:w-auto space-y-2 md:space-y-0 md:pl-4 md:space-x-2">
                         <form wire:submit.prevent="addToCart({{ $order->id }})" action="{{ route('cart.store') }}" method="POST">
                             @csrf
-                            <button type="submit" class="bg-[#141414] dark:bg-[#F41E1E] text-white py-2 px-2 font-bold rounded-md shadow-md hover:bg-[#141414] transition duration-300 w-full md:w-auto">
+                            <button type="submit" class="bg-[#141414] dark:bg-[#F41E1E] text-white py-2 px-2 font-bold rounded-md shadow-md hover:bg-[#141414] transition duration-300 w-full md:w-auto" {{ $order->stock_quantity > 0 ? 'bg-[#F41E1E] text-white hover:bg-yellow-600' : 'bg-gray-400 text-gray-200 cursor-not-allowed'}}
+                                {{ $order->stock_quantity <= 0 && $order->in_stock ? 'disabled' : '' }}>
                                 Add To Cart
                                 <i class="fas fa-shopping-cart ml-2"></i>
                             </button>
                         </form>
                         <button wire:click.prevent="quickbuy({{ $order->id }})"
-                                class="bg-[#141414] dark:bg-[#F41E1E] text-white py-2 px-2 font-bold rounded-md shadow-md hover:bg-[#141414] transition duration-300 w-full md:w-auto">
+                                class="bg-[#141414] dark:bg-[#F41E1E] text-white py-2 px-2 font-bold rounded-md shadow-md hover:bg-[#141414] transition duration-300 w-full md:w-auto  {{ $order->stock_quantity > 0 ? 'bg-[#F41E1E] text-white hover:bg-yellow-600' : 'bg-gray-400 text-gray-200 cursor-not-allowed'}}"
+                            {{ $order->stock_quantity <= 0 && $order->in_stock ? 'disabled' : '' }}>
                             Quick Buy
                             <i class="fa-solid fa-truck-fast ml-2"></i>
                         </button>

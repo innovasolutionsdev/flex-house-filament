@@ -75,15 +75,16 @@
         <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
             <div>
                 <h2 class="text-2xl font-bold">Invoice</h2>
-                <p class="text-sm text-gray-500">Order ID: #12345</p>
-                <p class="text-sm text-gray-500">Date: November 28, 2024</p>
+                <p class="text-sm text-gray-500">Order ID: #{{$record->id}}</p>
+                <p class="text-sm text-gray-500">Date: {{$record->create_at}}</p>
             </div>
             <div class="mt-4 md:mt-0">
                 <h3 class="text-lg font-semibold">Customer Details</h3>
-                <p class="text-gray-500">Name: John Doe</p>
+                <p class="text-gray-500">Name: {{$record->first_name }} {{$record->last_name}}</p>
                 <p class="text-gray-500">Email: john.doe@example.com</p>
             </div>
         </div>
+
 
         <div class="mb-6 mt-6">
             <h3 class="text-lg font-semibold">Order Summary</h3>
