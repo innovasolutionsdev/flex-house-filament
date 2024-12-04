@@ -8,7 +8,7 @@
                         @csrf
 
                         <div class="mb-12 text-center">
-                            <h3 class="text-black dark:text-white text-3xl font-extrabold">Sign in</h3>
+                            <h3 class="text-black dark:text-white text-3xl font-semibold">Log In</h3>
                             <p class="text-sm mt-4 text-gray-800 dark:text-gray-400">Don't have an account?
                                 <a href="{{ route('register') }}"
                                     class="text-[#F41E1E] font-semibold hover:underline ml-1 whitespace-nowrap">Register
@@ -18,19 +18,19 @@
 
                         <div>
                             {{-- <label class="text-gray-800 text-xs block mb-2">Email</label> --}}
-                            <div class="relative flex items-center">
+                            <div class="relative flex items-center ">
                                 <input name="email" type="email" required
-                                    class="w-full rounded-lg text-gray-800 text-sm border-b border-gray-300 focus:border-[#F41E1E] px-2 py-3 outline-none"
+                                    class="w-full   text-gray-800 text-sm border-b border-gray-300 focus:border-[#F41E1E] px-2 py-3 outline-none"
                                     placeholder="Email" />
                                 <!-- Icon here if needed -->
                             </div>
                         </div>
 
-                        
+
                         <div class="mt-8">
                             <div class="relative flex items-center">
                                 <input id="password" name="password" type="password" required
-                                    class="w-full rounded-lg text-gray-800 text-sm border-b border-gray-300 focus:border-[#F41E1E] px-2 py-3 outline-none"
+                                    class="w-full  text-gray-800 text-sm border-b border-gray-300 focus:border-[#F41E1E] px-2 py-3 outline-none"
                                     placeholder="Password" />
 
                                 <!-- Eye Icon Button -->
@@ -63,10 +63,10 @@
                             </div>
                         </div>
                         <x-validation-errors class="mb-4" />
-                        <div class="mt-12">
+                        <div class="mt-12 flex justify-center">
                             <button type="submit"
-                                class="w-full shadow-xl py-2.5 px-4 text-lg  font-bold uppercase tracking-wide rounded-md text-white dark:hover:text-black bg-[#F41E1E] dark:hover:bg-white dark:bg-[#F41E1E] hover:bg-[#F41E1E] focus:outline-none">
-                                Sign in
+                                class="w-1/2 shadow-xl py-1.5 px-2 text-lg font-bold tracking-wide rounded-3xl text-white dark:hover:text-black bg-[#F41E1E] dark:hover:bg-white dark:bg-[#F41E1E] hover:bg-[#F41E1E] focus:outline-none transform transition-transform duration-1000">
+                                Log In
                             </button>
                         </div>
 

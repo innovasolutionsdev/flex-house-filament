@@ -116,11 +116,7 @@ class OrderResource extends Resource
                 Tables\Actions\ViewAction::make(),
                 Action::make('receipt')
                     ->label('Receipt')
-//                    ->icon('heroicon-o-receipt-tax')
-                    ->action(function ($record, $livewire) {
-                        // Open a modal or redirect to a receipt view
-                        $livewire->dispatch('openReceiptModal', $record->id);
-                    }),
+                    ->url(fn ($record) => url('/admin/orders/' . $record->id)),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -143,6 +139,8 @@ class OrderResource extends Resource
             'index' => Pages\ListOrders::route('/'),
             'create' => Pages\CreateOrder::route('/create'),
             'edit' => Pages\EditOrder::route('/{record}/edit'),
+            'receipt' => Pages\CustomReceiptPage::route('/{record}'),
+
         ];
     }
 }
