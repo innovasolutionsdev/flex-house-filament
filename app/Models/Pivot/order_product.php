@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Pivot;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Models\Order;
+use App\Models\product;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\Pivot;
 use Illuminate\Database\Eloquent\SoftDeletes;

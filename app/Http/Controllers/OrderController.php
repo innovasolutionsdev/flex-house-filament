@@ -2,15 +2,13 @@
 
 namespace App\Http\Controllers;
 use App\Models\Order;
-use App\Models\order_product;
 use App\Models\product;
-use App\Models\Subscription;
 use App\Models\Transaction;
 use App\Models\User;
 use App\Notifications\OrderPlacedNotification;
+use Filament\Notifications\Notification;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
-use Filament\Notifications\Notification;
 
 class OrderController extends Controller
 {
@@ -22,7 +20,8 @@ class OrderController extends Controller
 
 
         $order = new Order();
-        $order->total = Cart::subtotal();
+        $order->sub_total = Cart::subtotal();
+        $order->total = Cart::subtotal() + 399;
         $order->user_id = auth()->id();
         $order->payment_method = $request->delivery;
         $order->item_count = 0;

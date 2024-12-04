@@ -74,16 +74,52 @@
     <div id="receipt" class="p-6 rounded-xl border  shadow-md" style="box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
         <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
             <div>
+            <div>
                 <h2 class="text-2xl font-bold">Invoice</h2>
                 <p class="text-sm text-gray-500">Order ID: #{{$record->id}}</p>
-                <p class="text-sm text-gray-500">Date: {{$record->create_at}}</p>
+                <p class="text-sm text-gray-500">Date: {{$record->created_at}}</p>
+                <p class="text-sm text-gray-500">
+                    Payment Status:
+                    @switch($record->status)
+                        @case(0)
+                            <span class="text-yellow-500">Pending</span>
+                            @break
+                        @case(1)
+                            <span class="text-green-500">Confirmed</span>
+                            @break
+                        @case(2)
+                            <span class="text-red-500">Denied</span>
+                            @break
+                        @default
+                            <span class="text-gray-500">Unknown</span>
+                    @endswitch
+                </p>
             </div>
             <div class="mt-4 md:mt-0">
                 <h3 class="text-lg font-semibold">Customer Details</h3>
                 <p class="text-gray-500">Name: {{$record->first_name }} {{$record->last_name}}</p>
-                <p class="text-gray-500">Email: john.doe@example.com</p>
+                <p class="text-gray-500">Email: {{$record->email}}</p>
+
             </div>
+            </div>
+
+            <div class="text-center mb-4">
+                <!-- Logo -->
+                <div  class="float-right">
+                    <img src="{{ asset('img/logo-2.png') }}" width="80px" alt="Company Logo">
+                </div>
+
+                <!-- Company Details -->
+                <div class="mt-2">
+                    <h2 class="text-lg font-bold">Flexifit</h2>
+                    <p class="text-sm text-gray-600">1234 Street Name, City, State, 15987</p>
+                    <p class="text-sm text-gray-600">Phone: (123) 456-7890</p>
+                    <p class="text-sm text-gray-600">Email: flexifit@gmail.com</p>
+                </div>
+            </div>
+
         </div>
+
 
 
         <div class="mb-6 mt-6">
@@ -99,37 +135,29 @@
                         </tr>
                     </thead>
                     <tbody>
+                    @foreach ($order->products as $item)
+
+
                         <tr>
-                            <td class="p-2 border border-gray-200">Fitness Band</td>
-                            <td class="p-2 border border-gray-200 text-right">2</td>
-                            <td class="p-2 border border-gray-200 text-right">$25.00</td>
-                            <td class="p-2 border border-gray-200 text-right">$50.00</td>
+                            <td class="p-2 border border-gray-200">{{$item->name}}</td>
+                            <td class="p-2 border border-gray-200 text-right">{{$item->pivot->quantity}}</td>
+                            <td class="p-2 border border-gray-200 text-right">Rs.{{$item->pivot->price}}</td>
+                            <td class="p-2 border border-gray-200 text-right">Rs.{{ $item->pivot->quantity * $item->pivot->price }}</td>
                         </tr>
-                        <tr>
-                            <td class="p-2 border border-gray-200">Protein Powder</td>
-                            <td class="p-2 border border-gray-200 text-right">1</td>
-                            <td class="p-2 border border-gray-200 text-right">$45.00</td>
-                            <td class="p-2 border border-gray-200 text-right">$45.00</td>
-                        </tr>
-                        <tr>
-                            <td class="p-2 border border-gray-200">Yoga Mat</td>
-                            <td class="p-2 border border-gray-200 text-right">3</td>
-                            <td class="p-2 border border-gray-200 text-right">$20.00</td>
-                            <td class="p-2 border border-gray-200 text-right">$60.00</td>
-                        </tr>
+                        @endforeach
                     </tbody>
                     <tfoot>
                         <tr style="background-color: #c03d3d;">
                             <td colspan="3" class="p-2 border border-gray-200 text-right font-bold">Subtotal</td>
-                            <td class="p-2 border border-gray-200 text-right">$155.00</td>
+                            <td class="p-2 border border-gray-200 text-right">Rs.{{$record->sub_total}}</td>
                         </tr>
                         <tr>
-                            <td colspan="3" class="p-2 border border-gray-200 text-right font-bold">Tax (5%)</td>
-                            <td class="p-2 border border-gray-200 text-right">$7.75</td>
+                            <td colspan="3" class="p-2 border border-gray-200 text-right font-bold">Delivery</td>
+                            <td class="p-2 border border-gray-200 text-right">Rs.399</td>
                         </tr>
                         <tr style="background-color: #c03d3d;">
                             <td colspan="3" class="p-2 border border-gray-200 text-right font-bold">Total</td>
-                            <td class="p-2 border border-gray-200 text-right">$162.75</td>
+                            <td class="p-2 border border-gray-200 text-right">Rs.{{$record->total}}</td>
                         </tr>
                     </tfoot>
                 </table>

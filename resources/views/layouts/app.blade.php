@@ -27,7 +27,7 @@
     <link rel="stylesheet"
         href="{{ url('https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css') }}">
 
-    @notifyJs
+
     {{-- pwa script start --}}
     <script src="{{ asset('/sw.js') }}"></script>
     <script>
