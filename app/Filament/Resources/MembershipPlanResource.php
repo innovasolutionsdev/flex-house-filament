@@ -47,7 +47,7 @@ class MembershipPlanResource extends Resource
                     ->enableDownload()
                     ->enableOpen(),
                 //descption
-                Forms\Components\RichEditor::make('description')
+                Forms\Components\Textarea::make('description')
                     ->columnSpan('full')
                     ->required(),
 
