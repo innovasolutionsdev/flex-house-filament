@@ -10,9 +10,9 @@
                     <ul class="space-y-2">
                         @foreach ($categories as $category)
                             <li>
-                                <a href="#" class="flex items-center text-gray-700 hover:text-blue-500"
+                                <a href="#" class="flex items-center hover:text-[#F41E1E]"
                                    wire:click.prevent="filterByCategory({{ $category->id }})" style="color: inherit;"
-                                   :class="{ 'text-blue-500': selectedCategoryId === {{ $category->id }} }"
+                                   :class="{ 'text-[#F41E1E]': selectedCategoryId === {{ $category->id }} }"
                                    onclick="this.style.color = '';"
                                 >
                                     <i class="fas fa-caret-right mr-2"></i>
@@ -30,7 +30,7 @@
                     <ul class="space-y-2">
                         @foreach ($brands as $value)
                             <li>
-                                <a class="flex items-center text-gray-700 hover:text-[#F41E1E]" href="#"
+                                <a class="flex items-center  hover:text-[#F41E1E]" href="#"
                                    wire:click.prevent="filterByBrand({{ $value->id }})"
                                    :class="{ 'text-[#F41E1E]': selectedBrand === {{ $value->id }} }">
                                     <i class="fas fa-caret-right mr-2"></i>
@@ -45,9 +45,9 @@
             <!-- Main Content -->
             <div class="w-full lg:w-3/4 lg:ml-9">
                 <div class="flex flex-col lg:flex-row justify-between items-center mb-4">
-                    <h1 class="text-3xl font-bold mb-4 lg:mb-0 dark:text-white">Proteins</h1>
+                    <h1 class="text-3xl font-bold mb-4 lg:mb-0 dark:text-white">Supplements</h1>
                     <div class="relative w-2/3 lg:w-auto flex">
-                        <input id="searchInput" wire:model="searchTerm" class="border border-gray-200 dark:bg-gray-100 p-2 rounded-lg w-full lg:w-64" placeholder="Search..." type="text" />
+                        <input id="searchInput" wire:model="searchTerm" class="border border-gray-400 dark:bg-[#141414] p-2 rounded-lg w-full lg:w-64" placeholder="Search..." type="text" />
                         <button id="searchButton" wire:click="searchProducts" class="hidden ml-2 bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600">
                             Search
                         </button>
@@ -63,9 +63,11 @@
                         <div class="bg-white p-2 shadow-md rounded-lg dark:bg-[#141414] dark:text-white">
                             <div class="relative">
                                 <a href="{{ url('product-details/' . $value->id) }}">
-                                    <img alt="{{ $value->name }}" class="rounded-lg h-72 object-cover" src="{{ $value->getFirstMediaUrl('product_image') }}" />
-                                </a>
+                                    {{-- <img alt="{{ $value->name }}" class="rounded-lg h-72 object-cover" src="{{ $value->getFirstMediaUrl('product_image') }}" /> --}}
+                                    <img alt="{{ $value->name }}" class="rounded-lg h-50 md:h-72 object-cover" src="{{asset('img/prod.jpg')}}" />
 
+                                </a>
+                                {{-- @dd($value->getFirstMediaUrl('product_image')) --}}
 
                                 @if ($value->on_sale)
                                     <span class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 text-xs rounded-lg">Sale!</span>
@@ -90,7 +92,7 @@
                             <div class="flex mt-2">
                                 <!-- Quick Buy Button -->
                                 <button wire:click.prevent="quickbuy({{ $value->id }})"
-                                        class="w-full py-2 mr-2 rounded-lg {{ $value->stock_quantity > 0 ? 'bg-[#F41E1E] text-white hover:bg-yellow-600' : 'bg-gray-400 text-gray-200 cursor-not-allowed' }}"
+                                        class="w-full py-2 mr-2 rounded-lg {{ $value->stock_quantity > 0 ? 'bg-[#F41E1E] text-white hover:bg-[#db4747]' : 'bg-gray-400 text-gray-200 cursor-not-allowed' }}"
                                     {{ $value->stock_quantity <= 0 && $value->in_stock ? 'disabled' : '' }}>
                                     Quick Buy
                                 </button>
@@ -114,13 +116,13 @@
     </div>
 
     <!-- Mobile Sidebar -->
-    <div class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden" id="mobileSidebar">
-        <div class="fixed inset-y-0 left-0 bg-white w-3/4 p-4 overflow-y-auto">
-            <button class="text-gray-700 mb-4" onclick="toggleSidebar()">
+    <div class="fixed inset-0 bg-black  bg-opacity-50 z-50 hidden" id="mobileSidebar">
+        <div class="fixed inset-y-0 left-0 bg-white dark:bg-[#141414] w-3/4 p-4 overflow-y-auto">
+            <button class="text-gray-700 dark:text-gray-300 mb-4 text-lg ml-2" onclick="toggleSidebar()">
                 <i class="fas fa-times"></i>
             </button>
-            <div class="bg-white p-4 shadow-md rounded-lg">
-                <h2 class="text-xl font-bold border-b-2 border-yellow-500 pb-2 mb-4">Categories</h2>
+            <div class="bg-white dark:bg-[#141414] dark:text-white p-4 shadow-md rounded-lg">
+                <h2 class="text-xl font-bold border-b-2 border-[#F41E1E] pb-2 mb-4 dark:text-white">Categories</h2>
                 <ul class="space-y-2">
                     @foreach ($categories as $category)
                         <li>
@@ -136,12 +138,12 @@
                     @endforeach
                 </ul>
             </div>
-            <div class="bg-white p-4 shadow-md mt-4 rounded-lg">
-                <h2 class="text-xl font-bold border-b-2 border-yellow-500 pb-2 mb-4">Brands</h2>
+            <div class="bg-white  dark:bg-[#141414] dark:text-white p-4 shadow-md mt-4 rounded-lg">
+                <h2 class="text-xl font-bold border-b-2 border-[#F41E1E] pb-2 mb-4 dark:text-white">Brands</h2>
                 <ul class="space-y-2">
                     @foreach ($brands as $value)
                         <li>
-                            <a class="flex items-center text-gray-700" href="#">
+                            <a class="flex items-center " href="#">
                                 <i class="fas fa-caret-right mr-2"></i>
                                 {{ $value->name }}
                             </a>
@@ -151,7 +153,14 @@
             </div>
         </div>
     </div>
+
+    <button class="fixed bottom-4 right-4 bg-[#F41E1E] text-white p-4 rounded-full lg:hidden" onclick="toggleSidebar()">
+   <i class="fas fa-bars">
+   </i>
+  </button>
 </div>
+
+
 
 <script>
     document.getElementById('searchInput').addEventListener('keydown', function(event) {
@@ -160,4 +169,9 @@
             document.getElementById('searchButton').click();
         }
     });
+
+    function toggleSidebar() {
+            const sidebar = document.getElementById('mobileSidebar');
+            sidebar.classList.toggle('hidden');
+        }
 </script>
