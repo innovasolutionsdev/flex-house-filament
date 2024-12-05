@@ -74,7 +74,7 @@
     <div id="receipt" class="p-6 rounded-xl border  shadow-md" style="box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
         <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
             <div>
-            <div>
+            <div class="mb-4">
                 <h2 class="text-2xl font-bold">Invoice</h2>
                 <p class="text-sm text-gray-500">Order ID: #{{$record->id}}</p>
                 <p class="text-sm text-gray-500">Date: {{$record->created_at}}</p>
@@ -103,15 +103,14 @@
             </div>
             </div>
 
-            <div class="text-center mb-4">
+            <div style="text-align: right; margin-bottom: 1rem; display: flex; flex-direction: column; align-items: flex-end;">
                 <!-- Logo -->
-                <div  class="float-right">
+                <div class="mb-2">
                     <img src="{{ asset('img/logo-2.png') }}" width="80px" alt="Company Logo">
                 </div>
 
                 <!-- Company Details -->
-                <div class="mt-2">
-                    <h2 class="text-lg font-bold">Flexifit</h2>
+                <div class="mt-6">
                     <p class="text-sm text-gray-600">1234 Street Name, City, State, 15987</p>
                     <p class="text-sm text-gray-600">Phone: (123) 456-7890</p>
                     <p class="text-sm text-gray-600">Email: flexifit@gmail.com</p>

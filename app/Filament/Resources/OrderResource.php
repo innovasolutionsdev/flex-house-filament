@@ -78,8 +78,8 @@ class OrderResource extends Resource
                     ->date()
                     ->label('Order Date')
                     ->sortable(),
-                TextColumn::make('first_name')->label('First Name')->sortable()->searchable(),
-                TextColumn::make('payment_method')->label('Payment Method')->sortable()->searchable(),
+                TextColumn::make('first_name')->label('Name')->sortable()->searchable(),
+                TextColumn::make('payment_method')->label('Payment')->sortable()->searchable(),
 
 
                 BadgeColumn::make('Order_status')
