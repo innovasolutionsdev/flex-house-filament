@@ -1,19 +1,20 @@
-<div class="bg-white dark:bg-[#141414] p-6 rounded-lg shadow-md h-96 overflow-y-auto">
-    <h2 class="text-xl font-semibold mb-4 dark:text-white">
+<div class="bg-[#141414] p-6 rounded-lg shadow-md h-96 overflow-y-auto">
+    <h2 class="text-xl font-semibold mb-4 text-white">
         Order Summary
     </h2>
     @foreach($cartItems as $item)
-        <div class="flex items-center mb-4 p-4 border-b last:border-b-0">
-            <img alt="{{ $item['name'] }}" class="w-16 h-16 rounded-md" height="60" src="{{ $item['image'] }}" width="60"/>
-            <div class="ml-4 flex-1">
-                <p class="text-sm font-medium text-gray-700 dark:text-gray-300 truncate">
+        <div class="flex items-center mb-4 p-4 last:border-b-0">
+            {{-- <img alt="{{ $item['name'] }}" class="w-16 h-16 rounded-md" height="60" src="{{ $item['image'] }}" width="60"/> --}}
+            <img alt="{{ $item['name'] }}" class="w-16 h-16 rounded-md" height="60" src="{{ asset('img/prod.jpg') }}" width="60"/>
+            <div class="ml-4 flex justify-between w-full">
+                <p class=" font-medium text-gray-200 truncate">
                     {{ $item['name'] }}
                 </p>
-                <p class="text-sm text-gray-500 dark:text-gray-300">
-                    Qty: {{ $item['qty'] }}
+                <p class=" text-gray-200">
+                    Quantity: {{ $item['qty'] }}
                 </p>
-                <p class="text-sm font-medium text-gray-900 dark:text-white">
-                    රු.{{ $item['total'] }}
+                <p class=" font-medium text-white">
+                    Rs.{{ $item['total'] }}
                 </p>
             </div>
         </div>

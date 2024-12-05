@@ -3,98 +3,98 @@
 <div class=" mx-auto p-6 md:px-16 sm:px-4 dark:bg-[#171717]">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div class="md:col-span-2 bg-white p-6 rounded-lg shadow-md dark:bg-[#141414] ">
-            <h2 class="text-xl font-semibold mb-4 dark:text-white">
-                Contact information
+            <h2 class="text-2xl  mb-4 dark:text-white">
+                Contact
             </h2>
 
             <form method="post" action="{{ route('checkout.process') }}">
                 @csrf
             <div class="mb-6">
-                <input class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:border-gray-400 dark:bg-[#171717] dark:text-gray-200 text-gray-800 text-sm dark:border-gray-600" placeholder="Email address" type="email" name="email"/>
+                <input class="mt-1 block w-full rounded-md shadow-sm p-3 focus:border-gray-300 dark:bg-[#141414] dark:text-gray-200 text-gray-800  dark:border-gray-800" placeholder="Email address" type="email" name="email"/>
             </div>
-            <h2 class="text-xl font-semibold mb-4 dark:text-white">
-                Shipping information
+            <h2 class="text-2xl  mb-4 dark:text-white">
+                Delivery
             </h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                     <div>
-                        <input class="mt-1 block w-full rounded-md shadow-sm p-2 focus:border-gray-400 dark:bg-[#171717] dark:text-gray-200 text-gray-800 text-sm border border-gray-300 dark:border-gray-600" placeholder="First name" type="text" name="first_name"/>
+                        <input class="mt-1 block w-full rounded-md shadow-sm p-3 focus:border-gray-400 dark:bg-[#141414] dark:text-gray-200 text-gray-800  border border-gray-300 dark:border-gray-800" placeholder="First name" type="text" name="first_name"/>
                     </div>
                     <div>
-                        <input class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:border-gray-400 dark:bg-[#171717] dark:text-gray-200 text-gray-800 text-sm dark:border-gray-600" placeholder="Last name" type="text" name="last_name"/>
+                        <input class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3 focus:border-gray-400 dark:bg-[#141414] dark:text-gray-200 text-gray-800  dark:border-gray-800" placeholder="Last name" type="text" name="last_name"/>
                     </div>
                 </div>
 
                 <div class="mb-6">
-                    <input class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:border-gray-400 dark:bg-[#171717] dark:text-gray-200 text-gray-800 text-sm dark:border-gray-600" placeholder="Address" type="text" name="address"/>
+                    <input class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3 focus:border-gray-400 dark:bg-[#141414] dark:text-gray-200 text-gray-800  dark:border-gray-800" placeholder="Address" type="text" name="address"/>
                 </div>
                 <div class="mb-6">
-                    <input class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:border-gray-400 dark:bg-[#171717] dark:text-gray-200 text-gray-800 text-sm dark:border-gray-600" placeholder="Apartment, suite, etc." type="text" name="apartment"/>
+                    <input class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3 focus:border-gray-400 dark:bg-[#141414] dark:text-gray-200 text-gray-800  dark:border-gray-800" placeholder="Apartment, suite, etc." type="text" name="apartment"/>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                     <div>
-                        <input class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:border-gray-400 dark:bg-[#171717] dark:text-gray-200 text-gray-800 text-sm dark:border-gray-600" placeholder="City" type="text" name="city"/>
+                        <input class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3 focus:border-gray-400 dark:bg-[#141414] dark:text-gray-200 text-gray-800  dark:border-gray-800" placeholder="City" type="text" name="city"/>
                     </div>
                     <div>
-                        <input class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:border-gray-400 dark:bg-[#171717] dark:text-gray-200 text-gray-800 text-sm dark:border-gray-600" placeholder="Phone" type="text" name="phone"/>
+                        <input class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3 focus:border-gray-400 dark:bg-[#141414] dark:text-gray-200 text-gray-800  dark:border-gray-800" placeholder="Phone" type="text" name="phone"/>
                     </div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                     <div>
-                        <input class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:border-gray-400 dark:bg-[#171717] dark:text-gray-200 text-gray-800 text-sm dark:border-gray-600" placeholder="State / Province" type="text" name="state"/>
+                        <input class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3 focus:border-gray-400 dark:bg-[#141414] dark:text-gray-200 text-gray-800  dark:border-gray-800" placeholder="State / Province" type="text" name="state"/>
                     </div>
                     <div>
-                        <input class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:border-gray-400 dark:bg-[#171717] dark:text-gray-200 text-gray-800 text-sm dark:border-gray-600" placeholder="Zip code" type="text" name="zip"/>
+                        <input class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3 focus:border-gray-400 dark:bg-[#141414] dark:text-gray-200 text-gray-800  dark:border-gray-800" placeholder="Zip code" type="text" name="zip"/>
                     </div>
                 </div>
 
                 <div class="mb-6">
-                    <textarea class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:border-gray-400 dark:bg-[#171717] dark:text-gray-200 text-gray-800 text-sm dark:border-gray-600" placeholder="Note" name="note" rows="4"></textarea>
+                    <textarea class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3 focus:border-gray-400 dark:bg-[#141414] dark:text-gray-200 text-gray-800  dark:border-gray-800" placeholder="Note" name="note" rows="4"></textarea>
                 </div>
 
-                <p class="mt-8 mb-4 text-lg font-medium dark:text-white">Payment Method</p>
+                <p class="mt-8 mb-4 text-2xl  dark:text-white">Payment Method</p>
             <div class="w-full mx-auto ">
                 <!-- First Card -->
-                <label class="flex items-center justify-between p-4 bg-white border border-gray-200 dark:border-gray-400 rounded-lg mb-4 cursor-pointer radio-label dark:bg-[#141414]">
+                <label class="flex items-center justify-between p-4 bg-white border border-gray-200 dark:border-gray-800 rounded-lg mb-4 cursor-pointer radio-label dark:bg-[#141414]">
                     <div class="flex items-center">
-                        <img alt="FedEx logo" class="w-12 h-12 mr-4" height="50" src="{{ asset('img/cod.png') }}" width="50">
+                        <img alt="FedEx logo" class="w-8 h-8 mr-4" height="50" src="{{ asset('img/cod.png') }}" width="50">
                         <div>
-                            <h2 class="text-lg font-semibold dark:text-white">Cash on delivery</h2>
-                            <p class="text-gray-500 dark:text-gray-300">Hand over the money to our delivery driver</p>
+                            <h2 class="text-lg  dark:text-white">Cash on delivery</h2>
+                            <p class="text-gray-500 text-sm dark:text-gray-300">Hand over the money to our delivery driver</p>
                         </div>
                     </div>
                     <input type="radio" value="COD" name="delivery" class="form-radio text-gray-300">
                 </label>
                 <!-- Second Card -->
-                <label class="flex items-center justify-between p-4 bg-white border border-gray-200 dark:border-gray-400 rounded-lg mb-4 cursor-pointer radio-label dark:bg-[#141414]">
+                <label class="flex items-center justify-between p-4 bg-white border border-gray-200 dark:border-gray-800 rounded-lg mb-4 cursor-pointer radio-label dark:bg-[#141414]">
                     <div class="flex items-center">
-                        <img alt="DHL logo" class="w-12 h-12 mr-4" height="50" src="{{ asset('img/koko.png') }}" width="50">
+                        <img alt="DHL logo" class="w-8 h-8 mr-4" height="50" src="{{ asset('img/koko.png') }}" width="50">
                         <div>
-                            <h2 class="text-lg font-semibold dark:text-white">Koko</h2>
-                            <p class="text-gray-500 dark:text-gray-300">Pay in 3 easy instalments</p>
+                            <h2 class="text-lg  dark:text-white">Koko</h2>
+                            <p class="text-gray-500 text-sm dark:text-gray-300">Pay in 3 easy instalments</p>
                         </div>
                     </div>
                     <input type="radio" value="KOKO" name="delivery" class="form-radio text-gray-300">
                 </label>
 
                 <!-- Third Card -->
-                <label class="flex items-center justify-between p-4 bg-white border border-gray-200 dark:border-gray-400 rounded-lg mb-4 cursor-pointer radio-label dark:bg-[#141414]">
+                <label class="flex items-center justify-between p-4 bg-white border border-gray-200 dark:border-gray-800 rounded-lg mb-4 cursor-pointer radio-label dark:bg-[#141414]">
                     <div class="flex items-center">
-                        <img alt="Bank Transfer logo" class="w-12 h-12 mr-4" height="50" src="{{ asset('img/bank_transfer.png') }}" width="50">
+                        <img alt="Bank Transfer logo" class="w-8 h-8 mr-4" height="50" src="{{ asset('img/bank_transfer.png') }}" width="50">
                         <div>
-                            <h2 class="text-lg font-semibold dark:text-white">Direct Bank transfer</h2>
-                            <p class="text-gray-500 dark:text-gray-300">Transfer the total and upload the slip in the next page</p>
+                            <h2 class="text-lg  dark:text-white">Direct Bank transfer</h2>
+                            <p class="text-gray-500 text-sm dark:text-gray-300">Transfer the total and upload the slip in the next page</p>
                         </div>
                     </div>
                     <input type="radio" value="Bank Transfer" name="delivery" class="form-radio text-gray-300">
                 </label>
 
                 <!-- Fourth Card -->
-                <label class="flex items-center justify-between p-4 bg-white border border-gray-200 dark:border-gray-400 rounded-lg mb-4 cursor-pointer radio-label dark:bg-[#141414]">
+                <label class="flex items-center justify-between p-4 bg-white border border-gray-200 dark:border-gray-800 rounded-lg mb-4 cursor-pointer radio-label dark:bg-[#141414]">
                     <div class="flex items-center">
-                        <img alt="Credit/Debit Card logo" class="w-12 h-12 mr-4" height="50" src="{{ asset('img/card.webp') }}" width="50">
+                        <img alt="Credit/Debit Card logo" class="w-8 h-8 mr-4" height="50" src="{{ asset('img/card.webp') }}" width="50">
                         <div>
-                            <h2 class="text-lg font-semibold dark:text-white">Credit/Debit card</h2>
-                            <p class="text-gray-500 dark:text-gray-300">Transfer the total and upload the slip in the next page</p>
+                            <h2 class="text-lg  dark:text-white">Credit/Debit card</h2>
+                            <p class="text-gray-500 text-sm dark:text-gray-300">Transfer the total and upload the slip in the next page</p>
                         </div>
                     </div>
                     <input type="radio" value="Card" name="delivery" class="form-radio text-gray-300">

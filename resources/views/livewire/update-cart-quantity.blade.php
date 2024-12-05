@@ -1,14 +1,14 @@
 <div class="flex items-center">
     <!-- Input for quantity -->
     <input type="number" wire:model.lazy="quantity" wire:change="updateCartQuantity"
-           class="border border-gray-300 rounded-md p-2 text-center w-16"
+           class="border border-gray-300 rounded-md p-1 text-center w-16 dark:bg-[#141414] dark:text-white"
            min="1" max="{{$stock}}"
               oninput="checkMaxQuantity(this)"
     />
 
     <!-- Optionally, you can show a success message after the quantity is updated -->
     <div wire:loading wire:target="quantity" class="ml-2">
-        <i class="fas fa-spinner fa-spin"></i> Updating...
+        <i class="fas fa-spinner fa-spin text-lg"></i> Updating...
     </div>
 </div>
 
