@@ -4,10 +4,13 @@
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 md:h-20">
             <a class="flex items-center space-x-3 rtl:space-x-reverse" href="https://flowbite.com/">
                 <img alt="Flowbite Logo" class="h-8" src="https://flowbite.com/docs/images/logo.svg" />
-                <span class="self-center text-2xl font-semibold whitespace-nowrap text-white">Innova Solutions</span>
+                <span class="self-center text-2xl font-semibold whitespace-nowrap text-white hidden md:inline">FlexiFit</span>
             </a>
 
             <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+                <div class="mr-5 md:mr-10">
+                    @livewire('cart-counter')
+                </div>
                 <button aria-expanded="false"
                     class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
                     data-dropdown-placement="bottom" data-dropdown-toggle="user-dropdown" id="user-menu-button"
@@ -71,21 +74,15 @@
                         <a class="block py-2 px-3 text-lg text-gray-300 rounded hover:bg-gray-700 md:hover:bg-transparent md:hover:text-[#F41E1E] md:p-0 dark:text-white md:dark:hover:text-[#F41E1E] dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                             href="#">Contact</a>
                     </li>
-
-
                 </ul>
             </div>
-
         </div>
-
     </nav>
-    <div class=" bg-[#141414] flex items-center md:order-2 space-x-3 rtl:space-x">
-
+    {{-- <div class="bg-[#141414] flex items-center md:order-2 space-x-3 rtl:space-x">
         <div class="mr-5">
             @livewire('cart-counter')
         </div>
-
-        <div>
+        <div> --}}
     @auth
         <div class="relative">
             <div class="z-50 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600 hidden absolute right-4 mt-4"
@@ -125,10 +122,9 @@
             </div>
         </div>
     @else
-        <div class="relative ">
+        <div class="relative">
             <div class="z-50 w-48 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600 hidden absolute right-4 mt-4"
                 id="user-dropdown">
-
                 <ul aria-labelledby="user-menu-button" class="py-2 text-center">
                     <li>
                         <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
@@ -141,12 +137,9 @@
                 </ul>
             </div>
         </div>
-
     @endauth
         </div>
-
-     </div>
-
+    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -170,12 +163,11 @@
             });
         });
 
-
         //nav bar
         if (!window.matchMedia('(display-mode: standalone)').matches) {
-        // Show the footer
-        document.getElementById('view-navbar').style.display = 'flex'; // or 'block' based on your layout
-    }
+            // Show the footer
+            document.getElementById('view-navbar').style.display = 'flex'; // or 'block' based on your layout
+        }
     </script>
 </header>
 {{-- <script>
