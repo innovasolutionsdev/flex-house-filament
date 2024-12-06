@@ -14,10 +14,10 @@
             <p class="text-lg text-gray-800 mb-6 dark:text-white">Your order will be processed in 3 - 5 business days.</p>
 
             <p class="text-gray-600 mb-6 dark:text-gray-200">If you have any questions, please feel free to contact us at
-                <a href="mailto:support@example.com" class="text-[#cf4b4b] underline">support@example.com</a>.
+                <a href="mailto:support@flexifit.com" class="text-[#cf4b4b] underline">support@flexifit.com</a>.
             </p>
 
-            <a href="/" class="inline-block mt-6 bg-[#F41E1E] hover:bg-black text-white py-3 px-6 rounded-md text-lg font-medium transition-all duration-500 ">
+            <a href="/" class="inline-block mt-6 bg-[#F41E1E] hover:bg-black text-white py-1 px-2 rounded-md text-lg font-medium transition-all duration-500 ">
                 Back to Home
             </a>
         </div>

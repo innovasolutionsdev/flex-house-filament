@@ -2,7 +2,7 @@
 <!-- Preloader -->
 <!-- Preloader -->
 <div id="preloader" style="" class="fixed inset-0 z-50 flex items-center justify-center bg-white dark:bg-[#141414]">
-    <img id="preloader-logo" src="{{ asset('logo.png') }}" alt="Logo" class="animate-bounce w-45 h-60">
+    <img id="preloader-logo" src="{{ asset('flexilogo.png') }}" alt="Logo" class="animate-bounce ">
 </div>
 
 <style>
@@ -26,8 +26,8 @@
 /* } */
 
 #preloader-logo {
-    width: 100px; /* Adjust the size as needed */
-    height: 100px;
+    width: 320px; /* Adjust the size as needed */
+    height: 80px;
     animation: fadeInOut 8s infinite; /* Fade-in, fade-out animation */
 }
 
@@ -42,6 +42,11 @@
         transform: scale(1);
     }
 }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
 
 </style>
 <script>
@@ -214,25 +219,25 @@
     </section> --}}
     {{-- About us end --}}
     {{-- Our servces --}}
-    <div class="w-full dark:bg-[#141414] py-12 px-4">
+    <div id="services" class="w-full dark:bg-[#141414] py-12 px-4">
         <div class="container mx-auto">
             <div class="text-center mb-8">
                 <h2 class="text-[#F41E1E] text-lg font-bold uppercase mb-2 flex items-center justify-center">
                     <span class="inline-block w-12 h-0.5 bg-[#F41E1E] mx-2">
                     </span>
-                    Work Process
+                    Our Services
                     <span class="inline-block w-12 h-0.5 bg-[#F41E1E] mx-2">
                     </span>
                 </h2>
                 <h1 class="text-4xl text-center font-extrabold mb-20 text-gray-900 dark:text-white">
-                    Easy Step To Achieve Your Goals.
+                    Our Comprehensive Range of Services.
                 </h1>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="bg-white dark:bg-[#171717] shadow-lg rounded-lg overflow-hidden">
                     <img alt="Personal Training - Trainer assisting a client with weights"
                         class="w-full h-48 object-cover" height="400"
-                        src="https://storage.googleapis.com/a1aa/image/5YXzH8QB0O5KO1uJ5vNIagHIkS1ZDEs8dheiPmnfSSC3tfYnA.jpg"
+                        src="{{asset('/img/training.jpg')}}"
                         width="600" />
                     <div class="p-6 text-center">
                         <h3 class="text-xl font-bold text-white bg-[#F41E1E] inline-block px-3 py-1 rounded-sm mb-4">
@@ -253,16 +258,14 @@
                 <div class="bg-white dark:bg-[#171717] shadow-lg rounded-lg overflow-hidden">
                     <img alt="Group Classes - People participating in a group fitness class"
                         class="w-full h-48 object-cover" height="400"
-                        src="https://storage.googleapis.com/a1aa/image/kXljhtp7znLrKpLbSrQ5QYyxhxp4yNSyE1aiXfnxTDE72P2JA.jpg"
+                        src="{{asset('/img/comp.jpg')}}"
                         width="600" />
                     <div class="p-6 text-center">
                         <h3 class="text-xl font-bold text-white bg-[#F41E1E] inline-block px-3 py-1 rounded-sm mb-4">
-                            Group Classes
+                            Competetion Prep
                         </h3>
                         <p class="text-gray-600 dark:text-gray-400 mb-4">
-                            Join our group classes to stay motivated and have fun while working out. We offer a variety
-                            of
-                            classes including yoga, pilates, and HIIT.
+                            Prepare for your next bodybuilding competition with our specialized training programs and expert guidance.
                         </p>
                         <a class="text-[#F41E1E] hover:text-black hover:underline flex items-center font-bold justify-center"
                             href="#">
@@ -275,15 +278,14 @@
                 <div class="bg-white dark:bg-[#171717] shadow-lg rounded-lg overflow-hidden">
                     <img alt="Nutrition Counseling - Nutritionist consulting with a client"
                         class="w-full h-48 object-cover" height="400"
-                        src="https://storage.googleapis.com/a1aa/image/GezjOexcYuqBJknmTMT5mxBnWvkoract4uqoH8IGQrr5tfYnA.jpg"
+                        src="{{asset('/img/meal.jpg')}}"
                         width="600" />
                     <div class="p-6 text-center">
                         <h3 class="text-xl font-bold text-white bg-[#F41E1E] inline-block px-3 py-1 rounded-sm mb-4">
                             Nutrition Counseling
                         </h3>
                         <p class="text-gray-600 dark:text-gray-400 mb-4">
-                            Our nutrition counseling services will help you create a balanced diet plan that complements
-                            your fitness routine and helps you achieve your health goals.
+                            Our nutrition counseling services will help you create a balanced diet plan that helps you achieve your health goals.
                         </p>
                         <a class="text-[#F41E1E] hover:text-black hover:underline flex font-bold items-center justify-center"
                             href="#">
@@ -320,7 +322,7 @@
                     <div class="step-circle"
                         style="position: relative; width: 200px; height: 200px; border-radius: 50%; overflow: hidden; border: 5px solid #e5e7eb; transition: transform 0.3s ease, box-shadow 0.3s ease;">
                         <img alt="Person doing gym movement" height="200"
-                            src="https://storage.googleapis.com/a1aa/image/ouuI6ijEGS7vHlUpcpJ2ru4lUGOfqEOQus02GsSUSFpMK90JA.jpg"
+                            src="{{asset('/img/signup.jpg')}}"
                             style="width: 100%; height: 100%; object-fit: cover;" width="200" />
                         <div class="step-label"
                             style="position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); background-color: #F41E1E; color: white; padding: 5px 10px; border-radius: 20px; font-weight: bold;">
@@ -338,7 +340,7 @@
                     <div class="step-circle"
                         style="position: relative; width: 200px; height: 200px; border-radius: 50%; overflow: hidden; border: 5px solid #e5e7eb; transition: transform 0.3s ease, box-shadow 0.3s ease;">
                         <img alt="Person practicing fitness" height="200"
-                            src="https://storage.googleapis.com/a1aa/image/ucsa1qcU95K9EJsWJZzf41LYh24MypaJbOCfeOfu016fiSPdC.jpg"
+                            src="{{asset('/img/scale.jpg')}}"
                             style="width: 100%; height: 100%; object-fit: cover;" width="200" />
                         <div class="step-label"
                             style="position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); background-color: #F41E1E; color: white; padding: 5px 10px; border-radius: 20px; font-weight: bold;">
@@ -380,7 +382,7 @@
                     <div class="step-circle"
                         style="position: relative; width: 200px; height: 200px; border-radius: 50%; overflow: hidden; border: 5px solid #e5e7eb; transition: transform 0.3s ease, box-shadow 0.3s ease;">
                         <img alt="Person doing gym movement" height="200"
-                            src="https://storage.googleapis.com/a1aa/image/ouuI6ijEGS7vHlUpcpJ2ru4lUGOfqEOQus02GsSUSFpMK90JA.jpg"
+                            src="{{asset('/img/begin.jpg')}}"
                             style="width: 100%; height: 100%; object-fit: cover;" width="200" />
                         <div class="step-label"
                             style="position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); background-color: #F41E1E; color: white; padding: 5px 10px; border-radius: 20px; font-weight: bold;">
@@ -398,7 +400,7 @@
                     <div class="step-circle"
                         style="position: relative; width: 200px; height: 200px; border-radius: 50%; overflow: hidden; border: 5px solid #e5e7eb; transition: transform 0.3s ease, box-shadow 0.3s ease;">
                         <img alt="Person practicing fitness" height="200"
-                            src="https://storage.googleapis.com/a1aa/image/ucsa1qcU95K9EJsWJZzf41LYh24MypaJbOCfeOfu016fiSPdC.jpg"
+                            src="{{asset('/img/asses.png')}}"
                             style="width: 100%; height: 100%; object-fit: cover;" width="200" />
                         <div class="step-label"
                             style="position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); background-color: #F41E1E; color: white; padding: 5px 10px; border-radius: 20px; font-weight: bold;">
@@ -416,7 +418,7 @@
                     <div class="step-circle"
                         style="position: relative; width: 200px; height: 200px; border-radius: 50%; overflow: hidden; border: 5px solid #e5e7eb; transition: transform 0.3s ease, box-shadow 0.3s ease;">
                         <img alt="Person achieving fitness goal" height="200"
-                            src="https://storage.googleapis.com/a1aa/image/lt0xfLKxXr0aB6akywTdYB4lEj0OqPB3p50v9dgkTEfaU6pTA.jpg"
+                            src="{{asset('/img/achieve.jpg')}}"
                             style="width: 100%; height: 100%; object-fit: cover;" width="200" />
                         <div class="step-label"
                             style="position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); background-color: #F41E1E; color: white; padding: 5px 10px; border-radius: 20px; font-weight: bold;">
@@ -545,7 +547,7 @@
             </div>
         </div>
     </div> --}}
-    <div class="w-full dark:bg-[#141414] py-12 text-center px-4 pt-8">
+    <div id="pricing" class="w-full dark:bg-[#141414] py-12 text-center px-4 pt-8">
         <div class="text-center mt-20">
             <h2 class="text-[#F41E1E] text-lg font-bold uppercase mb-2 flex items-center justify-center">
                 <span class="inline-block w-12 h-0.5 bg-[#F41E1E] mx-2">
@@ -616,122 +618,158 @@
     <!-- Membership Section End -->
 
     {{-- bmi start --}}
-    <div class="w-full dark:bg-[#171717] py-12 px-4 pt-20">
-        <div class="container mx-auto p-8 text-center ">
-            <h2 class="text-[#F41E1E] text-lg font-bold uppercase mb-2 flex items-center justify-center">
-                <span class="inline-block w-12 h-0.5 bg-[#F41E1E] mx-2">
-                </span>
-                BMI calculator
-                <span class="inline-block w-12 h-0.5 bg-[#F41E1E] mx-2">
-                </span>
-            </h2>
-            <h1 class="text-4xl font-extrabold mb-16 text-gray-900 dark:text-white">
-                Calculate Your Body Mass Index (BMI)
-            </h1>
-            <div class="flex flex-col lg:flex-row justify-between items-start">
-                <div class="w-full lg:w-1/2 mb-8 lg:mb-0">
-                    {{-- <h1 class="text-4xl font-extrabold">WHAT IS BMI ?</h1>
-                <p class="text-gray-500 text-lg mt-2 mb-8">Lorem Ipsum is simply dummy text of the printing and typesetting
-                    industry.</p> --}}
-                    <form class="space-y-4" onsubmit="event.preventDefault(); calculateBMI();">
-                        <div class="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4">
-                            <input type="text" id="height" placeholder="Height / Feet"
-                                class="w-full lg:w-1/2 p-3 border border-gray-300 rounded dark:border-gray-800 dark:bg-black dark:text-gray-300">
-                            <input type="text" id="weight" placeholder="Weight / kg"
-                                class="w-full lg:w-1/2 p-3 border border-red-500 rounded dark:border-gray-800 dark:bg-black dark:text-gray-300">
-                        </div>
-                        <div class="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4">
-                            <input type="text" id="age" placeholder="Age"
-                                class="w-full lg:w-1/2 p-3 border border-gray-300 rounded dark:border-gray-800 dark:bg-black dark:text-gray-300">
-                            <select id="gender"
-                                class="w-full lg:w-1/2 p-3 border border-gray-300 rounded dark:border-gray-800 dark:bg-black dark:text-gray-300">
-                                <option value="">Select Gender</option>
-                                <option value="male">Male</option>
-                                <option value="female">Female</option>
-                            </select>
-                        </div>
-                        <select id="activityFactor"
-                            class="w-full p-3 border border-gray-300 dark:border-gray-800 dark:bg-black dark:text-gray-300 rounded">
-                            <option value="">Select an activity factor:</option>
-                            <option value="1.2">Sedentary (little or no exercise)</option>
-                            <option value="1.375">Lightly active (light exercise/sports 1-3 days/week)</option>
-                            <option value="1.55">Moderately active (moderate exercise/sports 3-5 days/week)</option>
-                            <option value="1.725">Very active (hard exercise/sports 6-7 days a week)</option>
-                            <option value="1.9">Super active (very hard exercise/sports & physical job)</option>
+<div id="bmi" class="w-full dark:bg-[#171717] py-12 px-4 pt-20">
+    <div class="container mx-auto p-8 text-center ">
+        <h2 class="text-[#F41E1E] text-lg font-bold uppercase mb-2 flex items-center justify-center">
+            <span class="inline-block w-12 h-0.5 bg-[#F41E1E] mx-2">
+            </span>
+            BMI Calculator
+            <span class="inline-block w-12 h-0.5 bg-[#F41E1E] mx-2">
+            </span>
+        </h2>
+        <h1 class="text-4xl font-extrabold mb-16 text-gray-900 dark:text-white">
+            Calculate Your Body Mass Index (BMI)
+        </h1>
+        <div class="flex flex-col lg:flex-row justify-between items-start">
+            <div class="w-full lg:w-1/2 mb-8 lg:mb-0">
+                <form class="space-y-4" onsubmit="event.preventDefault(); calculateBMI();">
+                    <div class="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4">
+                        <input type="text" id="height" placeholder="Height / cm"
+                            class="w-full lg:w-1/2 p-3 border border-gray-300 rounded dark:border-gray-800 dark:bg-black dark:text-gray-300">
+                        <input type="text" id="weight" placeholder="Weight / kg"
+                            class="w-full lg:w-1/2 p-3 border border-red-500 rounded dark:border-gray-800 dark:bg-black dark:text-gray-300">
+                    </div>
+                    <div class="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4">
+                        <input type="text" id="age" placeholder="Age"
+                            class="w-full lg:w-1/2 p-3 border border-gray-300 rounded dark:border-gray-800 dark:bg-black dark:text-gray-300">
+                        <select id="gender"
+                            class="w-full lg:w-1/2 p-3 border border-gray-300 rounded dark:border-gray-800 dark:bg-black dark:text-gray-300">
+                            <option value="">Select Gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
                         </select>
-                        <button type="submit"
-                            class="w-full p-3 dark:bg-[#F41E1E] bg-black text-white text-md font-bold rounded-md hover:bg-[#F41E1E] dark:hover:bg-black uppercase">Calculate</button>
-                    </form>
-                    <p id="bmiResult" class="mt-4 text-xl font-bold"></p>
-                </div>
-                <div class="w-full lg:w-1/3">
-                    <table class="w-full text-left border-collapse">
-                        <thead>
-                            <tr>
-                                <th class="p-3 bg-[#141414] text-white text-center">BMI</th>
-                                <th class="p-3 bg-[#141414] text-[#F41E1E] text-center">WEIGHT STATUS</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td
-                                    class="p-3 border border-gray-300 dark:border-gray-800 dark:bg-black dark:text-gray-300">
-                                    Below 18.5</td>
-                                <td
-                                    class="p-3 border border-gray-300 dark:border-gray-800 dark:bg-black dark:text-gray-300">
-                                    Underweight</td>
-                            </tr>
-                            <tr>
-                                <td
-                                    class="p-3 border border-gray-300 dark:border-gray-800 dark:bg-black dark:text-gray-300">
-                                    18.5 - 24.9</td>
-                                <td
-                                    class="p-3 border border-gray-300 dark:border-gray-800 dark:bg-black dark:text-gray-300">
-                                    Healthy</td>
-                            </tr>
-                            <tr>
-                                <td
-                                    class="p-3 border border-gray-300 dark:border-gray-800 dark:bg-black dark:text-gray-300">
-                                    25.0 - 29.9</td>
-                                <td
-                                    class="p-3 border border-gray-300 dark:border-gray-800 dark:bg-black dark:text-gray-300">
-                                    Overweight</td>
-                            </tr>
-                            <tr>
-                                <td
-                                    class="p-3 border border-gray-300 dark:border-gray-800 dark:bg-black dark:text-gray-300">
-                                    30.0 - and Above</td>
-                                <td
-                                    class="p-3 border border-gray-300 dark:border-gray-800 dark:bg-black dark:text-gray-300">
-                                    Obese</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    {{-- <p class="mt-4 text-sm text-gray-500">BMR Metabolic Rate / <span class="font-bold">BMI</span> Body
-                    Mass Index</p> --}}
-                </div>
+                    </div>
+                    <select id="activityFactor"
+                        class="w-full p-3 border border-gray-300 dark:border-gray-800 dark:bg-black dark:text-gray-300 rounded">
+                        <option value="">Select an activity factor:</option>
+                        <option value="1.2">Sedentary (little or no exercise)</option>
+                        <option value="1.375">Lightly active (light exercise/sports 1-3 days/week)</option>
+                        <option value="1.55">Moderately active (moderate exercise/sports 3-5 days/week)</option>
+                        <option value="1.725">Very active (hard exercise/sports 6-7 days a week)</option>
+                        <option value="1.9">Super active (very hard exercise/sports & physical job)</option>
+                    </select>
+                    <button type="submit"
+                        class="w-full p-3 dark:bg-[#F41E1E] bg-black text-white text-md font-bold rounded-md hover:bg-[#F41E1E] dark:hover:bg-black uppercase">Calculate</button>
+                </form>
+                <p id="bmiResult" class="mt-4 text-xl font-bold"></p>
+            </div>
+            <div class="w-full lg:w-1/3">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr>
+                            <th class="p-3 bg-[#141414] text-white text-center">BMI</th>
+                            <th class="p-3 bg-[#141414] text-[#F41E1E] text-center">Weight Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="p-3 border border-gray-300 dark:border-gray-800 dark:bg-black dark:text-gray-300">
+                                Below 18.5</td>
+                            <td class="p-3 border border-gray-300 dark:border-gray-800 dark:bg-black dark:text-gray-300">
+                                Underweight</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 border border-gray-300 dark:border-gray-800 dark:bg-black dark:text-gray-300">
+                                18.5 - 24.9</td>
+                            <td class="p-3 border border-gray-300 dark:border-gray-800 dark:bg-black dark:text-gray-300">
+                                Healthy</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 border border-gray-300 dark:border-gray-800 dark:bg-black dark:text-gray-300">
+                                25.0 - 29.9</td>
+                            <td class="p-3 border border-gray-300 dark:border-gray-800 dark:bg-black dark:text-gray-300">
+                                Overweight</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 border border-gray-300 dark:border-gray-800 dark:bg-black dark:text-gray-300">
+                                30.0 - and Above</td>
+                            <td class="p-3 border border-gray-300 dark:border-gray-800 dark:bg-black dark:text-gray-300">
+                                Obese</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
+</div>
 
-    <script>
-        function calculateBMI() {
-            const heightFeet = parseFloat(document.getElementById('height').value);
-            const weightKg = parseFloat(document.getElementById('weight').value);
-            const age = parseInt(document.getElementById('age').value);
-            const gender = document.getElementById('gender').value;
-            const activityFactor = document.getElementById('activityFactor').value;
+<script>
+    function calculateBMI() {
+        // Get input values
+        const heightCm = parseFloat(document.getElementById('height').value); // Height in cm
+        const weightKg = parseFloat(document.getElementById('weight').value);  // Weight in kilograms
+        const age = parseInt(document.getElementById('age').value);            // Age in years
+        const gender = document.getElementById('gender').value;               // Gender
+        const activityFactor = parseFloat(document.getElementById('activityFactor').value); // Activity factor
 
-            if (isNaN(heightFeet) || isNaN(weightKg) || isNaN(age) || !gender || !activityFactor) {
-                alert('Please fill in all fields correctly.');
-                return;
-            }
-
-            const heightMeters = heightFeet * 0.3048;
-            const bmi = weightKg / (heightMeters * heightMeters);
-            document.getElementById('bmiResult').innerText = `Your BMI is ${bmi.toFixed(2)}`;
+        // Validate inputs
+        if (isNaN(heightCm) || isNaN(weightKg) || isNaN(age) || !gender || !activityFactor) {
+            alert('Please fill in all fields correctly.');
+            return;
         }
-    </script>
+
+        // Convert height from cm to meters
+        const heightMeters = heightCm / 100;
+
+        // Calculate BMI
+        const bmi = weightKg / (heightMeters * heightMeters);
+
+        // Calculate BMR using the Mifflin-St Jeor Equation
+        let bmr;
+        if (gender === 'male') {
+            bmr = 10 * weightKg + 6.25 * heightCm - 5 * age + 5;
+        } else {
+            bmr = 10 * weightKg + 6.25 * heightCm - 5 * age - 161;
+        }
+
+        // Adjust BMR for activity level
+        const calorieNeeds = bmr * activityFactor;
+
+        // Calculate daily protein intake
+        let proteinFactor;
+        if (activityFactor <= 1.375) {
+            proteinFactor = 0.8; // Sedentary
+        } else if (activityFactor <= 1.55) {
+            proteinFactor = 1.2; // Lightly Active to Moderately Active
+        } else {
+            proteinFactor = 1.6; // Very Active to Super Active
+        }
+        const proteinIntake = weightKg * proteinFactor;
+
+        // Determine BMI category
+        let bmiCategory = '';
+        if (bmi < 18.5) {
+            bmiCategory = 'Underweight';
+        } else if (bmi >= 18.5 && bmi < 24.9) {
+            bmiCategory = 'Healthy';
+        } else if (bmi >= 25 && bmi < 29.9) {
+            bmiCategory = 'Overweight';
+        } else {
+            bmiCategory = 'Obese';
+        }
+
+        // Display result
+        document.getElementById('bmiResult').innerText =
+            `Your BMI is ${bmi.toFixed(2)} (${bmiCategory}).
+            Based on your age, gender, and activity level:
+            - Your daily calorie needs are approximately ${calorieNeeds.toFixed(2)} calories.
+            - Your recommended daily protein intake is approximately ${proteinIntake.toFixed(2)} grams.`;
+    }
+</script>
+
+
+
+
     {{-- bmi end --}}
 
     {{-- Team section start  --}}
@@ -1025,7 +1063,8 @@
             </div>
         </div>
     </section> --}}
-    <div class="w-full dark:bg-[#171717] py-12 text-center px-4 pt-12">
+
+    <div  id="contact" class="w-full dark:bg-[#171717] py-12 text-center px-4 pt-12">
         <div class="container mx-auto text-center">
             <h2 class="text-[#F41E1E] text-lg font-bold uppercase mb-2 flex items-center justify-center">
                 <span class="inline-block w-12 h-0.5 bg-[#F41E1E] mx-2">
@@ -1189,5 +1228,28 @@
         </div>
 
     </div>
+
+    <button id="scrollToTopBtn" class="text-lg font-bold fixed bottom-4 right-4 bg-red-500 text-white p-4 rounded-full shadow-lg hidden hover:bg-red-600">
+    ↑
+</button>
+
+<script>
+    const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            scrollToTopBtn.classList.remove('hidden');
+        } else {
+            scrollToTopBtn.classList.add('hidden');
+        }
+    });
+
+    scrollToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+</script>
 
 </x-app-layout>

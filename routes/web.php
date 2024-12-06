@@ -32,7 +32,7 @@ use App\Models\MembershipPayment;
 
 
 // Default route
-Route::get("/",[homecontroller::class,"index"]);
+Route::get("/", [homecontroller::class, "index"])->name('home');
 
 
 // Booking from the home page
