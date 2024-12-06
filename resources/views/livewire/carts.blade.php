@@ -16,10 +16,15 @@
             <div class="lg:w-2/3">
                 @foreach($cartItems as $item)
                     <div class="pb-4 mb-4" wire:key="cart-item-{{ $item['rowId'] }}">
+
                         <div class="flex items-center md:pl-12">
+                            <a href="{{ url('product-details/' . $item['id']) }}">
                             <img alt="Sienna Basic Tee" class="w-24 h-24 object-cover rounded-md" height="100" src="{{ asset('img/prod.jpg') }}" width="100"/>
+                            </a>
                             <div class="ml-4 flex-1 md:pl-16">
+                                <a href="{{ url('product-details/' . $item['id']) }}">
                                 <h2 class="text-lg font-bold dark:text-gray-100">{{$item['name']}}</h2>
+                                </a>
                                 <p class="text-lg font-medium mt-2 dark:text-gray-100">රු.{{$item['total']}}.00</p>
                             </div>
                             <livewire:update-cart-quantity :rowId="$item['rowId']" :quantity="$item['qty']" :stock="$item['stock']" wire:key="update-quantity-{{ $item['rowId'] }}" />

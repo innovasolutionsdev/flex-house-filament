@@ -83,10 +83,12 @@
                     </div>
                     <div class="flex flex-col items-center md:flex-row">
 
+                        <a href="{{ route('register') }}">
                         <button
                             class="mt-6 bg-[#F41E1E] text-white dark:hover:text-black uppercase text-lg py-2 px-6 font-bold rounded-sm shadow-md dark:hover:bg-white hover:bg-[#141414] transition duration-300">
                             Register Now
                         </button>
+                        </a>
                         <button
                             class="mt-6 ml-8 text-black dark:text-white py-2 text-lg uppercase px-6 font-bold rounded-sm hover:bg-[#F41E1E] transition duration-300 border border-red-500">
                             View Pricing
@@ -583,6 +585,7 @@
                         <p class="mt-4 text-gray-600 dark:text-gray-400">
                             {{$plan->description}}
                         </p>
+
                         <button
                             class="mt-6 mb-2 bg-[#141414] dark:bg-[#F41E1E] text-white py-2 px-6 font-bold rounded-md shadow-md hover:bg-[#F41E1E] transition duration-300">
                             Register Now
@@ -903,11 +906,13 @@
                             Unlock your full potential with personalized training programs designed to help you reach
                             your goals. Let’s make progress, together.
                         </p>
+                        <a href="{{ route('register') }}">
                         <button
                             class="mt-12  rounded-md bg-[#F41E1E] text-white font-bold text-md px-5 py-3.5 focus:ring-4 focus:ring-blue-300 focus:outline-none uppercase transition duration-300 ease-in-out hover:bg-black"
                             type="button">
                             Register Now
                         </button>
+                        </a>
                     </div>
                 </div>
                 <div

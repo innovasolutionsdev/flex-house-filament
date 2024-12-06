@@ -14,7 +14,16 @@
         input[type="number"] {
             -moz-appearance: textfield;
         }
+        .button-green {
+            background-color: green !important;
+            color: white !important;
+            cursor: default !important;
+        }
+        .button-green:hover {
+            background-color: green !important;
+        }
     </style>
+
     <div class="top-0 left-0 w-full h-16 bg-red-500 flex items-center justify-center">
         <img alt="Christmas decoration with holly leaves and berries" class="h-12 " height="50"
             src="https://storage.googleapis.com/a1aa/image/NTtwTPEGSeSwcSVGOzAYEFQEDSJJ4nPKk7XHQPgpdMA1Qu7JA.jpg"
@@ -92,12 +101,10 @@
 
                     <div
                         class="pt-4 md:pt-0 flex flex-col w-full md:flex-row md:w-auto space-y-2 md:space-y-0 md:pl-4 md:space-x-2">
-                        <form wire:submit.prevent="addToCart({{ $order->id }})" action="{{ route('cart.store') }}"
-                            method="POST">
+                        <form wire:submit.prevent="addToCart({{ $order->id }})" action="{{ route('cart.store') }}" method="POST">
                             @csrf
-                            <button type="submit"
-                                class="bg-[#141414] dark:bg-[#F41E1E] text-white py-2 px-2 font-bold rounded-md shadow-md hover:bg-[#141414] transition duration-300 w-full md:w-auto"
-                                {{ $order->stock_quantity > 0 ? 'bg-[#F41E1E] text-white hover:bg-yellow-600' : 'bg-gray-400 text-gray-200 cursor-not-allowed' }}
+                            <button type="submit" id="addToCartButton"
+                                    class="py-2 px-4 rounded-lg {{ $order->stock_quantity > 0 ? (session()->get('isAddedToCart_' . $order->id, false) ? 'bg-green-500 text-white' : 'bg-[#141414] dark:bg-[#F41E1E] text-white hover:bg-[#141414]') : 'bg-gray-400 text-gray-200 cursor-not-allowed' }}"
                                 {{ $order->stock_quantity <= 0 && $order->in_stock ? 'disabled' : '' }}>
                                 Add To Cart
                                 <i class="fas fa-shopping-cart ml-2"></i>
@@ -204,5 +211,8 @@
             }
             @this.set('quantity', quantity.value);
         }
+        document.getElementById('addToCartButton').addEventListener('click', function() {
+            this.classList.add('button-green');
+        });
     </script>
 </div>

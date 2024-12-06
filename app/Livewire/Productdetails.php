@@ -13,10 +13,13 @@ class Productdetails extends Component
     public $quantity = [];
     public array $cartAdded = [];
 
+    public $isAddedToCart = false;
+
     public function mount($order)
     {
         $this->order = $order;
         $this->quantity = 1;
+        $this->isAddedToCart = session()->get('isAddedToCart_' . $order->id, false);
     }
     public function render()
     {
@@ -35,6 +38,8 @@ class Productdetails extends Component
         );
         $this->dispatch('cart_counter_updated');
         $this->cartAdded[$product_id] = true;
+        $this->isAddedToCart = true;
+        session()->put('isAddedToCart_' . $product_id, true);
     }
 
     public function quickbuy($product_id){
