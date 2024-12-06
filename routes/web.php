@@ -57,6 +57,9 @@ Route::get('/thank-you-cod', function () {
 
 Route::get("order-complete", [\App\Http\Controllers\OrderController::class, 'order_complete'])->name('order_complete');
 
+// Order receipt route
+Route::get('order-receipt', [OrderController::class, 'order_receipt'])->name('order.receipt');
+
 
 //Dashboard routes
 

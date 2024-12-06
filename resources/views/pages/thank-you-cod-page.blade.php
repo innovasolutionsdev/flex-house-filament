@@ -20,6 +20,10 @@
             <a href="/" class="inline-block mt-6 bg-[#F41E1E] hover:bg-black text-white py-1 px-2 rounded-md text-lg font-medium transition-all duration-500 ">
                 Back to Home
             </a>
+
+            <a href="{{ route('order.receipt') }}" class="inline-block mt-6 bg-[#F41E1E] hover:bg-black text-white py-1 px-2 rounded-md text-lg font-medium transition-all duration-500 ">
+                Print Invoice
+            </a>
         </div>
     </div>
     </div>

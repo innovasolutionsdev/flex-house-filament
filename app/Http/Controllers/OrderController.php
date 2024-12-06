@@ -187,6 +187,16 @@ class OrderController extends Controller
         }
     }
 
+    public function order_receipt(){
+        $orderId = session('order_id');
+        $order = Order::with('products')->find($orderId);
+
+        if (!$order) {
+            return redirect()->route('home')->with('error', 'Order not found.');
+        }
+        return view('pages.order-receipt-page', compact('order'));
+    }
+
     public function Order_details($id){
 
         $order = product::find($id);
