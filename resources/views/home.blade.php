@@ -89,10 +89,12 @@
                             Register Now
                         </button>
                         </a>
+                        <a href="#membership_plans">
                         <button
                             class="mt-6 ml-8 text-black dark:text-white py-2 text-lg uppercase px-6 font-bold rounded-sm hover:bg-[#F41E1E] transition duration-300 border border-red-500">
                             View Pricing
                         </button>
+                        </a>
                     </div>
                 </div>
                 <div class="relative lg:w-1/2">
@@ -555,7 +557,7 @@
             <h1 class="text-4xl font-extrabold mb-12 text-gray-900 dark:text-white">
                 Best Plans For You
             </h1>
-            <div class="flex overflow-x-auto space-x-4 px-4 pl-16 sm:ml-2 scrollbar-hide">
+            <div id="membership_plans" class="flex overflow-x-auto space-x-4 px-4 pl-16 sm:ml-2 scrollbar-hide">
 
                 @foreach($plans as $plan)
                 <!-- Card 1 -->
