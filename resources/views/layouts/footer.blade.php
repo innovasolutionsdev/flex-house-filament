@@ -4,9 +4,9 @@
         <div
             class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-3 gap-y-8 md:gap-8 py-10 max-w-sm mx-auto sm:max-w-3xl lg:max-w-full">
             <div class="col-span-full mb-10 lg:col-span-2 lg:mb-0 text-center lg:text-left">
-                <img alt="Company logo with a simple design" class="mx-auto lg:mx-0 mb-4" height="50"
-                    src="/logo.png"
-                    width="100" />
+                <img alt="FlexiFit Logo" class="mx-auto lg:mx-0 mb-4" height="100"
+                    src="{{asset('flexilogo.png')}}"
+                    width="200" />
                 {{-- <p class="py-8 text-sm text-gray-300 lg:max-w-xs">
                     Trusted in more than 100 countries &amp; 5 million customers. Have any query?
                 </p> --}}

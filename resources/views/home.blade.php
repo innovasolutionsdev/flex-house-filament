@@ -2,7 +2,7 @@
 <!-- Preloader -->
 <!-- Preloader -->
 <div id="preloader" style="" class="fixed inset-0 z-50 flex items-center justify-center bg-white dark:bg-[#141414]">
-    <img id="preloader-logo" src="{{ asset('logo.png') }}" alt="Logo" class="animate-bounce w-45 h-60">
+    <img id="preloader-logo" src="{{ asset('flexilogo.png') }}" alt="Logo" class="animate-bounce ">
 </div>
 
 <style>
@@ -26,8 +26,8 @@
 /* } */
 
 #preloader-logo {
-    width: 100px; /* Adjust the size as needed */
-    height: 100px;
+    width: 320px; /* Adjust the size as needed */
+    height: 80px;
     animation: fadeInOut 8s infinite; /* Fade-in, fade-out animation */
 }
 
@@ -42,6 +42,11 @@
         transform: scale(1);
     }
 }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
 
 </style>
 <script>
@@ -210,25 +215,25 @@
     </section> --}}
     {{-- About us end --}}
     {{-- Our servces --}}
-    <div class="w-full dark:bg-[#141414] py-12 px-4">
+    <div id="services" class="w-full dark:bg-[#141414] py-12 px-4">
         <div class="container mx-auto">
             <div class="text-center mb-8">
                 <h2 class="text-[#F41E1E] text-lg font-bold uppercase mb-2 flex items-center justify-center">
                     <span class="inline-block w-12 h-0.5 bg-[#F41E1E] mx-2">
                     </span>
-                    Work Process
+                    Our Services
                     <span class="inline-block w-12 h-0.5 bg-[#F41E1E] mx-2">
                     </span>
                 </h2>
                 <h1 class="text-4xl text-center font-extrabold mb-20 text-gray-900 dark:text-white">
-                    Easy Step To Achieve Your Goals.
+                    Our Comprehensive Range of Services.
                 </h1>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="bg-white dark:bg-[#171717] shadow-lg rounded-lg overflow-hidden">
                     <img alt="Personal Training - Trainer assisting a client with weights"
                         class="w-full h-48 object-cover" height="400"
-                        src="https://storage.googleapis.com/a1aa/image/5YXzH8QB0O5KO1uJ5vNIagHIkS1ZDEs8dheiPmnfSSC3tfYnA.jpg"
+                        src="{{asset('/img/training.jpg')}}"
                         width="600" />
                     <div class="p-6 text-center">
                         <h3 class="text-xl font-bold text-white bg-[#F41E1E] inline-block px-3 py-1 rounded-sm mb-4">
@@ -249,16 +254,14 @@
                 <div class="bg-white dark:bg-[#171717] shadow-lg rounded-lg overflow-hidden">
                     <img alt="Group Classes - People participating in a group fitness class"
                         class="w-full h-48 object-cover" height="400"
-                        src="https://storage.googleapis.com/a1aa/image/kXljhtp7znLrKpLbSrQ5QYyxhxp4yNSyE1aiXfnxTDE72P2JA.jpg"
+                        src="{{asset('/img/comp.jpg')}}"
                         width="600" />
                     <div class="p-6 text-center">
                         <h3 class="text-xl font-bold text-white bg-[#F41E1E] inline-block px-3 py-1 rounded-sm mb-4">
-                            Group Classes
+                            Competetion Prep
                         </h3>
                         <p class="text-gray-600 dark:text-gray-400 mb-4">
-                            Join our group classes to stay motivated and have fun while working out. We offer a variety
-                            of
-                            classes including yoga, pilates, and HIIT.
+                            Prepare for your next bodybuilding competition with our specialized training programs and expert guidance.
                         </p>
                         <a class="text-[#F41E1E] hover:text-black hover:underline flex items-center font-bold justify-center"
                             href="#">
@@ -271,15 +274,14 @@
                 <div class="bg-white dark:bg-[#171717] shadow-lg rounded-lg overflow-hidden">
                     <img alt="Nutrition Counseling - Nutritionist consulting with a client"
                         class="w-full h-48 object-cover" height="400"
-                        src="https://storage.googleapis.com/a1aa/image/GezjOexcYuqBJknmTMT5mxBnWvkoract4uqoH8IGQrr5tfYnA.jpg"
+                        src="{{asset('/img/meal.jpg')}}"
                         width="600" />
                     <div class="p-6 text-center">
                         <h3 class="text-xl font-bold text-white bg-[#F41E1E] inline-block px-3 py-1 rounded-sm mb-4">
                             Nutrition Counseling
                         </h3>
                         <p class="text-gray-600 dark:text-gray-400 mb-4">
-                            Our nutrition counseling services will help you create a balanced diet plan that complements
-                            your fitness routine and helps you achieve your health goals.
+                            Our nutrition counseling services will help you create a balanced diet plan that helps you achieve your health goals.
                         </p>
                         <a class="text-[#F41E1E] hover:text-black hover:underline flex font-bold items-center justify-center"
                             href="#">
@@ -316,7 +318,7 @@
                     <div class="step-circle"
                         style="position: relative; width: 200px; height: 200px; border-radius: 50%; overflow: hidden; border: 5px solid #e5e7eb; transition: transform 0.3s ease, box-shadow 0.3s ease;">
                         <img alt="Person doing gym movement" height="200"
-                            src="https://storage.googleapis.com/a1aa/image/ouuI6ijEGS7vHlUpcpJ2ru4lUGOfqEOQus02GsSUSFpMK90JA.jpg"
+                            src="{{asset('/img/signup.jpg')}}"
                             style="width: 100%; height: 100%; object-fit: cover;" width="200" />
                         <div class="step-label"
                             style="position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); background-color: #F41E1E; color: white; padding: 5px 10px; border-radius: 20px; font-weight: bold;">
@@ -334,7 +336,7 @@
                     <div class="step-circle"
                         style="position: relative; width: 200px; height: 200px; border-radius: 50%; overflow: hidden; border: 5px solid #e5e7eb; transition: transform 0.3s ease, box-shadow 0.3s ease;">
                         <img alt="Person practicing fitness" height="200"
-                            src="https://storage.googleapis.com/a1aa/image/ucsa1qcU95K9EJsWJZzf41LYh24MypaJbOCfeOfu016fiSPdC.jpg"
+                            src="{{asset('/img/scale.jpg')}}"
                             style="width: 100%; height: 100%; object-fit: cover;" width="200" />
                         <div class="step-label"
                             style="position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); background-color: #F41E1E; color: white; padding: 5px 10px; border-radius: 20px; font-weight: bold;">
@@ -376,7 +378,7 @@
                     <div class="step-circle"
                         style="position: relative; width: 200px; height: 200px; border-radius: 50%; overflow: hidden; border: 5px solid #e5e7eb; transition: transform 0.3s ease, box-shadow 0.3s ease;">
                         <img alt="Person doing gym movement" height="200"
-                            src="https://storage.googleapis.com/a1aa/image/ouuI6ijEGS7vHlUpcpJ2ru4lUGOfqEOQus02GsSUSFpMK90JA.jpg"
+                            src="{{asset('/img/begin.jpg')}}"
                             style="width: 100%; height: 100%; object-fit: cover;" width="200" />
                         <div class="step-label"
                             style="position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); background-color: #F41E1E; color: white; padding: 5px 10px; border-radius: 20px; font-weight: bold;">
@@ -394,7 +396,7 @@
                     <div class="step-circle"
                         style="position: relative; width: 200px; height: 200px; border-radius: 50%; overflow: hidden; border: 5px solid #e5e7eb; transition: transform 0.3s ease, box-shadow 0.3s ease;">
                         <img alt="Person practicing fitness" height="200"
-                            src="https://storage.googleapis.com/a1aa/image/ucsa1qcU95K9EJsWJZzf41LYh24MypaJbOCfeOfu016fiSPdC.jpg"
+                            src="{{asset('/img/asses.png')}}"
                             style="width: 100%; height: 100%; object-fit: cover;" width="200" />
                         <div class="step-label"
                             style="position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); background-color: #F41E1E; color: white; padding: 5px 10px; border-radius: 20px; font-weight: bold;">
@@ -412,7 +414,7 @@
                     <div class="step-circle"
                         style="position: relative; width: 200px; height: 200px; border-radius: 50%; overflow: hidden; border: 5px solid #e5e7eb; transition: transform 0.3s ease, box-shadow 0.3s ease;">
                         <img alt="Person achieving fitness goal" height="200"
-                            src="https://storage.googleapis.com/a1aa/image/lt0xfLKxXr0aB6akywTdYB4lEj0OqPB3p50v9dgkTEfaU6pTA.jpg"
+                            src="{{asset('/img/achieve.jpg')}}"
                             style="width: 100%; height: 100%; object-fit: cover;" width="200" />
                         <div class="step-label"
                             style="position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); background-color: #F41E1E; color: white; padding: 5px 10px; border-radius: 20px; font-weight: bold;">
@@ -541,7 +543,7 @@
             </div>
         </div>
     </div> --}}
-    <div class="w-full dark:bg-[#141414] py-12 text-center px-4 pt-8">
+    <div id="pricing" class="w-full dark:bg-[#141414] py-12 text-center px-4 pt-8">
         <div class="text-center mt-20">
             <h2 class="text-[#F41E1E] text-lg font-bold uppercase mb-2 flex items-center justify-center">
                 <span class="inline-block w-12 h-0.5 bg-[#F41E1E] mx-2">
@@ -611,7 +613,7 @@
     <!-- Membership Section End -->
 
     {{-- bmi start --}}
-    <div class="w-full dark:bg-[#171717] py-12 px-4 pt-20">
+    <div id="bmi" class="w-full dark:bg-[#171717] py-12 px-4 pt-20">
         <div class="container mx-auto p-8 text-center ">
             <h2 class="text-[#F41E1E] text-lg font-bold uppercase mb-2 flex items-center justify-center">
                 <span class="inline-block w-12 h-0.5 bg-[#F41E1E] mx-2">
@@ -1018,7 +1020,8 @@
             </div>
         </div>
     </section> --}}
-    <div class="w-full dark:bg-[#171717] py-12 text-center px-4 pt-12">
+
+    <div  id="contact" class="w-full dark:bg-[#171717] py-12 text-center px-4 pt-12">
         <div class="container mx-auto text-center">
             <h2 class="text-[#F41E1E] text-lg font-bold uppercase mb-2 flex items-center justify-center">
                 <span class="inline-block w-12 h-0.5 bg-[#F41E1E] mx-2">
@@ -1182,5 +1185,28 @@
         </div>
 
     </div>
+
+    <button id="scrollToTopBtn" class="text-lg font-bold fixed bottom-4 right-4 bg-red-500 text-white p-4 rounded-full shadow-lg hidden hover:bg-red-600">
+    ↑
+</button>
+
+<script>
+    const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            scrollToTopBtn.classList.remove('hidden');
+        } else {
+            scrollToTopBtn.classList.add('hidden');
+        }
+    });
+
+    scrollToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+</script>
 
 </x-app-layout>
