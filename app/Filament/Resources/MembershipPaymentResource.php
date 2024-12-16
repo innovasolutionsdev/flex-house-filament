@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use AlperenErsoy\FilamentExport\Actions\FilamentExportBulkAction;
 use App\Filament\Resources\MembershipPaymentResource\Pages;
 use App\Filament\Resources\MembershipPaymentResource\RelationManagers;
 use App\Models\Membership;
@@ -73,6 +74,7 @@ class MembershipPaymentResource extends Resource
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
+                FilamentExportBulkAction::make('export')
             ]);
     }
 

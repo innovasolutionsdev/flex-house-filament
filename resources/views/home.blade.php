@@ -566,7 +566,7 @@
                 <div
                     class="bg-white dark:bg-[#171717] rounded-lg shadow-lg transform transition duration-500 hover:scale-105 w-72 relative m-4 flex-shrink-0">
                     <img alt="Gym facilities image" class="rounded-t-lg" height="160"
-                        src="{{$plan->getFirstMediaUrl('membership_thumbnail') }}"
+                        src="{{ asset('img/mp1.jpg') }}"
                         width="288" />
                     <div
                         class="absolute top-0 right-0 bg-[#F41E1E] text-white text-xs font-bold py-1 px-2 rounded-bl-lg">
