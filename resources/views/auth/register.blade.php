@@ -33,10 +33,11 @@
                             <div class="mb-4">
                                 <select id="membership_plan" name="membership_plan"
                                     class="w-full rounded-lg text-gray-800 text-sm border-b border-gray-300 focus:border-[#F41E1E] px-2 py-3 outline-none">
-                                    <option value="">Select a Membership Plan</option>
-                                    <!-- Replace with dynamic options from backend -->
-                                    <option value="1" data-duration="30">Plan A (1 Month)</option>
-                                    <option value="2" data-duration="90">Plan B (3 Months)</option>
+                                    @foreach ($membershipPlans as $plan)
+                                        <option value="{{ $plan->id }}" data-duration="{{ $plan->duration }}">
+                                            {{ $plan->name }} ({{ $plan->duration }} Months)
+                                        </option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="mt-4">
@@ -100,33 +101,6 @@
                                 </button>
                             </div>
 
-
-                            @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
-                                <div class="mt-4">
-                                    <x-label for="terms">
-                                        <div class="flex items-center">
-                                            <x-checkbox name="terms" id="terms" required />
-
-                                            <div class="ms-2 dark:text-gray-200">
-                                                {!! __('I agree to the :terms_of_service and :privacy_policy', [
-                                                    'terms_of_service' =>
-                                                        '<a target="_blank" href="' .
-                                                        route('terms.show') .
-                                                        '" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">' .
-                                                        __('Terms of Service') .
-                                                        '</a>',
-                                                    'privacy_policy' =>
-                                                        '<a target="_blank" href="' .
-                                                        route('policy.show') .
-                                                        '" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">' .
-                                                        __('Privacy Policy') .
-                                                        '</a>',
-                                                ]) !!}
-                                            </div>
-                                        </div>
-                                    </x-label>
-                                </div>
-                            @endif
 
                             <div class="mt-8 flex justify-between">
                                 <!-- Back Button to Section 1 -->
