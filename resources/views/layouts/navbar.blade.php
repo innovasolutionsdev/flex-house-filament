@@ -89,7 +89,7 @@
         <div> --}}
     @auth
         <div class="relative">
-            <div class="z-50 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600 hidden absolute right-4 mt-4"
+            <div class="z-50 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600 hidden absolute right-4 mt-16"
                 id="user-dropdown">
                 <div class="px-4 py-3">
                     <span class="block text-sm text-[#141414] dark:text-white">{{ auth()->user()->name }}</span>
@@ -127,7 +127,7 @@
         </div>
     @else
         <div class="relative">
-            <div class="z-50 w-48 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600 hidden absolute right-4 mt-4"
+            <div class="z-50 w-48 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600 hidden absolute right-4 mt-16"
                 id="user-dropdown">
                 <ul aria-labelledby="user-menu-button" class="py-2 text-center">
                     <li>
@@ -142,8 +142,6 @@
             </div>
         </div>
     @endauth
-        </div>
-    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {

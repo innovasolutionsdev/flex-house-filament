@@ -10,6 +10,7 @@ use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Actions\Action;
 use Filament\Tables\Columns\BadgeColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
@@ -71,7 +72,10 @@ class MyOrderResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+            Tables\Actions\ViewAction::make(),
+                Action::make('receipt')
+                    ->label('Receipt')
+                    ->url(fn ($record) => url('/admin/orders/' . $record->id)),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -93,6 +97,7 @@ class MyOrderResource extends Resource
             'index' => Pages\ListMyOrders::route('/'),
             'create' => Pages\CreateMyOrder::route('/create'),
             'edit' => Pages\EditMyOrder::route('/{record}/edit'),
+//            'receipt' => Pages\CustomReceiptPage::route('/{record}'),
         ];
     }
     public static function getEloquentQuery(): Builder
