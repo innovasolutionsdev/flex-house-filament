@@ -40,16 +40,17 @@ class MyscheduleResource extends Resource
                 Tables\Columns\TextColumn::make('schedule.name')->label('Schedule Name'),
                 Tables\Columns\TextColumn::make('created_at')->label('Assigned at')->date(),
 
-                Tables\Columns\BadgeColumn::make('status')
-                    ->label('Schedule Status')
-                    ->formatStateUsing(fn ($state) => match ($state) {
-                        'active' => 'Active',
-                        'completed' => 'Completed',
+                BadgeColumn::make('status')
+                    ->label('Schedule status')
+                    ->formatStateUsing(fn ($state) => match($state) {
+                        '1' => 'Active',
+                        '0' => 'Completed',
+
                     })
-                    ->colors([
-                        'primary' => 'active',
-                        'success' => 'completed',
-                    ]),
+                    ->color(fn ($state) => match($state) {
+                        '1' => 'primary',
+                        '0' => 'success',
+                    }),
 
 
 

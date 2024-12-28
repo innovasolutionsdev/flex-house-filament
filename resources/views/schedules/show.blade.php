@@ -1,77 +1,4 @@
-{{-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Schedule Details</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-</head>
-<body class="bg-gray-100 p-6">
-    <div class="max-w-4xl mx-auto bg-white shadow-lg rounded-lg p-6">
-        <h1 class="text-3xl font-bold text-gray-800 mb-4">{{ $schedule->name }}</h1>
 
-        <h2 class="text-2xl font-semibold text-gray-700 mb-2">Workouts</h2>
-        @foreach ($schedule->workouts as $workout)
-            <div class="mb-4">
-                <h3 class="text-xl font-semibold text-gray-600">{{ $workout->name }}</h3>
-                <ul class="list-disc ml-6">
-                    @foreach ($workout->exercises as $exercise)
-                        <li class="text-gray-500">
-                            {{ $exercise->name }} -
-                            <span class="font-medium">Sets:</span> {{ $exercise->sets }},
-                            <span class="font-medium">Reps:</span> {{ $exercise->reps }},
-                            <span class="font-medium">Rest:</span> {{ $exercise->rest_time }} seconds
-                        </li>
-                    @endforeach
-                </ul>
-            </div>
-        @endforeach
-    </div>
-</body>
-</html> --}}
-
-{{-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Schedule Details</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-</head>
-<body class="bg-gray-100 p-6">
-    <div class="max-w-4xl mx-auto bg-white shadow-lg rounded-lg p-6">
-        <h1 class="text-3xl font-bold text-gray-800 mb-4">{{ $schedule->name }}</h1>
-
-        <h2 class="text-2xl font-semibold text-gray-700 mb-2">Workouts</h2>
-
-        @foreach ($schedule->workouts as $workout)
-            <div class="mb-4">
-                <h3 class="text-xl font-semibold text-gray-600">{{ $workout->name }}</h3>
-                <table class="min-w-full bg-white border border-gray-300 mt-2">
-                    <thead>
-                        <tr class="bg-gray-200">
-                            <th class="py-2 px-4 border border-gray-300 text-left">Exercise Name</th>
-                            <th class="py-2 px-4 border border-gray-300 text-left">Sets</th>
-                            <th class="py-2 px-4 border border-gray-300 text-left">Reps</th>
-                            <th class="py-2 px-4 border border-gray-300 text-left">Rest Time (seconds)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($workout->exercises as $exercise)
-                            <tr class="hover:bg-gray-100">
-                                <td class="py-2 px-4 border border-gray-300">{{ $exercise->name }}</td>
-                                <td class="py-2 px-4 border border-gray-300">{{ $exercise->sets }}</td>
-                                <td class="py-2 px-4 border border-gray-300">{{ $exercise->reps }}</td>
-                                <td class="py-2 px-4 border border-gray-300">{{ $exercise->rest_time }}</td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
-        @endforeach
-    </div>
-</body>
-</html> --}}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -109,23 +36,22 @@
 </head>
 <body class="bg-gray-100 p-6">
     <div id="schedule" class="max-w-4xl mx-auto bg-white shadow-lg rounded-lg p-6">
-        <div class="flex justify-between items-center mb-4">
-            <h1 class="text-3xl font-bold text-gray-800">{{ $schedule->name }}</h1>
-            <div class="flex space-x-4">
-                <button id="downloadButton" onclick="downloadPDF()" class="bg-gradient-to-r from-blue-500 to-blue-700 text-white px-6 py-2 rounded-full shadow-lg hover:from-blue-600 hover:to-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 transform transition-transform duration-300 hover:scale-105">
+        <div class="flex  justify-between items-center mb-4 gap-1">
+            <h1 class="text-xl md:text-2xl font-bold text-gray-800">{{ $schedule->name }}</h1>
+            <div class="flex flex-col md:flex-row space-x-4 space-y-2 md:space-y-0">
+                <button id="downloadButton" onclick="downloadPDF()" class="bg-gradient-to-r from-red-500 to-red-600 text-white text-sm md:text-md px-2 py-1 rounded-lg shadow-lg hover:bg-red-500 focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 transform transition-transform duration-300 hover:scale-105">
                     Download
                 </button>
-                <button id="backButton" onclick="goBack()" class="bg-gray-500 text-white px-6 py-2 rounded-full shadow-lg hover:bg-gray-600 focus:outline-none focus:ring-4 focus:ring-gray-500 focus:ring-opacity-50 transform transition-transform duration-300 hover:scale-105">
+                <button id="backButton" onclick="goBack()" class="bg-gray-800 text-white px-2 py-1 rounded-lg shadow-lg hover:bg-gray-700 text-sm md:text-md focus:outline-none focus:ring-4 focus:ring-gray-500 focus:ring-opacity-50 transform transition-transform duration-300 hover:scale-105 ">
                     Back
-                </button>
-            </div>
+                </button>  </div>
         </div>
 
-        <h2 class="text-2xl font-semibold text-gray-700 mb-4">Workouts</h2>
+        {{-- <h2 class="text-xl font-semibold text-gray-700 mb-4">Workouts</h2> --}}
 
         @foreach ($schedule->workouts as $workout)
             <div class="mb-6">
-                <h3 class="text-xl font-semibold text-gray-600 mb-2">{{ $workout->name }}</h3>
+                <h3 class="text-lg font-semibold text-gray-600 mb-2">{{ $workout->name }}</h3>
                 <table class="min-w-full bg-white border border-gray-200 rounded-lg overflow-hidden">
                     <thead>
                         <tr class="bg-gray-100">

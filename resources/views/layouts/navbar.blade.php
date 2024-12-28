@@ -2,9 +2,9 @@
 {{-- <header> --}}
     <nav class="bg-[#141414] border-gray-200 top-0 left-0 w-full z-50">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 md:h-20">
-            <a class="flex items-center space-x-3 rtl:space-x-reverse" href="https://flowbite.com/">
-                <img alt="Flowbite Logo" class="h-8" src="https://flowbite.com/docs/images/logo.svg" />
-                <span class="self-center text-2xl font-semibold whitespace-nowrap text-white hidden md:inline">FlexiFit</span>
+            <a class="flex items-center space-x-3 rtl:space-x-reverse" href="/">
+                <img alt="Flowbite Logo" class="h-8" src="{{asset('flexilogo.png')}}" />
+                {{-- <span class="self-center text-2xl font-semibold whitespace-nowrap text-white hidden md:inline">FlexiFit</span> --}}
             </a>
 
             <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
@@ -64,15 +64,19 @@
                     </li>
                     <li>
                         <a class="block py-2 px-3 text-lg text-gray-300 rounded hover:bg-gray-700 md:hover:bg-transparent md:hover:text-[#F41E1E] md:p-0 dark:text-white md:dark:hover:text-[#F41E1E] dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-                            href="#">Services</a>
+                            href="#services">Services</a>
                     </li>
                     <li>
                         <a class="block py-2 px-3 text-lg text-gray-300 rounded hover:bg-gray-700 md:hover:bg-transparent md:hover:text-[#F41E1E] md:p-0 dark:text-white md:dark:hover:text-[#F41E1E] dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-                            href="#">Pricing</a>
+                            href="#pricing">Pricing</a>
                     </li>
                     <li>
                         <a class="block py-2 px-3 text-lg text-gray-300 rounded hover:bg-gray-700 md:hover:bg-transparent md:hover:text-[#F41E1E] md:p-0 dark:text-white md:dark:hover:text-[#F41E1E] dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-                            href="#">Contact</a>
+                            href="#bmi">BMI</a>
+                    </li>
+                    <li>
+                        <a class="block py-2 px-3 text-lg text-gray-300 rounded hover:bg-gray-700 md:hover:bg-transparent md:hover:text-[#F41E1E] md:p-0 dark:text-white md:dark:hover:text-[#F41E1E] dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                            href="#contact">Contact</a>
                     </li>
                 </ul>
             </div>

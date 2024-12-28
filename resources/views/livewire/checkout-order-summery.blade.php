@@ -7,14 +7,18 @@
             {{-- <img alt="{{ $item['name'] }}" class="w-16 h-16 rounded-md" height="60" src="{{ $item['image'] }}" width="60"/> --}}
             <img alt="{{ $item['name'] }}" class="w-16 h-16 rounded-md" height="60" src="{{ asset('img/prod.jpg') }}" width="60"/>
             <div class="ml-4 flex justify-between w-full">
-                <p class=" font-medium text-gray-200 truncate">
+
+                <div>
+<p class=" font-medium text-gray-200 truncate">
                     {{ $item['name'] }}
                 </p>
                 <p class=" text-gray-200">
                     Quantity: {{ $item['qty'] }}
                 </p>
+                </div>
+
                 <p class=" font-medium text-white">
-                    Rs.{{ $item['total'] }}
+                    Rs.{{ $item['total'] }}.00
                 </p>
             </div>
         </div>
