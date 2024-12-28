@@ -106,8 +106,8 @@ class MyscheduleResource extends Resource
     {
         return [
             'index' => Pages\ListMyschedules::route('/'),
-            'create' => Pages\CreateMyschedule::route('/create'),
-            'edit' => Pages\EditMyschedule::route('/{record}/edit'),
+            // 'create' => Pages\CreateMyschedule::route('/create'),
+            // 'edit' => Pages\EditMyschedule::route('/{record}/edit'),
         ];
     }
 }
