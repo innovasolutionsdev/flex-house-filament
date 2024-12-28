@@ -44,9 +44,9 @@ class ScheduleAssignmentResource extends Resource
             Select::make('status')
                 ->label('Status')
                 ->options([
-                    'active' => 'Active',
-                    'completed' => 'Completed',
-                    'pending' => 'Pending',
+                    '1' => 'Active',
+                    '0' => 'Completed',
+                    // 'pending' => 'Pending',
                 ])
                 ->required(),
             ]);
@@ -69,13 +69,13 @@ class ScheduleAssignmentResource extends Resource
                 BadgeColumn::make('status')
                     ->label('Schedule status')
                     ->formatStateUsing(fn ($state) => match($state) {
-                        'active' => 'Active',
-                        'completed' => 'Completed',
+                        '1' => 'Active',
+                        '0' => 'Completed',
 
                     })
                     ->color(fn ($state) => match($state) {
-                        'active' => 'primary',
-                        'completed' => 'success',
+                        '1' => 'primary',
+                        '0' => 'success',
                     }),
             ])
             ->filters([
@@ -84,6 +84,7 @@ class ScheduleAssignmentResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
+                Tables\Actions\ViewAction::make(),
 
             ])
             ->bulkActions([
