@@ -230,18 +230,18 @@
                 </h1>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                @foreach($services as $service)
                 <div class="bg-white dark:bg-[#171717] shadow-lg rounded-lg overflow-hidden">
                     <img alt="Personal Training - Trainer assisting a client with weights"
                         class="w-full h-48 object-cover" height="400"
-                        src="{{asset('/img/training.jpg')}}"
+                        src="{{$service->getFirstMediaUrl('service_thumbnail')}}"
                         width="600" />
                     <div class="p-6 text-center">
                         <h3 class="text-xl font-bold text-white bg-[#F41E1E] inline-block px-3 py-1 rounded-sm mb-4">
-                            Personal Training
+                            {{$service->title}}
                         </h3>
                         <p class="text-gray-600 dark:text-gray-400 mb-4">
-                            Our personal trainers will work with you one-on-one to create a customized workout plan that
-                            fits your goals and fitness level.
+                            {{$service->description}}
                         </p>
                         <a class="text-[#F41E1E] hover:text-black hover:underline flex items-center font-bold justify-center"
                             href="#">
@@ -251,46 +251,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="bg-white dark:bg-[#171717] shadow-lg rounded-lg overflow-hidden">
-                    <img alt="Group Classes - People participating in a group fitness class"
-                        class="w-full h-48 object-cover" height="400"
-                        src="{{asset('/img/comp.jpg')}}"
-                        width="600" />
-                    <div class="p-6 text-center">
-                        <h3 class="text-xl font-bold text-white bg-[#F41E1E] inline-block px-3 py-1 rounded-sm mb-4">
-                            Competetion Prep
-                        </h3>
-                        <p class="text-gray-600 dark:text-gray-400 mb-4">
-                            Prepare for your next bodybuilding competition with our specialized training programs and expert guidance.
-                        </p>
-                        <a class="text-[#F41E1E] hover:text-black hover:underline flex items-center font-bold justify-center"
-                            href="#">
-                            Read More
-                            {{-- <i class="fas fa-arrow-right ml-2">
-                            </i> --}}
-                        </a>
-                    </div>
-                </div>
-                <div class="bg-white dark:bg-[#171717] shadow-lg rounded-lg overflow-hidden">
-                    <img alt="Nutrition Counseling - Nutritionist consulting with a client"
-                        class="w-full h-48 object-cover" height="400"
-                        src="{{asset('/img/meal.jpg')}}"
-                        width="600" />
-                    <div class="p-6 text-center">
-                        <h3 class="text-xl font-bold text-white bg-[#F41E1E] inline-block px-3 py-1 rounded-sm mb-4">
-                            Nutrition Counseling
-                        </h3>
-                        <p class="text-gray-600 dark:text-gray-400 mb-4">
-                            Our nutrition counseling services will help you create a balanced diet plan that helps you achieve your health goals.
-                        </p>
-                        <a class="text-[#F41E1E] hover:text-black hover:underline flex font-bold items-center justify-center"
-                            href="#">
-                            Read More
-                            {{-- <i class="fas fa-arrow-right ml-2">
-                            </i> --}}
-                        </a>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
@@ -781,6 +742,7 @@
                 The Expert Trainers Behind the Scenes
             </h1>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                @foreach($our_team as $team_member)
                 <div class="bg-white dark:bg-[#171717] p-6 rounded-md shadow-md text-center relative">
                     <div class="absolute top-0 left-0 w-full h-28 bg-[#F41E1E] dark:bg-gray-800 rounded-t-lg">
                     </div>
@@ -789,18 +751,17 @@
                             class="w-32 h-32 rounded-full mx-auto mt-12 relative z-10" height="128"
                             onmouseout="this.style.transform='scale(1)'"
                             onmouseover="this.style.transform='scale(1.1)'"
-                            src="https://storage.googleapis.com/a1aa/image/v1IikuSg8oZwIRt72wLrpu8r7j5EbyBuj9QwaUx94WWfHF2JA.jpg"
+                            src="{{$team_member->getFirstMediaUrl('our_team_photo')}}"
                             style="transition: transform 0.3s ease-in-out;" width="128" />
                     </div>
                     <h3 class="text-xl font-bold mt-4 text-black dark:text-white">
-                        Andres Berlin
+                        {{$team_member->name}}
                     </h3>
                     <p class="text-gray-500 dark:text-gray-300">
-                        Chief Executive Officer
+                        {{$team_member->position}}
                     </p>
                     <p class="mt-4 text-gray-600 dark:text-gray-400">
-                        The CEO's role in raising a company's corporate IQ is to establish an atmosphere that promotes
-                        knowledge sharing and collaboration.
+                        {{$team_member->description}}
                     </p>
                     <div
                         class="absolute  pt-4 bottom-0 left-0 w-full h-12 bg-gray-900 dark:bg-[#F41E1E]  rounded-b-lg flex justify-center items-center space-x-4 p-4">
@@ -818,80 +779,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="bg-white dark:bg-[#171717] p-6 rounded-md shadow-md text-center relative">
-                    <div class="absolute top-0 left-0 w-full h-28 bg-[#F41E1E] dark:bg-gray-800 rounded-t-lg">
-                    </div>
-                    <div class="relative">
-                        <img alt="Portrait of Silene Tokyo" class="w-32 h-32 rounded-full mx-auto mt-12 relative z-10"
-                            height="128" onmouseout="this.style.transform='scale(1)'"
-                            onmouseover="this.style.transform='scale(1.1)'"
-                            src="https://storage.googleapis.com/a1aa/image/v1IikuSg8oZwIRt72wLrpu8r7j5EbyBuj9QwaUx94WWfHF2JA.jpg"
-                            style="transition: transform 0.3s ease-in-out;" width="128" />
-                    </div>
-                    <h3 class="text-xl font-bold mt-4 text-black dark:text-white">
-                        Silene Tokyo
-                    </h3>
-                    <p class="text-gray-500 dark:text-gray-300">
-                        Product Design Head
-                    </p>
-                    <p class="mt-4 text-gray-600 dark:text-gray-400">
-                        The emphasis on innovation and technology in our companies has resulted in a few of them
-                        establishing global benchmarks in product design and development.
-                    </p>
-                    <div
-                        class="absolute bottom-0 left-0 w-full h-12 bg-gray-900 dark:bg-[#F41E1E] rounded-b-lg flex justify-center items-center space-x-4 p-4">
-                        <a class="text-gray-200 text-xl hover:text-[#F41E1E] dark:hover:text-black" href="#">
-                            <i class="fab fa-twitter">
-                            </i>
-                        </a>
-                        <a class="text-gray-200 text-xl hover:text-[#F41E1E] dark:hover:text-black" href="#">
-                            <i class="fab fa-facebook-f">
-                            </i>
-                        </a>
-                        <a class="text-gray-200 text-xl hover:text-[#F41E1E] dark:hover:text-black" href="#">
-                            <i class="fab fa-instagram">
-                            </i>
-                        </a>
-                    </div>
-                </div>
-                <div class="bg-white dark:bg-[#171717] p-6 rounded-md shadow-md text-center relative">
-                    <div class="absolute top-0 left-0 w-full h-28 bg-[#F41E1E] dark:bg-gray-800 rounded-t-lg">
-                    </div>
-                    <div class="relative">
-                        <img alt="Portrait of Johnson Stone"
-                            class="w-32 h-32 rounded-full mx-auto mt-12 relative z-10" height="128"
-                            onmouseout="this.style.transform='scale(1)'"
-                            onmouseover="this.style.transform='scale(1.1)'"
-                            src="https://storage.googleapis.com/a1aa/image/v1IikuSg8oZwIRt72wLrpu8r7j5EbyBuj9QwaUx94WWfHF2JA.jpg"
-                            style="transition: transform 0.3s ease-in-out;" width="128" />
-                    </div>
-                    <h3 class="text-xl font-bold mt-4 text-black dark:text-white">
-                        Johnson Stone
-                    </h3>
-                    <p class="text-gray-500 dark:text-gray-300">
-                        Manager Development
-                    </p>
-                    <p class="mt-4 text-gray-600 dark:text-gray-400">
-                        Our services encompass the assessment and repair of property damage caused by water, fire,
-                        smoke, or
-                        mold. We can also be a part of the restoration.
-                    </p>
-                    <div
-                        class="absolute bottom-0 left-0 w-full h-12 bg-gray-900 dark:bg-[#F41E1E] rounded-b-lg flex justify-center items-center space-x-4 p-4">
-                        <a class="text-gray-200 text-xl hover:text-[#F41E1E] dark:hover:text-black" href="#">
-                            <i class="fab fa-twitter">
-                            </i>
-                        </a>
-                        <a class="text-gray-200 text-xl hover:text-[#F41E1E] dark:hover:text-black" href="#">
-                            <i class="fab fa-facebook-f">
-                            </i>
-                        </a>
-                        <a class="text-gray-200 text-xl hover:text-[#F41E1E] dark:hover:text-black" href="#">
-                            <i class="fab fa-instagram">
-                            </i>
-                        </a>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
