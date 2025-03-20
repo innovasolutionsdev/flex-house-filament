@@ -64,19 +64,19 @@
                     </li>
                     <li>
                         <a class="block py-2 px-3 text-lg text-gray-300 rounded hover:bg-gray-700 md:hover:bg-transparent md:hover:text-[#F41E1E] md:p-0 dark:text-white md:dark:hover:text-[#F41E1E] dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-                            href="#services">Services</a>
+                            href="/our_services">Services</a>
                     </li>
                     <li>
                         <a class="block py-2 px-3 text-lg text-gray-300 rounded hover:bg-gray-700 md:hover:bg-transparent md:hover:text-[#F41E1E] md:p-0 dark:text-white md:dark:hover:text-[#F41E1E] dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-                            href="#pricing">Pricing</a>
+                            href="{{ route('pricing') }}">Pricing</a>
                     </li>
                     <li>
                         <a class="block py-2 px-3 text-lg text-gray-300 rounded hover:bg-gray-700 md:hover:bg-transparent md:hover:text-[#F41E1E] md:p-0 dark:text-white md:dark:hover:text-[#F41E1E] dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-                            href="#bmi">BMI</a>
+                            href="{{ route('bmi') }}">BMI</a>
                     </li>
                     <li>
                         <a class="block py-2 px-3 text-lg text-gray-300 rounded hover:bg-gray-700 md:hover:bg-transparent md:hover:text-[#F41E1E] md:p-0 dark:text-white md:dark:hover:text-[#F41E1E] dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-                            href="#contact">Contact</a>
+                            href="{{ route('contact') }}">Contact</a>
                     </li>
                 </ul>
             </div>

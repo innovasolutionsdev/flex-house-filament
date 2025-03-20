@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\Navigationcontroller;
 use App\Http\Controllers\OrderController;
 use App\Models\Schedule;
+use App\Models\SliderImage;
 use App\Models\Workout;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -38,6 +40,11 @@ Route::get("/", [homecontroller::class, "index"])->name('home');
 // Booking from the home page
 Route::resource('bookings', BookingController::class);
 
+// navigation routes
+Route::get('/our_services', [Navigationcontroller::class, 'our_services'])->name('our_services');
+Route::get('/pricing', [Navigationcontroller::class, 'pricing'])->name('pricing');
+Route::get('/bmi', [Navigationcontroller::class, 'bmi'])->name('bmi');
+Route::get('/contact', [Navigationcontroller::class, 'contact'])->name('contact');
 
 // Add to cart and product order routes
 
@@ -56,6 +63,13 @@ Route::get('/thank-you-cod', function () {
 })->name('thank.you.cod');
 
 Route::get("order-complete", [\App\Http\Controllers\OrderController::class, 'order_complete'])->name('order_complete');
+
+// hero img route
+Route::get('/slider-images', function () {
+    return response()->json(
+        SliderImage::with('media')->get()->map(fn ($slider) => $slider->getFirstMediaUrl('slider_images'))
+    );
+})->name('slider.images.json');
 
 
 //Dashboard routes

@@ -99,28 +99,27 @@
                     </div>
                 </div>
                 <div class="relative lg:w-1/2">
-                    <img class="object-cover w-full h-56 rounded shadow-lg sm:h-96"
-                        src="/img/offers/offer1.webp"
-                        alt="" />
-
+                    <img id="sliderImage" class="object-cover w-full h-56 rounded shadow-lg sm:h-96"
+                         src="{{ App\Models\SliderImage::first()?->getFirstMediaUrl('slider_images', 'thumb') ?? asset('default.jpg') }}"
+                         alt="Slider Image" />
                 </div>
-                <script>
-                    document.addEventListener('DOMContentLoaded', function() {
-                        const images = [
-                            '/img/offers/offer1.webp',
-                            '/img/offers/offer2.webp',
-                            // 'https://images.pexels.com/photos/4564564/pexels-photo-4564564.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=3&amp;h=750&amp;w=1260',
-                            '/img/offers/offer3.webp'
-                        ];
-                        let currentIndex = 0;
-                        const imageElement = document.querySelector('.relative.lg\\:w-1\\/2 img');
 
-                        setInterval(() => {
-                            currentIndex = (currentIndex + 1) % images.length;
-                            imageElement.src = images[currentIndex];
-                        }, 3000); // Change image every 5 seconds
+                <script>
+                    document.addEventListener('DOMContentLoaded', async function () {
+                        const response = await fetch("{{ route('slider.images.json') }}");
+                        const images = await response.json();
+                        let currentIndex = 0;
+                        const imageElement = document.getElementById('sliderImage');
+
+                        if (images.length > 0) {
+                            setInterval(() => {
+                                currentIndex = (currentIndex + 1) % images.length;
+                                imageElement.src = images[currentIndex];
+                            }, 3000);
+                        }
                     });
                 </script>
+
             </div>
         </div>
     </div>
@@ -752,6 +751,7 @@
                             onmouseout="this.style.transform='scale(1)'"
                             onmouseover="this.style.transform='scale(1.1)'"
                             src="{{$team_member->getFirstMediaUrl('our_team_photo')}}"
+
                             style="transition: transform 0.3s ease-in-out;" width="128" />
                     </div>
                     <h3 class="text-xl font-bold mt-4 text-black dark:text-white">
