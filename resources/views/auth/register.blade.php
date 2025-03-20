@@ -22,17 +22,17 @@
                         <div id="section1">
                             <div class="mb-4">
                                 <input name="name" type="text"
-                                    class="w-full rounded-lg text-gray-800 text-sm border-b border-gray-300 focus:border-[#F41E1E] px-2 py-3 outline-none"
+                                    class="w-full text-gray-800 text-sm border-2 border-black focus:border-gray-600 focus:ring-0 px-4 py-2 outline-none bg-[#141414] rounded-lg"
                                     placeholder="Name" />
                             </div>
                             <div class="mb-4">
                                 <input name="email" type="email"
-                                    class="w-full rounded-lg text-gray-800 text-sm border-b border-gray-300 focus:border-[#F41E1E] px-2 py-3 outline-none"
+                                    class="w-full text-gray-800 text-sm border-2 border-black focus:border-gray-600 focus:ring-0 px-4 py-2 outline-none bg-[#141414] rounded-lg"
                                     placeholder="Email" />
                             </div>
                             <div class="mb-4">
                                 <select id="membership_plan" name="membership_plan"
-                                    class="w-full rounded-lg text-gray-800 text-sm border-b border-gray-300 focus:border-[#F41E1E] px-2 py-3 outline-none">
+                                    class="w-full text-gray-400 text-sm border-2 border-black focus:border-gray-600 focus:ring-0 px-4 py-2 outline-none bg-[#141414] rounded-lg">
                                     <option value="">Select a Membership Plan</option>
                                     <!-- Replace with dynamic options from backend -->
                                     <option value="1" data-duration="30">Plan A (1 Month)</option>
@@ -52,27 +52,27 @@
                         <div id="section2" style="display: none;">
                             <div class="mb-4">
                                 <input id="start_date" type="date" name="start_date" required
-                                    class="w-full rounded-lg text-gray-800 text-sm border-b border-gray-300 focus:border-[#F41E1E] px-2 py-3 outline-none"
+                                    class="w-full text-gray-400 text-sm border-2 border-black focus:border-gray-600 focus:ring-0 px-4 py-2 outline-none bg-[#141414] rounded-lg"
                                     placeholder="Start Date" />
                             </div>
                             <div class="mb-4">
                                 <input id="end_date" type="date" name="end_date" required readonly
-                                    class="w-full rounded-lg text-gray-800 text-sm border-b border-gray-300 focus:border-[#F41E1E] px-2 py-3 outline-none"
+                                    class="w-full text-gray-400 text-sm border-2 border-black focus:border-gray-600 focus:ring-0 px-4 py-2 outline-none bg-[#141414] rounded-lg"
                                     placeholder="End Date" />
                             </div>
                             {{-- <div class="mb-4">
                                 <input name="password" type="password" required
-                                    class="w-full rounded-lg text-gray-800 text-sm border-b border-gray-300 focus:border-[#F41E1E] px-2 py-3 outline-none"
+                                    class="w-full text-gray-800 text-sm border-2 border-black focus:border-gray-600 focus:ring-0 px-4 py-2 outline-none bg-[#141414] rounded-lg"
                                     placeholder="Password" />
                             </div>
                             <div class="mb-4">
                                 <input name="password_confirmation" type="password" required
-                                    class="w-full rounded-lg text-gray-800 text-sm border-b border-gray-300 focus:border-[#F41E1E] px-2 py-3 outline-none"
+                                    class="w-full text-gray-800 text-sm border-2 border-black focus:border-gray-600 focus:ring-0 px-4 py-2 outline-none bg-[#141414] rounded-lg"
                                     placeholder="Confirm Password" />
                             </div> --}}
                             <div class="mb-4 relative">
                                 <input id="password" name="password" type="password" required
-                                    class="w-full rounded-lg text-gray-800 text-sm border-b border-gray-300 focus:border-[#F41E1E] px-2 py-3 outline-none"
+                                    class="w-full text-gray-800 text-sm border-2 border-black focus:border-gray-600 focus:ring-0 px-4 py-2 outline-none bg-[#141414] rounded-lg"
                                     placeholder="Password" />
                                 <button type="button" id="togglePassword"
                                     class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-600">
@@ -87,7 +87,7 @@
 
                             <div class="mb-4 relative">
                                 <input id="password_confirmation" name="password_confirmation" type="password" required
-                                    class="w-full rounded-lg text-gray-800 text-sm border-b border-gray-300 focus:border-[#F41E1E] px-2 py-3 outline-none"
+                                    class="w-full text-gray-800 text-sm border-2 border-black focus:border-gray-600 focus:ring-0 px-4 py-2 outline-none bg-[#141414] rounded-lg"
                                     placeholder="Confirm Password" />
                                 <button type="button" id="toggleConfirmPassword"
                                     class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-600">
@@ -101,7 +101,7 @@
                             </div>
 
 
-                            @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
+                            {{-- @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
                                 <div class="mt-4">
                                     <x-label for="terms">
                                         <div class="flex items-center">
@@ -126,18 +126,18 @@
                                         </div>
                                     </x-label>
                                 </div>
-                            @endif
+                            @endif --}}
 
                             <div class="mt-8 flex justify-between">
                                 <!-- Back Button to Section 1 -->
                                 <button type="button" onclick="showSection1()"
-                                    class="w-1/2 mr-2 shadow-xl py-2.5 px-4 text-lg font-bold rounded-md text-black dark:text-white bg-gray-300 dark:bg-gray-700 hover:bg-gray-400 dark:hover:bg-gray-600 focus:outline-none">
+                                    class="w-1/2 mr-2 shadow-xl py-2.5 px-4 text-lg font-bold rounded-md text-black dark:text-white bg-gray-300 dark:bg-gray-700 hover:bg-gray-400 dark:hover:bg-gray-600 focus:outline-none transition duration-300 ease-in-out">
                                     Back
                                 </button>
 
                                 <!-- Sign Up Button -->
                                 <button type="submit"
-                                    class="w-1/2 ml-2 shadow-xl py-2.5 px-4 text-lg font-bold uppercase tracking-wide rounded-md text-white dark:hover:text-black bg-[#F41E1E] dark:hover:bg-white dark:bg-[#F41E1E] hover:bg-[#F41E1E] focus:outline-none">
+                                    class="w-1/2 ml-2 shadow-xl py-2.5 px-4 text-lg font-bold uppercase tracking-wide rounded-md text-white dark:hover:text-black bg-[#F41E1E] dark:hover:bg-white dark:bg-[#F41E1E] hover:bg-[#F41E1E] focus:outline-none transition duration-300 ease-in-out">
                                     Sign Up
                                 </button>
                             </div>

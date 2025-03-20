@@ -20,9 +20,8 @@
                             {{-- <label class="text-gray-800 text-xs block mb-2">Email</label> --}}
                             <div class="relative flex items-center ">
                                 <input name="email" type="email" required
-                                    class="w-full   text-gray-800 text-sm border-b border-gray-300 focus:border-[#F41E1E] px-2 py-3 outline-none"
+                                    class="w-full text-gray-800 text-sm border-2 border-black focus:border-gray-600 focus:ring-0 px-4 py-2 outline-none bg-[#141414] rounded-lg"
                                     placeholder="Email" />
-                                <!-- Icon here if needed -->
                             </div>
                         </div>
 
@@ -30,7 +29,7 @@
                         <div class="mt-8">
                             <div class="relative flex items-center">
                                 <input id="password" name="password" type="password" required
-                                    class="w-full  text-gray-800 text-sm border-b border-gray-300 focus:border-[#F41E1E] px-2 py-3 outline-none"
+                                    class="w-full text-gray-800 text-sm border-2 border-black focus:border-gray-600 focus:ring-0 px-4 py-2 outline-none bg-[#141414] rounded-lg"
                                     placeholder="Password" />
 
                                 <!-- Eye Icon Button -->
@@ -65,7 +64,7 @@
                         <x-validation-errors class="mb-4" />
                         <div class="mt-12 flex justify-center">
                             <button type="submit"
-                                class="w-1/2 shadow-xl py-1.5 px-2 text-lg font-bold tracking-wide rounded-3xl text-white dark:hover:text-black bg-[#F41E1E] dark:hover:bg-white dark:bg-[#F41E1E] hover:bg-[#F41E1E] focus:outline-none transform transition-transform duration-1000">
+                                class="w-1/2 shadow-xl py-1.5 px-2 text-lg font-bold tracking-wide rounded-3xl text-white dark:hover:text-black bg-[#F41E1E] dark:hover:bg-white dark:bg-[#F41E1E] hover:bg-[#F41E1E] focus:outline-none transform transition-all duration-300 ease-in-out">
                                 Log In
                             </button>
                         </div>
