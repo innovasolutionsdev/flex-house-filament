@@ -33,8 +33,8 @@
                         </svg>
                     @endif
                 @else
-                        <img class="h-10 w-10 rounded-full object-cover"
-                             src="{{asset('img/avt2.jpeg')}}">
+                        <img class="h-10 w-10 rounded-full bg-[#141414] object-cover"
+                             src="{{asset('img/avt2.png')}}">
                 @endauth
                 </button>
 
