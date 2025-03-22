@@ -33,7 +33,7 @@
                         </svg>
                     @endif
                 @else
-                        <img class="h-10 w-10 rounded-full bg-[#141414] object-cover"
+                        <img class="h-8 w-8 rounded-full bg-[#141414] object-cover"
                              src="{{asset('img/avt2.png')}}">
                 @endauth
                 </button>
@@ -51,7 +51,7 @@
             </div>
 
             <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-user">
-                <ul
+                {{-- <ul
                     class="flex flex-col font-medium p-12 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-800 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-[#141414] dark:bg-gray-800 md:dark:bg-[#141414] dark:border-gray-700">
                     <li>
                         <a aria-current="page"
@@ -78,7 +78,41 @@
                         <a class="block py-2 px-3 text-lg text-gray-300 rounded hover:bg-gray-700 md:hover:bg-transparent md:hover:text-[#F41E1E] md:p-0 dark:text-white md:dark:hover:text-[#F41E1E] dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                             href="{{ route('contact') }}">Contact</a>
                     </li>
-                </ul>
+                </ul> --}}
+                <ul
+    class="flex flex-col font-medium p-12 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-800 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-[#141414] dark:bg-gray-800 md:dark:bg-[#141414] dark:border-gray-700">
+    <li>
+        <a aria-current="page"
+            class="block py-2 text-lg px-3 text-white rounded md:bg-transparent md:p-0 
+            {{ Request::is('/') ? 'md:text-[#F41E1E]' : 'text-gray-300' }}"
+            href="{{ url('/') }}">Home</a>
+    </li>
+    <li>
+        <a class="block py-2 px-3 text-lg rounded hover:bg-gray-700 md:hover:bg-transparent md:p-0 
+            {{ Request::is('products') ? 'md:text-[#F41E1E]' : 'text-gray-300' }}"
+            href="{{ url('/products') }}">Products</a>
+    </li>
+    <li>
+        <a class="block py-2 px-3 text-lg rounded hover:bg-gray-700 md:hover:bg-transparent md:p-0 
+            {{ Request::is('our_services') ? 'md:text-[#F41E1E]' : 'text-gray-300' }}"
+            href="/our_services">Services</a>
+    </li>
+    <li>
+        <a class="block py-2 px-3 text-lg rounded hover:bg-gray-700 md:hover:bg-transparent md:p-0 
+            {{ Route::is('pricing') ? 'md:text-[#F41E1E]' : 'text-gray-300' }}"
+            href="{{ route('pricing') }}">Pricing</a>
+    </li>
+    <li>
+        <a class="block py-2 px-3 text-lg rounded hover:bg-gray-700 md:hover:bg-transparent md:p-0 
+            {{ Route::is('bmi') ? 'md:text-[#F41E1E]' : 'text-gray-300' }}"
+            href="{{ route('bmi') }}">BMI</a>
+    </li>
+    <li>
+        <a class="block py-2 px-3 text-lg rounded hover:bg-gray-700 md:hover:bg-transparent md:p-0 
+            {{ Route::is('contact') ? 'md:text-[#F41E1E]' : 'text-gray-300' }}"
+            href="{{ route('contact') }}">Contact</a>
+    </li>
+</ul>
             </div>
         </div>
     </nav>
