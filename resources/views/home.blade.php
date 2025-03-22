@@ -998,16 +998,23 @@
                                 class="px-2 pt-3 bg-white w-full dark:bg-[#171717] text-gray-800 text-sm border border-gray-300 dark:border-gray-600 focus:border-red-600 outline-none rounded-2xl"></textarea>
                         </div>
 
-                        <button type="submit"
-                            class="mt-8 flex items-center justify-center text-lg w-full rounded-md font-bold px-6 py-3 bg-[#F41E1E] hover:bg-white text-white dark:hover:text-black">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" fill='#fff'
-                                class="mr-2" viewBox="0 0 548.244 548.244">
-                                <path fill-rule="evenodd"
-                                    d="M392.19 156.054 211.268 281.667 22.032 218.58C8.823 214.168-.076 201.775 0 187.852c.077-13.923 9.078-26.24 22.338-30.498L506.15 1.549c11.5-3.697 24.123-.663 32.666 7.88 8.542 8.543 11.577 21.165 7.879 32.666L390.89 525.906c-4.258 13.26-16.575 22.261-30.498 22.338-13.923.076-26.316-8.823-30.728-22.032l-63.393-190.153z"
-                                    clip-rule="evenodd" data-original="#000000" />
-                            </svg>
-                            Send Message
-                        </button>
+                        @auth
+                            <button type="submit"
+                                class="mt-8 flex items-center justify-center text-lg w-full rounded-md font-bold px-6 py-3 bg-[#F41E1E] hover:bg-white text-white dark:hover:text-black">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" fill='#fff'
+                                    class="mr-2" viewBox="0 0 548.244 548.244">
+                                    <path fill-rule="evenodd"
+                                        d="M392.19 156.054 211.268 281.667 22.032 218.58C8.823 214.168-.076 201.775 0 187.852c.077-13.923 9.078-26.24 22.338-30.498L506.15 1.549c11.5-3.697 24.123-.663 32.666 7.88 8.542 8.543 11.577 21.165 7.879 32.666L390.89 525.906c-4.258 13.26-16.575 22.261-30.498 22.338-13.923.076-26.316-8.823-30.728-22.032l-63.393-190.153z"
+                                        clip-rule="evenodd" data-original="#000000" />
+                                </svg>
+                                Send Message
+                            </button>
+                        @else
+                            <a href="{{ route('login') }}"
+                                class="mt-8 flex items-center justify-center text-lg w-full rounded-md font-bold px-6 py-3 bg-[#F41E1E] hover:bg-white text-white dark:hover:text-black">
+                                Log in to send a message
+                            </a>
+                        @endauth
                     </form>
 
                     <ul class="mt-4 flex flex-wrap justify-center gap-6">
