@@ -58,7 +58,11 @@
                 <h1 class="text-3xl font-bold mt-2 dark:text-gray-200 text-gray-800">
                     {{ $order->name }}
                 </h1>
+                <p class="text-green-500 text-md mt-2 mr-4 ">
+                   Stock : {{ $order->stock_quantity }}
+                </p>
                 <div class="flex">
+            
                     <p class="text-red-500 text-xl mt-2 mr-4 font-semibold">
                         Rs.{{ $order->discount_price }}
                     </p>
@@ -96,15 +100,15 @@
                             method="POST">
                             @csrf
                             <button type="submit"
-                                class="bg-[#141414] dark:bg-[#F41E1E] text-white py-2 px-2 font-bold rounded-md shadow-md hover:bg-[#141414] transition duration-300 w-full md:w-auto"
-                                {{ $order->stock_quantity > 0 ? 'bg-[#F41E1E] text-white hover:bg-yellow-600' : 'bg-gray-400 text-gray-200 cursor-not-allowed' }}
+                                class="bg-[#141414] dark:bg-[#F41E1E] text-white py-1 px-2 font-bold rounded-2xl shadow-md hover:bg-white hover:text-black transition duration-500 w-full md:w-auto"
+                                {{ $order->stock_quantity > 0 ? 'bg-[#F41E1E] text-white' : 'bg-gray-400 text-gray-200 cursor-not-allowed' }}
                                 {{ $order->stock_quantity <= 0 && $order->in_stock ? 'disabled' : '' }}>
                                 Add To Cart
                                 <i class="fas fa-shopping-cart ml-2"></i>
                             </button>
                         </form>
                         <button wire:click.prevent="quickbuy({{ $order->id }})"
-                            class="bg-[#141414] dark:bg-[#F41E1E] text-white py-2 px-2 font-bold rounded-md shadow-md hover:bg-[#141414] transition duration-300 w-full md:w-auto  {{ $order->stock_quantity > 0 ? 'bg-[#F41E1E] text-white ' : 'bg-gray-400 text-gray-200 cursor-not-allowed' }}"
+                            class="bg-[#141414] dark:bg-[#F41E1E] text-white py-1 px-2 font-bold rounded-2xl shadow-md hover:bg-white hover:text-black transition duration-500 w-full md:w-auto  {{ $order->stock_quantity > 0 ? 'bg-[#F41E1E] text-white ' : 'bg-gray-400 text-gray-200 cursor-not-allowed' }}"
                             {{ $order->stock_quantity <= 0 && $order->in_stock ? 'disabled' : '' }}>
                             Quick Buy
                             <i class="fa-solid fa-truck-fast ml-2"></i>
