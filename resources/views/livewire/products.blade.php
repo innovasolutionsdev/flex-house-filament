@@ -92,7 +92,7 @@
                             <div class="flex mt-2">
                                 <!-- Quick Buy Button -->
                                 <button wire:click.prevent="quickbuy({{ $value->id }})"
-                                        class="w-full py-2 mr-2 rounded-lg {{ $value->stock_quantity > 0 ? 'bg-[#F41E1E] text-white hover:bg-[#db4747]' : 'bg-gray-400 text-gray-200 cursor-not-allowed' }}"
+                                        class="w-full py-1 mr-2 rounded-2xl {{ $value->stock_quantity > 0 ? 'bg-[#F41E1E] text-white hover:bg-[#db4747]' : 'bg-gray-400 text-gray-200 cursor-not-allowed' }}"
                                     {{ $value->stock_quantity <= 0 && $value->in_stock ? 'disabled' : '' }}>
                                     Quick Buy
                                 </button>
@@ -101,7 +101,7 @@
                                 <form wire:submit.prevent="addToCart({{ $value->id }})" action="{{ route('cart.store') }}" method="POST">
                                     @csrf
                                     <button type="submit"
-                                            class="py-2 px-4 rounded-lg {{ $value->stock_quantity > 0 ? (isset($cartAdded[$value->id]) && $cartAdded[$value->id] ? 'bg-green-500 text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300') : 'bg-gray-400 text-gray-200 cursor-not-allowed' }}"
+                                            class="py-1 px-4 rounded-2xl {{ $value->stock_quantity > 0 ? (isset($cartAdded[$value->id]) && $cartAdded[$value->id] ? 'bg-green-500 text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300') : 'bg-gray-400 text-gray-200 cursor-not-allowed' }}"
                                         {{ $value->stock_quantity <= 0 && $value->in_stock ? 'disabled' : '' }}>
                                         <i class="fas fa-cart-plus"></i>
                                     </button>
