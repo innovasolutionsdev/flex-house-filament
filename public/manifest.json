@@ -1,7 +1,7 @@
 {
     "name": "Innova Solutions Global",
     "short_name": "IGB",
-    "start_url": "/products.php",
+    "start_url": "/index.php",
 
     "description": "Innova Solutions Global is a software development company that provides software solutions to businesses and individuals.",
     "display": "standalone",
