@@ -39,80 +39,82 @@
                 </button>
 
                 <button aria-controls="navbar-user" aria-expanded="false"
-                    class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-                    data-collapse-toggle="navbar-user" type="button">
+                    class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden  dark:text-gray-100  "
+                    data-collapse-toggle="navbar-user" type="button" id="hamburger-button">
                     <span class="sr-only">Open main menu</span>
-                    <svg aria-hidden="true" class="w-5 h-5" fill="none" viewBox="0 0 17 14"
+                    <svg id="hamburger-icon" aria-hidden="true" class="w-5 h-5" fill="none" viewBox="0 0 17 14"
                         xmlns="http://www.w3.org/2000/svg">
                         <path d="M1 1h15M1 7h15M1 13h15" stroke="currentColor" stroke-linecap="round"
                             stroke-linejoin="round" stroke-width="2"></path>
                     </svg>
+                    <svg id="close-icon" aria-hidden="true" class="w-5 h-5 hidden" fill="none" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6 18L18 6M6 6l12 12" stroke="currentColor" stroke-linecap="round"
+                            stroke-linejoin="round" stroke-width="2"></path>
+                    </svg>
                 </button>
+
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        const hamburgerButton = document.getElementById('hamburger-button');
+                        const hamburgerIcon = document.getElementById('hamburger-icon');
+                        const closeIcon = document.getElementById('close-icon');
+
+                        hamburgerButton.addEventListener('click', function () {
+                            hamburgerIcon.classList.toggle('hidden');
+                            closeIcon.classList.toggle('hidden');
+                        });
+                    });
+                </script>
             </div>
 
             <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-user">
-                {{-- <ul
-                    class="flex flex-col font-medium p-12 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-800 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-[#141414] dark:bg-gray-800 md:dark:bg-[#141414] dark:border-gray-700">
+                <ul
+                    class="flex flex-col font-medium p-12 md:p-0 mt-4 dark:bg-[#171717] rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-[#141414] dark:bg-bg-[#141414] md:dark:bg-[#141414] dark:border-gray-700">
                     <li>
                         <a aria-current="page"
-                            class="block py-2 text-lg px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-[#F41E1E] md:p-0 md:dark:text-[#F41E1E]"
-                            href="{{ url('/') }}">Home</a>
+                            class="block py-2 text-lg px-3 text-white rounded md:bg-transparent md:p-0 
+                            {{ Request::is('/') ? 'text-[#F41E1E]' : 'text-white' }}"
+                            href="{{ url('/') }}">
+                            Home
+                        </a>
                     </li>
                     <li>
-                        <a class="block py-2 px-3 text-lg text-gray-300 rounded hover:bg-gray-700 md:hover:bg-transparent md:hover:text-[#F41E1E] md:p-0 dark:text-white md:dark:hover:text-[#F41E1E] dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-                            href="{{ url('/products') }}">Products</a>
+                        <a class="block py-2 px-3 text-lg rounded hover:bg-gray-700 md:hover:bg-transparent md:p-0 
+                            {{ Request::is('products') ? 'text-[#F41E1E]' : 'text-white' }}"
+                            href="{{ url('/products') }}">
+                            Products
+                        </a>
                     </li>
                     <li>
-                        <a class="block py-2 px-3 text-lg text-gray-300 rounded hover:bg-gray-700 md:hover:bg-transparent md:hover:text-[#F41E1E] md:p-0 dark:text-white md:dark:hover:text-[#F41E1E] dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-                            href="/our_services">Services</a>
+                        <a class="block py-2 px-3 text-lg rounded hover:bg-gray-700 md:hover:bg-transparent md:p-0 
+                            {{ Request::is('our_services') ? 'text-[#F41E1E]' : 'text-white' }}"
+                            href="/our_services">
+                            Services
+                        </a>
                     </li>
                     <li>
-                        <a class="block py-2 px-3 text-lg text-gray-300 rounded hover:bg-gray-700 md:hover:bg-transparent md:hover:text-[#F41E1E] md:p-0 dark:text-white md:dark:hover:text-[#F41E1E] dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-                            href="{{ route('pricing') }}">Pricing</a>
+                        <a class="block py-2 px-3 text-lg rounded hover:bg-gray-700 md:hover:bg-transparent md:p-0 
+                            {{ Route::is('pricing') ? 'text-[#F41E1E]' : 'text-white' }}"
+                            href="{{ route('pricing') }}">
+                            Pricing
+                        </a>
                     </li>
                     <li>
-                        <a class="block py-2 px-3 text-lg text-gray-300 rounded hover:bg-gray-700 md:hover:bg-transparent md:hover:text-[#F41E1E] md:p-0 dark:text-white md:dark:hover:text-[#F41E1E] dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-                            href="{{ route('bmi') }}">BMI</a>
+                        <a class="block py-2 px-3 text-lg rounded hover:bg-gray-700 md:hover:bg-transparent md:p-0 
+                            {{ Route::is('bmi') ? 'text-[#F41E1E]' : 'text-white' }}"
+                            href="{{ route('bmi') }}">
+                            BMI
+                        </a>
                     </li>
                     <li>
-                        <a class="block py-2 px-3 text-lg text-gray-300 rounded hover:bg-gray-700 md:hover:bg-transparent md:hover:text-[#F41E1E] md:p-0 dark:text-white md:dark:hover:text-[#F41E1E] dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-                            href="{{ route('contact') }}">Contact</a>
+                        <a class="block py-2 px-3 text-lg rounded hover:bg-gray-700 md:hover:bg-transparent md:p-0 
+                            {{ Route::is('contact') ? 'text-[#F41E1E]' : 'text-white' }}"
+                            href="{{ route('contact') }}">
+                            Contact
+                        </a>
                     </li>
-                </ul> --}}
-                <ul
-    class="flex flex-col font-medium p-12 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-800 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-[#141414] dark:bg-gray-800 md:dark:bg-[#141414] dark:border-gray-700">
-    <li>
-        <a aria-current="page"
-            class="block py-2 text-lg px-3 text-white rounded md:bg-transparent md:p-0 
-            {{ Request::is('/') ? 'md:text-[#F41E1E]' : 'text-gray-300' }}"
-            href="{{ url('/') }}">Home</a>
-    </li>
-    <li>
-        <a class="block py-2 px-3 text-lg rounded hover:bg-gray-700 md:hover:bg-transparent md:p-0 
-            {{ Request::is('products') ? 'md:text-[#F41E1E]' : 'text-gray-300' }}"
-            href="{{ url('/products') }}">Products</a>
-    </li>
-    <li>
-        <a class="block py-2 px-3 text-lg rounded hover:bg-gray-700 md:hover:bg-transparent md:p-0 
-            {{ Request::is('our_services') ? 'md:text-[#F41E1E]' : 'text-gray-300' }}"
-            href="/our_services">Services</a>
-    </li>
-    <li>
-        <a class="block py-2 px-3 text-lg rounded hover:bg-gray-700 md:hover:bg-transparent md:p-0 
-            {{ Route::is('pricing') ? 'md:text-[#F41E1E]' : 'text-gray-300' }}"
-            href="{{ route('pricing') }}">Pricing</a>
-    </li>
-    <li>
-        <a class="block py-2 px-3 text-lg rounded hover:bg-gray-700 md:hover:bg-transparent md:p-0 
-            {{ Route::is('bmi') ? 'md:text-[#F41E1E]' : 'text-gray-300' }}"
-            href="{{ route('bmi') }}">BMI</a>
-    </li>
-    <li>
-        <a class="block py-2 px-3 text-lg rounded hover:bg-gray-700 md:hover:bg-transparent md:p-0 
-            {{ Route::is('contact') ? 'md:text-[#F41E1E]' : 'text-gray-300' }}"
-            href="{{ route('contact') }}">Contact</a>
-    </li>
-</ul>
+                </ul>
             </div>
         </div>
     </nav>
