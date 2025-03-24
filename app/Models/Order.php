@@ -17,9 +17,13 @@ class Order extends Model implements HasMedia
         'user_id',
         'first_name',
         'last_name',
-        'zip_code',
+        'zip',
+        'total',
+        'sub_total',
         'address',
         'city',
+        'state',
+        'phone',
         'mobile',
         'total',
         'status',
@@ -45,6 +49,11 @@ class Order extends Model implements HasMedia
         return $this->belongsToMany(Product::class, 'order_product')
             ->withPivot('quantity', 'price')
             ->withTimestamps();
+    }
+
+    public function order_product()
+    {
+        return $this->hasMany(OrderProduct::class);
     }
 
 
