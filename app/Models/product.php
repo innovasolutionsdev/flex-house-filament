@@ -25,6 +25,7 @@ class product extends Model implements HasMedia
         'in_stock',
         'stock_quantity',
         'on_sale',
+        'bestselling',
         'description',
         'category_id',
         'brand_id',
@@ -52,6 +53,8 @@ class product extends Model implements HasMedia
             ->withPivot('quantity', 'price')
             ->withTimestamps();
     }
+
+
 
 
 

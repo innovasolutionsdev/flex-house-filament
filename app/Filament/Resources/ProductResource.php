@@ -55,6 +55,9 @@ class ProductResource extends Resource
 
                     Toggle::make('on_sale')
                         ->label('On Sale'),
+
+                    Toggle::make('bestselling')
+                        ->label('Best Selling'),
                 ]),
 
                 // Dropdown for Product Category

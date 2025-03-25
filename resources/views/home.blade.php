@@ -213,7 +213,7 @@
         </div>
     </section> --}}
     {{-- About us end --}}
-    
+
     {{-- Our store --}}
     <div id="services" class="w-full dark:bg-[#141414] py-12 px-4">
         <div class="container mx-auto">
@@ -232,200 +232,58 @@
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full lg:w-3/4 mx-auto">
 
-                <div class="bg-white p-2 shadow-md rounded-lg dark:bg-[#141414] dark:text-white">
-                    <div class="relative">
-                        <a href="{{ url('product-details/1') }}">
-                            <img alt="Sample Product" class="rounded-lg h-50 md:h-72 object-cover" src="\img\prod.jpg" />
-                        </a>
+                @foreach ($bestsellingProducts as $value)
+                    <div class="bg-white p-2 shadow-md rounded-lg dark:bg-[#141414] dark:text-white">
+                        <div class="relative">
+                            <a href="{{ url('product-details/' . $value->id) }}">
+                                 <img alt="{{ $value->name }}" class="rounded-lg h-72 object-cover" src="{{ $value->getFirstMediaUrl('product_image') }}" />
+{{--                                <img alt="{{ $value->name }}" class="rounded-lg h-50 md:h-72 object-cover" src="{{asset('img/prod.jpg')}}" />--}}
 
-                        <span class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 text-xs rounded-lg">Sale!</span>
-                        <span class="absolute top-2 left-2 bg-green-500 text-white px-2 py-1 text-xs rounded-lg">In Stock</span>
-                    </div>
-                    <p class="text-gray-500 text-xs mt-2">Fitness, Health</p>
-                    <h2 class="text-lg font-bold mt-2 dark:text-white">Sample Product Name</h2>
-                    <div class="flex items-center mt-2">
-                        <span class="line-through text-gray-500 mr-2">රු1500</span>
-                        <span class="text-red-500 text-xl font-bold">රු1200</span>
-                    </div>
+                            </a>
+                            {{-- @dd($value->getFirstMediaUrl('product_image')) --}}
 
-                    <div class="flex mt-2">
-                        <!-- Quick Buy Button -->
-                        <button class="w-full py-1 mr-2 rounded-2xl bg-[#F41E1E] text-white hover:bg-[#db4747]">
-                            Quick Buy
-                        </button>
+                            @if ($value->on_sale)
+                                <span class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 text-xs rounded-lg">Sale!</span>
+                            @endif
 
-                        <!-- Add to Cart Button -->
-                        <form action="#" method="POST">
-                            @csrf
-                            <button type="submit" class="py-1 px-4 rounded-2xl bg-gray-200 text-gray-700 hover:bg-gray-300">
-                                <i class="fas fa-cart-plus"></i>
+                            @if($value->stock_quantity > 0)
+                                <span class="absolute top-2 left-2 bg-green-500 text-white px-2 py-1 text-xs rounded-lg">In Stock</span>
+                            @else
+                                <span class="absolute top-2 left-2 bg-red-500 text-white px-2 py-1 text-xs rounded-lg">Out of Stock</span>
+                            @endif
+                        </div>
+                        <p class="text-gray-500 text-xs mt-2">{{ $value->tags }}</p>
+                        <h2 class="text-lg font-bold mt-2 dark:text-white">{{ $value->name }}</h2>
+                        <div class="flex items-center mt-2">
+                            @if ($value->on_sale)
+                                <span class="line-through text-gray-500 mr-2">රු{{ $value->discount_price }}</span>
+                            @endif
+                            <span class="text-red-500 text-xl font-bold">රු{{ $value->price }}</span>
+                        </div>
+
+
+                        <div class="flex mt-2">
+                            <!-- Quick Buy Button -->
+                            <button wire:click.prevent="quickbuy({{ $value->id }})"
+                                    class="w-full py-1 mr-2 rounded-2xl {{ $value->stock_quantity > 0 ? 'bg-[#F41E1E] text-white hover:bg-[#db4747]' : 'bg-gray-400 text-gray-200 cursor-not-allowed' }}"
+                                {{ $value->stock_quantity <= 0 && $value->in_stock ? 'disabled' : '' }}>
+                                Quick Buy
                             </button>
-                        </form>
-                    </div>
-                    <p class="text-gray-500 dark:text-gray-300 text-xs mt-2">or 3 Installments of රු400.00 with <span class="font-bold">KOKO</span></p>
-                </div>
-                <div class="bg-white p-2 shadow-md rounded-lg dark:bg-[#141414] dark:text-white">
-                    <div class="relative">
-                        <a href="{{ url('product-details/1') }}">
-                            <img alt="Sample Product" class="rounded-lg h-50 md:h-72 object-cover" src="\img\prod.jpg" />
-                        </a>
 
-                        <span class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 text-xs rounded-lg">Sale!</span>
-                        <span class="absolute top-2 left-2 bg-green-500 text-white px-2 py-1 text-xs rounded-lg">In Stock</span>
+                            <!-- Add to Cart Button -->
+                            <form wire:submit.prevent="addToCart({{ $value->id }})" action="{{ route('cart.store') }}" method="POST">
+                                @csrf
+                                <button type="submit"
+                                        class="py-1 px-4 rounded-2xl {{ $value->stock_quantity > 0 ? (isset($cartAdded[$value->id]) && $cartAdded[$value->id] ? 'bg-green-500 text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300') : 'bg-gray-400 text-gray-200 cursor-not-allowed' }}"
+                                    {{ $value->stock_quantity <= 0 && $value->in_stock ? 'disabled' : '' }}>
+                                    <i class="fas fa-cart-plus"></i>
+                                </button>
+                            </form>
+                        </div>
+                        <p class="text-gray-500 dark:text-gray-300 text-xs mt-2">or 3 Installments of රු{{ number_format($value->discount_price / 3, 2) }} with <span class="font-bold">KOKO</span></p>
                     </div>
-                    <p class="text-gray-500 text-xs mt-2">Fitness, Health</p>
-                    <h2 class="text-lg font-bold mt-2 dark:text-white">Sample Product Name</h2>
-                    <div class="flex items-center mt-2">
-                        <span class="line-through text-gray-500 mr-2">රු1500</span>
-                        <span class="text-red-500 text-xl font-bold">රු1200</span>
-                    </div>
+                @endforeach
 
-                    <div class="flex mt-2">
-                        <!-- Quick Buy Button -->
-                        <button class="w-full py-1 mr-2 rounded-2xl bg-[#F41E1E] text-white hover:bg-[#db4747]">
-                            Quick Buy
-                        </button>
-
-                        <!-- Add to Cart Button -->
-                        <form action="#" method="POST">
-                            @csrf
-                            <button type="submit" class="py-1 px-4 rounded-2xl bg-gray-200 text-gray-700 hover:bg-gray-300">
-                                <i class="fas fa-cart-plus"></i>
-                            </button>
-                        </form>
-                    </div>
-                    <p class="text-gray-500 dark:text-gray-300 text-xs mt-2">or 3 Installments of රු400.00 with <span class="font-bold">KOKO</span></p>
-                </div>
-                <div class="bg-white p-2 shadow-md rounded-lg dark:bg-[#141414] dark:text-white">
-                    <div class="relative">
-                        <a href="{{ url('product-details/1') }}">
-                            <img alt="Sample Product" class="rounded-lg h-50 md:h-72 object-cover" src="\img\prod.jpg" />
-                        </a>
-
-                        <span class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 text-xs rounded-lg">Sale!</span>
-                        <span class="absolute top-2 left-2 bg-green-500 text-white px-2 py-1 text-xs rounded-lg">In Stock</span>
-                    </div>
-                    <p class="text-gray-500 text-xs mt-2">Fitness, Health</p>
-                    <h2 class="text-lg font-bold mt-2 dark:text-white">Sample Product Name</h2>
-                    <div class="flex items-center mt-2">
-                        <span class="line-through text-gray-500 mr-2">රු1500</span>
-                        <span class="text-red-500 text-xl font-bold">රු1200</span>
-                    </div>
-
-                    <div class="flex mt-2">
-                        <!-- Quick Buy Button -->
-                        <button class="w-full py-1 mr-2 rounded-2xl bg-[#F41E1E] text-white hover:bg-[#db4747]">
-                            Quick Buy
-                        </button>
-
-                        <!-- Add to Cart Button -->
-                        <form action="#" method="POST">
-                            @csrf
-                            <button type="submit" class="py-1 px-4 rounded-2xl bg-gray-200 text-gray-700 hover:bg-gray-300">
-                                <i class="fas fa-cart-plus"></i>
-                            </button>
-                        </form>
-                    </div>
-                    <p class="text-gray-500 dark:text-gray-300 text-xs mt-2">or 3 Installments of රු400.00 with <span class="font-bold">KOKO</span></p>
-                </div>
-                <div class="bg-white p-2 shadow-md rounded-lg dark:bg-[#141414] dark:text-white">
-                    <div class="relative">
-                        <a href="{{ url('product-details/1') }}">
-                            <img alt="Sample Product" class="rounded-lg h-50 md:h-72 object-cover" src="\img\prod.jpg" />
-                        </a>
-
-                        <span class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 text-xs rounded-lg">Sale!</span>
-                        <span class="absolute top-2 left-2 bg-green-500 text-white px-2 py-1 text-xs rounded-lg">In Stock</span>
-                    </div>
-                    <p class="text-gray-500 text-xs mt-2">Fitness, Health</p>
-                    <h2 class="text-lg font-bold mt-2 dark:text-white">Sample Product Name</h2>
-                    <div class="flex items-center mt-2">
-                        <span class="line-through text-gray-500 mr-2">රු1500</span>
-                        <span class="text-red-500 text-xl font-bold">රු1200</span>
-                    </div>
-
-                    <div class="flex mt-2">
-                        <!-- Quick Buy Button -->
-                        <button class="w-full py-1 mr-2 rounded-2xl bg-[#F41E1E] text-white hover:bg-[#db4747]">
-                            Quick Buy
-                        </button>
-
-                        <!-- Add to Cart Button -->
-                        <form action="#" method="POST">
-                            @csrf
-                            <button type="submit" class="py-1 px-4 rounded-2xl bg-gray-200 text-gray-700 hover:bg-gray-300">
-                                <i class="fas fa-cart-plus"></i>
-                            </button>
-                        </form>
-                    </div>
-                    <p class="text-gray-500 dark:text-gray-300 text-xs mt-2">or 3 Installments of රු400.00 with <span class="font-bold">KOKO</span></p>
-                </div>
-                <div class="bg-white p-2 shadow-md rounded-lg dark:bg-[#141414] dark:text-white">
-                    <div class="relative">
-                        <a href="{{ url('product-details/1') }}">
-                            <img alt="Sample Product" class="rounded-lg h-50 md:h-72 object-cover" src="\img\prod.jpg" />
-                        </a>
-
-                        <span class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 text-xs rounded-lg">Sale!</span>
-                        <span class="absolute top-2 left-2 bg-green-500 text-white px-2 py-1 text-xs rounded-lg">In Stock</span>
-                    </div>
-                    <p class="text-gray-500 text-xs mt-2">Fitness, Health</p>
-                    <h2 class="text-lg font-bold mt-2 dark:text-white">Sample Product Name</h2>
-                    <div class="flex items-center mt-2">
-                        <span class="line-through text-gray-500 mr-2">රු1500</span>
-                        <span class="text-red-500 text-xl font-bold">රු1200</span>
-                    </div>
-
-                    <div class="flex mt-2">
-                        <!-- Quick Buy Button -->
-                        <button class="w-full py-1 mr-2 rounded-2xl bg-[#F41E1E] text-white hover:bg-[#db4747]">
-                            Quick Buy
-                        </button>
-
-                        <!-- Add to Cart Button -->
-                        <form action="#" method="POST">
-                            @csrf
-                            <button type="submit" class="py-1 px-4 rounded-2xl bg-gray-200 text-gray-700 hover:bg-gray-300">
-                                <i class="fas fa-cart-plus"></i>
-                            </button>
-                        </form>
-                    </div>
-                    <p class="text-gray-500 dark:text-gray-300 text-xs mt-2">or 3 Installments of රු400.00 with <span class="font-bold">KOKO</span></p>
-                </div>
-                <div class="bg-white p-2 shadow-md rounded-lg dark:bg-[#141414] dark:text-white">
-                    <div class="relative">
-                        <a href="{{ url('product-details/1') }}">
-                            <img alt="Sample Product" class="rounded-lg h-50 md:h-72 object-cover" src="\img\prod.jpg" />
-                        </a>
-
-                        <span class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 text-xs rounded-lg">Sale!</span>
-                        <span class="absolute top-2 left-2 bg-green-500 text-white px-2 py-1 text-xs rounded-lg">In Stock</span>
-                    </div>
-                    <p class="text-gray-500 text-xs mt-2">Fitness, Health</p>
-                    <h2 class="text-lg font-bold mt-2 dark:text-white">Sample Product Name</h2>
-                    <div class="flex items-center mt-2">
-                        <span class="line-through text-gray-500 mr-2">රු1500</span>
-                        <span class="text-red-500 text-xl font-bold">රු1200</span>
-                    </div>
-
-                    <div class="flex mt-2">
-                        <!-- Quick Buy Button -->
-                        <button class="w-full py-1 mr-2 rounded-2xl bg-[#F41E1E] text-white hover:bg-[#db4747]">
-                            Quick Buy
-                        </button>
-
-                        <!-- Add to Cart Button -->
-                        <form action="#" method="POST">
-                            @csrf
-                            <button type="submit" class="py-1 px-4 rounded-2xl bg-gray-200 text-gray-700 hover:bg-gray-300">
-                                <i class="fas fa-cart-plus"></i>
-                            </button>
-                        </form>
-                    </div>
-                    <p class="text-gray-500 dark:text-gray-300 text-xs mt-2">or 3 Installments of රු400.00 with <span class="font-bold">KOKO</span></p>
-                </div>
-
-                
             </div>
             {{-- button called All products to redirect the user to products page--}}
             <div class="w-full flex justify-center mt-8">
