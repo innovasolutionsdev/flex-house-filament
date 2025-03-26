@@ -18,6 +18,24 @@ class UpdateCartQuantity extends Component
         $this->stock = $stock;
     }
 
+    // Increase quantity but ensure it does not exceed stock
+    public function increaseQuantity()
+    {
+        if ($this->quantity < $this->stock) {
+            $this->quantity++;
+            $this->updateCartQuantity();
+        }
+    }
+
+    // Decrease quantity but ensure it does not go below 1
+    public function decreaseQuantity()
+    {
+        if ($this->quantity > 1) {
+            $this->quantity--;
+            $this->updateCartQuantity();
+        }
+    }
+
     // Method to update the quantity in the cart
     public function updateCartQuantity()
     {

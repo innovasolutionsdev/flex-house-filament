@@ -38,11 +38,8 @@ class Carts extends Component
 
     public function render()
     {
-
         return view('livewire.carts', [
-            'cartItems' => $this->cartItems
+            'cartItems' => Cart::content() // Always fetch fresh cart data
         ]);
-
-
     }
 }

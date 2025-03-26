@@ -63,8 +63,8 @@
                         <div class="bg-white p-2 shadow-md rounded-lg dark:bg-[#141414] dark:text-white">
                             <div class="relative">
                                 <a href="{{ url('product-details/' . $value->id) }}">
-                                    {{-- <img alt="{{ $value->name }}" class="rounded-lg h-72 object-cover" src="{{ $value->getFirstMediaUrl('product_image') }}" /> --}}
-                                    <img alt="{{ $value->name }}" class="rounded-lg h-50 md:h-72 object-cover" src="{{asset('img/prod.jpg')}}" />
+                                     <img alt="{{ $value->name }}" class="rounded-lg h-72 object-cover" src="{{ $value->getFirstMediaUrl('product_image') }}" />
+{{--                                    <img alt="{{ $value->name }}" class="rounded-lg h-50 md:h-72 object-cover" src="{{asset('img/prod.jpg')}}" />--}}
 
                                 </a>
                                 {{-- @dd($value->getFirstMediaUrl('product_image')) --}}
