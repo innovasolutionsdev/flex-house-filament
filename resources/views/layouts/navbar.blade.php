@@ -125,33 +125,33 @@
         <div> --}}
     @auth
         <div class="relative">
-            <div class="z-50 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600 hidden absolute right-4 mt-16"
+            <div class="z-50 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-100 dark:divide-gray-600 hidden absolute right-4 mt-16"
                 id="user-dropdown">
                 <div class="px-4 py-3">
-                    <span class="block text-sm text-[#141414] dark:text-white">{{ auth()->user()->name }}</span>
+                    <span class="block text-sm text-[#141414] ">{{ auth()->user()->name }}</span>
                     <span class="block text-sm text-gray-500 truncate dark:text-gray-400">{{ auth()->user()->email }}</span>
                 </div>
                 <ul aria-labelledby="user-menu-button" class="py-2">
                     @if (auth()->user()->role->value === 1)
                         <li>
-                            <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                            <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600  dark:hover:text-white"
                                 href="/admin">Dashboard</a>
                         </li>
                     @else
                         <li>
-                            <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                            <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600  dark:hover:text-white"
                                 href="/user">Dashboard</a>
                         </li>
                     @endif
 
                     <li>
-                        <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                        <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600  dark:hover:text-white"
                             href="/user/profile">Profile</a>
                     </li>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <li>
-                            <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                            <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600  dark:hover:text-white"
                                 href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                                 this.closest('form').submit();">Sign
@@ -163,15 +163,15 @@
         </div>
     @else
         <div class="relative">
-            <div class="z-50 w-48 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600 hidden absolute right-4 mt-16"
+            <div class="z-50 w-38 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow  dark:divide-gray-600 hidden absolute right-6 mt-16"
                 id="user-dropdown">
                 <ul aria-labelledby="user-menu-button" class="py-2 text-center">
                     <li>
-                        <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                        <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white transition duration-200 ease-in-out"
                             href="{{ route('login') }}">Login</a>
                     </li>
                     <li>
-                        <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                        <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white transition duration-200 ease-in-out"
                             href="{{ route('register') }}">Register</a>
                     </li>
                 </ul>

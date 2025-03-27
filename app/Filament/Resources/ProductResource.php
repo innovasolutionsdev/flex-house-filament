@@ -44,11 +44,12 @@ class ProductResource extends Resource
                 TagsInput::make('tags')
                     ->label('Tags')
                     ->nullable() ->separator(','),
-                Grid::make(3) // 3 columns for these 3 fields
-                ->schema([
                     TextInput::make('stock_quantity')
                         ->numeric()
                         ->label('Stock Quantity'),
+                Grid::make(3) // 3 columns for these 3 fields
+                ->schema([
+                    
 
                     Toggle::make('in_stock')
                         ->label('In Stock'),
@@ -94,7 +95,8 @@ class ProductResource extends Resource
                 Tables\Columns\TextColumn::make('price')->label('Price'),
                 Tables\Columns\BooleanColumn::make('in_stock')->label('In Stock'),
                 Tables\Columns\BooleanColumn::make('on_sale')->label('On Sale'),
-                Tables\Columns\TextColumn::make('stock_quantity')->label('Stock Quantity')->sortable(),
+                Tables\Columns\BooleanColumn::make('bestselling')->label('Best Selling'),
+                Tables\Columns\TextColumn::make('stock_quantity')->label('Stock')->sortable(),
             ])
             ->filters([
                 //
@@ -105,6 +107,10 @@ class ProductResource extends Resource
             Tables\Filters\Filter::make('on_sale')
                 ->label('On Sale')
                 ->query(fn (Builder $query): Builder => $query->where('on_sale', true)),
+
+            Tables\Filters\Filter::make('bestselling')
+                ->label('Best Selling')
+                ->query(fn (Builder $query): Builder => $query->where('bestselling', true)),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
