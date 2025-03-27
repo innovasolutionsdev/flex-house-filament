@@ -22,12 +22,12 @@
                         <div id="section1">
                             <div class="mb-4">
                                 <input name="name" type="text"
-                                    class="w-full text-gray-800 text-sm border-2 border-black focus:border-gray-600 focus:ring-0 px-4 py-2 outline-none bg-[#141414] rounded-lg"
+                                    class="w-full text-gray-300 text-sm border-2 border-black focus:border-gray-600 focus:ring-0 px-4 py-2 outline-none bg-[#141414] rounded-lg"
                                     placeholder="Name" />
                             </div>
                             <div class="mb-4">
                                 <input name="email" type="email"
-                                    class="w-full text-gray-800 text-sm border-2 border-black focus:border-gray-600 focus:ring-0 px-4 py-2 outline-none bg-[#141414] rounded-lg"
+                                    class="w-full text-gray-300 text-sm border-2 border-black focus:border-gray-600 focus:ring-0 px-4 py-2 outline-none bg-[#141414] rounded-lg"
                                     placeholder="Email" />
                             </div>
                             <div class="mb-4">
@@ -62,17 +62,17 @@
                             </div>
                             {{-- <div class="mb-4">
                                 <input name="password" type="password" required
-                                    class="w-full text-gray-800 text-sm border-2 border-black focus:border-gray-600 focus:ring-0 px-4 py-2 outline-none bg-[#141414] rounded-lg"
+                                    class="w-full text-gray-300 text-sm border-2 border-black focus:border-gray-600 focus:ring-0 px-4 py-2 outline-none bg-[#141414] rounded-lg"
                                     placeholder="Password" />
                             </div>
                             <div class="mb-4">
                                 <input name="password_confirmation" type="password" required
-                                    class="w-full text-gray-800 text-sm border-2 border-black focus:border-gray-600 focus:ring-0 px-4 py-2 outline-none bg-[#141414] rounded-lg"
+                                    class="w-full text-gray-300 text-sm border-2 border-black focus:border-gray-600 focus:ring-0 px-4 py-2 outline-none bg-[#141414] rounded-lg"
                                     placeholder="Confirm Password" />
                             </div> --}}
                             <div class="mb-4 relative">
                                 <input id="password" name="password" type="password" required
-                                    class="w-full text-gray-800 text-sm border-2 border-black focus:border-gray-600 focus:ring-0 px-4 py-2 outline-none bg-[#141414] rounded-lg"
+                                    class="w-full text-gray-300 text-sm border-2 border-black focus:border-gray-600 focus:ring-0 px-4 py-2 outline-none bg-[#141414] rounded-lg"
                                     placeholder="Password" />
                                 <button type="button" id="togglePassword"
                                     class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-600">
@@ -87,7 +87,7 @@
 
                             <div class="mb-4 relative">
                                 <input id="password_confirmation" name="password_confirmation" type="password" required
-                                    class="w-full text-gray-800 text-sm border-2 border-black focus:border-gray-600 focus:ring-0 px-4 py-2 outline-none bg-[#141414] rounded-lg"
+                                    class="w-full text-gray-300 text-sm border-2 border-black focus:border-gray-600 focus:ring-0 px-4 py-2 outline-none bg-[#141414] rounded-lg"
                                     placeholder="Confirm Password" />
                                 <button type="button" id="toggleConfirmPassword"
                                     class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-600">

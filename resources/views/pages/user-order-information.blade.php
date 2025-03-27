@@ -1,8 +1,8 @@
 <x-app-layout>
 
-    <div class=" mx-auto p-6 md:px-16 sm:px-4 dark:bg-[#171717]">
+    <div class=" mx-auto md:p-6 md:px-16 sm:px-2 dark:bg-[#171717]">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="md:col-span-2 bg-white p-6 rounded-lg shadow-md dark:bg-[#141414] ">
+            <div class="md:col-span-2 bg-white p-6 rounded-lg shadow-md dark:bg-[#171717] dark:md:bg-[#171717]"> ">
                 <h2 class="text-2xl  mb-4 dark:text-white">
                     Contact
                 </h2>

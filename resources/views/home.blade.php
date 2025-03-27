@@ -230,7 +230,7 @@
 
                 </h1>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full lg:w-3/4 mx-auto">
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-8 w-full lg:w-3/4 mx-auto">
 
                 @foreach ($bestsellingProducts as $value)
                     <div class="bg-white p-2 shadow-md rounded-lg dark:bg-[#141414] dark:text-white">
@@ -252,11 +252,11 @@
                                 <span class="absolute top-2 left-2 bg-red-500 text-white px-2 py-1 text-xs rounded-lg">Out of Stock</span>
                             @endif
                         </div>
-                        <p class="text-gray-500 text-xs mt-2">{{ $value->tags }}</p>
-                        <h2 class="text-lg font-bold mt-2 dark:text-white">{{ $value->name }}</h2>
-                        <div class="flex items-center mt-2">
+                        <p class="text-gray-500 text-xs mt-2 truncate">{{ $value->tags }}</p>
+                        <h2 class="text-lg font-bold mt-2 dark:text-white truncate">{{ $value->name }}</h2> 
+                        <div class="flex  mt-2 flex-col sm:flex-row">
                             @if ($value->on_sale)
-                                <span class="line-through text-gray-500 mr-2">රු{{ $value->discount_price }}</span>
+                                <span class="line-through text-gray-500 mr-0 sm:mr-2">රු{{ $value->discount_price }}</span>
                             @endif
                             <span class="text-red-500 text-xl font-bold">රු{{ $value->price }}</span>
                         </div>

@@ -20,7 +20,7 @@
                             {{-- <label class="text-gray-800 text-xs block mb-2">Email</label> --}}
                             <div class="relative flex items-center ">
                                 <input name="email" type="email" required
-                                    class="w-full text-gray-800 text-sm border-2 border-black focus:border-gray-600 focus:ring-0 px-4 py-2 outline-none bg-[#141414] rounded-lg"
+                                    class="w-full text-gray-300 text-sm border-2 border-black focus:border-gray-600 focus:ring-0 px-4 py-2 outline-none bg-[#141414] rounded-lg"
                                     placeholder="Email" />
                             </div>
                         </div>
@@ -29,7 +29,7 @@
                         <div class="mt-8">
                             <div class="relative flex items-center">
                                 <input id="password" name="password" type="password" required
-                                    class="w-full text-gray-800 text-sm border-2 border-black focus:border-gray-600 focus:ring-0 px-4 py-2 outline-none bg-[#141414] rounded-lg"
+                                    class="w-full text-gray-300 text-sm border-2 border-black focus:border-gray-600 focus:ring-0 px-4 py-2 outline-none bg-[#141414] rounded-lg"
                                     placeholder="Password" />
 
                                 <!-- Eye Icon Button -->
@@ -48,28 +48,28 @@
 
 
                         <div class="flex flex-wrap items-center justify-between gap-4 mt-6">
-                            <div class="flex items-center">
+                            {{-- <div class="flex items-center">
                                 <input id="remember-me" name="remember" type="checkbox"
                                     class="h-4 w-4 shrink-0 text-[#F41E1E] focus:ring-[#F41E1E] border-gray-300 rounded" />
                                 <label for="remember-me"
                                     class="ml-3 block text-sm text-gray-800 dark:text-gray-400">Remember me</label>
-                            </div>
+                            </div> --}}
                             <div>
                                 <a href="{{ route('password.request') }}"
-                                    class="text-black dark:text-white font-semibold text-sm hover:underline">
+                                    class="text-black dark:text-gray-100 font-semibold text-sm hover:underline">
                                     Forgot Password?
                                 </a>
                             </div>
                         </div>
                         <x-validation-errors class="mb-4" />
-                        <div class="mt-12 flex justify-center">
+                        <div class=" mt-4 md:mt-12 flex justify-center">
                             <button type="submit"
                                 class="w-1/2 shadow-xl py-1.5 px-2 text-lg font-bold tracking-wide rounded-3xl text-white dark:hover:text-black bg-[#F41E1E] dark:hover:bg-white dark:bg-[#F41E1E] hover:bg-[#F41E1E] focus:outline-none transform transition-all duration-300 ease-in-out">
                                 Log In
                             </button>
                         </div>
 
-                        <div class="space-x-6 flex justify-center mt-6">
+                        {{-- <div class="space-x-6 flex justify-center mt-6">
                             <!-- Social login buttons (optional) -->
                             <button type="button" class="border-none outline-none">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="32px" class="inline"
@@ -110,7 +110,7 @@
                                         data-original="#010002"></path>
                                 </svg>
                             </button>
-                        </div>
+                        </div> --}}
                     </form>
                 </div>
                 <div class="lg:h-[400px] md:h-[300px] max-md:mt-8 hidden md:block ">

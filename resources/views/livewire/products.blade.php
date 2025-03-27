@@ -1,7 +1,7 @@
 
 
 <div class="dark:bg-[#171717]">
-    <div class="container pt-20 mx-auto p-4">
+    <div class="container pt-5 md:pt-20 mx-auto p-4">
         <div class="flex flex-col lg:flex-row">
             <!-- Sidebar -->
             <div class="hidden lg:block w-2/3 lg:w-1/4 mb-4 lg:mb-0">
@@ -47,8 +47,8 @@
                 <div class="flex flex-col lg:flex-row justify-between items-center mb-4">
                     <h1 class="text-3xl font-bold mb-4 lg:mb-0 dark:text-white">Supplements</h1>
                     <div class="relative w-2/3 lg:w-auto flex">
-                        <input id="searchInput" wire:model="searchTerm" class="border border-gray-400 dark:bg-[#141414] p-2 rounded-lg w-full lg:w-64" placeholder="Search..." type="text" />
-                        <button id="searchButton" wire:click="searchProducts" class="hidden ml-2 bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600">
+                        <input id="searchInput" wire:model="searchTerm" class="border border-gray-400 dark:bg-[#141414] p-2 rounded-full w-full lg:w-64" placeholder="  Don't be shy to search..." type="text" />
+                        <button id="searchButton" wire:click="searchProducts" class="hidden ml-2 bg-blue-500 text-white p-2 rounded-full hover:bg-blue-600">
                             Search
                         </button>
                     </div>
@@ -79,11 +79,11 @@
                                     <span class="absolute top-2 left-2 bg-red-500 text-white px-2 py-1 text-xs rounded-lg">Out of Stock</span>
                                 @endif
                             </div>
-                            <p class="text-gray-500 text-xs mt-2">{{ $value->tags }}</p>
-                            <h2 class="text-lg font-bold mt-2 dark:text-white">{{ $value->name }}</h2>
-                            <div class="flex items-center mt-2">
+                            <p class="text-gray-500 text-xs mt-2 truncate lg:whitespace-normal">{{ $value->tags }}</p>  
+                            <h2 class="text-lg font-bold mt-2 dark:text-white truncate">{{ $value->name }}</h2> 
+                             <div class="flex  mt-2 flex-col sm:flex-row">
                                 @if ($value->on_sale)
-                                <span class="line-through text-gray-500 mr-2">රු{{ $value->discount_price }}</span>
+                                    <span class="line-through text-gray-500 mr-0 sm:mr-2">රු{{ $value->discount_price }}</span>
                                 @endif
                                 <span class="text-red-500 text-xl font-bold">රු{{ $value->price }}</span>
                             </div>

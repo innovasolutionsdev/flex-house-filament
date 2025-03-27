@@ -180,7 +180,7 @@
                 <span class="text-gray-600">TOTAL PRICE</span>
                 <span class="font-bold">€ 137.00</span>
             </div>
-            <button class="w-full p-3 bg-black text-white font-bold rounded-full checkout-button hover:bg-red-600 transition duration-500">
+            <button class="w-full p-3 bg-black text-white font-bold checkout-button hover:bg-red-600 transition duration-500 rounded lg:rounded-full md:rounded-full">
                 CHECKOUT
                 <i class="fas fa-shopping-cart ml-2"></i>
             </button>
