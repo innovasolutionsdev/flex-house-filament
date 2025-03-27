@@ -7,7 +7,7 @@
 
     <!-- Quantity Input -->
     <input type="text" wire:model.lazy="quantity" wire:change="updateCartQuantity"
-           class="w-8 h-7 text-center border-t border-b border-gray-300" type="text" value="1"
+           class="w-12 h-7 text-center border-t border-b border-gray-300" type="text" value="1"
            readonly />
 
     <!-- Increment Button -->
