@@ -2,6 +2,7 @@
 
 namespace App\Filament\User\Resources;
 
+use Filament\Forms\Components\Grid;
 use Filament\Infolists\Infolist;
 
 use App\Filament\User\Resources\WorkoutLogResource\Pages;
@@ -92,12 +93,28 @@ class WorkoutLogResource extends Resource
 
                 HasManyRepeater::make('setLogs')->relationship('setLogs')
                     ->schema([
-                        TextInput::make('reps')->numeric()->required(),
-                        TextInput::make('weight')->numeric()->required(),
+                        Forms\Components\Group::make()
+                            ->extraAttributes(['class' => 'flex flex-row']) // flex-row on all screens
+                            ->schema([
+                                Grid::make([
+                                    'default' => 2,
+                                    'sm' => 2, // 2 columns on small screens and up
+                                ])
+                                    ->schema([
+                                        TextInput::make('reps')
+                                            ->numeric()
+                                            ->required(),
+
+                                        TextInput::make('weight')
+                                            ->numeric()
+                                            ->required(),
+                                    ]),
+                            ]),
                     ])
-                    ->createItemButtonLabel('Add New Set') // Custom button name
-                    ->columns(2),
-            ])
+                    ->createItemButtonLabel('Add New Set')
+        // Custom button name
+
+        ])
             ->createItemButtonLabel('Add New Exercise') // Custom button name
             ->columns(2),
         ]);

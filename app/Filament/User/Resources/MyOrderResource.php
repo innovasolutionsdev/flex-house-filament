@@ -68,11 +68,9 @@ class MyOrderResource extends Resource
                         2 => 'danger',
                     }),
             ])
-            ->filters([
-                //
-            ])
+            ->filters([])
             ->actions([
-            Tables\Actions\ViewAction::make(),
+                Tables\Actions\ViewAction::make(),
                 Action::make('receipt')
                     ->label('Receipt')
                     ->url(fn ($record) => url('/admin/orders/' . $record->id)),
@@ -81,6 +79,13 @@ class MyOrderResource extends Resource
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
+            ])
+            ->headerActions([
+                // ✅ Custom "New Order" button to redirect to /products
+                Tables\Actions\Action::make('New Order')
+                    ->label('Create Order')
+                    ->url(url('/products')) // Redirect to /products instead of the Filament form
+                    ->color('primary'),
             ]);
     }
 
@@ -104,4 +109,10 @@ class MyOrderResource extends Resource
     {
         return parent::getEloquentQuery()->where('user_id', Auth::id());
     }
+
+    public static function getCreateUrl(): string
+    {
+        return url('/products'); // Redirects to the products page
+    }
+
 }
