@@ -1,4 +1,4 @@
-<div id="bottom-nav" class="flex items-center justify-center pt-20 pb-6" style="display: none;">
+<div id="bottom-nav" class="flex items-center justify-center pt-20 pb-6" >
     <div
         class="fixed bottom-0 left-0 right-0 bg-white dark:bg-[#141414] p-2 flex justify-around border-t border-gray-400 dark:border-gray-700">
         @auth
