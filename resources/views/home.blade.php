@@ -88,14 +88,17 @@
                     </div>
                     <div class="flex flex-col items-center md:flex-row">
 
-                        <button
-                            class="mt-6 bg-[#F41E1E] text-white dark:hover:text-black uppercase text-lg py-2 px-6 font-bold rounded-sm shadow-md dark:hover:bg-white hover:bg-[#141414] transition duration-300">
-                            Register Now
-                        </button>
-                        <button
-                            class="mt-6 ml-8 text-black dark:text-white py-2 text-lg uppercase px-6 font-bold rounded-sm hover:bg-[#F41E1E] transition duration-300 border border-red-500">
-                            View Pricing
-                        </button>
+                        <!-- Using flex to control button layout responsively -->
+                        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8">
+                            <button
+                                class="w-full sm:w-auto bg-[#F41E1E] text-white dark:hover:text-black uppercase text-lg py-2 px-6 font-bold rounded-sm shadow-md dark:hover:bg-white hover:bg-[#141414] transition duration-300">
+                                Register Now
+                            </button>
+                            <button
+                                class="w-full sm:w-auto text-black dark:text-white py-2 text-lg uppercase px-6 font-bold rounded-sm hover:bg-[#F41E1E] transition duration-300 border border-red-500">
+                                View Pricing
+                            </button>
+                        </div>
                     </div>
                 </div>
                 <div class="relative lg:w-1/2">
@@ -253,7 +256,7 @@
                             @endif
                         </div>
                         <p class="text-gray-500 text-xs mt-2 truncate">{{ $value->tags }}</p>
-                        <h2 class="text-lg font-bold mt-2 dark:text-white truncate">{{ $value->name }}</h2> 
+                        <h2 class="text-lg font-bold mt-2 dark:text-white truncate">{{ $value->name }}</h2>
                         <div class="flex  mt-2 flex-col sm:flex-row">
                             @if ($value->on_sale)
                                 <span class="line-through text-gray-500 mr-0 sm:mr-2">රු{{ $value->discount_price }}</span>

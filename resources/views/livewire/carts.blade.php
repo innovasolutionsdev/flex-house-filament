@@ -79,20 +79,21 @@
                             <div class="flex items-center mb-4 md:mb-0 md:w-1/4">
                                 <img alt="Dark purple T-shirt" class="w-16 h-16 mr-4" src="{{$item['image']}}" />
                             </div>
-                            <div class="flex flex-col md:flex-row items-center justify-between w-full md:w-3/4">
-                                <div class="flex flex-col items-start mb-4 md:mb-0 md:ml-4">
+                            <div class="grid grid-cols-1 md:grid-cols-3 items-center gap-4 w-full md:w-3/4">
+                                <div>
                                     <p class="font-bold">{{ $item['name'] }}</p>
                                 </div>
 
-                                <livewire:update-cart-quantity :rowId="$item['rowId']" :quantity="$item['qty']" :stock="$item['stock']" wire:key="update-quantity-{{ $item['rowId'] }}" />
+                                <div>
+                                    <livewire:update-cart-quantity :rowId="$item['rowId']" :quantity="$item['qty']" :stock="$item['stock']" wire:key="update-quantity-{{ $item['rowId'] }}" />
+                                </div>
 
-                                <div class="flex items-center md:ml-4">
+                                <div class="flex items-center justify-between md:justify-end gap-4">
                                     <span class="font-bold">රු.{{ $item['price'] }}.00</span>
-
                                     <livewire:remove-from-cart :rowId="$item['rowId']" wire:key="remove-cart-item-{{ $item['rowId'] }}" />
-
                                 </div>
                             </div>
+
                         </div>
                     @endforeach
                 </div>
