@@ -69,8 +69,11 @@ class OrderResource extends Resource
             ]);
     }
 
+
     public static function table(Table $table): Table
+
     {
+
         return $table
             ->columns([
 
@@ -114,9 +117,9 @@ class OrderResource extends Resource
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
                 Tables\Actions\ViewAction::make(),
-                Action::make('receipt')
-                    ->label('Receipt')
-                    ->url(fn ($record) => url('/admin/orders/' . $record->id)),
+//                Action::make('receipt')
+//                    ->label('Receipt')
+//                    ->url(fn ($record) => url('/admin/orders/' . $record->id)),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

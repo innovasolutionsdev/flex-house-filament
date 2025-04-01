@@ -39,6 +39,15 @@ return [
             'middleware' => ['auth', 'role:user'],  // ensure this is assigned to users
         ],
 
+    'panel' => [
+        // ... other panel configurations ...
+
+        'layout' => [
+            'modal' => [
+                'z_index' => 100,  // or try higher values like 9999 if needed
+            ],
+        ],
+        ],
 
     /*
     |--------------------------------------------------------------------------
