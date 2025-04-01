@@ -6,12 +6,14 @@ use App\Filament\Resources\ProductCategoryResource\Pages;
 use App\Filament\Resources\ProductCategoryResource\RelationManagers;
 use App\Models\ProductCategory;
 use Filament\Forms;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Validation\Rule;
 
 class ProductCategoryResource extends Resource
 {
@@ -25,7 +27,13 @@ class ProductCategoryResource extends Resource
     {
         return $form
             ->schema([
-            Forms\Components\TextInput::make('name')->required(),
+                TextInput::make('name')
+                    ->required()
+                    ->unique(table: 'product_category', column: 'name', ignoreRecord: true)
+                    ->afterStateUpdated(fn ($state, callable $set) => $set('name', trim($state))) // Trim input
+                    ->rule(function () {
+                        return Rule::unique('product_category', 'name')->where(fn ($query) => $query->whereRaw('TRIM(name) = ?', [request('name')]));
+                    }),
             ]);
     }
 

@@ -9,6 +9,7 @@ use App\Models\OurTeam;
 use Filament\Forms;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Form;
+use Filament\Pages\Actions\CreateAction;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -24,6 +25,7 @@ class OurTeamResource extends Resource
     protected static ?string $navigationGroup = 'Content Management';
 
     protected static ?string $pluralLabel = 'Our Team';
+
 
     public static function form(Form $form): Form
     {
@@ -50,6 +52,8 @@ class OurTeamResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+
+
             ->columns([
                 Tables\Columns\TextColumn::make('name')->label('Name'),
                 Tables\Columns\TextColumn::make('position')->label('Position'),
@@ -63,12 +67,17 @@ class OurTeamResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\ViewAction::make(),
             ])
+
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
+
+
     }
 
     public static function getRelations(): array
@@ -77,6 +86,9 @@ class OurTeamResource extends Resource
             //
         ];
     }
+
+
+
 
     public static function getPages(): array
     {

@@ -7,12 +7,15 @@ use App\Filament\Resources\ProductBrandResource\RelationManagers;
 use App\Models\ProductBrand;
 use Filament\Forms;
 use Filament\Forms\Components\Tabs\Tab;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Validation\Rule;
+
 
 class ProductBrandResource extends Resource
 {
@@ -27,10 +30,13 @@ class ProductBrandResource extends Resource
         return $form
             ->schema([
             //
-                Forms\Components\TextInput::make('name')
+                TextInput::make('name')
                     ->required()
-                    ->unique(table: 'ProductBrand'), // Replace 'your_table_name' with the actual table name
-
+                    ->unique(table: 'product_brand', column: 'name', ignoreRecord: true)
+                    ->afterStateUpdated(fn ($state, callable $set) => $set('name', trim($state))) // Trim input
+                    ->rule(function () {
+                        return Rule::unique('product_brand', 'name')->where(fn ($query) => $query->whereRaw('TRIM(name) = ?', [request('name')]));
+                    }),
             ]);
     }
 

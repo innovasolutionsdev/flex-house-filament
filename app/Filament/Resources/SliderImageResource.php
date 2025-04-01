@@ -11,6 +11,8 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -39,15 +41,26 @@ class SliderImageResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
-            ->columns([
 
-            ])
+               ->columns([
+                   Tables\Columns\ImageColumn::make('slider_images')
+                       ->label('slider_images')
+                       ->getStateUsing(fn($record) => $record->getFirstMediaUrl('slider_images')),
+
+                   // Temporarily add this to your table column definition
+                   TextColumn::make('Media URL')
+                       ->getStateUsing(fn ($record) => $record->getFirstMediaUrl('slider_images'))
+
+
+               ])
 
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
+
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
