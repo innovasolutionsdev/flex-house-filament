@@ -27,7 +27,10 @@ class ProductBrandResource extends Resource
         return $form
             ->schema([
             //
-            Forms\Components\TextInput::make('name')->required(),
+                Forms\Components\TextInput::make('name')
+                    ->required()
+                    ->unique(table: 'ProductBrand'), // Replace 'your_table_name' with the actual table name
+
             ]);
     }
 
