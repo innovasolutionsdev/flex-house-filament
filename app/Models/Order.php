@@ -17,8 +17,10 @@ class Order extends Model implements HasMedia
         'user_id',
         'first_name',
         'last_name',
-        'zip_code',
+        'zip',
         'address',
+        'phone',
+        'state',
         'city',
         'mobile',
         'total',
@@ -47,11 +49,17 @@ class Order extends Model implements HasMedia
             ->withTimestamps();
     }
 
+    public function order_product()
+    {
+        return $this->hasMany(order_product::class);
+    }
+
 
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('bank_slips')->singleFile();
     }
+
 
 
 }
