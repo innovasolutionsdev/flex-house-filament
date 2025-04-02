@@ -47,11 +47,7 @@ class SliderImageResource extends Resource
                        ->label('slider_images')
                        ->getStateUsing(fn($record) => $record->getFirstMediaUrl('slider_images')),
 
-                   // Temporarily add this to your table column definition
-                   TextColumn::make('Media URL')
-                       ->getStateUsing(fn ($record) => $record->getFirstMediaUrl('slider_images'))
-
-
+              
                ])
 
             ->filters([
