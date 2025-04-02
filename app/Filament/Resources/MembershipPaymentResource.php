@@ -39,12 +39,16 @@ class MembershipPaymentResource extends Resource
                 Forms\Components\Select::make('payment_method')
                     ->options([
                         'cash' => 'Cash',
-                        'credit_card' => 'Credit Card',
+                        'card' => 'Card',
                         'bank_transfer' => 'Bank Transfer',
 
                     ])
                     ->required()
                     ->label('Payment Method'),
+                Forms\Components\TextInput::make('collected_by')
+                    ->label('Collected By')
+                    ->required()
+                    ->placeholder('Name of staff who collected payment'),
             ]);
     }
 
@@ -58,7 +62,13 @@ class MembershipPaymentResource extends Resource
                     ->getStateUsing(fn($record) => $record->membership_plans->name ?? 'Not Assigned'),
                 Tables\Columns\TextColumn::make('amount'),
                 Tables\Columns\TextColumn::make('payment_date')->sortable(),
-                Tables\Columns\TextColumn::make('payment_method'),
+                Tables\Columns\TextColumn::make('payment_method')
+                    ->getStateUsing(fn($record) => match ($record->payment_method) {
+                        'cash' => 'Cash',
+                        'card' => 'Card',
+                        'bank_transfer' => 'Bank Transfer',
+                        default => 'Unknown',
+                    }),
             ])
             ->filters([
                 //
