@@ -25,11 +25,55 @@ class ScheduleResource extends Resource
 
     public static function form(Form $form): Form
     {
+        // Predefined list of common exercises
+    $exercises = [
+        'Bench Press',
+        'Squat',
+        'Deadlift',
+        'Overhead Press',
+        'Barbell Row',
+        'Pull-Up',
+        'Push-Up',
+        'Dumbbell Curl',
+        'Triceps Dip',
+        'Lunges',
+        'Leg Press',
+        'Lat Pulldown',
+        'Shoulder Press',
+        'Bicep Curl',
+        'Plank',
+        'Leg Raise',
+        'Incline Bench Press',
+        'Chest Fly',
+        'Hammer Curl',
+        'Front Squat',
+        'Romanian Deadlift',
+        'Cable Crossover',
+        'Seated Row',
+        'Face Pull',
+        'Side Lateral Raise',
+        'Calf Raise',
+        'Dumbbell Shrug',
+        'Reverse Fly',
+        'Hanging Leg Raise',
+        'Russian Twist',
+        'Mountain Climbers',
+        'Burpees',
+        'Kettlebell Swing',
+        'Arnold Press',
+        'Zercher Squat',
+        'Good Morning',
+        'Hip Thrust',
+        'Farmer’s Walk',
+        'T-Bar Row',
+        'Dumbbell Pullover',
+    ];
         return $form
             ->schema([
             TextInput::make('name')
                 ->placeholder('Beginner 1 day plan')
-                ->required(),
+                ->required()
+                ->unique(Schedule::class, 'name'),
             HasManyRepeater::make('workouts')
                 ->relationship('workouts')  // Link to workouts
                 ->schema([
@@ -39,7 +83,11 @@ class ScheduleResource extends Resource
                     HasManyRepeater::make('exercises')
                         ->relationship('exercises')  // Link to exercises
                         ->schema([
-                            TextInput::make('name')->label('Exercise Name'),
+                            TextInput::make('name')
+                                ->label('Exercise Name')
+                                ->required()
+                                ->datalist($exercises)
+                                ->placeholder('Start typing... (e.g. Squat)'),
                             TextInput::make('sets')->label('Sets'),
                             TextInput::make('reps')
                                 ->label('Reps')
@@ -59,8 +107,7 @@ class ScheduleResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime(),
-                // Tables\Columns\TextColumn::make('updated_at')
-                //     ->dateTime(),
+    
             ])
 
             ->filters([

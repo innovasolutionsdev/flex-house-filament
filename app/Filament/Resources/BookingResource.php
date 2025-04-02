@@ -43,8 +43,17 @@ class BookingResource extends Resource
                 ->tel()
                 ->required()
                 ->maxLength(15),
+            Forms\Components\DatePicker::make('date')
+                ->label('Date')
+                ->required()
+                ->minDate(now())
+                ->maxDate(now()->addDays(30)),
+            Forms\Components\TimePicker::make('time')
+                ->label('Time')
+                ->required()
+                ->after(now()->addHours(1)),
             //booking message
-            Forms\Components\Textarea::make('message')
+            Forms\Components\Textarea::make('note')
                 ->label('Message')
                 ->required()
                 ->maxLength(300),
@@ -59,8 +68,10 @@ class BookingResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('first_name')->label('First Name')->searchable(),
                 Tables\Columns\TextColumn::make('last_name')->label('Last Name')->searchable(),
-                Tables\Columns\TextColumn::make('email')->label('Email')->searchable(),
-                Tables\Columns\TextColumn::make('mobile')->label('Mobile')->searchable(),
+                //Tables\Columns\TextColumn::make('email')->label('Email')->searchable(),
+                //Tables\Columns\TextColumn::make('mobile')->label('Mobile')->searchable(),
+                Tables\Columns\TextColumn::make('date')->label('Date')->searchable(),
+                Tables\Columns\TextColumn::make('time')->label('Time')->searchable(),
                 //created at
                 Tables\Columns\TextColumn::make('created_at')->label('Created At')->searchable(),
             ])
