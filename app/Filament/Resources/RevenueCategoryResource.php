@@ -29,7 +29,8 @@ class RevenueCategoryResource extends Resource
             ->schema([
 
             Forms\Components\TextInput::make('name')
-            ->required(),
+            ->required()
+            ->unique(RevenueCategory::class, 'name'),
             Forms\Components\Select::make('type')
             ->options([
                 'income' => 'Income',
@@ -45,7 +46,8 @@ class RevenueCategoryResource extends Resource
             ->columns([
 
             Tables\Columns\TextColumn::make('name'),
-            Tables\Columns\TextColumn::make('type'),
+            Tables\Columns\TextColumn::make('type')
+                ->formatStateUsing(fn (string $state): string => $state === 'income' ? 'Income' : 'Expense'),
 
             ])
             ->filters([

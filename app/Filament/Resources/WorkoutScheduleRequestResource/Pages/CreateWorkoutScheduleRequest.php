@@ -9,4 +9,9 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateWorkoutScheduleRequest extends CreateRecord
 {
     protected static string $resource = WorkoutScheduleRequestResource::class;
+
+    protected function getRedirectUrl(): string
+    {
+        return static::getResource()::getUrl('index');
+    }
 }

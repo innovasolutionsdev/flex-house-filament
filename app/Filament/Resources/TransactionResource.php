@@ -52,6 +52,16 @@ class TransactionResource extends Resource
                 ->required()
                     ->numeric(), // Ensure the amount is numeric
 
+                Forms\Components\Select::make('payment_method')
+                ->label('Payment Method')
+                    ->options([
+                        'cash' => 'Cash',
+                        'card' => 'Card',
+                        'bank_transfer' => 'Bank Transfer',
+                    ])
+                    ->required()
+                    ->default('cash'), // Default to cash
+
                 Forms\Components\Select::make('type')
                 ->options([
                     'income' => 'Income',
@@ -87,6 +97,7 @@ class TransactionResource extends Resource
     {
         return $table
             ->columns([
+            Tables\Columns\TextColumn::make('date')->date()->sortable(),
             Tables\Columns\TextColumn::make('amount')->sortable()->searchable(),
             // Tables\Columns\TextColumn::make('type')->sortable(),
             Tables\Columns\BadgeColumn::make('type')
@@ -98,9 +109,9 @@ class TransactionResource extends Resource
                     'success' => 'Income', // Green for income
                     'danger' => 'Expense',  // Red for expense
                 ]),
-            Tables\Columns\TextColumn::make('description')->searchable(),
+           /// Tables\Columns\TextColumn::make('description')->searchable(),
             Tables\Columns\TextColumn::make('revenuecategory.name')->label('Category'),
-            Tables\Columns\TextColumn::make('date')->date()->sortable(),
+           
             ])
             ->filters([
             Tables\Filters\SelectFilter::make('type')

@@ -27,18 +27,24 @@ class MembershipPlanResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')
-                    ->required(),
+                    ->required()
+                    ->unique(MembershipPlan::class, 'name'),
                 Forms\Components\TextInput::make('price')
+                    ->numeric()
                     ->required(),
 
                 Forms\Components\TextInput::make('discount_price')
                     ->label('Discounted Price')
+                    ->numeric()
                     ->required(),
                 Forms\Components\Toggle::make('discount')
                     ->label('Discount')
                     ->default(false),
 
                 Forms\Components\TextInput::make('duration')
+                    ->label('Duration (in days)')
+                    ->numeric()
+                    ->placeholder('30')
                     ->required(),
 
                 SpatieMediaLibraryFileUpload::make('Thumbnail')

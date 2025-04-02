@@ -21,7 +21,8 @@
         "laravel/jetstream": "^4.1",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
-        "livewire/livewire": "^3.5",
+        
+        "livewire/livewire": "3.5.12",
         "mckenziearts/laravel-notify": "^2.5",
         "mindscms/laravelshoppingcart": "^2.1",
         "minishlink/web-push": "^9.0",

@@ -13,7 +13,8 @@ class MembershipPayment extends Model
         'user_id',
         'amount',
         'payment_date',
-        'payment_method'
+        'payment_method',
+        'collected_by' // Staff member who collected the payment
     ];
 
     // Relationship with User

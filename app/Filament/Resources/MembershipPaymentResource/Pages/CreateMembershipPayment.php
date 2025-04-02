@@ -63,6 +63,7 @@ class CreateMembershipPayment extends CreateRecord
                     'description' => $user->name,
                     'category_id' => 1, // Assuming category_id 1 for membership payments
                     'date' => $membershipPayment->payment_date,
+                    'payment_method' => $membershipPayment->payment_method,
                 ]);
             }
         }

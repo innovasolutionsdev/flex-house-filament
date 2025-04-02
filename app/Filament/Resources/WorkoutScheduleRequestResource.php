@@ -83,11 +83,11 @@ class WorkoutScheduleRequestResource extends Resource
                 Tables\Columns\TextColumn::make('fitness_goal')
                     ->label('Fitness Goal')
                     ->formatStateUsing(fn($state) => ucwords(str_replace('_', ' ', $state))),
-                Tables\Columns\TextColumn::make('workout_frequency')
-                    ->label('Frequency'),
-                Tables\Columns\TextColumn::make('notes')
-                    ->label('Notes')
-                    ->limit(10),
+                // Tables\Columns\TextColumn::make('workout_frequency')
+                //     ->label('Frequency'),
+                // Tables\Columns\TextColumn::make('notes')
+                //     ->label('Notes')
+                //     ->limit(10),
                 Tables\Columns\TextColumn::make('created_at')
                     ->label('Requested On')
                     ->dateTime(),
