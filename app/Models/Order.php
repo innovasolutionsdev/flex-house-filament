@@ -17,6 +17,8 @@ class Order extends Model implements HasMedia
         'user_id',
         'first_name',
         'last_name',
+        'payment_method',
+        'notes',
         'zip',
         'address',
         'phone',
