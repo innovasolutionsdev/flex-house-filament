@@ -140,5 +140,10 @@ Route::get('/membership-payments/{id}', function ($id) {
     return view('membership.show', compact('payment'));
 })->name('membership.show');
 
+Route::get('/order-receipt/{id}', function ($id) {
+    $receipt = \App\Models\Order::with('order_product')->findOrFail($id);
+    return view('pages.receipt_view', compact('receipt'));
+})->name('receipt.show');
+
 //route for resources\views\pages\product-details.blade.php
 Route::get('/product-details/{id}',[OrderController::class, 'Order_details'] );

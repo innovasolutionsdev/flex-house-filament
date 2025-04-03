@@ -23,4 +23,10 @@ class order_product extends Model
         return $this->belongsTo(Order::class);
     }
 
+    // Order.php
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
+
 }
