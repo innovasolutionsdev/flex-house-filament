@@ -165,7 +165,7 @@ class OrderResource extends Resource
                     ->defaultItems(1)
                     ->columnSpan('full')
                     ->createItemButtonLabel('Add Product')
-                   
+
                     ->reactive()
                     ->afterStateUpdated(function ($state, callable $get, callable $set) {
                         // Recalculate total whenever items change
@@ -236,7 +236,7 @@ class OrderResource extends Resource
                 Tables\Actions\ViewAction::make(),
                 Action::make('receipt')
                     ->label('Receipt')
-                    ->url(fn ($record) => url('/admin/orders/' . $record->id)),
+                    ->url(fn(Order $record) => route('receipt.show', $record->id)),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
