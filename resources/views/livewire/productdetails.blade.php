@@ -46,7 +46,7 @@
 
         <div class="flex flex-col md:flex-row p-8  rounded-lg">
             <div class="w-full md:w-1/2">
-                <img alt="{{ $order->name }}" height="400" src="{{ asset('img/prod.jpg') }}" width="500"
+                <img alt="{{ $order->name }}" height="400" src="{{ $order->getFirstMediaUrl('product_image') }}" width="500"
                     class="rounded-lg" />
             </div>
             <div class="w-full md:w-1/2 rounded-lg md:pl-8 md:pr-8 md:pt-4 mt-4 md:mt-0 md:pb-4 md:dark:bg-[#141414]">
@@ -62,7 +62,7 @@
                    Stock : {{ $order->stock_quantity }}
                 </p>
                 <div class="flex">
-            
+
                     <p class="text-red-500 text-xl mt-2 mr-4 font-semibold">
                         Rs.{{ $order->discount_price }}
                     </p>

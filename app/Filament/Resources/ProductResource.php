@@ -49,7 +49,7 @@ class ProductResource extends Resource
                         ->label('Stock Quantity'),
                 Grid::make(3) // 3 columns for these 3 fields
                 ->schema([
-                    
+
 
                     Toggle::make('in_stock')
                         ->label('In Stock'),
@@ -82,7 +82,9 @@ class ProductResource extends Resource
 
                 SpatieMediaLibraryFileUpload::make('nutrition_label')
                     ->collection('nutrition_label')
-                    ->label('Nutritional Facts Label'),
+                    ->label('Nutritional Facts Label')
+                    ->required(),
+
 
             ]);
     }
@@ -116,7 +118,7 @@ class ProductResource extends Resource
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
                 Tables\Actions\ViewAction::make(),
-                    
+
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
