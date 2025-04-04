@@ -1,10 +1,9 @@
-<x-app-layout>
+{{-- <x-app-layout>
     <div class="font-[sans-serif] dark:bg-[#171717]">
         <div class="min-h-screen flex flex-col items-center justify-center">
             <div
                 class="grid md:grid-cols-2 items-center gap-4 max-md:gap-8 max-w-6xl max-md:max-w-lg w-full p-4 m-4 rounded-md">
 
-                <!-- Registration Form Section -->
                 <div class="md:max-w-md w-full px-4 py-4">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
@@ -18,7 +17,7 @@
                             </p>
                         </div>
                         <x-validation-errors class="mb-4" />
-                        <!-- Section 1: Initial Registration Fields -->
+                        
                         <div id="section1">
                             <div class="mb-4">
                                 <input name="name" type="text"
@@ -34,7 +33,7 @@
                                 <select id="membership_plan" name="membership_plan"
                                     class="w-full text-gray-400 text-sm border-2 border-black focus:border-gray-600 focus:ring-0 px-4 py-2 outline-none bg-[#141414] rounded-lg">
                                     <option value="">Select a Membership Plan</option>
-                                    <!-- Replace with dynamic options from backend -->
+                                  
                                     <option value="1" data-duration="30">Plan A (1 Month)</option>
                                     <option value="2" data-duration="90">Plan B (3 Months)</option>
                                 </select>
@@ -48,7 +47,7 @@
                         </div>
 
 
-                        <!-- Section 2: Additional Registration Fields -->
+                        
                         <div id="section2" style="display: none;">
                             <div class="mb-4">
                                 <input id="start_date" type="date" name="start_date" required
@@ -60,16 +59,7 @@
                                     class="w-full text-gray-400 text-sm border-2 border-black focus:border-gray-600 focus:ring-0 px-4 py-2 outline-none bg-[#141414] rounded-lg"
                                     placeholder="End Date" />
                             </div>
-                            {{-- <div class="mb-4">
-                                <input name="password" type="password" required
-                                    class="w-full text-gray-300 text-sm border-2 border-black focus:border-gray-600 focus:ring-0 px-4 py-2 outline-none bg-[#141414] rounded-lg"
-                                    placeholder="Password" />
-                            </div>
-                            <div class="mb-4">
-                                <input name="password_confirmation" type="password" required
-                                    class="w-full text-gray-300 text-sm border-2 border-black focus:border-gray-600 focus:ring-0 px-4 py-2 outline-none bg-[#141414] rounded-lg"
-                                    placeholder="Confirm Password" />
-                            </div> --}}
+                           
                             <div class="mb-4 relative">
                                 <input id="password" name="password" type="password" required
                                     class="w-full text-gray-300 text-sm border-2 border-black focus:border-gray-600 focus:ring-0 px-4 py-2 outline-none bg-[#141414] rounded-lg"
@@ -101,41 +91,16 @@
                             </div>
 
 
-                            {{-- @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
-                                <div class="mt-4">
-                                    <x-label for="terms">
-                                        <div class="flex items-center">
-                                            <x-checkbox name="terms" id="terms" required />
-
-                                            <div class="ms-2 dark:text-gray-200">
-                                                {!! __('I agree to the :terms_of_service and :privacy_policy', [
-                                                    'terms_of_service' =>
-                                                        '<a target="_blank" href="' .
-                                                        route('terms.show') .
-                                                        '" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">' .
-                                                        __('Terms of Service') .
-                                                        '</a>',
-                                                    'privacy_policy' =>
-                                                        '<a target="_blank" href="' .
-                                                        route('policy.show') .
-                                                        '" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">' .
-                                                        __('Privacy Policy') .
-                                                        '</a>',
-                                                ]) !!}
-                                            </div>
-                                        </div>
-                                    </x-label>
-                                </div>
-                            @endif --}}
+                            
 
                             <div class="mt-8 flex justify-between">
-                                <!-- Back Button to Section 1 -->
+                                
                                 <button type="button" onclick="showSection1()"
                                     class="w-1/2 mr-2 shadow-xl py-2.5 px-4 text-lg font-bold rounded-md text-black dark:text-white bg-gray-300 dark:bg-gray-700 hover:bg-gray-400 dark:hover:bg-gray-600 focus:outline-none transition duration-300 ease-in-out">
                                     Back
                                 </button>
 
-                                <!-- Sign Up Button -->
+                               
                                 <button type="submit"
                                     class="w-1/2 ml-2 shadow-xl py-2.5 px-4 text-lg font-bold uppercase tracking-wide rounded-md text-white dark:hover:text-black bg-[#F41E1E] dark:hover:bg-white dark:bg-[#F41E1E] hover:bg-[#F41E1E] focus:outline-none transition duration-300 ease-in-out">
                                     Sign Up
@@ -146,10 +111,163 @@
                     </form>
                 </div>
 
-                <!-- Image Section -->
+               
                 <div class="lg:h-[400px] md:h-[300px] max-md:mt-8 hidden md:block ">
                     <img src="/img/login.jpg" class="w-full h-full object-contain rounded-md" alt="Sign up image" />
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        
+        function showSection2() {
+            document.getElementById('section1').style.display = 'none';
+            document.getElementById('section2').style.display = 'block';
+        }
+
+        
+        function showSection1() {
+            document.getElementById('section2').style.display = 'none';
+            document.getElementById('section1').style.display = 'block';
+        }
+
+        
+        document.getElementById('membership_plan').addEventListener('change', calculateEndDate);
+        document.getElementById('start_date').addEventListener('change', calculateEndDate);
+
+        function calculateEndDate() {
+            const membershipSelect = document.getElementById('membership_plan');
+            const startDateInput = document.getElementById('start_date');
+            const endDateInput = document.getElementById('end_date');
+
+            const selectedMembership = membershipSelect.options[membershipSelect.selectedIndex];
+            const duration = selectedMembership.getAttribute('data-duration');
+
+            const startDate = new Date(startDateInput.value);
+            if (startDate && duration) {
+                const endDate = new Date(startDate);
+                endDate.setDate(endDate.getDate() + parseInt(duration));
+                endDateInput.value = endDate.toISOString().split('T')[0];
+            } else {
+                endDateInput.value = '';
+            }
+        }
+
+        
+        const passwordInput = document.getElementById('password');
+        const togglePasswordButton = document.getElementById('togglePassword');
+        const eyeIconPassword = document.getElementById('eyeIconPassword');
+
+        togglePasswordButton.addEventListener('click', () => {
+            const type = passwordInput.type === 'password' ? 'text' : 'password';
+            passwordInput.type = type;
+            
+            eyeIconPassword.classList.toggle('eye-slash');
+        });
+
+        
+        const confirmPasswordInput = document.getElementById('password_confirmation');
+        const toggleConfirmPasswordButton = document.getElementById('toggleConfirmPassword');
+        const eyeIconConfirmPassword = document.getElementById('eyeIconConfirmPassword');
+
+        toggleConfirmPasswordButton.addEventListener('click', () => {
+            const type = confirmPasswordInput.type === 'password' ? 'text' : 'password';
+            confirmPasswordInput.type = type;
+            
+            eyeIconConfirmPassword.classList.toggle('eye-slash');
+        });
+    </script>
+
+</x-app-layout> --}}
+<x-app-layout>
+    <div class="bg-[#171717]">
+        <div class="py-12 text-white flex flex-col md:flex-row items-center md:items-start p-8 md:p-16 space-y-8 md:space-y-0 md:space-x-16 max-w-4xl mx-auto">
+            <div class="w-full md:w-1/2">
+                <h2 class="text-3xl font-bold mb-8 text-center">Register</h2>
+                <p class="mb-4">
+                    Already have an account?
+                    <a href="{{ route('login') }}" style="color: rgb(250, 49, 49);" class="ml-2">Sign in here</a>
+                </p>
+                
+                <form method="POST" action="{{ route('register') }}" class="space-y-4">
+                    @csrf
+                    <x-validation-errors class="mb-4" />
+                    
+                    <!-- Section 1: Initial Registration Fields -->
+                    <div id="section1">
+                        <div>
+                            <input name="name" type="text" required
+                                class="mb-4 w-full py-2 px-4 bg-[#141414] border border-gray-700 rounded focus:outline-none focus:ring-0 focus:border-red-500"
+                                placeholder="Name" />
+                        </div>
+                        
+                        <div>
+                            <input name="email" type="email" required
+                                class="mb-4 w-full py-2 px-4 bg-[#141414] border border-gray-700 rounded focus:outline-none focus:ring-0 focus:border-red-500"
+                                placeholder="Email" />
+                        </div>
+                        
+                        <div>
+                            <select id="membership_plan" name="membership_plan" required
+                                class="mb-4 w-full py-2 px-4 bg-[#141414] border border-gray-700 rounded focus:outline-none focus:ring-0 focus:border-red-500 text-gray-400">
+                                <option value="">Select a Membership Plan</option>
+                                <option value="1" data-duration="30">Plan A (1 Month)</option>
+                                <option value="2" data-duration="90">Plan B (3 Months)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="pt-4 flex justify-center">
+                            <button type="button" onclick="showSection2()"
+                                class="w-2/3 p-3 bg-red-600 rounded-full text-white font-bold hover:bg-red-700 transition duration-300">
+                                Continue Registration
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Section 2: Additional Registration Fields -->
+                    <div id="section2" style="display: none;">
+                        <div>
+                            <input id="start_date" type="date" name="start_date" required
+                                class="mb-4 w-full py-2 px-4 bg-[#141414] border border-gray-700 rounded focus:outline-none focus:ring-0 focus:border-red-500 text-gray-400" />
+                        </div>
+                        
+                        <div>
+                            <input id="end_date" type="date" name="end_date" required readonly
+                                class="mb-4 w-full py-2 px-4 bg-[#141414] border border-gray-700 rounded focus:outline-none focus:ring-0 focus:border-red-500 text-gray-400" />
+                        </div>
+                        
+                        <div class="relative">
+                            <input id="password" name="password" type="password" required
+                                class="mb-4 w-full py-2 px-4 bg-[#141414] border border-gray-700 rounded focus:outline-none focus:ring-0 focus:border-red-500"
+                                placeholder="Password" />
+                            <i class="fas fa-eye absolute right-3 top-3 text-red-500 cursor-pointer" id="togglePassword"></i>
+                        </div>
+                        
+                        <div class="relative">
+                            <input id="password_confirmation" name="password_confirmation" type="password" required
+                                class="mb-4 w-full py-2 px-4 bg-[#141414] border border-gray-700 rounded focus:outline-none focus:ring-0 focus:border-red-500"
+                                placeholder="Confirm Password" />
+                            <i class="fas fa-eye absolute right-3 top-3 text-red-500 cursor-pointer" id="toggleConfirmPassword"></i>
+                        </div>
+                        
+                        <div class="flex justify-between pt-4">
+                            <button type="button" onclick="showSection1()"
+                                class="w-1/2 mr-2 p-2 bg-gray-600 rounded-full text-white font-bold hover:bg-gray-700 transition duration-300">
+                                Back
+                            </button>
+                            
+                            <button type="submit"
+                                class="w-1/2 ml-2 p-2 bg-red-600 rounded-full text-white font-bold hover:bg-red-700 transition duration-300">
+                                Sign Up
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="w-full md:w-1/2">
+                <img src="/img/login.jpg" class="rounded w-full h-auto max-w-md mx-auto" alt="Sign up image" />
             </div>
         </div>
     </div>
@@ -190,29 +308,23 @@
         }
 
         // Toggle password visibility
-        // Toggle password visibility for password field
-        const passwordInput = document.getElementById('password');
-        const togglePasswordButton = document.getElementById('togglePassword');
-        const eyeIconPassword = document.getElementById('eyeIconPassword');
-
-        togglePasswordButton.addEventListener('click', () => {
-            const type = passwordInput.type === 'password' ? 'text' : 'password';
-            passwordInput.type = type;
-            // Toggle the icon
-            eyeIconPassword.classList.toggle('eye-slash');
+        const togglePassword = document.querySelector('#togglePassword');
+        const password = document.querySelector('#password');
+        
+        togglePassword.addEventListener('click', function() {
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+            this.classList.toggle('fa-eye-slash');
         });
 
-        // Toggle password visibility for confirm password field
-        const confirmPasswordInput = document.getElementById('password_confirmation');
-        const toggleConfirmPasswordButton = document.getElementById('toggleConfirmPassword');
-        const eyeIconConfirmPassword = document.getElementById('eyeIconConfirmPassword');
-
-        toggleConfirmPasswordButton.addEventListener('click', () => {
-            const type = confirmPasswordInput.type === 'password' ? 'text' : 'password';
-            confirmPasswordInput.type = type;
-            // Toggle the icon
-            eyeIconConfirmPassword.classList.toggle('eye-slash');
+        // Toggle confirm password visibility
+        const toggleConfirmPassword = document.querySelector('#toggleConfirmPassword');
+        const confirmPassword = document.querySelector('#password_confirmation');
+        
+        toggleConfirmPassword.addEventListener('click', function() {
+            const type = confirmPassword.getAttribute('type') === 'password' ? 'text' : 'password';
+            confirmPassword.setAttribute('type', type);
+            this.classList.toggle('fa-eye-slash');
         });
     </script>
-
 </x-app-layout>
