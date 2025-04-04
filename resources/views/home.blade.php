@@ -91,11 +91,13 @@
                         <!-- Using flex to control button layout responsively -->
                         <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8">
                             <button
-                                class="w-full sm:w-auto bg-[#F41E1E] text-white dark:hover:text-black uppercase text-lg py-2 px-6 font-bold rounded-sm shadow-md dark:hover:bg-white hover:bg-[#141414] transition duration-300">
+                                class="w-full sm:w-auto bg-[#F41E1E] text-white dark:hover:text-black uppercase text-lg py-2 px-6 font-bold rounded-sm shadow-md dark:hover:bg-white hover:bg-[#141414] transition duration-300"
+                                onclick="window.location.href='{{ url('register') }}'">
                                 Register Now
                             </button>
                             <button
-                                class="w-full sm:w-auto text-black dark:text-white py-2 text-lg uppercase px-6 font-bold rounded-sm hover:bg-[#F41E1E] transition duration-300 border border-red-500">
+                                class="w-full sm:w-auto text-black dark:text-white py-2 text-lg uppercase px-6 font-bold rounded-sm hover:bg-[#F41E1E] transition duration-300 border border-red-500"
+                                onclick="window.location.href='{{ url('pricing') }}'">
                                 View Pricing
                             </button>
                         </div>
@@ -132,89 +134,7 @@
 
 
     {{-- About us --}}
-    {{-- <section class="py-24 relative xl:mr-0 lg:mr-5 mr-0" style="background-color: #141414">
-        <h2 class="text-[#F41E1E] text-lg font-bold uppercase mb-2 flex items-center justify-center">
-            <span class="inline-block w-12 h-0.5 bg-[#F41E1E] mx-2">
-            </span>
-            Work Process
-            <span class="inline-block w-12 h-0.5 bg-[#F41E1E] mx-2">
-            </span>
-        </h2>
-        <h1 class="text-4xl text-center font-extrabold mb-10 text-gray-200">
-            Easy Step To Achieve Your Goals.
-        </h1>
-        <div class="w-full max-w-7xl px-4 md:px-5 lg:px-5 mx-auto">
-            <div
-                class="w-full justify-start items-center xl:gap-12 gap-10 grid lg:grid-cols-2 grid-cols-1 lg:grid-flow-col-dense">
 
-                <div class="w-full lg:justify-start justify-center items-start flex">
-                    <div class="sm:w-[564px] w-full sm:h-[646px] h-[646px]   relative">
-                        <img class="sm:mt-5 sm:ml-5 w-full  rounded-sm object-cover" src="img/about.png"
-                            alt="about Us image" />
-                    </div>
-                </div>
-
-                <div class="w-full flex-col justify-center lg:items-start items-center gap-10 inline-flex">
-
-                    <div class="w-full flex-col justify-center items-start gap-8 flex">
-                        <div class="">
-
-                            <div class="">
-
-                                <p class="text-gray-300 text-lg text-center">
-                                    Our achievement story is a testament to teamwork and perseverance. Together,
-                                    we've
-                                    overcome challenges, celebrated victories, and created a narrative of progress
-                                    and
-                                    success.</p>
-                            </div>
-                        </div>
-                        <div class="w-full flex-col justify-center items-start gap-6 flex">
-                            <div class="w-full justify-start items-center gap-8 grid md:grid-cols-2 grid-cols-1">
-                                <div
-                                    class="w-full h-full p-3.5 rounded-md border border-gray-200 hover:border-gray-400 transition-all duration-700 ease-in-out flex-col justify-start items-start gap-2.5 inline-flex hover:bg-gray-200 hover:shadow-lg bg-gray-100">
-                                    <h4 class="text-gray-900 text-2xl font-extrabold font-manrope leading-9">33+
-                                        Years</h4>
-                                    <p class="text-gray-500 text-large leading-relaxed">Influencing Digital
-                                        Landscapes Together</p>
-                                </div>
-                                <div
-                                    class="w-full h-full p-3.5 rounded-md border border-gray-200 hover:border-gray-400 transition-all duration-700 ease-in-out flex-col justify-start items-start gap-2.5 inline-flex hover:bg-gray-200 hover:shadow-lg bg-gray-100">
-                                    <h4 class="text-gray-900 text-2xl font-extrabold font-manrope leading-9">125+
-                                        Projects
-                                    </h4>
-                                    <p class="text-gray-500 text-large leading-relaxed">Excellence Achieved
-                                        Through Success</p>
-                                </div>
-                            </div>
-                            <div class="w-full h-full justify-start items-center gap-8 grid md:grid-cols-2 grid-cols-1">
-                                <div
-                                    class="w-full p-3.5 rounded-md border border-gray-200 hover:border-gray-400 transition-all duration-700 ease-in-out flex-col justify-start items-start gap-2.5 inline-flex hover:bg-gray-200 hover:shadow-lg bg-gray-100">
-                                    <h4 class="text-gray-900 text-2xl font-extrabold font-manrope leading-9">26+
-                                        Awards</h4>
-                                    <p class="text-gray-500 text-large leading-relaxed">Our Dedication to
-                                        Innovation Wins Understanding</p>
-                                </div>
-                                <div
-                                    class="w-full h-full p-3.5 rounded-md border border-gray-200 hover:border-gray-400 transition-all duration-700 ease-in-out flex-col justify-start items-start gap-2.5 inline-flex hover:bg-gray-200 hover:shadow-lg bg-gray-100">
-                                    <h4 class="text-gray-900 text-2xl font-extrabold font-manrope leading-9">99% Happy
-                                        Clients</h4>
-                                    <p class="text-gray-500 text-large leading-relaxed">Mirrors our Focus on
-                                        Client Satisfaction.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <button type="button" style="background-color: #F41E1E;"
-                        onmouseover="this.style.backgroundColor='#141414';"
-                        onmouseout="this.style.backgroundColor='#F41E1E';"
-                        class="text-white focus:ring-4 focus:ring-blue-300 font-medium text-md px-5 py-2.5 me-2 mb-2 focus:outline-none rounded-sm">
-                        Learn More
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section> --}}
     {{-- About us end --}}
 
     {{-- Our store --}}
@@ -327,12 +247,11 @@
                         <p class="text-gray-600 dark:text-gray-400 mb-4">
                             {{$service->description}}
                         </p>
-                        <a class="text-[#F41E1E] hover:text-black hover:underline flex items-center font-bold justify-center"
+                        {{-- <a class="text-[#F41E1E] hover:text-black hover:underline flex items-center font-bold justify-center"
                             href="#">
                             Read More
-                            {{-- <i class="fas fa-arrow-right ml-2">
-                            </i> --}}
-                        </a>
+                           
+                        </a> --}}
                     </div>
                 </div>
                 @endforeach
@@ -479,115 +398,6 @@
 
     {{-- proccess steps end --}}
 
-
-
-    {{-- <div class="text-center mt-20">
-        <h2 class="text-[#F41E1E] text-lg font-bold uppercase mb-2 flex items-center justify-center">
-            <span class="inline-block w-12 h-0.5 bg-[#F41E1E] mx-2">
-            </span>
-            Work Process
-            <span class="inline-block w-12 h-0.5 bg-[#F41E1E] mx-2">
-            </span>
-        </h2>
-        <h1 class="text-4xl font-extrabold mb-12 text-gray-900">
-            Membership Plans
-        </h1>
-        <div class="flex flex-wrap justify-center space-x-0 md:space-x-8">
-            <!-- Card 1 -->
-            <div
-                class="bg-white rounded-lg shadow-lg transform transition duration-500 hover:scale-105 w-72 relative m-4">
-                <img alt="Gym facilities image" class="rounded-t-lg" height="160"
-                    src="https://storage.googleapis.com/a1aa/image/5hpyld0E9WbBJxIxy5PCLgCt0dq9dMwLgNaB0Mff7LHcR8pTA.jpg"
-                    width="288" />
-                <div class="absolute top-0 right-0 bg-[#F41E1E] text-white text-xs font-bold py-1 px-2 rounded-bl-lg">
-                    Valid till only
-                </div>
-                <div class="bg-gray-800 text-white text-center py-4">
-                    <h2 class="text-xl font-bold">
-                        1 Month
-                    </h2>
-                </div>
-                <div class="text-center mt-4 px-6">
-                    <p class="text-gray-600 text-2xl line-through">
-                        Rs. 4000
-                    </p>
-                    <p class="text-[#F41E1E] text-4xl font-extrabold">
-                        Rs. 3000
-                    </p>
-                    <p class="mt-4 text-gray-600 ">
-                        Enjoy 1 month of full access to all our gym facilities, personal trainers, and classes. Ideal
-                        for short-term fitness goals!
-                    </p>
-                    <button
-                        class="mt-6 mb-6 bg-[#141414] text-white py-2 px-6 font-bold rounded-md shadow-md hover:bg-[#F41E1E] transition duration-300">
-                        Register Now
-                    </button>
-                </div>
-            </div>
-            <!-- Card 2 -->
-            <div
-                class="bg-white rounded-lg shadow-lg transform transition duration-500 hover:scale-105 w-72 relative m-4">
-                <img alt="Gym facilities image" class="rounded-t-lg" height="160"
-                    src="https://storage.googleapis.com/a1aa/image/5hpyld0E9WbBJxIxy5PCLgCt0dq9dMwLgNaB0Mff7LHcR8pTA.jpg"
-                    width="288" />
-                <div class="absolute top-0 right-0 bg-[#F41E1E] text-white text-xs font-bold py-1 px-2 rounded-bl-lg">
-                    Valid till only
-                </div>
-                <div class="bg-gray-800 text-white text-center py-4">
-                    <h2 class="text-xl font-bold">
-                        1 Month
-                    </h2>
-                </div>
-                <div class="text-center mt-4 px-6">
-                    <p class="text-gray-600 text-2xl line-through">
-                        Rs. 4000
-                    </p>
-                    <p class="text-[#F41E1E] text-4xl font-extrabold">
-                        Rs. 3000
-                    </p>
-                    <p class="mt-4 text-gray-600">
-                        Enjoy 1 month of full access to all our gym facilities, personal trainers, and classes. Ideal
-                        for short-term fitness goals!
-                    </p>
-                    <button
-                        class="mt-6 mb-6 bg-[#141414] text-white font-bold py-2 px-6 rounded-md shadow-md hover:bg-[#F41E1E] transition duration-300">
-                        Register Now
-                    </button>
-                </div>
-            </div>
-            <!-- Card 3 -->
-            <div
-                class="bg-white rounded-lg shadow-lg transform transition duration-500 hover:scale-105 w-72 relative m-4">
-                <img alt="Gym facilities image" class="rounded-t-lg" height="160"
-                    src="https://storage.googleapis.com/a1aa/image/5hpyld0E9WbBJxIxy5PCLgCt0dq9dMwLgNaB0Mff7LHcR8pTA.jpg"
-                    width="288" />
-                <div class="absolute top-0 right-0 bg-[#F41E1E] text-white text-xs font-bold py-1 px-2 rounded-bl-lg">
-                    Valid till only
-                </div>
-                <div class="bg-gray-800 text-white text-center py-4">
-                    <h2 class="text-xl font-bold">
-                        1 Month
-                    </h2>
-                </div>
-                <div class="text-center mt-4 px-6">
-                    <p class="text-gray-600 text-2xl line-through">
-                        Rs. 4000
-                    </p>
-                    <p class="text-[#F41E1E] text-4xl font-extrabold">
-                        Rs. 3000
-                    </p>
-                    <p class="mt-4 text-gray-600">
-                        Enjoy 1 month of full access to all our gym facilities, personal trainers, and classes. Ideal
-                        for short-term fitness goals!
-                    </p>
-                    <button
-                        class="mt-6 mb-6 bg-[#141414] font-bold text-white py-2 px-6 rounded-md shadow-md hover:bg-[#F41E1E] transition duration-300">
-                        Register Now
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div> --}}
     <div id="pricing" class="w-full dark:bg-[#141414] py-12 text-center px-4 pt-8">
         <div class="text-center mt-20">
             <h2 class="text-[#F41E1E] text-lg font-bold uppercase mb-2 flex items-center justify-center">
@@ -613,25 +423,26 @@
                         class="absolute top-0 right-0 bg-[#F41E1E] text-white text-xs font-bold py-1 px-2 rounded-bl-lg">
                         Valid till only
                     </div>
-                    <div class="bg-gray-800 text-white text-center py-4">
-                        <h2 class="text-xl font-bold">
+                    <div class="bg-white text-gray-800 text-center py-1">
+                        <h2 class="text-lg font-bold ">
                             {{$plan->name}}
                         </h2>
                     </div>
-                    <div class="text-center mt-4 px-6">
+                    <div class="text-center mt-2 px-4">
                         @if($plan->discount == 1)
-                        <p class="text-gray-600 dark:text-gray-300 text-2xl line-through">
+                        <p class="text-gray-600 dark:text-gray-300 text-xl line-through">
                             {{$plan->discount_price}}
                         </p>
                         @endif
-                        <p class="text-[#F41E1E] text-4xl font-extrabold">
+                        <p class="text-[#F41E1E] text-2xl font-extrabold">
                             Rs.{{$plan->price}}
                         </p>
-                        <p class="mt-4 text-gray-600 dark:text-gray-400">
+                        <p class="mt-2 text-gray-600 dark:text-gray-400">
                             {{$plan->description}}
                         </p>
                         <button
-                            class="mt-6 mb-2 bg-[#141414] dark:bg-[#F41E1E] text-white py-2 px-6 font-bold rounded-md shadow-md hover:bg-[#F41E1E] transition duration-300">
+                            class="mt-4 mb-4 bg-[#141414] dark:bg-[#F41E1E] text-white py-2 px-4 font-bold rounded-full shadow-md hover:bg-[#F41E1E] transition duration-300"
+                            onclick="window.location.href='{{ url('register') }}'">
                             Register Now
                         </button>
                     </div>
@@ -822,10 +633,10 @@
                 <span class="inline-block w-12 h-1 bg-[#F41E1E] mx-2">
                 </span>
             </h2>
-            <h1 class="text-4xl font-extrabold mb-16 text-gray-900 dark:text-white">
+            <h1 class="text-4xl font-extrabold mb-6 text-gray-900 dark:text-white">
                 The Expert Trainers Behind the Scenes
             </h1>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {{-- <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 @foreach($our_team as $team_member)
                 <div class="bg-white dark:bg-[#171717] p-6 rounded-md shadow-md text-center relative">
                     <div class="absolute top-0 left-0 w-full h-28 bg-[#F41E1E] dark:bg-gray-800 rounded-t-lg">
@@ -865,9 +676,101 @@
                     </div>
                 </div>
                 @endforeach
-            </div>
+            </div> --}}
+
+            {{-- 2nd template --}}
+            <div class="container mx-auto py-12">
+                <div class="flex flex-col md:flex-row justify-center items-center space-y-8 md:space-y-0 md:space-x-8">
+                 <!-- Trainer 1 -->
+                 <div class="bg-[#171717] rounded-lg overflow-hidden shadow-lg w-64">
+                  <img alt="Female trainer working out in a gym" class="w-full" height="240" src="https://storage.googleapis.com/a1aa/image/EROcVXusKRtj2dofWN2yhuH7ozykFyTFH6e5pqYCox0.jpg" width="320"/>
+                  <div class="bg-[#F41E1E] text-center py-2">
+                   <h2 class="font-bold text-white">
+                    MEMBER NAME
+                   </h2>
+                  </div>
+                  <div class="p-4 text-center">
+                   <p class="text-gray-300">
+                    Lorem Ipsum is simply dummy text of the printing
+                   </p>
+                   <div class="flex justify-center space-x-4 mt-4">
+                    <a class="text-[#F41E1E]" href="#">
+                     <i class="fab fa-twitter">
+                     </i>
+                    </a>
+                    <a class="text-[#F41E1E]" href="#">
+                     <i class="fab fa-facebook-f">
+                     </i>
+                    </a>
+                    <a class="text-[#F41E1E]" href="#">
+                     <i class="fab fa-pinterest">
+                     </i>
+                    </a>
+                   </div>
+                  </div>
+                 </div>
+                 <!-- Trainer 2 -->
+                 <div class="bg-white rounded-lg overflow-hidden shadow-lg w-64">
+                    <img alt="Female trainer working out in a gym" class="w-full" height="240" src="https://storage.googleapis.com/a1aa/image/EROcVXusKRtj2dofWN2yhuH7ozykFyTFH6e5pqYCox0.jpg" width="320"/>
+                    <div class="bg-[#F41E1E] text-center py-2">
+                     <h2 class="font-bold text-white">
+                      MEMBER NAME
+                     </h2>
+                    </div>
+                    <div class="p-4 text-center">
+                     <p class="text-gray-800">
+                      Lorem Ipsum is simply dummy text of the printing
+                     </p>
+                     <div class="flex justify-center space-x-4 mt-4">
+                      <a class="text-[#F41E1E]" href="#">
+                       <i class="fab fa-twitter">
+                       </i>
+                      </a>
+                      <a class="text-[#F41E1E]" href="#">
+                       <i class="fab fa-facebook-f">
+                       </i>
+                      </a>
+                      <a class="text-[#F41E1E]" href="#">
+                       <i class="fab fa-pinterest">
+                       </i>
+                      </a>
+                     </div>
+                    </div>
+                   </div>
+                 <!-- Trainer 3 -->
+                 <div class="bg-[#171717] rounded-lg overflow-hidden shadow-lg w-64">
+                    <img alt="Female trainer working out in a gym" class="w-full" height="240" src="https://storage.googleapis.com/a1aa/image/EROcVXusKRtj2dofWN2yhuH7ozykFyTFH6e5pqYCox0.jpg" width="320"/>
+                    <div class="bg-[#F41E1E] text-center py-2">
+                     <h2 class="font-bold text-white">
+                      MEMBER NAME
+                     </h2>
+                    </div>
+                    <div class="p-4 text-center">
+                     <p class="text-gray-300">
+                      Lorem Ipsum is simply dummy text of the printing
+                     </p>
+                     <div class="flex justify-center space-x-4 mt-4">
+                      <a class="text-[#F41E1E]" href="#">
+                       <i class="fab fa-twitter">
+                       </i>
+                      </a>
+                      <a class="text-[#F41E1E]" href="#">
+                       <i class="fab fa-facebook-f">
+                       </i>
+                      </a>
+                      <a class="text-[#F41E1E]" href="#">
+                       <i class="fab fa-pinterest">
+                       </i>
+                      </a>
+                     </div>
+                    </div>
+                   </div>
+                </div>
+               </div>
         </div>
     </div>
+
+
 
     {{-- Team section end  --}}
     <div class="w-full dark:bg-[#171717] py-12 text-center px-4 pt-8">
@@ -916,7 +819,8 @@
                         </p>
                         <button
                             class="mt-12  rounded-md bg-[#F41E1E] text-white font-bold text-md px-5 py-3.5 focus:ring-4 focus:ring-blue-300 focus:outline-none uppercase transition duration-300 ease-in-out hover:bg-black"
-                            type="button">
+                            type="button"
+                            onclick="window.location.href='{{ url('register') }}'">
                             Register Now
                         </button>
                     </div>
@@ -931,54 +835,8 @@
     </section>
 
 
-    {{--    <!-- Testimonial Section Begin --> --}}
-    {{--    <section class="testimonial-section spad bg-blue-900"> --}}
-    {{--        <div class="container"> --}}
-    {{--            <div class="row"> --}}
-    {{--                <div class="col-lg-12"> --}}
-    {{--                    <div class="section-title"> --}}
-    {{--                        <h2 class="text-white">success stories</h2> --}}
-    {{--                    </div> --}}
-    {{--                </div> --}}
-    {{--            </div> --}}
-    {{--            <div class="row"> --}}
-    {{--                <div class="col-lg-10 offset-lg-1"> --}}
-    {{--                    <div class="testimonial-slider owl-carousel"> --}}
-    {{--                        <div class="testimonial-item"> --}}
-    {{--                            <p>Joining Flex House completely changed my life. With the support of the trainers and the --}}
-    {{--                                tailored programs, I lost 15kg --}}
-    {{--                                and feel stronger than ever. It's more than just a gym—it's a family! </p> --}}
-    {{--                            <div class="ti-pic"> --}}
-    {{--                                <img src="img/testimonial/testimonial-1.jpg" alt=""> --}}
-    {{--                                <div class="quote"> --}}
-    {{--                                    <img src="img/testimonial/quote-left.png" alt=""> --}}
-    {{--                                </div> --}}
-    {{--                            </div> --}}
-    {{--                            <div class="ti-author"> --}}
-    {{--                                <h4 class="text-white">Patrick Cortez</h4> --}}
-    {{--                                <span>Leader</span> --}}
-    {{--                            </div> --}}
-    {{--                        </div> --}}
-    {{--                        <div class="testimonial-item"> --}}
-    {{--                            <p>I never thought I could achieve my fitness goals until I started training here. The coaches --}}
-    {{--                                pushed me beyond my limits --}}
-    {{--                                and I gained 10kg of muscle in just 6 months! </p> --}}
-    {{--                            <div class="ti-pic"> --}}
-    {{--                                <img src="img/testimonial/testimonial-1.jpg" alt=""> --}}
-    {{--                                <div class="quote"> --}}
-    {{--                                    <img src="img/testimonial/quote-left.png" alt=""> --}}
-    {{--                                </div> --}}
-    {{--                            </div> --}}
-    {{--                            <div class="ti-author"> --}}
-    {{--                                <h4>Patrick Cortez</h4> --}}
-    {{--                                <span>Leader</span> --}}
-    {{--                            </div> --}}
-    {{--                        </div> --}}
-    {{--                    </div> --}}
-    {{--                </div> --}}
-    {{--            </div> --}}
-    {{--        </div> --}}
-    {{--    </section> --}}
+       {{-- <!-- Testimonial Section Begin --> --}}
+
     {{--    <!-- Testimonial Section End --> --}}
 
     <!-- Register Section Begin -->
@@ -1047,7 +905,7 @@
                 class="grid md:grid-cols-2 dark:bg-[#141414] gap-16 items-center relative overflow-hidden p-8  rounded-3xl max-w-6xl mx-auto  mt-16 mb-16 font-[sans-serif] before:absolute before:right-0 before:w-[300px] before:bg-black before:h-full max-md:before:hidden">
                 <div>
 
-                    <p class="text-md text-gray-500  dark:text-gray-400 mt-4 leading-relaxed">Have a specific inquiry or looking to explore
+                    <p class="text-md text-gray-400  dark:text-gray-300 mt-4 leading-relaxed">Have a specific inquiry or looking to explore
                         new
                         opportunities? Our
                         experienced team is ready to engage with you.</p>
@@ -1058,34 +916,34 @@
 
                             <div class="grid grid-cols-2 gap-6">
                                 <input type="text" placeholder="First Name" name="first_name"
-                                    class="px-2 py-3 bg-white w-full dark:bg-[#171717] text-gray-800 text-sm border border-gray-300 dark:border-gray-600 focus:border-red-600 outline-none rounded-2xl" />
+                                    class="px-2 py-3 bg-white w-full dark:bg-[#171717] text-gray-300 text-sm border border-gray-300 dark:border-gray-600 focus:border-red-600 outline-none focus:ring-0 rounded-2xl" />
 
                                 <input type="text" placeholder="Last Name" name="last_name"
-                                    class="px-2 py-3 bg-white w-full dark:bg-[#171717] text-gray-800 text-sm border border-gray-300 dark:border-gray-600 focus:border-red-600 outline-none rounded-2xl" />
+                                    class="px-2 py-3 bg-white w-full dark:bg-[#171717] text-gray-300 text-sm border border-gray-300 dark:border-gray-600 focus:border-red-600 outline-none focus:ring-0 rounded-2xl" />
                             </div>
                             <div class="grid grid-cols-2 gap-6">
                                 <input type="number" placeholder="Phone No." name="phone"
-                                    class="px-2 py-3 bg-white w-full dark:bg-[#171717] text-gray-800 text-sm border border-gray-300 dark:border-gray-600 focus:border-red-600 outline-none rounded-2xl" />
+                                    class="px-2 py-3 bg-white w-full dark:bg-[#171717] text-gray-300 text-sm border border-gray-300 dark:border-gray-600 focus:border-red-600 outline-none focus:ring-0 rounded-2xl" />
 
                                 <input type="email" placeholder="Email" name="email"
-                                    class="px-2 py-3 bg-white w-full dark:bg-[#171717] text-gray-800 text-sm border border-gray-300 dark:border-gray-600 focus:border-red-600 outline-none rounded-2xl" />
+                                    class="px-2 py-3 bg-white w-full dark:bg-[#171717] text-gray-300 text-sm border border-gray-300 dark:border-gray-600 focus:border-red-600 outline-none focus:ring-0 rounded-2xl" />
                             </div>
 
                             <div class="grid grid-cols-2 gap-6">
                                 <input type="date" placeholder="Date" name="date"
-                                    class="px-2 py-3 bg-white w-full dark:bg-[#171717] text-gray-800 text-sm border border-gray-300 dark:border-gray-600 focus:border-red-600 outline-none rounded-2xl" />
+                                    class="px-2 py-3 bg-white w-full dark:bg-[#171717] text-gray-300 text-sm border border-gray-300 dark:border-gray-600 focus:border-red-600 outline-none focus:ring-0 rounded-2xl" />
 
                                 <input type="time" placeholder="Time" name="time"
-                                    class="px-2 py-3 bg-white w-full dark:bg-[#171717] text-gray-800 text-sm border border-gray-300 dark:border-gray-600 focus:border-red-600 outline-none rounded-2xl" />
+                                    class="px-2 py-3 bg-white w-full dark:bg-[#171717] text-gray-300 text-sm border border-gray-300 dark:border-gray-600 focus:border-red-600 outline-none focus:ring-0 rounded-2xl" />
                             </div>
 
                             <textarea placeholder="Write Message" name="note"
-                                class="px-2 pt-3 bg-white w-full dark:bg-[#171717] text-gray-800 text-sm border border-gray-300 dark:border-gray-600 focus:border-red-600 outline-none rounded-2xl"></textarea>
+                                class="px-2 pt-3 bg-white w-full dark:bg-[#171717] text-gray-300 text-sm border border-gray-300 dark:border-gray-600 focus:border-red-600 outline-none focus:ring-0 rounded-2xl"></textarea>
                         </div>
 
                         @auth
                             <button type="submit"
-                                class="mt-8 flex items-center justify-center text-lg w-full rounded-md font-bold px-6 py-3 bg-[#F41E1E] hover:bg-white text-white dark:hover:text-black">
+                                class="mt-8 flex items-center justify-center text-lg w-full rounded-md font-bold px-6 py-3 bg-[#F41E1E] hover:bg-white text-white dark:hover:text-black transition duration-300 ease-in-out">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" fill='#fff'
                                     class="mr-2" viewBox="0 0 548.244 548.244">
                                     <path fill-rule="evenodd"
@@ -1096,7 +954,7 @@
                             </button>
                         @else
                             <a href="{{ route('login') }}"
-                                class="mt-8 flex items-center justify-center text-lg w-full rounded-md font-bold px-6 py-3 bg-[#F41E1E] hover:bg-white text-white dark:hover:text-black">
+                                class="mt-8 flex items-center justify-center text-lg w-full rounded-md font-bold px-6 py-3 bg-[#F41E1E] hover:bg-white text-white dark:hover:text-black transition duration-300 ease-in-out">
                                 Log in to send a message
                             </a>
                         @endauth
@@ -1111,7 +969,7 @@
                                     data-original="#000000" />
                             </svg>
                             <a class="text-sm ml-4 text-black dark:text-gray-400">
-                                <strong>info@example.com</strong>
+                                <strong>info@flexifit.com</strong>
                             </a>
                         </li>
                         <li class="flex items-center text-black dark:text-gray-400">
