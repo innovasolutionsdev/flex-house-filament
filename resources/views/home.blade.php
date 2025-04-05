@@ -250,7 +250,7 @@
                         {{-- <a class="text-[#F41E1E] hover:text-black hover:underline flex items-center font-bold justify-center"
                             href="#">
                             Read More
-                           
+
                         </a> --}}
                     </div>
                 </div>
@@ -681,17 +681,19 @@
             {{-- 2nd template --}}
             <div class="container mx-auto py-12">
                 <div class="flex flex-col md:flex-row justify-center items-center space-y-8 md:space-y-0 md:space-x-8">
+                    @foreach($our_team as $team_member)
+
                  <!-- Trainer 1 -->
                  <div class="bg-[#171717] rounded-lg overflow-hidden shadow-lg w-64">
-                  <img alt="Female trainer working out in a gym" class="w-full" height="240" src="https://storage.googleapis.com/a1aa/image/EROcVXusKRtj2dofWN2yhuH7ozykFyTFH6e5pqYCox0.jpg" width="320"/>
+                  <img alt="Female trainer working out in a gym" class="w-full" height="240" src="{{$team_member->getFirstMediaUrl('our_team_photo')}}" width="320"/>
                   <div class="bg-[#F41E1E] text-center py-2">
                    <h2 class="font-bold text-white">
-                    MEMBER NAME
+                    {{$team_member->name}}
                    </h2>
                   </div>
                   <div class="p-4 text-center">
                    <p class="text-gray-300">
-                    Lorem Ipsum is simply dummy text of the printing
+                    {{$team_member->position}}
                    </p>
                    <div class="flex justify-center space-x-4 mt-4">
                     <a class="text-[#F41E1E]" href="#">
@@ -709,62 +711,7 @@
                    </div>
                   </div>
                  </div>
-                 <!-- Trainer 2 -->
-                 <div class="bg-white rounded-lg overflow-hidden shadow-lg w-64">
-                    <img alt="Female trainer working out in a gym" class="w-full" height="240" src="https://storage.googleapis.com/a1aa/image/EROcVXusKRtj2dofWN2yhuH7ozykFyTFH6e5pqYCox0.jpg" width="320"/>
-                    <div class="bg-[#F41E1E] text-center py-2">
-                     <h2 class="font-bold text-white">
-                      MEMBER NAME
-                     </h2>
-                    </div>
-                    <div class="p-4 text-center">
-                     <p class="text-gray-800">
-                      Lorem Ipsum is simply dummy text of the printing
-                     </p>
-                     <div class="flex justify-center space-x-4 mt-4">
-                      <a class="text-[#F41E1E]" href="#">
-                       <i class="fab fa-twitter">
-                       </i>
-                      </a>
-                      <a class="text-[#F41E1E]" href="#">
-                       <i class="fab fa-facebook-f">
-                       </i>
-                      </a>
-                      <a class="text-[#F41E1E]" href="#">
-                       <i class="fab fa-pinterest">
-                       </i>
-                      </a>
-                     </div>
-                    </div>
-                   </div>
-                 <!-- Trainer 3 -->
-                 <div class="bg-[#171717] rounded-lg overflow-hidden shadow-lg w-64">
-                    <img alt="Female trainer working out in a gym" class="w-full" height="240" src="https://storage.googleapis.com/a1aa/image/EROcVXusKRtj2dofWN2yhuH7ozykFyTFH6e5pqYCox0.jpg" width="320"/>
-                    <div class="bg-[#F41E1E] text-center py-2">
-                     <h2 class="font-bold text-white">
-                      MEMBER NAME
-                     </h2>
-                    </div>
-                    <div class="p-4 text-center">
-                     <p class="text-gray-300">
-                      Lorem Ipsum is simply dummy text of the printing
-                     </p>
-                     <div class="flex justify-center space-x-4 mt-4">
-                      <a class="text-[#F41E1E]" href="#">
-                       <i class="fab fa-twitter">
-                       </i>
-                      </a>
-                      <a class="text-[#F41E1E]" href="#">
-                       <i class="fab fa-facebook-f">
-                       </i>
-                      </a>
-                      <a class="text-[#F41E1E]" href="#">
-                       <i class="fab fa-pinterest">
-                       </i>
-                      </a>
-                     </div>
-                    </div>
-                   </div>
+                    @endforeach
                 </div>
                </div>
         </div>

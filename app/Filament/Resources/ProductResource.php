@@ -40,7 +40,8 @@ class ProductResource extends Resource
                     ->label('Price'),
                 TextInput::make('discount_price')
                     ->numeric()
-                    ->label('Discount Price'),
+                    ->label('Discount Price')
+                ->required(),
                 TagsInput::make('tags')
                     ->label('Tags')
                     ->nullable() ->separator(','),
