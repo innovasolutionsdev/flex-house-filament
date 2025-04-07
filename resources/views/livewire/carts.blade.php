@@ -98,10 +98,11 @@
                     @endforeach
                 </div>
                 <div class="mt-4">
-                    <a class="text-gray-600" href="/products">
+                    <a class="text-gray-600 hover:text-gray-800" href="/products">
                         <i class="fas fa-arrow-left"></i> Back to shop
                     </a>
                 </div>
+
             </div>
 
             <!-- Summary Section -->
