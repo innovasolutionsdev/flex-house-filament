@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\product;
+use App\Models\Promotion_banner;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Livewire\Component;
 
@@ -20,8 +21,12 @@ class Productdetails extends Component
     }
     public function render()
     {
+        $banner = Promotion_banner::where('status', 1)->first();
 
-        return view('livewire.productdetails');
+
+        return view('livewire.productdetails',[
+            'banner' => $banner,
+        ]);
     }
 
     public function addToCart($product_id){

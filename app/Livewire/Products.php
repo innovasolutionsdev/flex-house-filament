@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Models\product;
 use App\Models\ProductBrand;
 use App\Models\ProductCategory;
+use App\Models\Promotion_banner;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Livewire\Component;
 
@@ -31,10 +32,12 @@ class Products extends Component
         $categories = ProductCategory::all();
         $brands = ProductBrand::all();
 
+
         return view('livewire.products', [
             'categories' => $categories,
             'brands' => $brands,
-            'products' => $this->products // Pass the products to the view
+            'products' => $this->products,
+
         ]);
     }
 
