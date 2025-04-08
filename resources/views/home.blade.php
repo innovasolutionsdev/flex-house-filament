@@ -163,7 +163,7 @@
 {{--                                <img alt="{{ $value->name }}" class="rounded-lg h-50 md:h-72 object-cover" src="{{asset('img/prod.jpg')}}" />--}}
 
                             </a>
-                     
+
 
                             @if ($value->on_sale)
                                 <span class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 text-xs rounded-lg">Sale!</span>
