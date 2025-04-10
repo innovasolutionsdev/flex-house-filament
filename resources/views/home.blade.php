@@ -167,7 +167,7 @@
                         <div class="relative">
                             <a href="{{ url('product-details/' . $value->id) }}">
                                  <img alt="{{ $value->name }}" class="rounded-lg h-72 object-cover" src="{{ $value->getFirstMediaUrl('product_image') }}" />
-{{--                                <img alt="{{ $value->name }}" class="rounded-lg h-50 md:h-72 object-cover" src="{{asset('img/prod.jpg')}}" />--}}
+
 
                             </a>
                      
@@ -282,42 +282,39 @@
     {{-- membership plans end --}}
 
     {{-- Our servces --}}
-    <div id="services" class="w-full dark:bg-[#141414] py-12 px-4">
+    <div id="services" class="w-full dark:bg-[#141414] py-12">
         <div class="container mx-auto">
             <div class="text-center mb-8">
                 <h2 class="text-[#F41E1E] text-lg font-bold uppercase mb-2 flex items-center justify-center">
-                    <span class="inline-block w-12 h-0.5 bg-[#F41E1E] mx-2">
-                    </span>
+                    <span class="inline-block w-12 h-0.5 bg-[#F41E1E] mx-2"></span>
                     Our Services
-                    <span class="inline-block w-12 h-0.5 bg-[#F41E1E] mx-2">
-                    </span>
+                    <span class="inline-block w-12 h-0.5 bg-[#F41E1E] mx-2"></span>
                 </h2>
                 <h1 class="text-4xl text-center font-extrabold mb-20 text-gray-900 dark:text-white">
                     Our Comprehensive Range of Services.
                 </h1>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                @foreach($services as $service)
-                <div class="bg-white dark:bg-[#171717] shadow-lg rounded-lg overflow-hidden">
-                    <img alt="Personal Training - Trainer assisting a client with weights"
-                        class="w-full h-48 object-cover" height="400"
-                        src="{{$service->getFirstMediaUrl('service_thumbnail')}}"
-                        width="600" />
-                    <div class="p-6 text-center">
-                        <h3 class="text-xl font-bold text-white bg-[#F41E1E] inline-block px-3 py-1 rounded-sm mb-4">
-                            {{$service->title}}
-                        </h3>
-                        <p class="text-gray-600 dark:text-gray-400 mb-4">
-                            {{$service->description}}
-                        </p>
-                        {{-- <a class="text-[#F41E1E] hover:text-black hover:underline flex items-center font-bold justify-center"
-                            href="#">
-                            Read More
-
-                        </a> --}}
+            
+            <!-- Modified services container -->
+            <div class="md:px-14 px-4">
+                <div class="flex overflow-x-auto pb-4 space-x-4 md:grid md:grid-cols-3 md:gap-8 md:overflow-x-visible md:space-x-0">
+                    @foreach($services as $service)
+                    <div class="flex-shrink-0 w-60 md:w-auto bg-white dark:bg-[#171717] shadow-lg rounded-lg overflow-hidden">
+                        <img alt="Personal Training - Trainer assisting a client with weights"
+                            class="w-full h-48 object-cover" height="400"
+                            src="{{$service->getFirstMediaUrl('service_thumbnail')}}"
+                            width="600" />
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-bold text-white bg-[#F41E1E] inline-block px-3 py-1 rounded-sm mb-4">
+                                {{$service->title}}
+                            </h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4">
+                                {{$service->description}}
+                            </p>
+                        </div>
                     </div>
+                    @endforeach
                 </div>
-                @endforeach
             </div>
         </div>
     </div>
@@ -635,99 +632,51 @@
     {{-- bmi end --}}
 
     {{-- Team section start  --}}
-    <div class="w-full dark:bg-[#141414] py-12 text-center pt-20 px-4 sm:px-6 lg:px-8 ">
-        <div class="max-w-6xl mx-auto ">
+    <div class="w-full dark:bg-[#141414] py-12 text-center pt-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto">
             <h2 class="text-[#F41E1E] text-lg font-bold uppercase mb-6 flex items-center justify-center">
-                <span class="inline-block w-12 h-1 bg-[#F41E1E] mx-2">
-                </span>
+                <span class="inline-block w-12 h-1 bg-[#F41E1E] mx-2"></span>
                 Our team
-                <span class="inline-block w-12 h-1 bg-[#F41E1E] mx-2">
-                </span>
+                <span class="inline-block w-12 h-1 bg-[#F41E1E] mx-2"></span>
             </h2>
             <h1 class="text-4xl font-extrabold mb-6 text-gray-900 dark:text-white">
                 The Expert Trainers Behind the Scenes
             </h1>
-            {{-- <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                @foreach($our_team as $team_member)
-                <div class="bg-white dark:bg-[#171717] p-6 rounded-md shadow-md text-center relative">
-                    <div class="absolute top-0 left-0 w-full h-28 bg-[#F41E1E] dark:bg-gray-800 rounded-t-lg">
-                    </div>
-                    <div class="relative">
-                        <img alt="Portrait of Andres Berlin"
-                            class="w-32 h-32 rounded-full mx-auto mt-12 relative z-10" height="128"
-                            onmouseout="this.style.transform='scale(1)'"
-                            onmouseover="this.style.transform='scale(1.1)'"
-                            src="{{$team_member->getFirstMediaUrl('our_team_photo')}}"
-
-                            style="transition: transform 0.3s ease-in-out;" width="128" />
-                    </div>
-                    <h3 class="text-xl font-bold mt-4 text-black dark:text-white">
-                        {{$team_member->name}}
-                    </h3>
-                    <p class="text-gray-500 dark:text-gray-300">
-                        {{$team_member->position}}
-                    </p>
-                    <p class="mt-4 text-gray-600 dark:text-gray-400">
-                        {{$team_member->description}}
-                    </p>
-                    <div
-                        class="absolute  pt-4 bottom-0 left-0 w-full h-12 bg-gray-900 dark:bg-[#F41E1E]  rounded-b-lg flex justify-center items-center space-x-4 p-4">
-                        <a class="text-gray-200 text-xl hover:text-[#F41E1E] dark:hover:text-black" href="#">
-                            <i class="fab fa-twitter">
-                            </i>
-                        </a>
-                        <a class="text-gray-200 text-xl hover:text-[#F41E1E] dark:hover:text-black" href="#">
-                            <i class="fab fa-facebook-f">
-                            </i>
-                        </a>
-                        <a class="text-gray-200 text-xl hover:text-[#F41E1E] dark:hover:text-black" href="#">
-                            <i class="fab fa-instagram">
-                            </i>
-                        </a>
-                    </div>
-                </div>
-                @endforeach
-            </div> --}}
-
-            {{-- 2nd template --}}
+    
+            <!-- Modified team members container -->
             <div class="container mx-auto py-12">
-                <div class="flex flex-col md:flex-row justify-center items-center space-y-8 md:space-y-0 md:space-x-8">
+                <div class="flex overflow-x-auto pb-6 space-x-4 md:overflow-x-visible md:flex-row md:justify-center md:items-center md:space-x-8 md:space-y-0">
                     @foreach($our_team as $team_member)
-
-                 <!-- Trainer 1 -->
-                 <div class="bg-[#171717] rounded-lg overflow-hidden shadow-lg w-64">
-                  <img alt="Female trainer working out in a gym" class="w-full" height="240" src="{{$team_member->getFirstMediaUrl('our_team_photo')}}" width="320"/>
-                  <div class="bg-[#F41E1E] text-center py-2">
-                   <h2 class="font-bold text-white">
-                    {{$team_member->name}}
-                   </h2>
-                  </div>
-                  <div class="p-4 text-center">
-                   <p class="text-gray-300">
-                    {{$team_member->position}}
-                   </p>
-                   <div class="flex justify-center space-x-4 mt-4">
-                    <a class="text-[#F41E1E]" href="#">
-                     <i class="fab fa-twitter">
-                     </i>
-                    </a>
-                    <a class="text-[#F41E1E]" href="#">
-                     <i class="fab fa-facebook-f">
-                     </i>
-                    </a>
-                    <a class="text-[#F41E1E]" href="#">
-                     <i class="fab fa-pinterest">
-                     </i>
-                    </a>
-                   </div>
-                  </div>
-                 </div>
+                    <div class="flex-shrink-0 w-64 bg-[#171717] rounded-lg overflow-hidden shadow-lg">
+                        <img alt="Female trainer working out in a gym" class="w-full" height="240" 
+                             src="{{$team_member->getFirstMediaUrl('our_team_photo')}}" width="320"/>
+                        <div class="bg-[#F41E1E] text-center py-2">
+                            <h2 class="font-bold text-white">
+                                {{$team_member->name}}
+                            </h2>
+                        </div>
+                        <div class="p-4 text-center">
+                            <p class="text-gray-300">
+                                {{$team_member->position}}
+                            </p>
+                            <div class="flex justify-center space-x-4 mt-4">
+                                <a class="text-[#F41E1E]" href="#">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a class="text-[#F41E1E]" href="#">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a class="text-[#F41E1E]" href="#">
+                                    <i class="fab fa-pinterest"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                     @endforeach
                 </div>
-               </div>
+            </div>
         </div>
     </div>
-
 
 
     {{-- Team section end  --}}
