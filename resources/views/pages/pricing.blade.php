@@ -2,7 +2,7 @@
 
 
         {{-- membership plans --}}
-        <div id="pricing" class="w-full dark:bg-[#141414] py-12 text-center px-4 pt-2">
+        <div id="pricing" class="w-full dark:bg-[#141414] md:py-12 text-center md:px-4 pt-2">
             <div class="text-center mt-4">
                 {{-- <h2 class="text-[#F41E1E] text-lg font-bold uppercase mb-2 flex items-center justify-center">
                     <span class="inline-block w-12 h-0.5 bg-[#F41E1E] mx-2">
@@ -14,12 +14,12 @@
                 <h1 class="text-4xl font-extrabold mb-12 text-gray-900 dark:text-white">
                     Best Plans For You
                 </h1> --}}
-                <div class="flex overflow-x-auto space-x-4 px-4 pl-16 sm:ml-2 scrollbar-hide">
+                <div class="flex overflow-x-auto space-x-4 px-4 md:pl-16  scrollbar-hide">
     
                     @foreach($plans as $plan)
                     <!-- Card 1 -->
                     <div
-                        class="bg-white dark:bg-[#171717] rounded-lg shadow-lg transform transition duration-500 hover:scale-105 w-72 relative m-4 flex-shrink-0">
+                        class="bg-white dark:bg-[#171717] rounded-lg shadow-lg transform transition duration-500 hover:scale-105 w-72 relative md:mx-4 my-4 flex-shrink-0">
                         <img alt="Gym facilities image" class="rounded-t-lg" height="160"
                             src="{{$plan->getFirstMediaUrl('membership_thumbnail') }}"
                             width="288" />
