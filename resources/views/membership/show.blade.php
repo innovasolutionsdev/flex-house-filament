@@ -1,7 +1,7 @@
 <html>
 <head>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></link>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
     <style>
         body {
@@ -31,6 +31,7 @@
     </style>
 </head>
 <body class="bg-gray-100 flex flex-col items-center justify-center min-h-screen p-6">
+
 <div id="card" class="bg-white rounded-xl overflow-hidden card-shadow w-full max-w-md mb-6 transition-all duration-300 hover:shadow-xl relative">
     <!-- Membership ribbon -->
     <div class="membership-label">GYM PASS</div>
@@ -41,7 +42,7 @@
                 <img alt="Gym Logo" class="h-10 w-10 object-contain" src="https://storage.googleapis.com/a1aa/image/JOBuAVjU8EamLVKQYtVVvvrTakf7K4BUTKDfV6qArrX9B6tTA.jpg">
             </div>
             <div class="ml-3">
-                <h2 class="text-white text-lg font-bold">POWERFIT GYM</h2>
+                <h2 class="text-white text-lg font-bold">FLEXIFIT GYM</h2>
                 <p class="text-blue-100 text-xs">STRENGTH • FITNESS • WELLNESS</p>
             </div>
         </div>
@@ -54,9 +55,6 @@
 
     <div class="p-6 space-y-6">
         <div class="flex items-center space-x-4">
-            <div class="bg-gray-200 rounded-full w-16 h-16 flex items-center justify-center">
-                <i class="fas fa-user text-gray-500 text-2xl"></i>
-            </div>
             <div>
                 <p class="text-gray-500 text-xs uppercase tracking-wide">Member</p>
                 <p class="font-bold text-lg">{{ $payment->user->name}}</p>
@@ -69,7 +67,7 @@
                 Membership Type
             </div>
             <div class="font-medium">
-                {{ $payment->user->membership_id }}
+                {{$payment->user->membershipPlan->name }}
             </div>
 
             <div class="text-gray-500 text-sm flex items-center">
@@ -93,7 +91,7 @@
                 Payment Method
             </div>
             <div class="font-medium">
-                {{ $payment->payment_method }}
+                {{ Str::of($payment->payment_method)->replace('_', ' ')->title() }}
             </div>
         </div>
     </div>
@@ -109,10 +107,21 @@
     </div>
 </div>
 
-<button id="downloadButton" class="bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-3 rounded-lg transition-all duration-300 flex items-center shadow-md" onclick="downloadPDF()">
-    <i class="fas fa-download mr-2"></i>
-    Download Membership Card
-</button>
+<!-- Back & Download buttons -->
+<div class="flex flex-col sm:flex-row gap-4">
+    <a href="{{ url()->previous() }}"
+       class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium px-6 py-3 rounded-lg transition-all duration-300 flex items-center shadow-md">
+        <i class="fas fa-arrow-left mr-2"></i>
+        Back
+    </a>
+
+    <button id="downloadButton"
+            class="bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-3 rounded-lg transition-all duration-300 flex items-center shadow-md"
+            onclick="downloadPDF()">
+        <i class="fas fa-download mr-2"></i>
+        Download Membership Card
+    </button>
+</div>
 
 <script>
     function downloadPDF() {
@@ -131,5 +140,6 @@
         });
     }
 </script>
+
 </body>
 </html>

@@ -50,8 +50,8 @@ class BookingResource extends Resource
                 ->maxDate(now()->addDays(30)),
             Forms\Components\TimePicker::make('time')
                 ->label('Time')
-                ->required()
-                ->after(now()->addHours(1)),
+                ->required(),
+
             //booking message
             Forms\Components\Textarea::make('note')
                 ->label('Message')
