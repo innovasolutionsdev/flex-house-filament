@@ -243,6 +243,24 @@ class OrderResource extends Resource
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
                 FilamentExportBulkAction::make('export')
+            ])
+            //filters
+            ->filters([
+                
+                Tables\Filters\SelectFilter::make('Order_status')
+                    ->label('Order Status')
+                    ->options([
+                        0 => 'Processing',
+                        1 => 'Delivered',
+                        2 => 'Cancelled',
+                    ]),
+                Tables\Filters\SelectFilter::make('status')
+                    ->label('Payment Status')
+                    ->options([
+                        0 => 'Pending',
+                        1 => 'Confirmed',
+                        2 => 'Denied',
+                    ]),
             ]);
     }
 
