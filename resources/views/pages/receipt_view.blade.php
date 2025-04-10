@@ -26,7 +26,7 @@
                 Download Receipt
             </button>
             <!-- New Back to Orders Button -->
-            <a href="/orders" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-300 bg-white text-black shadow-sm hover:bg-gray-100">
+            <a href="{{ url()->previous() }}" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-300 bg-white text-black shadow-sm hover:bg-gray-100">
                 <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="15 18 9 12 15 6"></polyline>
                 </svg>
