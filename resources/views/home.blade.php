@@ -68,27 +68,28 @@
 
     <!-- Hero Section Begin -->
     <div class="w-full dark:bg-[#171717] py-12 text-center px-4 pt-2">
-        <div
-            class="container px-4 relative py-12 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+        <div class="container px-4 relative py-12 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
             <div class="flex flex-col items-center justify-between lg:flex-row">
-                <div class="mb-10 lg:max-w-lg lg:pr-5 lg:mb-0">
+                <!-- Image div - will appear first on mobile -->
+                <div class="relative w-full mb-10 lg:hidden lg:w-1/2 lg:order-2">
+                    <img id="sliderImageMobile" class="object-cover w-full h-56 rounded shadow-lg sm:h-96"
+                         src="{{ App\Models\SliderImage::first()?->getFirstMediaUrl('slider_images', 'thumb') ?? asset('default.jpg') }}"
+                         alt="Slider Image" />
+                </div>
+    
+                <!-- Content div -->
+                <div class="lg:max-w-lg lg:pr-5 lg:mb-0">
                     <div class="max-w-xl mb-6">
-
-                        <h2
-                            class="max-w-lg mb-6 font-sans text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl sm:leading-none">
+                        <h2 class="max-w-lg mb-6 font-sans text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl sm:leading-none">
                             Achieve Your Fitness Goals<br class="hidden md:block" />
                             with Our Expert Trainers
-
                         </h2>
                         <p class="text-base text-gray-700 dark:text-gray-400 md:text-lg">
                             Join us to transform your body and mind. Our personalized workout plans, expert coaching,
-                            and
-                            top-notch facilities are designed to help you succeed in your fitness journey.
+                            and top-notch facilities are designed to help you succeed in your fitness journey.
                         </p>
                     </div>
                     <div class="flex flex-col items-center md:flex-row">
-
-                        <!-- Using flex to control button layout responsively -->
                         <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8">
                             <button
                                 class="w-full sm:w-auto bg-[#F41E1E] text-white dark:hover:text-black uppercase text-lg py-2 px-6 font-bold rounded-sm shadow-md dark:hover:bg-white hover:bg-[#141414] transition duration-300"
@@ -103,31 +104,37 @@
                         </div>
                     </div>
                 </div>
-                <div class="relative lg:w-1/2">
+                
+                <!-- Image div - hidden on mobile, visible on desktop -->
+                <div class="relative hidden lg:block lg:w-1/2">
                     <img id="sliderImage" class="object-cover w-full h-56 rounded shadow-lg sm:h-96"
                          src="{{ App\Models\SliderImage::first()?->getFirstMediaUrl('slider_images', 'thumb') ?? asset('default.jpg') }}"
                          alt="Slider Image" />
                 </div>
-
-                <script>
-                    document.addEventListener('DOMContentLoaded', async function () {
-                        const response = await fetch("{{ route('slider.images.json') }}");
-                        const images = await response.json();
-                        let currentIndex = 0;
-                        const imageElement = document.getElementById('sliderImage');
-
-                        if (images.length > 0) {
-                            setInterval(() => {
-                                currentIndex = (currentIndex + 1) % images.length;
-                                imageElement.src = images[currentIndex];
-                            }, 3000);
-                        }
-                    });
-                </script>
-
             </div>
         </div>
     </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', async function () {
+            const response = await fetch("{{ route('slider.images.json') }}");
+            const images = await response.json();
+            let currentIndex = 0;
+            const imageElement = document.getElementById('sliderImage');
+            const mobileImageElement = document.getElementById('sliderImageMobile');
+    
+            if (images.length > 0) {
+                setInterval(() => {
+                    currentIndex = (currentIndex + 1) % images.length;
+                    const newImage = images[currentIndex];
+                    imageElement.src = newImage;
+                    if (mobileImageElement) {
+                        mobileImageElement.src = newImage;
+                    }
+                }, 3000);
+            }
+        });
+    </script>
 
 
     <!-- Hero Section End -->
