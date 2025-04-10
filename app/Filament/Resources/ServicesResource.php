@@ -48,10 +48,14 @@ class ServicesResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('title')->label('Title'),
-                Tables\Columns\TextColumn::make('description')->label('Description'),
+                //Tables\Columns\TextColumn::make('description')->label('Description'),
                 Tables\Columns\ImageColumn::make('image')
                     ->label('Image')
                     ->getStateUsing(fn ($record) => $record->getFirstMediaUrl('service_thumbnail')),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->label('Created At')
+                    ->dateTime()
+                    ->sortable(),
             ])
             ->filters([
                 //
