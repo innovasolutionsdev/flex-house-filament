@@ -21,6 +21,14 @@ class PromotionBannerResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    public static function getNavigationLabel(): string
+    {
+        return 'Promotion Banner';
+    }
+
+    protected static ?string $pluralLabel = 'Promotion Banner';
+
+
     public static function form(Form $form): Form
     {
         return $form
