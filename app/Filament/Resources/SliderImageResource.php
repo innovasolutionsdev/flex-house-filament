@@ -50,14 +50,10 @@ class SliderImageResource extends Resource
 
                      Tables\Columns\TextColumn::make('created_at')
                           ->label('Created At')
-                          ->format(function ($value) {
-                            return $value->format('d/m/Y');
-                          }),
+                          ->dateTime('d/m/Y'),
                         Tables\Columns\TextColumn::make('updated_at')
                           ->label('Updated At')
-                          ->format(function ($value) {
-                            return $value->format('d/m/Y');
-                          }),
+                          ->dateTime('d/m/Y'),
 
 
                ])
