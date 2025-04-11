@@ -76,7 +76,7 @@
                          src="{{ App\Models\SliderImage::first()?->getFirstMediaUrl('slider_images', 'thumb') ?? asset('default.jpg') }}"
                          alt="Slider Image" />
                 </div>
-    
+
                 <!-- Content div -->
                 <div class="lg:max-w-lg lg:pr-5 lg:mb-0">
                     <div class="max-w-xl mb-6">
@@ -104,7 +104,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Image div - hidden on mobile, visible on desktop -->
                 <div class="relative hidden lg:block lg:w-1/2">
                     <img id="sliderImage" class="object-cover w-full h-56 rounded shadow-lg sm:h-96"
@@ -114,7 +114,7 @@
             </div>
         </div>
     </div>
-    
+
     <script>
         document.addEventListener('DOMContentLoaded', async function () {
             const response = await fetch("{{ route('slider.images.json') }}");
@@ -122,7 +122,7 @@
             let currentIndex = 0;
             const imageElement = document.getElementById('sliderImage');
             const mobileImageElement = document.getElementById('sliderImageMobile');
-    
+
             if (images.length > 0) {
                 setInterval(() => {
                     currentIndex = (currentIndex + 1) % images.length;
@@ -294,7 +294,7 @@
                     Our Comprehensive Range of Services.
                 </h1>
             </div>
-            
+
             <!-- Modified services container -->
             <div class="md:px-14 px-4">
                 <div class="flex overflow-x-auto pb-4 space-x-4 md:grid md:grid-cols-3 md:gap-8 md:overflow-x-visible md:space-x-0">
@@ -642,39 +642,36 @@
             <h1 class="text-4xl font-extrabold mb-6 text-gray-900 dark:text-white">
                 The Expert Trainers Behind the Scenes
             </h1>
-    
+
             <!-- Modified team members container -->
             <div class="container mx-auto py-12">
                 <div class="flex overflow-x-auto pb-6 space-x-4 md:overflow-x-visible md:flex-row md:justify-center md:items-center md:space-x-8 md:space-y-0">
                     @foreach($our_team as $team_member)
-                    <div class="flex-shrink-0 w-64 bg-[#171717] rounded-lg overflow-hidden shadow-lg">
-                        <img alt="Female trainer working out in a gym" class="w-full" height="240" 
-                             src="{{$team_member->getFirstMediaUrl('our_team_photo')}}" width="320"/>
-                        <div class="bg-[#F41E1E] text-center py-2">
-                            <h2 class="font-bold text-white">
-                                {{$team_member->name}}
-                            </h2>
-                        </div>
-                        <div class="p-4 text-center">
-                            <p class="text-gray-300">
-                                {{$team_member->position}}
-                            </p>
-                            <div class="flex justify-center space-x-4 mt-4">
-                                <a class="text-[#F41E1E]" href="#">
-                                    <i class="fab fa-twitter"></i>
-                                </a>
-                                <a class="text-[#F41E1E]" href="#">
-                                    <i class="fab fa-facebook-f"></i>
-                                </a>
-                                <a class="text-[#F41E1E]" href="#">
-                                    <i class="fab fa-pinterest"></i>
-                                </a>
+                        <div class="flex-shrink-0 w-64 bg-[#171717] rounded-lg overflow-hidden shadow-lg">
+                            <img
+                                alt="Trainer photo"
+                                class="w-64 h-64 object-cover"
+                                src="{{ $team_member->getFirstMediaUrl('our_team_photo') }}" />
+                            <div class="bg-[#F41E1E] text-center py-2">
+                                <h2 class="font-bold text-white">
+                                    {{ $team_member->name }}
+                                </h2>
+                            </div>
+                            <div class="p-4 text-center">
+                                <p class="text-gray-300">
+                                    {{ $team_member->position }}
+                                </p>
+                                <div class="flex justify-center space-x-4 mt-4">
+                                    <a class="text-[#F41E1E]" href="#"><i class="fab fa-twitter"></i></a>
+                                    <a class="text-[#F41E1E]" href="#"><i class="fab fa-facebook-f"></i></a>
+                                    <a class="text-[#F41E1E]" href="#"><i class="fab fa-pinterest"></i></a>
+                                </div>
                             </div>
                         </div>
-                    </div>
                     @endforeach
                 </div>
             </div>
+
         </div>
     </div>
 
