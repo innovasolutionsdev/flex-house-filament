@@ -644,13 +644,13 @@
             </h1>
 
             <!-- Modified team members container -->
-            <div class="container mx-auto py-12">
-                <div class="flex overflow-x-auto pb-6 space-x-4 md:overflow-x-visible md:flex-row md:justify-center md:items-center md:space-x-8 md:space-y-0">
+            <div class="container mx-auto py-12 px-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
                     @foreach($our_team as $team_member)
-                        <div class="flex-shrink-0 w-64 bg-[#171717] rounded-lg overflow-hidden shadow-lg">
+                        <div class="bg-[#171717] rounded-lg overflow-hidden shadow-lg">
                             <img
                                 alt="Trainer photo"
-                                class="w-64 h-64 object-cover"
+                                class="w-full h-64 object-cover"
                                 src="{{ $team_member->getFirstMediaUrl('our_team_photo') }}" />
                             <div class="bg-[#F41E1E] text-center py-2">
                                 <h2 class="font-bold text-white">
