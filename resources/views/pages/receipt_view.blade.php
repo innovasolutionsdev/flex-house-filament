@@ -218,26 +218,90 @@
 <!-- End Outer Container -->
 
 <script>
-    document.getElementById('download-button').addEventListener('click', function(e) {
+    document.getElementById('download-button').addEventListener('click', async function(e) {
         e.preventDefault();
-        var element = document.getElementById('invoice-card');
-        var buttons = document.getElementById('buttons');
-        // Hide the buttons before generating PDF
-        buttons.style.display = 'none';
-        // Set options for PDF generation
-        var opt = {
-            margin: [0.5, 0.5, 0.5, 0.5],
-            filename: 'order-receipt.pdf',
-            image: { type: 'jpeg', quality: 0.98 },
-            html2canvas: { scale: 2, useCORS: true },
-            jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+        
+        // Store original styles
+        const originalStyles = {
+            bodyOverflow: document.body.style.overflow,
+            cardWidth: document.getElementById('invoice-card').style.width
         };
-        // Generate PDF
-        html2pdf().set(opt).from(element).save().then(function() {
-            // Show the buttons again after PDF generation
+        
+        // Hide buttons
+        const buttons = document.getElementById('buttons');
+        buttons.style.display = 'none';
+        
+        try {
+            // Temporarily adjust styles for PDF generation
+            document.body.style.overflow = 'visible';
+            const card = document.getElementById('invoice-card');
+            card.style.width = '700px'; // Fixed width helps with consistency
+            
+            // Calculate required PDF height based on content
+            const contentHeight = card.scrollHeight;
+            const pdfHeight = Math.max(contentHeight * 0.014, 11); // Convert px to inches (min 11")
+            
+            // PDF generation options
+            const opt = {
+                margin: 0,
+                filename: 'order-receipt.pdf',
+                image: { type: 'jpeg', quality: 1 },
+                html2canvas: { 
+                    scale: 1.5,
+                    scrollY: 0,
+                    logging: false,
+                    useCORS: true,
+                    allowTaint: true,
+                    letterRendering: true
+                },
+                jsPDF: {
+                    unit: 'in',
+                    format: [8.5, pdfHeight], // Custom height based on content
+                    orientation: 'portrait'
+                }
+            };
+            
+            // Generate PDF
+            await html2pdf().set(opt).from(card).save();
+            
+        } catch (error) {
+            console.error('PDF generation error:', error);
+        } finally {
+            // Restore original styles and show buttons
+            document.body.style.overflow = originalStyles.bodyOverflow;
+            const card = document.getElementById('invoice-card');
+            card.style.width = originalStyles.cardWidth;
             buttons.style.display = 'flex';
-        });
+        }
     });
 </script>
+
+<style>
+    /* Add these styles to prevent page breaks */
+    @media print {
+        body, html {
+            height: auto !important;
+            overflow: visible !important;
+        }
+        #invoice-card {
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        table {
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        tr {
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+    }
+    
+    /* Ensure the receipt card can expand as needed */
+    #invoice-card {
+        min-height: 0;
+        overflow: visible;
+    }
+</style>
 </body>
 </html>

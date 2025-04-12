@@ -210,7 +210,7 @@ class OrderResource extends Resource
                         2 => 'Cancelled',
                     })
                     ->color(fn ($state) => match($state) {
-                        0 => 'primary',
+                        0 => 'warning',
                         1 => 'success',
                         2 => 'danger',
                     }),
