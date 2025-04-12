@@ -645,9 +645,10 @@
 
             <!-- Modified team members container -->
             <div class="container mx-auto py-12 px-4">
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                <!-- Scrollable flex on mobile, grid on desktop -->
+                <div class="flex overflow-x-auto md:grid md:grid-cols-3 lg:grid-cols-4 gap-6 md:overflow-visible pb-4">
                     @foreach($our_team as $team_member)
-                        <div class="bg-[#171717] rounded-lg overflow-hidden shadow-lg">
+                        <div class="flex-shrink-0 w-64 md:w-auto bg-[#171717] rounded-lg overflow-hidden shadow-lg">
                             <img
                                 alt="Trainer photo"
                                 class="w-full h-64 object-cover"
@@ -671,6 +672,7 @@
                     @endforeach
                 </div>
             </div>
+
 
         </div>
     </div>
