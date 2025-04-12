@@ -223,8 +223,12 @@
         
         // Store original styles
         const originalStyles = {
-            bodyOverflow: document.body.style.overflow,
-            cardWidth: document.getElementById('invoice-card').style.width
+            bodyMargin: document.body.style.margin,
+            bodyPadding: document.body.style.padding,
+            cardMargin: document.getElementById('invoice-card').style.margin,
+            cardPadding: document.getElementById('invoice-card').style.padding,
+            cardBorder: document.getElementById('invoice-card').style.border,
+            cardShadow: document.getElementById('invoice-card').style.boxShadow
         };
         
         // Hide buttons
@@ -232,32 +236,47 @@
         buttons.style.display = 'none';
         
         try {
-            // Temporarily adjust styles for PDF generation
-            document.body.style.overflow = 'visible';
+            // Remove all margins, padding, borders and shadows temporarily
+            document.body.style.margin = '0';
+            document.body.style.padding = '0';
             const card = document.getElementById('invoice-card');
-            card.style.width = '700px'; // Fixed width helps with consistency
+            card.style.margin = '0';
+            card.style.padding = '0';
+            card.style.border = 'none';
+            card.style.boxShadow = 'none';
             
-            // Calculate required PDF height based on content
+            // Calculate exact dimensions
+            const contentWidth = card.scrollWidth;
             const contentHeight = card.scrollHeight;
-            const pdfHeight = Math.max(contentHeight * 0.014, 11); // Convert px to inches (min 11")
             
-            // PDF generation options
+            // Convert pixels to mm (more precise for PDF)
+            const widthInMM = contentWidth * 0.264583;
+            const heightInMM = contentHeight * 0.264583;
+            
+            // PDF generation options with zero margins
             const opt = {
                 margin: 0,
                 filename: 'order-receipt.pdf',
-                image: { type: 'jpeg', quality: 1 },
+                image: { 
+                    type: 'jpeg', 
+                    quality: 1 
+                },
                 html2canvas: { 
-                    scale: 1.5,
+                    scale: 2, // Higher scale for better quality
                     scrollY: 0,
                     logging: false,
                     useCORS: true,
                     allowTaint: true,
-                    letterRendering: true
+                    letterRendering: true,
+                    width: contentWidth,
+                    height: contentHeight,
+                    windowWidth: contentWidth,
+                    windowHeight: contentHeight
                 },
                 jsPDF: {
-                    unit: 'in',
-                    format: [8.5, pdfHeight], // Custom height based on content
-                    orientation: 'portrait'
+                    unit: 'mm',
+                    format: [widthInMM, heightInMM],
+                    hotfixes: ['px_scaling'] // Fix for pixel scaling issues
                 }
             };
             
@@ -268,39 +287,46 @@
             console.error('PDF generation error:', error);
         } finally {
             // Restore original styles and show buttons
-            document.body.style.overflow = originalStyles.bodyOverflow;
+            document.body.style.margin = originalStyles.bodyMargin;
+            document.body.style.padding = originalStyles.bodyPadding;
             const card = document.getElementById('invoice-card');
-            card.style.width = originalStyles.cardWidth;
+            card.style.margin = originalStyles.cardMargin;
+            card.style.padding = originalStyles.cardPadding;
+            card.style.border = originalStyles.cardBorder;
+            card.style.boxShadow = originalStyles.cardShadow;
             buttons.style.display = 'flex';
         }
     });
 </script>
 
 <style>
-    /* Add these styles to prevent page breaks */
-    @media print {
-        body, html {
-            height: auto !important;
-            overflow: visible !important;
-        }
-        #invoice-card {
-            page-break-inside: avoid;
-            break-inside: avoid;
-        }
-        table {
-            page-break-inside: avoid;
-            break-inside: avoid;
-        }
-        tr {
-            page-break-inside: avoid;
-            break-inside: avoid;
-        }
+    /* Add these styles to remove all white space during PDF generation */
+    .pdf-export-mode #invoice-card {
+        margin: 0 !important;
+        padding: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
     }
     
-    /* Ensure the receipt card can expand as needed */
-    #invoice-card {
-        min-height: 0;
-        overflow: visible;
+    /* Ensure the receipt card has no external spacing during export */
+    .pdf-export-mode {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    
+    /* Print-specific styles */
+    @media print {
+        body, html {
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+        #invoice-card {
+            margin: 0 !important;
+            padding: 0 !important;
+            border: none !important;
+            box-shadow: none !important;
+        }
     }
 </style>
 </body>
