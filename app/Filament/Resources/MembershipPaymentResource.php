@@ -73,6 +73,31 @@ class MembershipPaymentResource extends Resource
             ])
             ->filters([
                 //
+                Tables\Filters\SelectFilter::make('user_id')
+                    ->relationship('user', 'name')
+                    ->label('User Name'),
+                Tables\Filters\SelectFilter::make('membership_plan_id')
+                    ->relationship('user.membershipPlan', 'name')
+                    ->label('Membership Plan'),
+                Tables\Filters\SelectFilter::make('payment_method')
+                    ->options([
+                        'cash' => 'Cash',
+                        'card' => 'Card',
+                        'bank_transfer' => 'Bank Transfer',
+                    ])
+                    ->label('Payment Method'),
+                Tables\Filters\Filter::make('payment_date')
+                    ->form([
+                        Forms\Components\DatePicker::make('start_date')
+                            ->label('Start Date'),
+                        Forms\Components\DatePicker::make('end_date')
+                            ->label('End Date'),
+                    ])
+                    ->query(function (Builder $query, array $data) {
+                        if (isset($data['start_date']) && isset($data['end_date'])) {
+                            return $query->whereBetween('payment_date', [$data['start_date'], $data['end_date']]);
+                        }
+                    }),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
