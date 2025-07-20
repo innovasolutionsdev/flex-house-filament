@@ -2,7 +2,7 @@
 <!-- Preloader -->
 <!-- Preloader -->
 <div id="preloader" style="" class="fixed inset-0 z-50 flex items-center justify-center bg-white dark:bg-[#141414]">
-    <img id="preloader-logo" src="{{ asset('flexilogo.png') }}" alt="Logo" class="animate-bounce ">
+    <img id="preloader-logo" src="{{ asset('flexilogo.png') }}" alt="Logo" class="animate-bounce rounded-lg">
 </div>
 
 <style>
