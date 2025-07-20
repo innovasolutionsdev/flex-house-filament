@@ -6,7 +6,7 @@
     <style>
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
             min-height: 100vh;
         }
         .card-shadow {
@@ -59,7 +59,7 @@
             100% { transform: translateX(100%); }
         }
         .card-body {
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            background: linear-gradient(135deg, #1f1f1f 0%, #2d2d2d 100%);
             position: relative;
         }
         .card-body::before {
@@ -72,16 +72,17 @@
             background: linear-gradient(90deg, #dc2626 0%, #991b1b 50%, #7f1d1d 100%);
         }
         .info-grid {
-            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-            border-radius: 12px;
+            /* background: linear-gradient(135deg, #2d2d2d 0%, #374151 100%); */
+            /* border-radius: 12px; */
             padding: 20px;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+            /* box-shadow: inset 0 2px 4px rgba(0,0,0,0.3); */
         }
         .info-item {
             transition: all 0.3s ease;
         }
         .info-item:hover {
             transform: translateX(5px);
+            background-color: rgba(220, 38, 38, 0.1);
         }
         .icon-container {
             background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
@@ -104,6 +105,22 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+        }
+        .member-label {
+            color: #9ca3af;
+            font-weight: 600;
+        }
+        .info-label {
+            color: #d1d5db;
+            font-weight: 500;
+        }
+        .info-value {
+            color: #ffffff;
+            font-weight: 600;
+        }
+        .amount-value {
+            color: #fca5a5;
+            font-weight: 700;
         }
         .back-button {
             background: linear-gradient(135deg, #374151 0%, #4b5563 100%);
@@ -141,7 +158,7 @@
 
 <div id="card" class="bg-white rounded-2xl overflow-hidden card-shadow w-full max-w-md mb-8 transition-all duration-500 hover:shadow-2xl relative">
     <!-- Membership ribbon -->
-    <div class="membership-label">GYM PASS</div>
+    <!-- <div class="membership-label">GYM PASS</div> -->
 
     <div class="gradient-header px-6 py-6 rounded-t-2xl flex items-center justify-between relative">
         <div class="flex items-center relative z-10">
@@ -166,57 +183,57 @@
                 <i class="fas fa-user text-white text-sm"></i>
             </div>
             <div>
-                <p class="text-gray-500 text-xs uppercase tracking-wide font-semibold">Member</p>
+                <p class="member-label text-xs uppercase tracking-wide">Member</p>
                 <p class="member-name font-bold text-xl">{{ $payment->user->name}}</p>
             </div>
         </div>
 
         <div class="info-grid">
             <div class="grid grid-cols-1 gap-y-4">
-                <div class="info-item flex items-center justify-between p-3 rounded-lg hover:bg-gray-50 transition-all duration-300">
+                <div class="info-item flex items-center justify-between p-3 rounded-lg transition-all duration-300">
                     <div class="flex items-center">
                         <div class="icon-container mr-3">
                             <i class="fas fa-award text-white text-xs"></i>
                         </div>
-                        <span class="text-gray-600 text-sm font-medium">Membership Type</span>
+                        <span class="info-label text-sm">Membership Type</span>
                     </div>
-                    <div class="font-bold text-gray-800">
+                    <div class="info-value">
                         {{$payment->user->membershipPlan->name }}
                     </div>
                 </div>
 
-                <div class="info-item flex items-center justify-between p-3 rounded-lg hover:bg-gray-50 transition-all duration-300">
+                <div class="info-item flex items-center justify-between p-3 rounded-lg transition-all duration-300">
                     <div class="flex items-center">
                         <div class="icon-container mr-3">
                             <i class="far fa-calendar-alt text-white text-xs"></i>
                         </div>
-                        <span class="text-gray-600 text-sm font-medium">Issue Date</span>
+                        <span class="info-label text-sm">Issue Date</span>
                     </div>
-                    <div class="font-bold text-gray-800">
+                    <div class="info-value">
                         {{ $payment->payment_date }}
                     </div>
                 </div>
 
-                <div class="info-item flex items-center justify-between p-3 rounded-lg hover:bg-gray-50 transition-all duration-300">
+                <div class="info-item flex items-center justify-between p-3 rounded-lg transition-all duration-300">
                     <div class="flex items-center">
                         <div class="icon-container mr-3">
                             <i class="fas fa-dollar-sign text-white text-xs"></i>
                         </div>
-                        <span class="text-gray-600 text-sm font-medium">Amount Paid</span>
+                        <span class="info-label text-sm">Amount Paid</span>
                     </div>
-                    <div class="font-bold text-red-600 text-lg">
+                    <div class="amount-value text-lg">
                         ${{ $payment->amount }}
                     </div>
                 </div>
 
-                <div class="info-item flex items-center justify-between p-3 rounded-lg hover:bg-gray-50 transition-all duration-300">
+                <div class="info-item flex items-center justify-between p-3 rounded-lg transition-all duration-300">
                     <div class="flex items-center">
                         <div class="icon-container mr-3">
                             <i class="far fa-credit-card text-white text-xs"></i>
                         </div>
-                        <span class="text-gray-600 text-sm font-medium">Payment Method</span>
+                        <span class="info-label text-sm">Payment Method</span>
                     </div>
-                    <div class="font-bold text-gray-800">
+                    <div class="info-value">
                         {{ Str::of($payment->payment_method)->replace('_', ' ')->title() }}
                     </div>
                 </div>
@@ -226,12 +243,12 @@
 
     <div class="gradient-footer px-6 py-5 rounded-b-2xl flex justify-between items-center">
         <div class="flex items-center space-x-4">
-            <span class="text-white text-sm font-medium">{{$payment->collected_by}}</span>
-            <div class="w-24 h-0.5 bg-red-400 bg-opacity-60 rounded"></div>
+            <span class="text-white text-sm font-medium">Collected By: {{$payment->collected_by}}</span>
+            <!-- <div class="w-24 h-0.5 bg-red-400 bg-opacity-60 rounded"></div> -->
         </div>
-        <div class="qr-code">
+        <!-- <div class="qr-code">
             <i class="fas fa-qrcode text-white text-2xl"></i>
-        </div>
+        </div> -->
     </div>
 </div>
 
