@@ -25,4 +25,7 @@ class MembershipPlan extends Model implements HasMedia
         $this->addMediaCollection('membership_thumbnail')->singleFile();
     }
 
+
+
+
 }
