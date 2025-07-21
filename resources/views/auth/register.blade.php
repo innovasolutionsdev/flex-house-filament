@@ -17,7 +17,7 @@
                             </p>
                         </div>
                         <x-validation-errors class="mb-4" />
-                        
+
                         <div id="section1">
                             <div class="mb-4">
                                 <input name="name" type="text"
@@ -33,7 +33,7 @@
                                 <select id="membership_plan" name="membership_plan"
                                     class="w-full text-gray-400 text-sm border-2 border-black focus:border-gray-600 focus:ring-0 px-4 py-2 outline-none bg-[#141414] rounded-lg">
                                     <option value="">Select a Membership Plan</option>
-                                  
+
                                     <option value="1" data-duration="30">Plan A (1 Month)</option>
                                     <option value="2" data-duration="90">Plan B (3 Months)</option>
                                 </select>
@@ -47,7 +47,7 @@
                         </div>
 
 
-                        
+
                         <div id="section2" style="display: none;">
                             <div class="mb-4">
                                 <input id="start_date" type="date" name="start_date" required
@@ -59,7 +59,7 @@
                                     class="w-full text-gray-400 text-sm border-2 border-black focus:border-gray-600 focus:ring-0 px-4 py-2 outline-none bg-[#141414] rounded-lg"
                                     placeholder="End Date" />
                             </div>
-                           
+
                             <div class="mb-4 relative">
                                 <input id="password" name="password" type="password" required
                                     class="w-full text-gray-300 text-sm border-2 border-black focus:border-gray-600 focus:ring-0 px-4 py-2 outline-none bg-[#141414] rounded-lg"
@@ -91,16 +91,16 @@
                             </div>
 
 
-                            
+
 
                             <div class="mt-8 flex justify-between">
-                                
+
                                 <button type="button" onclick="showSection1()"
                                     class="w-1/2 mr-2 shadow-xl py-2.5 px-4 text-lg font-bold rounded-md text-black dark:text-white bg-gray-300 dark:bg-gray-700 hover:bg-gray-400 dark:hover:bg-gray-600 focus:outline-none transition duration-300 ease-in-out">
                                     Back
                                 </button>
 
-                               
+
                                 <button type="submit"
                                     class="w-1/2 ml-2 shadow-xl py-2.5 px-4 text-lg font-bold uppercase tracking-wide rounded-md text-white dark:hover:text-black bg-[#F41E1E] dark:hover:bg-white dark:bg-[#F41E1E] hover:bg-[#F41E1E] focus:outline-none transition duration-300 ease-in-out">
                                     Sign Up
@@ -111,7 +111,7 @@
                     </form>
                 </div>
 
-               
+
                 <div class="lg:h-[400px] md:h-[300px] max-md:mt-8 hidden md:block ">
                     <img src="/img/login.jpg" class="w-full h-full object-contain rounded-md" alt="Sign up image" />
                 </div>
@@ -120,19 +120,19 @@
     </div>
 
     <script>
-        
+
         function showSection2() {
             document.getElementById('section1').style.display = 'none';
             document.getElementById('section2').style.display = 'block';
         }
 
-        
+
         function showSection1() {
             document.getElementById('section2').style.display = 'none';
             document.getElementById('section1').style.display = 'block';
         }
 
-        
+
         document.getElementById('membership_plan').addEventListener('change', calculateEndDate);
         document.getElementById('start_date').addEventListener('change', calculateEndDate);
 
@@ -154,7 +154,7 @@
             }
         }
 
-        
+
         const passwordInput = document.getElementById('password');
         const togglePasswordButton = document.getElementById('togglePassword');
         const eyeIconPassword = document.getElementById('eyeIconPassword');
@@ -162,11 +162,11 @@
         togglePasswordButton.addEventListener('click', () => {
             const type = passwordInput.type === 'password' ? 'text' : 'password';
             passwordInput.type = type;
-            
+
             eyeIconPassword.classList.toggle('eye-slash');
         });
 
-        
+
         const confirmPasswordInput = document.getElementById('password_confirmation');
         const toggleConfirmPasswordButton = document.getElementById('toggleConfirmPassword');
         const eyeIconConfirmPassword = document.getElementById('eyeIconConfirmPassword');
@@ -174,7 +174,7 @@
         toggleConfirmPasswordButton.addEventListener('click', () => {
             const type = confirmPasswordInput.type === 'password' ? 'text' : 'password';
             confirmPasswordInput.type = type;
-            
+
             eyeIconConfirmPassword.classList.toggle('eye-slash');
         });
     </script>
@@ -189,11 +189,11 @@
                     Already have an account?
                     <a href="{{ route('login') }}" style="color: rgb(250, 49, 49);" class="ml-2">Sign in here</a>
                 </p>
-                
+
                 <form method="POST" action="{{ route('register') }}" class="space-y-4">
                     @csrf
                     <x-validation-errors class="mb-4" />
-                    
+
                     <!-- Section 1: Initial Registration Fields -->
                     <div id="section1">
                         <div>
@@ -201,22 +201,25 @@
                                 class="mb-4 w-full py-2 px-4 bg-[#141414] border border-gray-700 rounded focus:outline-none focus:ring-0 focus:border-red-500"
                                 placeholder="Name" />
                         </div>
-                        
+
                         <div>
                             <input name="email" type="email" required
                                 class="mb-4 w-full py-2 px-4 bg-[#141414] border border-gray-700 rounded focus:outline-none focus:ring-0 focus:border-red-500"
                                 placeholder="Email" />
                         </div>
-                        
+
                         <div>
                             <select id="membership_plan" name="membership_plan" required
-                                class="mb-4 w-full py-2 px-4 bg-[#141414] border border-gray-700 rounded focus:outline-none focus:ring-0 focus:border-red-500 text-gray-400">
-                                <option value="">Select a Membership Plan</option>
-                                <option value="1" data-duration="30">Plan A (1 Month)</option>
-                                <option value="2" data-duration="90">Plan B (3 Months)</option>
+                                    class="mb-4 w-full py-2 px-4 bg-[#141414] border border-gray-700 rounded focus:outline-none focus:ring-0 focus:border-red-500 text-gray-400">
+                                <option value="" disabled selected>Select Membership</option>
+                                @foreach ($memberships as $membership)
+                                    <option value="{{ $membership->id }}" data-duration="{{ $membership->duration }}">
+                                        {{ $membership->name }} - {{ $membership->price }} USD
+                                    </option>
+                                @endforeach
                             </select>
                         </div>
-                        
+
                         <div class="pt-4 flex justify-center">
                             <button type="button" onclick="showSection2()"
                                 class="w-2/3 p-3 bg-red-600 rounded-full text-white font-bold hover:bg-red-700 transition duration-300">
@@ -224,39 +227,39 @@
                             </button>
                         </div>
                     </div>
-                    
+
                     <!-- Section 2: Additional Registration Fields -->
                     <div id="section2" style="display: none;">
                         <div>
                             <input id="start_date" type="date" name="start_date" required
                                 class="mb-4 w-full py-2 px-4 bg-[#141414] border border-gray-700 rounded focus:outline-none focus:ring-0 focus:border-red-500 text-gray-400" />
                         </div>
-                        
+
                         <div>
                             <input id="end_date" type="date" name="end_date" required readonly
                                 class="mb-4 w-full py-2 px-4 bg-[#141414] border border-gray-700 rounded focus:outline-none focus:ring-0 focus:border-red-500 text-gray-400" />
                         </div>
-                        
+
                         <div class="relative">
                             <input id="password" name="password" type="password" required
                                 class="mb-4 w-full py-2 px-4 bg-[#141414] border border-gray-700 rounded focus:outline-none focus:ring-0 focus:border-red-500"
                                 placeholder="Password" />
                             <i class="fas fa-eye absolute right-3 top-3 text-red-500 cursor-pointer" id="togglePassword"></i>
                         </div>
-                        
+
                         <div class="relative">
                             <input id="password_confirmation" name="password_confirmation" type="password" required
                                 class="mb-4 w-full py-2 px-4 bg-[#141414] border border-gray-700 rounded focus:outline-none focus:ring-0 focus:border-red-500"
                                 placeholder="Confirm Password" />
                             <i class="fas fa-eye absolute right-3 top-3 text-red-500 cursor-pointer" id="toggleConfirmPassword"></i>
                         </div>
-                        
+
                         <div class="flex justify-between pt-4">
                             <button type="button" onclick="showSection1()"
                                 class="w-1/2 mr-2 p-2 bg-gray-600 rounded-full text-white font-bold hover:bg-gray-700 transition duration-300">
                                 Back
                             </button>
-                            
+
                             <button type="submit"
                                 class="w-1/2 ml-2 p-2 bg-red-600 rounded-full text-white font-bold hover:bg-red-700 transition duration-300">
                                 Sign Up
@@ -265,7 +268,7 @@
                     </div>
                 </form>
             </div>
-            
+
             <div class="w-full md:w-1/2">
                 <img src="/img/login.jpg" class="rounded w-full h-auto max-w-md mx-auto" alt="Sign up image" />
             </div>
@@ -310,7 +313,7 @@
         // Toggle password visibility
         const togglePassword = document.querySelector('#togglePassword');
         const password = document.querySelector('#password');
-        
+
         togglePassword.addEventListener('click', function() {
             const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
             password.setAttribute('type', type);
@@ -320,7 +323,7 @@
         // Toggle confirm password visibility
         const toggleConfirmPassword = document.querySelector('#toggleConfirmPassword');
         const confirmPassword = document.querySelector('#password_confirmation');
-        
+
         toggleConfirmPassword.addEventListener('click', function() {
             const type = confirmPassword.getAttribute('type') === 'password' ? 'text' : 'password';
             confirmPassword.setAttribute('type', type);
