@@ -73,7 +73,7 @@ class MyOrderResource extends Resource
                 Tables\Actions\ViewAction::make(),
                 Action::make('receipt')
                     ->label('Receipt')
-                    ->url(fn ($record) => url('/admin/orders/' . $record->id)),
+                    ->url(fn(Order $record) => route('receipt.show', $record->id)),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -102,7 +102,7 @@ class MyOrderResource extends Resource
             'index' => Pages\ListMyOrders::route('/'),
             'create' => Pages\CreateMyOrder::route('/create'),
             'edit' => Pages\EditMyOrder::route('/{record}/edit'),
-//            'receipt' => Pages\CustomReceiptPage::route('/{record}'),
+            'receipt' => Pages\CustomReceiptPage::route('/{record}'),
         ];
     }
     public static function getEloquentQuery(): Builder
