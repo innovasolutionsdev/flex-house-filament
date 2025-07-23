@@ -78,8 +78,15 @@ class ScheduleResource extends Resource
                 ->relationship('workouts')  // Link to workouts
                 ->schema([
                     TextInput::make('name')
-                ->placeholder('Day 1 Upper Body')
+                        ->placeholder('Day 1 Upper Body')
                         ->label('Workout Name'),
+
+                    // ADD THIS NEW TEXTAREA FOR NOTES
+                    Forms\Components\Textarea::make('notes')
+                        ->label('Workout Notes')
+                        ->placeholder('Enter any additional notes about this workout - Warmup, warmdown, etc.')
+                        ->columnSpanFull(), // Makes it take full width
+                        
                     HasManyRepeater::make('exercises')
                         ->relationship('exercises')  // Link to exercises
                         ->schema([

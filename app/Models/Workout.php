@@ -11,6 +11,7 @@ class Workout extends Model
     protected $fillable = [
         'name',
         'schedule_id',
+        'notes', // Add this line
     ];
 
 

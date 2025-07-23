@@ -71,6 +71,16 @@ class MembershipPaymentResource extends Resource
                     }),
             ])
             ->filters([
+                Tables\Filters\SelectFilter::make('user_id')
+                    ->relationship('user', 'name')
+                    ->label('User'),
+                Tables\Filters\SelectFilter::make('payment_method')
+                    ->options([
+                        'cash' => 'Cash',
+                        'card' => 'Card',
+                        'bank_transfer' => 'Bank Transfer',
+                    ])
+                    ->label('Payment Method'),
                 //
             ])
             ->actions([

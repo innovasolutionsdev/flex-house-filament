@@ -66,6 +66,7 @@ class BookingResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('created_at')->label('Created At')->searchable()-> sortable(),
                 Tables\Columns\TextColumn::make('first_name')->label('First Name')->searchable(),
                 Tables\Columns\TextColumn::make('last_name')->label('Last Name')->searchable(),
                 //Tables\Columns\TextColumn::make('email')->label('Email')->searchable(),
@@ -73,7 +74,7 @@ class BookingResource extends Resource
                 Tables\Columns\TextColumn::make('date')->label('Date')->searchable(),
                 Tables\Columns\TextColumn::make('time')->label('Time')->searchable(),
                 //created at
-                Tables\Columns\TextColumn::make('created_at')->label('Created At')->searchable(),
+                
             ])
             ->filters([
                 //
