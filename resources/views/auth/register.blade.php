@@ -1,35 +1,6 @@
 
 
 <x-app-layout>
-<style>
-    /* Hide placeholder by default for all devices */
-    .mobile-placeholder {
-        display: none !important;
-    }
-
-    /* Show placeholder only on mobile devices */
-    @media only screen and (max-width: 768px) {
-        /* Show placeholder when input is empty */
-        input[type="date"].appearance-none:placeholder-shown + .mobile-placeholder {
-            display: block !important;
-        }
-
-        /* Style adjustments for mobile */
-        .mobile-placeholder {
-            position: absolute;
-            left: 1rem;
-            top: 0.5rem;
-            pointer-events: none;
-            color: #6b7280; /* text-gray-500 */
-            z-index: 10;
-        }
-
-        /* Ensure the input has a transparent background for the placeholder to show through */
-        input[type="date"].appearance-none {
-            background-color: transparent;
-        }
-    }
-</style>
     <div class="bg-white dark:bg-[#171717]">
         <div class="py-12 text-gray-900 dark:text-white flex flex-col md:flex-row items-center md:items-start p-8 md:p-16 space-y-8 md:space-y-0 md:space-x-16 max-w-4xl mx-auto">
             <div class="w-full md:w-1/2">
@@ -79,6 +50,13 @@
 
                     <!-- Section 2: Additional Registration Fields -->
                     <div id="section2" style="display: none;">
+
+                        <div>
+    <label for="start_date" class="block mb-1 font-semibold text-gray-700 dark:text-gray-300">Start Date</label>
+    <input id="start_date" type="date" name="start_date" required
+        class="mb-4 w-full py-2 px-4 bg-gray-50 dark:bg-[#141414] border border-gray-300 dark:border-gray-700 rounded focus:outline-none focus:ring-0 focus:border-red-500 dark:focus:border-red-400 text-gray-900 dark:text-gray-400"
+        placeholder="Start date" />
+</div>
                         
                         {{-- <div>
                             <label for="start_date" class="block mb-1 font-semibold text-gray-700 dark:text-gray-300">Start Date</label>
@@ -86,21 +64,7 @@
                                 class="mb-4 w-full py-2 px-4 bg-gray-50 dark:bg-[#141414] border border-gray-300 dark:border-gray-700 rounded focus:outline-none focus:ring-0 focus:border-red-500 dark:focus:border-red-400 text-gray-900 dark:text-gray-400"
                                 placeholder="Start date" />
                         </div> --}}
-                        <div>
-    <label for="start_date" class="block mb-1 font-semibold text-gray-700 dark:text-gray-300">Start Date</label>
-    <div class="relative">
-        <input 
-            id="start_date" 
-            type="date" 
-            name="start_date" 
-            required
-            class="mb-4 w-full py-2 px-4 bg-gray-50 dark:bg-[#141414] border border-gray-300 dark:border-gray-700 rounded focus:outline-none focus:ring-0 focus:border-red-500 dark:focus:border-red-400 text-gray-900 dark:text-gray-400 appearance-none"
-            placeholder=" "
-            onfocus="this.showPicker()" 
-        />
-        <!-- The placeholder will be added by JavaScript if not present -->
-    </div>
-</div>
+        
 
                         
                         <div>
@@ -157,17 +121,33 @@
     </div>
 
     <script>
-        // Show Section 2 of the form
-        function showSection2() {
-            document.getElementById('section1').style.display = 'none';
-            document.getElementById('section2').style.display = 'block';
-        }
+        // // Show Section 2 of the form
+        // function showSection2() {
+        //     document.getElementById('section1').style.display = 'none';
+        //     document.getElementById('section2').style.display = 'block';
+        // }
 
-        // Show Section 1 of the form
-        function showSection1() {
-            document.getElementById('section2').style.display = 'none';
-            document.getElementById('section1').style.display = 'block';
-        }
+        // // Show Section 1 of the form
+        // function showSection1() {
+        //     document.getElementById('section2').style.display = 'none';
+        //     document.getElementById('section1').style.display = 'block';
+        // }
+        // Function to set today's date as default
+    function setDefaultStartDate() {
+        const today = new Date();
+        const formattedDate = today.toISOString().split('T')[0];
+        document.getElementById('start_date').value = formattedDate;
+        
+        // Also calculate end date if membership is already selected
+        calculateEndDate();
+    }
+
+    // Show Section 2 of the form
+    function showSection2() {
+        document.getElementById('section1').style.display = 'none';
+        document.getElementById('section2').style.display = 'block';
+        setDefaultStartDate(); // Set default date when showing section 2
+    }
 
         // Calculate membership end date based on selected plan
         document.getElementById('membership_plan').addEventListener('change', calculateEndDate);
@@ -212,48 +192,7 @@
             this.classList.toggle('fa-eye-slash');
         });
     </script>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Function to initialize date placeholders
-        function initDatePlaceholders() {
-            const dateInputs = [
-                { id: 'start_date', placeholder: 'mm/dd/yyyy' },
-                { id: 'end_date', placeholder: 'mm/dd/yyyy' }
-            ];
+    
 
-            dateInputs.forEach(input => {
-                const element = document.getElementById(input.id);
-                if (!element) return;
-
-                // Create or update placeholder
-                let placeholder = element.nextElementSibling;
-                if (!placeholder || !placeholder.classList.contains('mobile-placeholder')) {
-                    placeholder = document.createElement('span');
-                    placeholder.className = 'mobile-placeholder absolute left-4 top-2 text-gray-500 dark:text-gray-400 pointer-events-none';
-                    placeholder.textContent = input.placeholder;
-                    element.parentNode.insertBefore(placeholder, element.nextSibling);
-                }
-
-                // Initial state
-                placeholder.style.display = element.value ? 'none' : (window.innerWidth <= 768 ? 'block' : 'none');
-
-                // Update on change
-                element.addEventListener('input', function() {
-                    placeholder.style.display = this.value ? 'none' : (window.innerWidth <= 768 ? 'block' : 'none');
-                });
-
-                // Update on resize
-                window.addEventListener('resize', function() {
-                    placeholder.style.display = element.value ? 'none' : (window.innerWidth <= 768 ? 'block' : 'none');
-                });
-            });
-        }
-
-        // Initialize placeholders
-        initDatePlaceholders();
-
-        // Rest of your existing JavaScript...
-    });
-</script>
 
 </x-app-layout>
