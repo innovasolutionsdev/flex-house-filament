@@ -2,20 +2,22 @@
 
 <x-app-layout>
     <style>
-        /* Ensure consistent appearance */
-input[type="date"]::-webkit-calendar-picker-indicator {
-    opacity: 0;
-    position: absolute;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
-}
+        /* Hide placeholder by default (desktop) */
+    .mobile-placeholder {
+        display: none;
+    }
 
-/* For Firefox */
-input[type="date"] {
-    -moz-appearance: textfield;
-}
+    /* Show placeholder only on mobile */
+    @media (max-width: 768px) {
+        .mobile-placeholder {
+            display: block;
+        }
+
+        /* Hide placeholder when date is selected */
+        input[type="date"]:not(:placeholder-shown) + .mobile-placeholder {
+            display: none;
+        }
+    }
     </style>
     <div class="bg-white dark:bg-[#171717]">
         <div class="py-12 text-gray-900 dark:text-white flex flex-col md:flex-row items-center md:items-start p-8 md:p-16 space-y-8 md:space-y-0 md:space-x-16 max-w-4xl mx-auto">
@@ -66,17 +68,30 @@ input[type="date"] {
 
                     <!-- Section 2: Additional Registration Fields -->
                     <div id="section2" style="display: none;">
-                        <label for="start_date" class="block mb-1 font-semibold text-gray-700 dark:text-gray-300">Start Date</label>
-                        <input id="start_date" type="text" name="start_date" required
-    class="mb-4 w-full py-2 px-4 bg-gray-50 dark:bg-[#141414] border border-gray-300 dark:border-gray-700 rounded focus:outline-none focus:ring-0 focus:border-red-500 dark:focus:border-red-400 text-gray-900 dark:text-gray-400"
-    placeholder="mm/dd/yyyy"
-    onfocus="(this.type='date')" />
+                        
                         {{-- <div>
                             <label for="start_date" class="block mb-1 font-semibold text-gray-700 dark:text-gray-300">Start Date</label>
                             <input id="start_date" type="date" name="start_date" required
                                 class="mb-4 w-full py-2 px-4 bg-gray-50 dark:bg-[#141414] border border-gray-300 dark:border-gray-700 rounded focus:outline-none focus:ring-0 focus:border-red-500 dark:focus:border-red-400 text-gray-900 dark:text-gray-400"
                                 placeholder="Start date" />
                         </div> --}}
+                        <div>
+    <label for="start_date" class="block mb-1 font-semibold text-gray-700 dark:text-gray-300">Start Date</label>
+    <div class="relative">
+        <input 
+            id="start_date" 
+            type="date" 
+            name="start_date" 
+            required
+            class="mb-4 w-full py-2 px-4 bg-gray-50 dark:bg-[#141414] border border-gray-300 dark:border-gray-700 rounded focus:outline-none focus:ring-0 focus:border-red-500 dark:focus:border-red-400 text-gray-900 dark:text-gray-400 appearance-none"
+            placeholder=" "
+            onfocus="this.showPicker()" 
+        />
+        <span class="mobile-placeholder absolute left-4 top-2 text-gray-500 dark:text-gray-400 pointer-events-none">
+            mm/dd/yyyy
+        </span>
+    </div>
+</div>
 
                         
                         <div>
@@ -187,6 +202,24 @@ input[type="date"] {
             confirmPassword.setAttribute('type', type);
             this.classList.toggle('fa-eye-slash');
         });
+    </script>
+    <script>
+        // Function to handle date input changes
+function handleDateInput(input, placeholder) {
+    input.addEventListener('input', function() {
+        placeholder.style.display = this.value ? 'none' : 'block';
+    });
+}
+
+// Initialize for start_date
+const startDateInput = document.getElementById('start_date');
+const startDatePlaceholder = startDateInput.nextElementSibling;
+handleDateInput(startDateInput, startDatePlaceholder);
+
+// Initialize for end_date
+const endDateInput = document.getElementById('end_date');
+const endDatePlaceholder = endDateInput.nextElementSibling;
+handleDateInput(endDateInput, endDatePlaceholder);
     </script>
 
 </x-app-layout>
