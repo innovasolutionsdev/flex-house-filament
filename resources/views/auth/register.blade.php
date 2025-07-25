@@ -128,10 +128,10 @@
         // }
 
         // // Show Section 1 of the form
-        // function showSection1() {
-        //     document.getElementById('section2').style.display = 'none';
-        //     document.getElementById('section1').style.display = 'block';
-        // }
+        function showSection1() {
+            document.getElementById('section2').style.display = 'none';
+            document.getElementById('section1').style.display = 'block';
+        }
         // Function to set today's date as default
     function setDefaultStartDate() {
         const today = new Date();
