@@ -1,24 +1,35 @@
 
 
 <x-app-layout>
-    <style>
-        /* Hide placeholder by default (desktop) */
+<style>
+    /* Hide placeholder by default for all devices */
     .mobile-placeholder {
-        display: none;
+        display: none !important;
     }
 
-    /* Show placeholder only on mobile */
-    @media (max-width: 768px) {
+    /* Show placeholder only on mobile devices */
+    @media only screen and (max-width: 768px) {
+        /* Show placeholder when input is empty */
+        input[type="date"].appearance-none:placeholder-shown + .mobile-placeholder {
+            display: block !important;
+        }
+
+        /* Style adjustments for mobile */
         .mobile-placeholder {
-            display: block;
+            position: absolute;
+            left: 1rem;
+            top: 0.5rem;
+            pointer-events: none;
+            color: #6b7280; /* text-gray-500 */
+            z-index: 10;
         }
 
-        /* Hide placeholder when date is selected */
-        input[type="date"]:not(:placeholder-shown) + .mobile-placeholder {
-            display: none;
+        /* Ensure the input has a transparent background for the placeholder to show through */
+        input[type="date"].appearance-none {
+            background-color: transparent;
         }
     }
-    </style>
+</style>
     <div class="bg-white dark:bg-[#171717]">
         <div class="py-12 text-gray-900 dark:text-white flex flex-col md:flex-row items-center md:items-start p-8 md:p-16 space-y-8 md:space-y-0 md:space-x-16 max-w-4xl mx-auto">
             <div class="w-full md:w-1/2">
@@ -87,9 +98,7 @@
             placeholder=" "
             onfocus="this.showPicker()" 
         />
-        <span class="mobile-placeholder absolute left-4 top-2 text-gray-500 dark:text-gray-400 pointer-events-none">
-            mm/dd/yyyy
-        </span>
+        <!-- The placeholder will be added by JavaScript if not present -->
     </div>
 </div>
 
@@ -203,23 +212,48 @@
             this.classList.toggle('fa-eye-slash');
         });
     </script>
-    <script>
-        // Function to handle date input changes
-function handleDateInput(input, placeholder) {
-    input.addEventListener('input', function() {
-        placeholder.style.display = this.value ? 'none' : 'block';
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Function to initialize date placeholders
+        function initDatePlaceholders() {
+            const dateInputs = [
+                { id: 'start_date', placeholder: 'mm/dd/yyyy' },
+                { id: 'end_date', placeholder: 'mm/dd/yyyy' }
+            ];
+
+            dateInputs.forEach(input => {
+                const element = document.getElementById(input.id);
+                if (!element) return;
+
+                // Create or update placeholder
+                let placeholder = element.nextElementSibling;
+                if (!placeholder || !placeholder.classList.contains('mobile-placeholder')) {
+                    placeholder = document.createElement('span');
+                    placeholder.className = 'mobile-placeholder absolute left-4 top-2 text-gray-500 dark:text-gray-400 pointer-events-none';
+                    placeholder.textContent = input.placeholder;
+                    element.parentNode.insertBefore(placeholder, element.nextSibling);
+                }
+
+                // Initial state
+                placeholder.style.display = element.value ? 'none' : (window.innerWidth <= 768 ? 'block' : 'none');
+
+                // Update on change
+                element.addEventListener('input', function() {
+                    placeholder.style.display = this.value ? 'none' : (window.innerWidth <= 768 ? 'block' : 'none');
+                });
+
+                // Update on resize
+                window.addEventListener('resize', function() {
+                    placeholder.style.display = element.value ? 'none' : (window.innerWidth <= 768 ? 'block' : 'none');
+                });
+            });
+        }
+
+        // Initialize placeholders
+        initDatePlaceholders();
+
+        // Rest of your existing JavaScript...
     });
-}
-
-// Initialize for start_date
-const startDateInput = document.getElementById('start_date');
-const startDatePlaceholder = startDateInput.nextElementSibling;
-handleDateInput(startDateInput, startDatePlaceholder);
-
-// Initialize for end_date
-const endDateInput = document.getElementById('end_date');
-const endDatePlaceholder = endDateInput.nextElementSibling;
-handleDateInput(endDateInput, endDatePlaceholder);
-    </script>
+</script>
 
 </x-app-layout>
