@@ -30,7 +30,7 @@
 
                         <div>
                             <select id="membership_plan" name="membership_plan" required
-                                class="mb-4 w-full py-2 px-4 bg-gray-50 dark:bg-[#141414] border border-gray-700 rounded focus:outline-none focus:ring-0 focus:border-red-500 text-gray-400">
+                                class="mb-4 w-full py-2 px-4 bg-gray-50 dark:bg-[#141414] border border-gray-300 dark:border-gray-700 rounded focus:outline-none focus:ring-0 focus:border-red-500 text-gray-400">
                                 <option value="">-- Select Membership --</option>
                                 @foreach ($membershipPlans as $membership)
                                     <option value="{{ $membership->id }}" data-duration="{{ $membership->duration }}">
@@ -57,7 +57,7 @@
                                 placeholder="Start date" />
                         </div>
 
-                        <div>
+                        {{-- <div>
                             <label for="end_date" class="block mb-1 font-semibold text-gray-700 dark:text-gray-300">End Date</label>
                             <input id="end_date" type="date" name="end_date" required readonly
                                 class="mb-4 w-full py-2 px-4 bg-gray-50 dark:bg-[#141414] border border-gray-300 dark:border-gray-700 rounded focus:outline-none focus:ring-0 focus:border-red-500 dark:focus:border-red-400 text-gray-900 dark:text-gray-400"
@@ -65,7 +65,14 @@
                                 onkeydown="return false"
                                 onpaste="return false"
                                 />
+                        </div> --}}
+                        <div>
+                            <label for="end_date" class="block mb-1 font-semibold text-gray-700 dark:text-gray-300">End Date</label>
+                            <input id="end_date" type="date" name="end_date" required disabled
+                                class="mb-4 w-full py-2 px-4 bg-gray-50 dark:bg-[#141414] border border-gray-300 dark:border-gray-700 rounded focus:outline-none focus:ring-0 focus:border-red-500 dark:focus:border-red-400 text-gray-900 dark:text-gray-400"
+                                placeholder="End date" />
                         </div>
+                                    
 
                         <div class="relative">
                             <input id="password" name="password" type="password" required
