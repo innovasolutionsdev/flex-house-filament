@@ -30,7 +30,7 @@
 
                         <div>
                             <select id="membership_plan" name="membership_plan" required
-                                class="mb-4 w-full py-2 px-4 bg-gray-50 dark:bg-[#141414] border border-gray-700 rounded focus:outline-none focus:ring-0 focus:border-red-500 text-gray-400">
+                                class="mb-4 w-full py-2 px-4 bg-gray-50 dark:bg-[#141414] border border-gray-300 dark:border-gray-700 rounded focus:outline-none focus:ring-0 focus:border-red-500 text-gray-400">
                                 <option value="">-- Select Membership --</option>
                                 @foreach ($membershipPlans as $membership)
                                     <option value="{{ $membership->id }}" data-duration="{{ $membership->duration }}">
