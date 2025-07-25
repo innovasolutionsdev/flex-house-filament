@@ -50,12 +50,24 @@
 
                     <!-- Section 2: Additional Registration Fields -->
                     <div id="section2" style="display: none;">
-                        <div>
+                        <input id="start_date" type="text" name="start_date" required
+    class="mb-4 w-full py-2 px-4 bg-gray-50 dark:bg-[#141414] border border-gray-300 dark:border-gray-700 rounded focus:outline-none focus:ring-0 focus:border-red-500 dark:focus:border-red-400 text-gray-900 dark:text-gray-400"
+    placeholder="mm/dd/yyyy"
+    onfocus="(this.type='date')" />
+                        {{-- <div>
                             <label for="start_date" class="block mb-1 font-semibold text-gray-700 dark:text-gray-300">Start Date</label>
                             <input id="start_date" type="date" name="start_date" required
                                 class="mb-4 w-full py-2 px-4 bg-gray-50 dark:bg-[#141414] border border-gray-300 dark:border-gray-700 rounded focus:outline-none focus:ring-0 focus:border-red-500 dark:focus:border-red-400 text-gray-900 dark:text-gray-400"
                                 placeholder="Start date" />
-                        </div>
+                        </div> --}}
+
+                        
+                        <div>
+                            <label for="end_date" class="block mb-1 font-semibold text-gray-700 dark:text-gray-300">End Date</label>
+                            <input id="end_date" type="date" name="end_date" required disabled
+                                class="mb-4 w-full py-2 px-4 bg-gray-50 dark:bg-[#141414] border border-gray-300 dark:border-gray-700 rounded focus:outline-none focus:ring-0 focus:border-red-500 dark:focus:border-red-400 text-gray-900 dark:text-gray-400"
+                                placeholder="End date" />
+                        </div> 
 
                         {{-- <div>
                             <label for="end_date" class="block mb-1 font-semibold text-gray-700 dark:text-gray-300">End Date</label>
@@ -66,12 +78,6 @@
                                 onpaste="return false"
                                 />
                         </div> --}}
-                        <div>
-                            <label for="end_date" class="block mb-1 font-semibold text-gray-700 dark:text-gray-300">End Date</label>
-                            <input id="end_date" type="date" name="end_date" required disabled
-                                class="mb-4 w-full py-2 px-4 bg-gray-50 dark:bg-[#141414] border border-gray-300 dark:border-gray-700 rounded focus:outline-none focus:ring-0 focus:border-red-500 dark:focus:border-red-400 text-gray-900 dark:text-gray-400"
-                                placeholder="End date" />
-                        </div>
                                     
 
                         <div class="relative">
@@ -165,4 +171,5 @@
             this.classList.toggle('fa-eye-slash');
         });
     </script>
+
 </x-app-layout>
