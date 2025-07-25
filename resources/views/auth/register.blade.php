@@ -1,6 +1,22 @@
 
 
 <x-app-layout>
+    <style>
+        /* Ensure consistent appearance */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+/* For Firefox */
+input[type="date"] {
+    -moz-appearance: textfield;
+}
+    </style>
     <div class="bg-white dark:bg-[#171717]">
         <div class="py-12 text-gray-900 dark:text-white flex flex-col md:flex-row items-center md:items-start p-8 md:p-16 space-y-8 md:space-y-0 md:space-x-16 max-w-4xl mx-auto">
             <div class="w-full md:w-1/2">
@@ -50,6 +66,7 @@
 
                     <!-- Section 2: Additional Registration Fields -->
                     <div id="section2" style="display: none;">
+                        <label for="start_date" class="block mb-1 font-semibold text-gray-700 dark:text-gray-300">Start Date</label>
                         <input id="start_date" type="text" name="start_date" required
     class="mb-4 w-full py-2 px-4 bg-gray-50 dark:bg-[#141414] border border-gray-300 dark:border-gray-700 rounded focus:outline-none focus:ring-0 focus:border-red-500 dark:focus:border-red-400 text-gray-900 dark:text-gray-400"
     placeholder="mm/dd/yyyy"
