@@ -11,7 +11,7 @@ class Productdetails extends Component
 {
     public $order;
 
-    public $banner;
+
 
     public $quantity = [];
     public array $cartAdded = [];

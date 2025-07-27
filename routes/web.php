@@ -147,3 +147,6 @@ Route::get('/order-receipt/{id}', function ($id) {
 
 //route for resources\views\pages\product-details.blade.php
 Route::get('/product-details/{id}',[OrderController::class, 'Order_details'] );
+
+
+

@@ -15,10 +15,10 @@
     <meta name="apple-mobile-web-app-status-bar" content="#01d679" >
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="Innova Solutions">
-    <link rel="apple-touch-icon" href="{{ asset('logo.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('favicon.ico') }}">
     {{-- splash screen icons --}}
 
-    <link rel="apple-touch-startup-image" href="{{ asset('logo.png') }}">
+    <link rel="apple-touch-startup-image" href="{{ asset('favicon.ico') }}">
     {{-- Splash screen  --}}
     <link rel="apple-touch-startup-image" href="{{ asset('/pwa/assets/icons/icon-36x36.png') }}" media="(device-width: 320px)">
     <link rel="apple-touch-startup-image" href="{{ asset('/pwa/assets/icons/icon-48x48.png') }}" media="(device-width: 375px)">

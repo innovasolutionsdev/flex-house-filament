@@ -6,7 +6,7 @@ self.addEventListener('push', (event) => {
             {
                 body: notification.body,
 
-                icon: "./images/logo.png",
+                icon: "./images/favicon.ico",
                 data: {
                     url: notification.url
                 }

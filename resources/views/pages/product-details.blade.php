@@ -1,4 +1,4 @@
 <x-app-layout>
 
-    @livewire('product-details', ['order' => $order])
+    @livewire('Productdetails', ['order' => $order])
 </x-app-layout>

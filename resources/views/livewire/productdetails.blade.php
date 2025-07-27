@@ -17,7 +17,7 @@
     </style>
     <div class="top-0 left-0 w-full h-16 bg-red-500 flex items-center justify-center">
         <img alt="Christmas decoration with holly leaves and berries" class="h-12 " height="50"
-            src="{{$banner->getFirstMediaUrl('promotion_banner_img') }}}}"
+            src="{{$banner->getFirstMediaUrl('promotion_banner_img') }}"
             width="50" />
         <p class="text-white text-lg ml-4">
             {{$banner->title}}

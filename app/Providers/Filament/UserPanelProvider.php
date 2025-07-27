@@ -25,6 +25,7 @@ class UserPanelProvider extends PanelProvider
     {
         return $panel
 
+            ->favicon('/favicon.ico')
             ->id('user')
             ->path('user')
             ->colors([

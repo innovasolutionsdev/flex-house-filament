@@ -49,6 +49,7 @@ return [
         ],
         ],
 
+    'favicon' => '/favicon.ico', // or '/favicon.png'
     /*
     |--------------------------------------------------------------------------
     | Default Filesystem Disk
