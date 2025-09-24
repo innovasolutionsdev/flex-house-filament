@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pip install:*)",
+      "Bash(python:*)",
+      "Bash(C:UsersTUFAppDataRoamingPythonPython313Scriptseb.exe --version)",
+      "Bash(\"C:\\Users\\TUF\\AppData\\Roaming\\Python\\Python313\\Scripts\\eb.exe\" --version)",
+      "Bash(aws:*)",
+      "Bash(pip uninstall:*)",
+      "Bash(git clone:*)",
+      "Read(//c/Users/TUF/Documents/GitHub/**)",
+      "Bash($env:PATH += \";C:\\Users\\TUF\\AppData\\Roaming\\Python\\Python313\\Scripts\")",
+      "Bash(eb:*)",
+      "Bash(set PYTHONPATH=C:UsersTUFAppDataRoamingPythonPython313site-packages)",
+      "Read(//c/Users/TUF/AppData/Roaming/Python/Python313/site-packages/ebcli/controllers/**)",
+      "Bash(eb.bat --version)",
+      "Bash(./eb.bat --version)",
+      "Bash(.eb.bat list)",
+      "Bash(powershell:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
