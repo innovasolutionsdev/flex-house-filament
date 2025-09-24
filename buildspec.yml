@@ -9,9 +9,8 @@ phases:
     commands:
       - composer install --no-interaction --no-dev --prefer-dist --optimize-autoloader
       - php artisan package:discover || true
-      - zip -r build.zip . \
-          -x "*.git*" "node_modules/*" "storage/logs/*" ".env*" ".github/*" "tests/*"
 
 artifacts:
   files:
-    - build.zip
+    - '**/*'
+  discard-paths: no
