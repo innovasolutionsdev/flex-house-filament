@@ -9,14 +9,14 @@ sudo chmod -R 775 /var/app/current/storage /var/app/current/bootstrap/cache
 composer install --no-dev --optimize-autoloader
 
 # Laravel optimizations
-php artisan config:clear
-php artisan cache:clear
-php artisan route:clear
-php artisan view:clear
+# php artisan config:clear
+# php artisan cache:clear
+# php artisan route:clear
+# php artisan view:clear
 
-php artisan config:cache
-php artisan route:cache
-php artisan view:cache
+# php artisan config:cache
+# php artisan route:cache
+# php artisan view:cache
 
 # Build frontend assets
 npm ci || npm install
