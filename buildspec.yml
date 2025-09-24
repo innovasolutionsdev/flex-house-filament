@@ -1,0 +1,17 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - php -v || true
+      - composer -V || curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+  build:
+    commands:
+      - composer install --no-interaction --no-dev --prefer-dist --optimize-autoloader
+      - php artisan package:discover || true
+      - zip -r build.zip . \
+          -x "*.git*" "node_modules/*" "storage/logs/*" ".env*" ".github/*" "tests/*"
+
+artifacts:
+  files:
+    - build.zip
