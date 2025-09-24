@@ -6,31 +6,17 @@ phases:
       php: 8.2
       nodejs: 18
     commands:
-      # Ensure composer is installed
-      - php -v || true
-      - composer -V || curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-      
-      # Install dependencies
       - composer install --no-dev --optimize-autoloader
       - npm install
 
   build:
     commands:
-      # Build frontend assets with Vite
       - npm run build
-
-      # Optimize Laravel caches
       - php artisan config:cache
       - php artisan route:cache
       - php artisan view:cache
-      - php artisan package:discover || true
 
 artifacts:
   files:
-    - '**/*'                 # include all files
-    - '.platform/**/*'       # include EB platform hooks
-    - '.ebextensions/**/*'   # include EB extensions
-    - 'public/**/*'          # include all public assets
-    - 'public/.htaccess'     # ensure Laravel .htaccess is copied
-  discard-paths: no
+    - '**/*'
   base-directory: .
