@@ -12,5 +12,10 @@ phases:
 
 artifacts:
   files:
-    - '**/*'
+    - '**/*'                 # everything (non-hidden)
+    - '.platform/**/*'       # force include hidden EB config
+    - '.ebextensions/**/*'   # (if you add any)
+    - 'public/**/*'          # make sure public/ goes in
+    - 'public/.htaccess'     # explicitly include .htaccess if present
   discard-paths: no
+  base-directory: .
