@@ -20,9 +20,9 @@ phases:
       # Build frontend with Vite
       - npm run build
       # Laravel cache/optimizations
-      - php artisan config:cache || true
-      - php artisan route:cache || true
-      - php artisan view:cache || true
+      # - php artisan config:cache || true
+      # - php artisan route:cache || true
+      # - php artisan view:cache || true
 
 artifacts:
   files:
