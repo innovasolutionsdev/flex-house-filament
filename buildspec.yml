@@ -14,7 +14,8 @@ phases:
       - composer install --no-interaction --no-dev --prefer-dist --optimize-autoloader
       - php artisan package:discover || true
       - npm run build
-      - test -f public/build/manifest.json || (echo "ERROR: Vite manifest missing" && exit 1)
+      - "test -f public/build/manifest.json || (echo 'ERROR: Vite manifest missing' && exit 1)"
+
   post_build:
     commands:
       - rm -rf node_modules
