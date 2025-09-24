@@ -2,37 +2,35 @@ version: 0.2
 
 phases:
   install:
-    commands:
-      - php -v || true
-      - composer -V || curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-  build:
-    commands:
-      - composer install --no-interaction --no-dev --prefer-dist --optimize-autoloader
-      - php artisan package:discover || true
-
-artifacts:
-  files:
-    - '**/*'                 # everything (non-hidden)
-    - '.platform/**/*'       # force include hidden EB config
-    - '.ebextensions/**/*'   # (if you add any)
-    - 'public/**/*'          # make sure public/ goes in
-    - 'public/.htaccess'     # explicitly include .htaccess if present
-  discard-paths: no
-  base-directory: .
-
-phases:
-  install:
     runtime-versions:
       php: 8.2
       nodejs: 18
     commands:
-      - npm install
+      # Ensure composer is installed
+      - php -v || true
+      - composer -V || curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+      
+      # Install dependencies
       - composer install --no-dev --optimize-autoloader
+      - npm install
+
   build:
     commands:
+      # Build frontend assets with Vite
       - npm run build
+
+      # Optimize Laravel caches
       - php artisan config:cache
       - php artisan route:cache
+      - php artisan view:cache
+      - php artisan package:discover || true
+
 artifacts:
   files:
-    - '**/*'
+    - '**/*'                 # include all files
+    - '.platform/**/*'       # include EB platform hooks
+    - '.ebextensions/**/*'   # include EB extensions
+    - 'public/**/*'          # include all public assets
+    - 'public/.htaccess'     # ensure Laravel .htaccess is copied
+  discard-paths: no
+  base-directory: .
