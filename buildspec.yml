@@ -6,12 +6,24 @@ phases:
       php: 8.2
       nodejs: 18
     commands:
+      # Verify versions
+      - php -v
+      - composer -V
+      - node -v
+      - npm -v
+
+      # Install PHP dependencies
       - composer install --no-dev --optimize-autoloader
-      - npm install
+
+      # Install Node dependencies
+      - npm ci
 
   build:
     commands:
+      # Build frontend assets with Vite
       - npm run build
+
+      # Laravel optimizations
       - php artisan config:cache
       - php artisan route:cache
       - php artisan view:cache
@@ -19,4 +31,9 @@ phases:
 artifacts:
   files:
     - '**/*'
+    - 'public/build/**/*'   # include Vite build output
+    - 'public/.htaccess'    # explicitly include .htaccess if present
+    - '.platform/**/*'      # include EB platform hooks if any
+    - '.ebextensions/**/*'  # include EB extensions if any
   base-directory: .
+  discard-paths: no
