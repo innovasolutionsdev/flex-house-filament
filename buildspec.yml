@@ -4,34 +4,27 @@ phases:
   install:
     runtime-versions:
       nodejs: 20
+      php: 8.2
     commands:
-      # PHP/Composer available? if not, install composer
       - php -v || true
       - composer -V || curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-      # Install frontend deps (dev deps needed to build)
       - npm ci --no-audit --progress=false
   build:
     commands:
-      # PHP deps for production (you said you want vendor in artifact)
       - composer install --no-interaction --no-dev --prefer-dist --optimize-autoloader
       - php artisan package:discover || true
-
-      # Build Vite assets → generates public/build/manifest.json
       - npm run build
-
-      # Sanity check so the pipeline fails loudly if Vite output is missing
       - test -f public/build/manifest.json || (echo "ERROR: Vite manifest missing" && exit 1)
   post_build:
     commands:
-      # Keep artifact slim: we don't need node_modules at runtime
       - rm -rf node_modules
 
 artifacts:
   files:
     - '**/*'
-    - '.platform/**/*'       # include EB platform hooks
-    - '.ebextensions/**/*'   # if any
-    - 'public/**/*'          # ensure built assets are included
+    - '.platform/**/*'
+    - '.ebextensions/**/*'
+    - 'public/**/*'
     - 'public/.htaccess'
   discard-paths: no
   base-directory: .
