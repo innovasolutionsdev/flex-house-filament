@@ -2,44 +2,20 @@ version: 0.2
 
 phases:
   install:
-    runtime-versions:
-      php: 8.2
-      nodejs: 18
     commands:
-      - php -v
-      - composer -V
-      - node -v
-      - npm -v
-      # Install PHP dependencies
-      - composer install --no-dev --optimize-autoloader
-      # Install Node dependencies
-      - npm ci || npm install
-
+      - php -v || true
+      - composer -V || curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
   build:
     commands:
-      # Build frontend with Vite
-      - npm run build
-      # Laravel cache/optimizations
-      # - php artisan config:cache || true
-      # - php artisan route:cache || true
-      # - php artisan view:cache || true
+      - composer install --no-interaction --no-dev --prefer-dist --optimize-autoloader
+      - php artisan package:discover || true
 
 artifacts:
   files:
-    - app/**/*
-    - bootstrap/**/*
-    - config/**/*
-    - database/**/*
-    - public/**/*
-    - resources/**/*
-    - routes/**/*
-    - artisan
-    - composer.json
-    - composer.lock
-    - package.json
-    - package-lock.json
-    - vite.config.js
-    - .platform/**/*
-    - .ebextensions/**/*
-  base-directory: .
+    - '**/*'                 # everything (non-hidden)
+    - '.platform/**/*'       # force include hidden EB config
+    - '.ebextensions/**/*'   # (if you add any)
+    - 'public/**/*'          # make sure public/ goes in
+    - 'public/.htaccess'     # explicitly include .htaccess if present
   discard-paths: no
+  base-directory: .
