@@ -30,7 +30,7 @@
 
                         <div>
                             <select id="membership_plan" name="membership_plan" required
-                                class="mb-4 w-full py-2 px-4 bg-gray-50 dark:bg-[#141414] border border-gray-700 rounded focus:outline-none focus:ring-0 focus:border-red-500 text-gray-400">
+                                class="mb-4 w-full py-2 px-4 bg-gray-50 dark:bg-[#141414] border border-gray-300 dark:border-gray-700 rounded focus:outline-none focus:ring-0 focus:border-red-500 text-gray-400">
                                 <option value="">-- Select Membership --</option>
                                 @foreach ($membershipPlans as $membership)
                                     <option value="{{ $membership->id }}" data-duration="{{ $membership->duration }}">
@@ -50,14 +50,31 @@
 
                     <!-- Section 2: Additional Registration Fields -->
                     <div id="section2" style="display: none;">
+
                         <div>
+    <label for="start_date" class="block mb-1 font-semibold text-gray-700 dark:text-gray-300">Start Date</label>
+    <input id="start_date" type="date" name="start_date" required
+        class="mb-4 w-full py-2 px-4 bg-gray-50 dark:bg-[#141414] border border-gray-300 dark:border-gray-700 rounded focus:outline-none focus:ring-0 focus:border-red-500 dark:focus:border-red-400 text-gray-900 dark:text-gray-400"
+        placeholder="Start date" />
+</div>
+                        
+                        {{-- <div>
                             <label for="start_date" class="block mb-1 font-semibold text-gray-700 dark:text-gray-300">Start Date</label>
                             <input id="start_date" type="date" name="start_date" required
                                 class="mb-4 w-full py-2 px-4 bg-gray-50 dark:bg-[#141414] border border-gray-300 dark:border-gray-700 rounded focus:outline-none focus:ring-0 focus:border-red-500 dark:focus:border-red-400 text-gray-900 dark:text-gray-400"
                                 placeholder="Start date" />
-                        </div>
+                        </div> --}}
+        
 
+                        
                         <div>
+                            <label for="end_date" class="block mb-1 font-semibold text-gray-700 dark:text-gray-300">End Date</label>
+                            <input id="end_date" type="date" name="end_date" required disabled
+                                class="mb-4 w-full py-2 px-4 bg-gray-50 dark:bg-[#141414] border border-gray-300 dark:border-gray-700 rounded focus:outline-none focus:ring-0 focus:border-red-500 dark:focus:border-red-400 text-gray-900 dark:text-gray-400"
+                                placeholder="End date" />
+                        </div> 
+
+                        {{-- <div>
                             <label for="end_date" class="block mb-1 font-semibold text-gray-700 dark:text-gray-300">End Date</label>
                             <input id="end_date" type="date" name="end_date" required readonly
                                 class="mb-4 w-full py-2 px-4 bg-gray-50 dark:bg-[#141414] border border-gray-300 dark:border-gray-700 rounded focus:outline-none focus:ring-0 focus:border-red-500 dark:focus:border-red-400 text-gray-900 dark:text-gray-400"
@@ -65,7 +82,8 @@
                                 onkeydown="return false"
                                 onpaste="return false"
                                 />
-                        </div>
+                        </div> --}}
+                                    
 
                         <div class="relative">
                             <input id="password" name="password" type="password" required
@@ -103,17 +121,33 @@
     </div>
 
     <script>
-        // Show Section 2 of the form
-        function showSection2() {
-            document.getElementById('section1').style.display = 'none';
-            document.getElementById('section2').style.display = 'block';
-        }
+        // // Show Section 2 of the form
+        // function showSection2() {
+        //     document.getElementById('section1').style.display = 'none';
+        //     document.getElementById('section2').style.display = 'block';
+        // }
 
-        // Show Section 1 of the form
+        // // Show Section 1 of the form
         function showSection1() {
             document.getElementById('section2').style.display = 'none';
             document.getElementById('section1').style.display = 'block';
         }
+        // Function to set today's date as default
+    function setDefaultStartDate() {
+        const today = new Date();
+        const formattedDate = today.toISOString().split('T')[0];
+        document.getElementById('start_date').value = formattedDate;
+        
+        // Also calculate end date if membership is already selected
+        calculateEndDate();
+    }
+
+    // Show Section 2 of the form
+    function showSection2() {
+        document.getElementById('section1').style.display = 'none';
+        document.getElementById('section2').style.display = 'block';
+        setDefaultStartDate(); // Set default date when showing section 2
+    }
 
         // Calculate membership end date based on selected plan
         document.getElementById('membership_plan').addEventListener('change', calculateEndDate);
@@ -158,4 +192,7 @@
             this.classList.toggle('fa-eye-slash');
         });
     </script>
+    
+
+
 </x-app-layout>
