@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -11,14 +12,28 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('workout_logs', function (Blueprint $table) {
-            // Drop foreign key and the old workout_id column
-            $table->dropForeign(['workout_id']);
-            $table->dropColumn('workout_id');
+        if (DB::getDriverName() === 'sqlite') {
+            // For SQLite, recreate the table to avoid foreign key issues
+            Schema::rename('workout_logs', 'workout_logs_old');
 
-            // Add a new column to track the workout date
-            $table->date('workout_date')->after('user_id')->nullable(); // Add date for the workout session
-        });
+            Schema::create('workout_logs', function (Blueprint $table) {
+                $table->id();
+                $table->foreignId('user_id')->constrained()->onDelete('cascade');
+                $table->date('workout_date')->nullable();
+                $table->timestamps();
+            });
+
+            // Copy data, excluding workout_id and name (name not added yet)
+            DB::insert('INSERT INTO workout_logs (id, user_id, workout_date, created_at, updated_at) SELECT id, user_id, NULL, created_at, updated_at FROM workout_logs_old');
+
+            Schema::drop('workout_logs_old');
+        } else {
+            Schema::table('workout_logs', function (Blueprint $table) {
+                $table->dropForeign(['workout_id']);
+                $table->dropColumn('workout_id');
+                $table->date('workout_date')->after('user_id')->nullable();
+            });
+        }
     }
 
     /**
